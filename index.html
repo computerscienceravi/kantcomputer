@@ -1,0 +1,399 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Computer Science Question Bank</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 94%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 27px;
+            color: #1e3a8a;
+        }
+
+        .section-title p {
+            color: #555;
+            margin-top: 7px;
+        }
+
+        /* CLASS GRID */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+            transition: 0.3s;
+            border-top: 5px solid #2563eb;
+        }
+
+        .class-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .class-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .class-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .class-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #1e40af;
+        }
+
+        .coming {
+            background: #9ca3af;
+            cursor: default;
+        }
+
+        .coming:hover {
+            background: #9ca3af;
+        }
+
+        /* CLASS XI SECTION */
+        .topics-section {
+            margin-top: 50px;
+        }
+
+        .topics-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+        }
+
+        .topics-box h2 {
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .topic-card {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            background: #f9fafb;
+        }
+
+        .topic-card h3 {
+            color: #111827;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .topic-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            line-height: 1.7;
+            color: #d1d5db;
+            font-size: 15px;
+        }
+
+        .creator {
+            color: #60a5fa;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .class-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .topic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .class-grid,
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Computer Science Question Bank</h1>
+        <p>Class-wise Objective Questions & Study Materials</p>
+        <p>Bihar Board | BSEB Pattern</p>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <div class="section-title">
+            <h2>📚 Select Your Class</h2>
+            <p>Choose your class to access Computer Science questions and study materials.</p>
+        </div>
+
+
+        <!-- CLASS CARDS -->
+        <div class="class-grid">
+
+            <!-- CLASS VI -->
+            <div class="class-card">
+                <div class="class-number">VI</div>
+                <h3>Class 6</h3>
+                <p>Computer Science Questions</p>
+                <a href="#" class="btn coming">Coming Soon</a>
+            </div>
+
+            <!-- CLASS VII -->
+            <div class="class-card">
+                <div class="class-number">VII</div>
+                <h3>Class 7</h3>
+                <p>Computer Science Questions</p>
+                <a href="#" class="btn coming">Coming Soon</a>
+            </div>
+
+            <!-- CLASS VIII -->
+            <div class="class-card">
+                <div class="class-number">VIII</div>
+                <h3>Class 8</h3>
+                <p>Computer Science Questions</p>
+                <a href="#" class="btn coming">Coming Soon</a>
+            </div>
+
+            <!-- CLASS IX -->
+            <div class="class-card">
+                <div class="class-number">IX</div>
+                <h3>Class 9</h3>
+                <p>Computer Science Questions</p>
+                <a href="#" class="btn coming">Coming Soon</a>
+            </div>
+
+            <!-- CLASS X -->
+            <div class="class-card">
+                <div class="class-number">X</div>
+                <h3>Class 10</h3>
+                <p>Computer Science Questions</p>
+                <a href="#" class="btn coming">Coming Soon</a>
+            </div>
+
+            <!-- CLASS XI -->
+            <div class="class-card">
+                <div class="class-number">XI</div>
+                <h3>Class 11</h3>
+                <p>Computer Science Questions</p>
+                <a href="#class11" class="btn">View Questions</a>
+            </div>
+
+            <!-- CLASS XII -->
+            <div class="class-card">
+                <div class="class-number">XII</div>
+                <h3>Class 12</h3>
+                <p>Computer Science Questions</p>
+                <a href="#" class="btn coming">Coming Soon</a>
+            </div>
+
+        </div>
+
+
+        <!-- CLASS XI TOPICS -->
+        <div class="topics-section" id="class11">
+
+            <div class="topics-box">
+
+                <h2>💻 Class XI – Computer Science</h2>
+
+                <div class="topic-grid">
+
+                    <!-- TOPIC 1 -->
+                    <div class="topic-card">
+                        <h3>Computer Fundamentals</h3>
+                        <p>
+                            50 Objective Questions<br>
+                            BSEB Pattern
+                        </p>
+
+                        <a href="11th_Computer_Science_Fundamental_of_computer.html"
+                           class="btn">
+                            Open Questions
+                        </a>
+                    </div>
+
+
+                    <!-- TOPIC 2 -->
+                    <div class="topic-card">
+                        <h3>Number System</h3>
+                        <p>
+                            Objective Questions<br>
+                            Class XI
+                        </p>
+
+                        <a href="#" class="btn coming">
+                            Coming Soon
+                        </a>
+                    </div>
+
+
+                    <!-- TOPIC 3 -->
+                    <div class="topic-card">
+                        <h3>Programming</h3>
+                        <p>
+                            Computer Programming<br>
+                            Class XI
+                        </p>
+
+                        <a href="#" class="btn coming">
+                            Coming Soon
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>Website Created By</h3>
+
+        <p class="creator">
+            Ravi Kant
+        </p>
+
+        <p>
+            School Teacher (Class XI–XII), Bihar Government
+        </p>
+
+        <p>
+            Qualification: B.E. – Computer Science
+            <br>
+            M.Tech. – Computer Science
+        </p>
+
+        <p class="copyright">
+            © 2026 Ravi Kant | Computer Science Question Bank
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
