@@ -430,603 +430,627 @@ button:hover{
 const questions = [
 
 {
-q:"कंप्यूटर क्या है?",
-options:[
-"इलेक्ट्रॉनिक मशीन",
-"यांत्रिक मशीन",
-"केवल गणना मशीन",
-"इनमें से कोई नहीं"
-],
-answer:0,
-explanation:"कंप्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा को इनपुट लेकर उसे प्रोसेस करके उपयोगी सूचना देती है।"
+    q:"Cyber Security (साइबर सुरक्षा) का मुख्य उद्देश्य क्या है?",
+    options:[
+        "इंटरनेट की गति बढ़ाना",
+        "केवल सोशल मीडिया चलाना",
+        "डिजिटल डेटा, डिवाइस और खातों को सुरक्षित रखना",
+        "केवल कंप्यूटर की स्क्रीन साफ करना"
+    ],
+    answer:2,
+    explanation:"Cyber Security का उद्देश्य कंप्यूटर, मोबाइल, नेटवर्क, खातों और डेटा को साइबर खतरों तथा अनधिकृत पहुँच से सुरक्षित रखना है।"
 },
 
 {
-q:"कंप्यूटर का मुख्य कार्य क्या है?",
-options:[
-"केवल डेटा संग्रह",
-"डेटा को प्रोसेस करके सूचना देना",
-"केवल प्रिंट करना",
-"केवल इंटरनेट चलाना"
-],
-answer:1,
-explanation:"कंप्यूटर का मुख्य कार्य डेटा को प्रोसेस करके उपयोगी सूचना देना है।"
+    q:"मजबूत Password की सबसे अच्छी विशेषता क्या है?",
+    options:[
+        "लंबा और अलग-अलग प्रकार के अक्षर, अंक तथा Symbols का मिश्रण",
+        "केवल अपना नाम",
+        "केवल 123456",
+        "हर वेबसाइट पर एक ही Password"
+    ],
+    answer:0,
+    explanation:"मजबूत Password लंबा, अनुमान लगाना कठिन और अलग-अलग प्रकार के Characters का मिश्रण होना चाहिए।"
 },
 
 {
-q:"कच्चे तथ्यों को क्या कहा जाता है?",
-options:[
-"सूचना",
-"डेटा",
-"आउटपुट",
-"प्रोग्राम"
-],
-answer:1,
-explanation:"कच्चे और असंसाधित तथ्यों को डेटा कहा जाता है।"
+    q:"OTP का पूरा नाम क्या है?",
+    options:[
+        "Online Transfer Password",
+        "One Time Password",
+        "Open Text Password",
+        "Official Transaction Pin"
+    ],
+    answer:1,
+    explanation:"OTP का पूरा नाम One Time Password है। इसे किसी अन्य व्यक्ति के साथ साझा नहीं करना चाहिए।"
 },
 
 {
-q:"प्रोसेस किए गए डेटा को क्या कहते हैं?",
-options:[
-"सूचना",
-"इनपुट",
-"कमांड",
-"फाइल"
-],
-answer:0,
-explanation:"प्रोसेस किए गए और अर्थपूर्ण डेटा को सूचना कहा जाता है।"
+    q:"यदि कोई अनजान व्यक्ति आपसे OTP माँगता है, तो क्या करना चाहिए?",
+    options:[
+        "तुरंत OTP भेज देना",
+        "OTP सोशल मीडिया पर पोस्ट करना",
+        "OTP किसी मित्र को भेजना",
+        "OTP साझा न करना और संदेश को Ignore/Report करना"
+    ],
+    answer:3,
+    explanation:"OTP गोपनीय सुरक्षा जानकारी है। इसे किसी व्यक्ति के साथ साझा नहीं करना चाहिए।"
 },
 
 {
-q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
-options:[
-"RAM",
-"Hard Disk",
-"CPU",
-"Monitor"
-],
-answer:2,
-explanation:"CPU कंप्यूटर के निर्देशों को प्रोसेस करता है, इसलिए इसे कंप्यूटर का मस्तिष्क कहा जाता है।"
+    q:"Phishing क्या है?",
+    options:[
+        "मछली पकड़ने की तकनीक",
+        "कंप्यूटर की सफाई",
+        "नकली Message, Email या Website के माध्यम से जानकारी चुराने का प्रयास",
+        "File को Compress करने की प्रक्रिया"
+    ],
+    answer:2,
+    explanation:"Phishing में नकली Email, Message या Website के माध्यम से Password, OTP या अन्य जानकारी प्राप्त करने का प्रयास किया जाता है।"
 },
 
 {
-q:"CPU का पूरा नाम क्या है?",
-options:[
-"Central Processing Unit",
-"Central Program Unit",
-"Computer Processing Unit",
-"Control Processing Unit"
-],
-answer:0,
-explanation:"CPU का पूरा नाम Central Processing Unit है।"
+    q:"HTTPS में 'S' किसका संकेत देता है?",
+    options:[
+        "Secure",
+        "System",
+        "Social",
+        "Search"
+    ],
+    answer:0,
+    explanation:"HTTPS में S का अर्थ Secure है। HTTPS Connection में Data Transmission के दौरान Encryption का उपयोग किया जाता है।"
 },
 
 {
-q:"ALU का पूरा नाम क्या है?",
-options:[
-"Arithmetic Logic Unit",
-"Arithmetic Language Unit",
-"Advanced Logic Unit",
-"Automatic Logic Unit"
-],
-answer:0,
-explanation:"ALU का पूरा नाम Arithmetic Logic Unit है।"
+    q:"Two-Factor Authentication (2FA) का मुख्य लाभ क्या है?",
+    options:[
+        "Internet Speed बढ़ाना",
+        "अतिरिक्त Verification Layer प्रदान करना",
+        "Storage बढ़ाना",
+        "Battery Life बढ़ाना"
+    ],
+    answer:1,
+    explanation:"2FA Login के समय Password के अलावा एक अतिरिक्त Verification Factor का उपयोग करता है।"
 },
 
 {
-q:"ALU का मुख्य कार्य क्या है?",
-options:[
-"प्रिंट करना",
-"अंकगणितीय एवं तार्किक कार्य करना",
-"डेटा स्टोर करना",
-"स्क्रीन प्रदर्शित करना"
-],
-answer:1,
-explanation:"ALU अंकगणितीय और तार्किक कार्य करता है।"
+    q:"Social Engineering में Cyber Criminal मुख्यतः किसका फायदा उठाता है?",
+    options:[
+        "Monitor की Brightness",
+        "Printer की Speed",
+        "Computer की RAM",
+        "लोगों की भावनाओं, विश्वास या जल्दबाजी का"
+    ],
+    answer:3,
+    explanation:"Social Engineering में Cyber Criminal व्यक्ति के विश्वास, डर, लालच या जल्दबाजी जैसी स्थितियों का फायदा उठा सकता है।"
 },
 
 {
-q:"CU का पूरा नाम क्या है?",
-options:[
-"Control Unit",
-"Computer Unit",
-"Central Unit",
-"Control Utility"
-],
-answer:0,
-explanation:"CU का पूरा नाम Control Unit है।"
+    q:"QR Code Scan करते समय कौन-सी सावधानी सबसे जरूरी है?",
+    options:[
+        "हर QR Code तुरंत Scan करना",
+        "QR Code के Source और Transaction Details को Verify करना",
+        "Phone की Brightness कम करना",
+        "Bluetooth बंद करना"
+    ],
+    answer:1,
+    explanation:"QR Code Scan करने से पहले Source और Payment/Transaction Details को Verify करना चाहिए।"
 },
 
 {
-q:"Control Unit का मुख्य कार्य क्या है?",
-options:[
-"निर्देशों को नियंत्रित करना",
-"डेटा प्रिंट करना",
-"फाइल सेव करना",
-"चित्र बनाना"
-],
-answer:0,
-explanation:"Control Unit कंप्यूटर के विभिन्न भागों के कार्य और निर्देशों के निष्पादन को नियंत्रित करती है।"
+    q:"UPI PIN के बारे में सही कथन कौन-सा है?",
+    options:[
+        "इसे किसी के साथ साझा किया जा सकता है",
+        "इसे दुकानदार को बताना चाहिए",
+        "इसे गुप्त रखना चाहिए",
+        "इसे Social Media Profile में लिखना चाहिए"
+    ],
+    answer:2,
+    explanation:"UPI PIN गोपनीय जानकारी है और इसे किसी व्यक्ति के साथ साझा नहीं करना चाहिए।"
 },
 
 {
-q:"निम्न में से कौन-सा Input Device है?",
-options:[
-"Monitor",
-"Printer",
-"Keyboard",
-"Speaker"
-],
-answer:2,
-explanation:"Keyboard एक Input Device है।"
+    q:"Malware का पूरा अर्थ क्या है?",
+    options:[
+        "Mail Management Software",
+        "Manual Learning Software",
+        "Mobile Language Software",
+        "Malicious Software"
+    ],
+    answer:3,
+    explanation:"Malware का अर्थ Malicious Software है। इसका उपयोग डिवाइस या डेटा को नुकसान पहुँचाने के लिए किया जा सकता है।"
 },
 
 {
-q:"निम्न में से कौन-सा Output Device है?",
-options:[
-"Keyboard",
-"Mouse",
-"Scanner",
-"Monitor"
-],
-answer:3,
-explanation:"Monitor एक Output Device है जो परिणाम स्क्रीन पर दिखाता है।"
+    q:"Ransomware सामान्यतः क्या करता है?",
+    options:[
+        "Data को Lock/Encrypt करके फिरौती की मांग कर सकता है",
+        "Screen की Brightness बढ़ाता है",
+        "Keyboard साफ करता है",
+        "Internet Speed बढ़ाता है"
+    ],
+    answer:0,
+    explanation:"Ransomware Data या System को inaccessible बनाने के लिए Encryption आदि का उपयोग कर सकता है और फिरौती की मांग कर सकता है।"
 },
 
 {
-q:"Keyboard का उपयोग किसके लिए किया जाता है?",
-options:[
-"डेटा इनपुट करने के लिए",
-"डेटा प्रिंट करने के लिए",
-"डेटा स्टोर करने के लिए",
-"बिजली देने के लिए"
-],
-answer:0,
-explanation:"Keyboard का उपयोग कंप्यूटर में डेटा और निर्देश इनपुट करने के लिए किया जाता है।"
+    q:"Antivirus Software का उपयोग किसलिए किया जाता है?",
+    options:[
+        "Photo Editing के लिए",
+        "Internet Speed बढ़ाने के लिए",
+        "Malware को Detect और Remove करने में सहायता के लिए",
+        "Password बनाने के लिए"
+    ],
+    answer:2,
+    explanation:"Antivirus Software Malware को Detect करने और उससे सुरक्षा में सहायता करता है।"
 },
 
 {
-q:"Mouse किस प्रकार का उपकरण है?",
-options:[
-"Input Device",
-"Output Device",
-"Storage Device",
-"Processing Device"
-],
-answer:0,
-explanation:"Mouse एक Input Device है।"
+    q:"Firewall का मुख्य कार्य क्या है?",
+    options:[
+        "Network Traffic को नियमों के आधार पर नियंत्रित करना",
+        "Keyboard की Keys बदलना",
+        "Monitor की Resolution बढ़ाना",
+        "Document Print करना"
+    ],
+    answer:0,
+    explanation:"Firewall Network Traffic को निर्धारित Security Rules के आधार पर Allow या Block करने में सहायता करता है।"
 },
 
 {
-q:"Scanner का उपयोग किसके लिए किया जाता है?",
-options:[
-"दस्तावेज को डिजिटल रूप में लेने के लिए",
-"आवाज सुनने के लिए",
-"प्रिंट करने के लिए",
-"वीडियो दिखाने के लिए"
-],
-answer:0,
-explanation:"Scanner दस्तावेज या चित्र को डिजिटल रूप में कंप्यूटर में लेने के लिए प्रयोग होता है।"
+    q:"Public Wi-Fi का उपयोग करते समय कौन-सी सावधानी उचित है?",
+    options:[
+        "हर Website पर Banking करना",
+        "Password सभी को बताना",
+        "Unknown Links खोलना",
+        "Sensitive काम के लिए Trusted और Secure Connection का उपयोग करना"
+    ],
+    answer:3,
+    explanation:"Public Wi-Fi पर Sensitive Activities करते समय सावधानी रखनी चाहिए और Trusted/Secure Connection को प्राथमिकता देनी चाहिए।"
 },
 
 {
-q:"Printer किस प्रकार का उपकरण है?",
-options:[
-"Input",
-"Output",
-"Processing",
-"Storage"
-],
-answer:1,
-explanation:"Printer एक Output Device है।"
+    q:"App Install करने से पहले क्या जाँचना चाहिए?",
+    options:[
+        "केवल App का Color",
+        "Developer/Source, Reviews और Requested Permissions",
+        "केवल Icon का Size",
+        "केवल Download Button"
+    ],
+    answer:1,
+    explanation:"App Install करने से पहले उसके Source, Developer, Reviews और Permissions की जाँच करना उपयोगी Cyber Safety Practice है।"
 },
 
 {
-q:"Monitor का दूसरा नाम क्या है?",
-options:[
-"VDU",
-"CPU",
-"ALU",
-"UPS"
-],
-answer:0,
-explanation:"Monitor को VDU (Visual Display Unit) भी कहा जाता है।"
+    q:"यदि कोई App जरूरत से अधिक Permissions माँगता है, तो क्या करना चाहिए?",
+    options:[
+        "सभी Permissions तुरंत Allow करना",
+        "App सभी दोस्तों को भेजना",
+        "Permissions की आवश्यकता जाँचकर सावधानी से निर्णय लेना",
+        "Phone Format कर देना"
+    ],
+    answer:2,
+    explanation:"App को केवल आवश्यक Permissions देना बेहतर है। अनावश्यक Permissions Privacy Risk बढ़ा सकती हैं।"
 },
 
 {
-q:"RAM किस प्रकार की मेमोरी है?",
-options:[
-"स्थायी",
-"अस्थायी",
-"केवल पढ़ने योग्य",
-"बाहरी"
-],
-answer:1,
-explanation:"RAM सामान्यतः Volatile अर्थात अस्थायी मेमोरी है।"
+    q:"Software और Operating System को Update क्यों करना चाहिए?",
+    options:[
+        "Security Vulnerabilities को Fix करने के लिए",
+        "Keyboard का Color बदलने के लिए",
+        "Phone का Weight कम करने के लिए",
+        "SIM Card बदलने के लिए"
+    ],
+    answer:0,
+    explanation:"Software Updates में Security Patches और Bug Fixes शामिल हो सकते हैं।"
 },
 
 {
-q:"RAM का पूरा नाम क्या है?",
-options:[
-"Random Access Memory",
-"Read Access Memory",
-"Rapid Access Memory",
-"Random Active Memory"
-],
-answer:0,
-explanation:"RAM का पूरा नाम Random Access Memory है।"
+    q:"Digital Footprint क्या है?",
+    options:[
+        "Computer पर पैर का निशान",
+        "Internet पर हमारी Online Activities से बनने वाला Digital Record",
+        "Keyboard की धूल",
+        "Mobile का Cover"
+    ],
+    answer:1,
+    explanation:"Digital Footprint से Online Activities, Posts, Comments और अन्य Digital Interactions से बने Record का अर्थ है।"
 },
 
 {
-q:"ROM का पूरा नाम क्या है?",
-options:[
-"Read Only Memory",
-"Random Only Memory",
-"Read Output Memory",
-"Run Only Memory"
-],
-answer:0,
-explanation:"ROM का पूरा नाम Read Only Memory है।"
+    q:"Privacy Settings का उपयोग किसलिए किया जाता है?",
+    options:[
+        "Internet Speed बढ़ाने के लिए",
+        "Battery Charge करने के लिए",
+        "Camera साफ करने के लिए",
+        "यह नियंत्रित करने के लिए कि हमारी जानकारी कौन देख सकता है"
+    ],
+    answer:3,
+    explanation:"Privacy Settings से Personal Information की Visibility और कुछ Access Controls को Manage किया जा सकता है।"
 },
 
 {
-q:"RAM की मुख्य विशेषता क्या है?",
-options:[
-"Volatile Memory",
-"स्थायी डेटा रखती है",
-"केवल पढ़ने के लिए है",
-"Input Device है"
-],
-answer:0,
-explanation:"RAM Volatile Memory है; बिजली बंद होने पर इसका डेटा सामान्यतः सुरक्षित नहीं रहता।"
+    q:"Cyber Bullying क्या है?",
+    options:[
+        "Online माध्यम से किसी व्यक्ति को परेशान, अपमानित या धमकाना",
+        "Computer Update करना",
+        "Online Class करना",
+        "Password बदलना"
+    ],
+    answer:0,
+    explanation:"Cyber Bullying में Digital Platforms के माध्यम से किसी व्यक्ति को परेशान, अपमानित या धमकाया जा सकता है।"
 },
 
 {
-q:"ROM में सामान्यतः क्या रहता है?",
-options:[
-"स्थायी निर्देश",
-"अस्थायी डेटा",
-"टाइप किया हुआ डेटा",
-"प्रिंट डेटा"
-],
-answer:0,
-explanation:"ROM में सामान्यतः स्थायी निर्देश या फर्मवेयर रखा जाता है।"
+    q:"Unknown Email Attachment के साथ क्या सावधानी रखनी चाहिए?",
+    options:[
+        "तुरंत Open करना",
+        "हर Attachment Forward करना",
+        "Sender और Attachment Verify किए बिना Open न करना",
+        "उसे Password बना लेना"
+    ],
+    answer:2,
+    explanation:"Unknown Attachment में Malicious File हो सकती है। उसे Open करने से पहले Sender और File को Verify करना चाहिए।"
 },
 
 {
-q:"निम्न में से कौन-सी Secondary Storage है?",
-options:[
-"RAM",
-"Cache",
-"Hard Disk",
-"Register"
-],
-answer:2,
-explanation:"Hard Disk एक Secondary Storage है।"
+    q:"Fake Website पहचानने में कौन-सी बात उपयोगी है?",
+    options:[
+        "URL और Domain Name को ध्यान से जाँचना",
+        "सिर्फ Logo देखकर विश्वास करना",
+        "हर Popup पर Click करना",
+        "Password Page का Screenshot लेना"
+    ],
+    answer:0,
+    explanation:"URL, Domain Name, Spelling और Website के संदर्भ को ध्यान से जाँचना Fake Website पहचानने में सहायता कर सकता है।"
 },
 
 {
-q:"1 Byte में कितने Bits होते हैं?",
-options:[
-"2",
-"4",
-"8",
-"16"
-],
-answer:2,
-explanation:"1 Byte में 8 Bits होते हैं।"
+    q:"यदि किसी Message में लिखा हो 'आपका Account तुरंत बंद हो जाएगा', तो क्या करना चाहिए?",
+    options:[
+        "Link पर तुरंत Click करना",
+        "Verify किए बिना कोई जानकारी न देना",
+        "OTP Reply करना",
+        "Password Message में भेजना"
+    ],
+    answer:1,
+    explanation:"Urgent या डर पैदा करने वाले Messages Phishing का हिस्सा हो सकते हैं। Official Source से independently Verify करना चाहिए।"
 },
 
 {
-q:"Binary Number System में कितने अंक होते हैं?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:0,
-explanation:"Binary Number System में दो digits होते हैं: 0 और 1।"
+    q:"Password Manager का उपयोग किसलिए किया जाता है?",
+    options:[
+        "Internet बंद करने के लिए",
+        "Photos Edit करने के लिए",
+        "Printer चलाने के लिए",
+        "अलग-अलग Strong Passwords को सुरक्षित रूप से Manage करने के लिए"
+    ],
+    answer:3,
+    explanation:"Password Manager अलग-अलग Accounts के Passwords को व्यवस्थित और सुरक्षित तरीके से Manage करने में सहायता करता है।"
 },
 
 {
-q:"Binary Number System में कौन-से अंक प्रयोग होते हैं?",
-options:[
-"0 और 1",
-"1 और 2",
-"0 से 9",
-"A और B"
-],
-answer:0,
-explanation:"Binary system में केवल 0 और 1 का प्रयोग होता है।"
+    q:"एक ही Password कई Websites पर इस्तेमाल करने का मुख्य Risk क्या है?",
+    options:[
+        "एक Account का Password Leak होने पर अन्य Accounts भी खतरे में पड़ सकते हैं",
+        "Computer की Screen छोटी हो जाती है",
+        "Internet Speed बढ़ जाती है",
+        "Keyboard खराब हो जाता है"
+    ],
+    answer:0,
+    explanation:"एक ही Password कई जगह इस्तेमाल करने पर एक Service का Password Leak होने से अन्य Accounts भी खतरे में पड़ सकते हैं।"
 },
 
 {
-q:"Decimal Number System का Base क्या है?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:2,
-explanation:"Decimal Number System का base 10 है।"
+    q:"Backup का मुख्य उद्देश्य क्या है?",
+    options:[
+        "Data Delete करना",
+        "Data की अतिरिक्त Copy सुरक्षित रखना",
+        "Internet Speed बढ़ाना",
+        "Screen Lock हटाना"
+    ],
+    answer:1,
+    explanation:"Backup महत्वपूर्ण Data की अतिरिक्त Copy रखता है, जिससे Data Loss होने पर Recovery में सहायता मिल सकती है।"
 },
 
 {
-q:"Binary Number System का Base क्या है?",
-options:[
-"2",
-"4",
-"8",
-"10"
-],
-answer:0,
-explanation:"Binary Number System का base 2 है।"
+    q:"Cloud Storage का उपयोग करते समय कौन-सी बात महत्वपूर्ण है?",
+    options:[
+        "Account Security और Access Permissions पर ध्यान देना",
+        "Password सभी को बताना",
+        "हर File Public करना",
+        "2FA बंद कर देना"
+    ],
+    answer:0,
+    explanation:"Cloud Storage में Strong Authentication, Privacy Settings और उचित Sharing Permissions रखना महत्वपूर्ण है।"
 },
 
 {
-q:"Octal Number System का Base क्या है?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:1,
-explanation:"Octal Number System का base 8 है।"
+    q:"Bluetooth या Device Connection में अनजान Request मिलने पर क्या करना चाहिए?",
+    options:[
+        "हर Request Accept करना",
+        "PIN सार्वजनिक करना",
+        "अनजान Request को Verify किए बिना Accept न करना",
+        "Phone किसी को दे देना"
+    ],
+    answer:2,
+    explanation:"Unknown Device Request को Accept करने से पहले Device और Connection की पहचान Verify करनी चाहिए।"
 },
 
 {
-q:"Hexadecimal Number System का Base क्या है?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:3,
-explanation:"Hexadecimal Number System का base 16 है।"
+    q:"SIM Swap Fraud में Cyber Criminal क्या हासिल करने की कोशिश कर सकता है?",
+    options:[
+        "Computer की RAM",
+        "Mobile Number/SIM पर नियंत्रण",
+        "Printer का Ink",
+        "Keyboard की Settings"
+    ],
+    answer:1,
+    explanation:"SIM Swap Fraud में Attacker Mobile Number से जुड़ी Services और Verification Messages पर नियंत्रण पाने का प्रयास कर सकता है।"
 },
 
 {
-q:"कंप्यूटर किस भाषा को सीधे समझता है?",
-options:[
-"हिंदी",
-"अंग्रेजी",
-"Machine Language",
-"BASIC"
-],
-answer:2,
-explanation:"कंप्यूटर Machine Language के निर्देशों को सीधे समझता/निष्पादित करता है।"
+    q:"Shoulder Surfing क्या है?",
+    options:[
+        "कंधे की Exercise",
+        "Cloud Backup",
+        "किसी की Screen या PIN को देखकर जानकारी प्राप्त करना",
+        "Antivirus Scan"
+    ],
+    answer:2,
+    explanation:"Shoulder Surfing में कोई व्यक्ति दूसरे की Screen, Password या PIN को देखकर Confidential Information जानने की कोशिश करता है।"
 },
 
 {
-q:"Machine Language में कौन-से संकेत प्रयोग होते हैं?",
-options:[
-"0 और 1",
-"A और B",
-"केवल अक्षर",
-"केवल संख्याएँ 1 से 9"
-],
-answer:0,
-explanation:"Machine Language में Binary digits 0 और 1 का प्रयोग होता है।"
+    q:"Cyber Crime की स्थिति में कौन-सा Evidence उपयोगी हो सकता है?",
+    options:[
+        "Messages, Emails, Screenshots और Transaction Details सुरक्षित रखना",
+        "Evidence तुरंत Delete करना",
+        "Password Public करना",
+        "Unknown Link Forward करना"
+    ],
+    answer:0,
+    explanation:"Messages, Emails, Screenshots, URLs और Transaction Details सुरक्षित रखना Reporting या Complaint में सहायता कर सकता है।"
 },
 
 {
-q:"पहली पीढ़ी के कंप्यूटर में मुख्यतः किसका प्रयोग हुआ था?",
-options:[
-"Transistor",
-"Vacuum Tube",
-"IC",
-"Microprocessor"
-],
-answer:1,
-explanation:"पहली पीढ़ी के कंप्यूटरों में Vacuum Tube का प्रयोग प्रमुख रूप से हुआ था।"
+    q:"Online Shopping करते समय किस बात की जाँच करना उचित है?",
+    options:[
+        "केवल बहुत कम Price देखकर खरीदना",
+        "Seller, Website, URL और Payment Security की जाँच करना",
+        "OTP Seller को बताना",
+        "Card Details Chat में भेजना"
+    ],
+    answer:1,
+    explanation:"Online Shopping में Seller और Website की Authenticity तथा Secure Payment Process की जाँच करना महत्वपूर्ण है।"
 },
 
 {
-q:"दूसरी पीढ़ी के कंप्यूटर में किसका प्रयोग हुआ?",
-options:[
-"Vacuum Tube",
-"Transistor",
-"IC",
-"AI"
-],
-answer:1,
-explanation:"दूसरी पीढ़ी में Transistor का प्रयोग हुआ।"
+    q:"यदि कोई Social Media Account आपका Fake Profile बनाकर चला रहा है, तो क्या करना चाहिए?",
+    options:[
+        "Fake Account को अधिक लोगों को भेजना",
+        "अपना Password Public करना",
+        "Platform पर Report करना और आवश्यक Evidence सुरक्षित रखना",
+        "उस Account को अपना Account मान लेना"
+    ],
+    answer:2,
+    explanation:"Fake Profile को संबंधित Social Media Platform पर Report किया जा सकता है। आवश्यक Screenshots सुरक्षित रखना भी उपयोगी हो सकता है।"
 },
 
 {
-q:"तीसरी पीढ़ी के कंप्यूटर में मुख्यतः किसका प्रयोग हुआ?",
-options:[
-"IC",
-"Transistor",
-"Vacuum Tube",
-"Mechanical Gear"
-],
-answer:0,
-explanation:"तीसरी पीढ़ी में Integrated Circuit (IC) का प्रयोग हुआ।"
+    q:"Online Friend द्वारा Personal Information माँगने पर क्या करना चाहिए?",
+    options:[
+        "सभी जानकारी भेज देना",
+        "Personal Information साझा करने से पहले सावधानी और Verification करना",
+        "OTP भी भेज देना",
+        "Bank Details भेज देना"
+    ],
+    answer:1,
+    explanation:"Online Identity हमेशा वास्तविक Identity की गारंटी नहीं देती। Personal Information साझा करने से पहले सावधानी जरूरी है।"
 },
 
 {
-q:"चौथी पीढ़ी के कंप्यूटर में किसका प्रयोग हुआ?",
-options:[
-"Microprocessor",
-"Vacuum Tube",
-"केवल Transistor",
-"Punch Card"
-],
-answer:0,
-explanation:"चौथी पीढ़ी की प्रमुख पहचान Microprocessor है।"
+    q:"'Think Before You Click' का Cyber Safety में क्या अर्थ है?",
+    options:[
+        "हर Link पर Click करना",
+        "Click करने से पहले Source, URL और Purpose की जाँच करना",
+        "Mouse बंद रखना",
+        "Computer Restart करना"
+    ],
+    answer:1,
+    explanation:"किसी Link या Attachment पर Click करने से पहले उसके Source और Purpose की जाँच करनी चाहिए।"
 },
 
 {
-q:"पाँचवीं पीढ़ी के कंप्यूटर मुख्यतः किस तकनीक से संबंधित हैं?",
-options:[
-"Artificial Intelligence",
-"Vacuum Tube",
-"Mechanical Technology",
-"Punch Card"
-],
-answer:0,
-explanation:"पाँचवीं पीढ़ी को Artificial Intelligence जैसी उन्नत तकनीकों से जोड़ा जाता है।"
+    q:"Secure Password बनाते समय किससे बचना चाहिए?",
+    options:[
+        "लंबा Password",
+        "Unique Password",
+        "अपना नाम, जन्मतिथि या बहुत आसान जानकारी",
+        "Password Manager"
+    ],
+    answer:2,
+    explanation:"नाम, जन्मतिथि और आसान Personal Information से बने Passwords आसानी से Guess किए जा सकते हैं।"
 },
 
 {
-q:"कंप्यूटर की वह विशेषता जिसमें वह लगातार कार्य कर सकता है, कहलाती है—",
-options:[
-"Speed",
-"Diligence",
-"Accuracy",
-"Storage"
-],
-answer:1,
-explanation:"Diligence का अर्थ है कि कंप्यूटर बिना थके लंबे समय तक कार्य कर सकता है।"
+    q:"Account Login Alert मिले जबकि आपने Login नहीं किया है। क्या करना चाहिए?",
+    options:[
+        "Alert Ignore करना",
+        "Password बदलना और Account Security/Activity जाँचना",
+        "OTP किसी को देना",
+        "Account Details Social Media पर डालना"
+    ],
+    answer:1,
+    explanation:"Unknown Login Alert मिलने पर Password बदलना और Account की Security Activity जाँचना उचित है।"
 },
 
 {
-q:"कंप्यूटर की गणना करने की क्षमता को क्या कहा जाता है?",
-options:[
-"Accuracy",
-"Speed",
-"Storage",
-"Reliability"
-],
-answer:1,
-explanation:"Speed कंप्यूटर की तेजी से गणना और निर्देश निष्पादन की क्षमता को दर्शाती है।"
+    q:"Online Form में Personal Information भरने से पहले क्या देखना चाहिए?",
+    options:[
+        "Form का Source और Information की आवश्यकता",
+        "केवल Page का Color",
+        "केवल Font",
+        "केवल Number of Likes"
+    ],
+    answer:0,
+    explanation:"Personal Information देने से पहले Form/Website का Source और जानकारी माँगने का उद्देश्य जाँचना चाहिए।"
 },
 
 {
-q:"कंप्यूटर में गलत परिणाम मुख्यतः किस कारण हो सकता है?",
-options:[
-"गलत Input",
-"अधिक Speed",
-"अधिक Memory",
-"सही Program"
-],
-answer:0,
-explanation:"गलत Input से गलत Output मिल सकता है; इसे GIGO से समझाया जाता है।"
+    q:"Email में 'Urgent' लिखा होने का क्या अर्थ है?",
+    options:[
+        "वह निश्चित रूप से Genuine है",
+        "वह निश्चित रूप से Fake है",
+        "सिर्फ 'Urgent' देखकर निर्णय नहीं लेना चाहिए; Source Verify करना चाहिए",
+        "उसका Reply OTP से करना चाहिए"
+    ],
+    answer:2,
+    explanation:"Urgency Social Engineering की Technique हो सकती है। केवल 'Urgent' शब्द से Email को Genuine या Fake तय नहीं किया जा सकता।"
 },
 
 {
-q:"Software क्या है?",
-options:[
-"कंप्यूटर के भौतिक भाग",
-"निर्देशों/प्रोग्रामों का समूह",
-"केवल CPU",
-"केवल Keyboard"
-],
-answer:1,
-explanation:"Software प्रोग्रामों और निर्देशों का समूह है।"
+    q:"Cyber Awareness का अर्थ क्या है?",
+    options:[
+        "केवल Coding सीखना",
+        "Cyber Risks और सुरक्षित Digital Practices के बारे में जागरूक होना",
+        "केवल Gaming करना",
+        "Computer खरीदना"
+    ],
+    answer:1,
+    explanation:"Cyber Awareness का अर्थ Online Risks, Scams, Privacy और सुरक्षित Digital Behaviour के बारे में जानकारी रखना है।"
 },
 
 {
-q:"Hardware से क्या तात्पर्य है?",
-options:[
-"प्रोग्राम",
-"कंप्यूटर के भौतिक भाग",
-"डेटा",
-"सूचना"
-],
-answer:1,
-explanation:"Hardware कंप्यूटर के भौतिक भाग हैं जिन्हें देखा और छुआ जा सकता है।"
+    q:"Safe Browsing के लिए कौन-सी आदत उपयोगी है?",
+    options:[
+        "Unknown Websites पर Personal Details भरना",
+        "Suspicious Pop-ups और Links से सावधान रहना",
+        "हर Download को Allow करना",
+        "Browser Updates बंद करना"
+    ],
+    answer:1,
+    explanation:"Suspicious Links, Pop-ups और Downloads से सावधान रहना तथा Browser को Updated रखना Safe Browsing में मदद करता है।"
 },
 
 {
-q:"निम्न में से कौन-सा System Software है?",
-options:[
-"Operating System",
-"MS Word",
-"Calculator",
-"Paint"
-],
-answer:0,
-explanation:"Operating System System Software है और कंप्यूटर संसाधनों का प्रबंधन करता है।"
+    q:"Data Encryption का सामान्य उद्देश्य क्या है?",
+    options:[
+        "Data को Unauthorized लोगों के लिए पढ़ना कठिन बनाना",
+        "Data का आकार हमेशा बढ़ाना",
+        "Keyboard Lock करना",
+        "Screen की Brightness बदलना"
+    ],
+    answer:0,
+    explanation:"Encryption Data को ऐसे रूप में बदल सकता है जिसे उचित Key या प्रक्रिया के बिना पढ़ना कठिन हो जाता है।"
 },
 
 {
-q:"Operating System का उदाहरण कौन-सा है?",
-options:[
-"Windows",
-"Keyboard",
-"Mouse",
-"Printer"
-],
-answer:0,
-explanation:"Windows एक Operating System है।"
+    q:"Biometric Authentication का उदाहरण कौन-सा है?",
+    options:[
+        "Username",
+        "Fingerprint",
+        "File Name",
+        "Website Address"
+    ],
+    answer:1,
+    explanation:"Fingerprint, Face Recognition और Iris Recognition Biometric Authentication के उदाहरण हैं।"
 },
 
 {
-q:"Operating System का मुख्य कार्य क्या है?",
-options:[
-"Hardware और Software संसाधनों का प्रबंधन",
-"केवल गेम चलाना",
-"केवल प्रिंट करना",
-"केवल टाइप करना"
-],
-answer:0,
-explanation:"Operating System Hardware और Software संसाधनों का प्रबंधन करता है।"
+    q:"यदि कोई व्यक्ति Phone पर Remote Access देने के लिए कहे, तो क्या करना चाहिए?",
+    options:[
+        "तुरंत Access देना",
+        "Unknown Caller को Access देना",
+        "Verification के बिना Remote Access न देना",
+        "OTP के साथ Access देना"
+    ],
+    answer:2,
+    explanation:"Remote Access देने से Device और Data पर नियंत्रण का Risk हो सकता है। केवल Trusted और Verified Support Process में सावधानीपूर्वक Access देना चाहिए।"
 },
 
 {
-q:"निम्न में से कौन-सा Application Software है?",
-options:[
-"MS Word",
-"Operating System",
-"BIOS",
-"Device Driver"
-],
-answer:0,
-explanation:"MS Word एक Application Software है।"
+    q:"Cyber Security में 'Least Privilege' का अर्थ क्या है?",
+    options:[
+        "हर व्यक्ति को Administrator Access देना",
+        "User को केवल आवश्यक Access देना",
+        "सभी Passwords हटाना",
+        "Internet बंद करना"
+    ],
+    answer:1,
+    explanation:"Least Privilege Principle के अनुसार User या Application को केवल उतनी Permission दी जानी चाहिए जितनी उसके कार्य के लिए आवश्यक हो।"
 },
 
 {
-q:"कंप्यूटर को बंद करने से पहले डेटा को कहाँ Save करना चाहिए?",
-options:[
-"Memory/Storage में",
-"Keyboard में",
-"Monitor में",
-"Mouse में"
-],
-answer:0,
-explanation:"महत्वपूर्ण डेटा को Storage में Save करना चाहिए।"
+    q:"Suspicious Link की पहचान में कौन-सी बात उपयोगी है?",
+    options:[
+        "Link का वास्तविक URL देखकर जाँच करना",
+        "सिर्फ आकर्षक Image देखना",
+        "Message में Emoji की संख्या गिनना",
+        "हर Link Forward करना"
+    ],
+    answer:0,
+    explanation:"Link का वास्तविक Destination या URL जाँचना Suspicious Links की पहचान में सहायता करता है।"
 },
 
 {
-q:"UPS का पूरा नाम क्या है?",
-options:[
-"Uninterruptible Power Supply",
-"Universal Power System",
-"United Power Supply",
-"Uninterrupted Program System"
-],
-answer:0,
-explanation:"UPS का पूरा नाम Uninterruptible Power Supply है।"
+    q:"Cyber Safety में Screen Lock क्यों उपयोगी है?",
+    options:[
+        "Device को तेज चलाने के लिए",
+        "Unauthorized व्यक्ति को Device तक आसान Access से रोकने के लिए",
+        "Internet Speed बढ़ाने के लिए",
+        "Battery को Double करने के लिए"
+    ],
+    answer:1,
+    explanation:"Strong Screen Lock Unauthorized व्यक्ति को Device की सामग्री तक पहुँचने से रोकने में मदद करता है।"
 },
 
 {
-q:"UPS का मुख्य उपयोग क्या है?",
-options:[
-"बिजली की बैकअप आपूर्ति देना",
-"डेटा प्रिंट करना",
-"इंटरनेट चलाना",
-"डेटा स्कैन करना"
-],
-answer:0,
-explanation:"UPS बिजली जाने पर सीमित समय के लिए बैकअप पावर देता है।"
+    q:"यदि किसी Website पर Personal Data भरना आवश्यक नहीं है, तो सुरक्षित व्यवहार क्या है?",
+    options:[
+        "फिर भी अधिकतम जानकारी भरना",
+        "अनावश्यक Personal Information साझा न करना",
+        "OTP भी जोड़ देना",
+        "Password लिख देना"
+    ],
+    answer:1,
+    explanation:"जितनी Personal Information आवश्यक हो उतनी ही साझा करना Privacy Risk को कम करने में सहायता कर सकता है।"
 },
 
 {
-q:"कंप्यूटर की कौन-सी विशेषता इसे मनुष्य से अलग बनाती है?",
-options:[
-"तेज गति और स्वचालित कार्य करने की क्षमता",
-"केवल मनोरंजन",
-"केवल डेटा टाइप करना",
-"केवल चित्र बनाना"
-],
-answer:0,
-explanation:"कंप्यूटर तेज गति से कार्य कर सकता है और दिए गए निर्देशों के अनुसार कार्य दोहरा सकता है।"
+    q:"Cyber Jagrukta का अच्छा उदाहरण कौन-सा है?",
+    options:[
+        "Password और OTP सभी दोस्तों को बताना",
+        "Suspicious Link बिना जाँचे खोलना",
+        "Digital Safety Rules सीखकर दूसरों को भी जागरूक करना",
+        "हर App को सभी Permissions देना"
+    ],
+    answer:2,
+    explanation:"Cyber Jagrukta का उद्देश्य स्वयं सुरक्षित रहना और सुरक्षित Digital Behaviour के बारे में दूसरों को भी जागरूक करना है।"
+},
+
+{
+    q:"Online Fraud का संदेह होने पर कौन-सा कदम उचित है?",
+    options:[
+        "घटना को छिपाना और Evidence Delete करना",
+        "आगे की Unauthorized Activity रोकने के लिए Account/Payment Security Steps लेना और उचित Reporting करना",
+        "Password सभी को बताना",
+        "Fraudster को और Personal Information देना"
+    ],
+    answer:1,
+    explanation:"संदिग्ध Fraud में आगे की हानि रोकने के लिए संबंधित Account या Payment Security Steps लेना और उचित Channel पर Report करना महत्वपूर्ण है।"
+},
+
+{
+    q:"Cyber Safety Poster का मुख्य उद्देश्य क्या हो सकता है?",
+    options:[
+        "लोगों को सुरक्षित Digital Behaviour के बारे में जागरूक करना",
+        "केवल Classroom सजाना",
+        "केवल Advertisement करना",
+        "Computer की Speed बढ़ाना"
+    ],
+    answer:0,
+    explanation:"Cyber Safety Poster का उद्देश्य Strong Password, Phishing से बचाव, Privacy और Responsible Internet Use जैसे सुरक्षित व्यवहारों के प्रति जागरूकता बढ़ाना है।"
 }
 
 ];
