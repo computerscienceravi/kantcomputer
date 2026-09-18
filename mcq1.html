@@ -303,7 +303,18 @@ button:hover{
         width:35px;
         height:35px;
     }
+    
 }
+.visitor-counter{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    color:blue;
+    font-size:15px;
+    font-weight:bold;
+}    
 </style>
 </head>
 
@@ -317,6 +328,9 @@ button:hover{
     <p>BSEB Class 11 — MCQ Interactive Quiz</p>
     <p>कुल प्रश्न: 50</p>
      <h2>Questions created by Ravi Kant Sir</h2>
+</div>
+<div class="visitor-counter">
+    👁️ Total Visitors: <span id="visitorCount">Loading...</span>
 </div>
 
 <!-- PROGRESS -->
@@ -1119,8 +1133,65 @@ function loadQuestion(){
         optionsElement.appendChild(label);
 
     });
+/* =====================================================
+   VISITOR COUNTER
+===================================================== */
 
+const visitorCountElement =
+    document.getElementById("visitorCount");
 
+const siteName = window.location.hostname;
+const pagePath = window.location.pathname || "/";
+
+/* Count this page view */
+fetch(
+    "https://page-views-api.ratneshc.com/api/v1/track?site=" +
+    encodeURIComponent(siteName) +
+    "&path=" +
+    encodeURIComponent(pagePath)
+)
+.catch(error => {
+    console.log("Visitor tracking error:", error);
+});
+
+/* Get current visitor count */
+function updateVisitorCount(){
+
+    fetch(
+        "https://page-views-api.ratneshc.com/api/v1/views?site=" +
+        encodeURIComponent(siteName) +
+        "&path=" +
+        encodeURIComponent(pagePath)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if(typeof data.views !== "undefined"){
+
+            visitorCountElement.textContent =
+                Number(data.views).toLocaleString("en-IN");
+
+        }
+        else{
+
+            visitorCountElement.textContent = "0";
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log("Visitor count error:", error);
+
+        visitorCountElement.textContent =
+            "Unavailable";
+
+    });
+
+}
+
+/* Give tracking request a moment before reading count */
+setTimeout(updateVisitorCount, 500);
     /* RESULT */
 
     resultElement.className = "result";
@@ -1132,7 +1203,6 @@ function loadQuestion(){
         showResult(false);
 
     }
-
 
     /* BUTTON */
 
