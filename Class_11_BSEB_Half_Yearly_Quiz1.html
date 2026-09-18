@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Computer Fundamentals - BSEB Class 11 Quiz</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#172033;
+}
+
+.container{
+    width:100%;
+    max-width:950px;
+    margin:auto;
+    padding:15px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:clamp(25px,5vw,38px);
+}
+
+.header p{
+    margin:6px 0;
+    font-size:17px;
+}
+
+/* PROGRESS */
+.progress-box{
+    background:white;
+    margin-top:18px;
+    padding:16px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    font-size:15px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:2%;
+    background:#4f46e5;
+    transition:.3s;
+}
+
+/* QUIZ CARD */
+.quiz-card{
+    background:white;
+    margin-top:18px;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.question{
+    font-size:clamp(20px,3vw,27px);
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+/* OPTIONS */
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:15px;
+    margin:11px 0;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    cursor:pointer;
+    background:#fff;
+    transition:.2s;
+    font-size:17px;
+    line-height:1.5;
+}
+
+.option:hover{
+    border-color:#818cf8;
+    background:#f5f3ff;
+}
+
+.option input{
+    margin-top:5px;
+    transform:scale(1.2);
+    accent-color:#4f46e5;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+}
+
+/* RESULT */
+.result{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.result.show{
+    display:block;
+}
+
+.result.correct{
+    background:#f0fdf4;
+    border:1px solid #86efac;
+}
+
+.result.wrong{
+    background:#fef2f2;
+    border:1px solid #fca5a5;
+}
+
+.result-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+button{
+    border:none;
+    border-radius:12px;
+    padding:13px 20px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+}
+
+.previous{
+    background:#e5e7eb;
+    color:#111827;
+}
+
+.check{
+    background:#4f46e5;
+    color:white;
+}
+
+.next{
+    background:#111827;
+    color:white;
+    display:none;
+}
+
+.restart{
+    background:#7c3aed;
+    color:white;
+}
+
+/* QUESTION PALETTE */
+.palette-title{
+    margin-top:25px;
+    font-weight:bold;
+}
+
+.palette{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.q-btn{
+    width:40px;
+    height:40px;
+    padding:0;
+    background:#eef2ff;
+    color:#3730a3;
+    font-size:14px;
+}
+
+.q-btn.active{
+    background:#4f46e5;
+    color:white;
+}
+
+.q-btn.done{
+    background:#bbf7d0;
+    color:#166534;
+}
+
+/* FINAL SCORE */
+.final{
+    display:none;
+    background:white;
+    margin-top:18px;
+    padding:35px 20px;
+    text-align:center;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.final h2{
+    font-size:30px;
+}
+
+.final-score{
+    font-size:50px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+.note{
+    color:#64748b;
+    font-size:14px;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .container{
+        padding:10px;
+    }
+
+    .header{
+        padding:22px 12px;
+        border-radius:17px;
+    }
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .header p{
+        font-size:15px;
+    }
+
+    .quiz-card{
+        padding:17px;
+        border-radius:17px;
+    }
+
+    .question{
+        font-size:20px;
+    }
+
+    .option{
+        padding:12px;
+        font-size:16px;
+    }
+
+    .buttons button{
+        flex:1;
+        min-width:120px;
+    }
+
+    .q-btn{
+        width:35px;
+        height:35px;
+    }
+}
+.visitor-counter{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    color:blue;
+    font-size:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Computer Science — Half Yearly Examination</h1>
+    <p>BSEB Class 11 — Half Yearly MCQ Interactive Quiz</p>
+    <p>कुल प्रश्न: 50</p>
+</div>
+<div class="visitor-counter">
+    👁️ Total Visitors: <span id="visitorCount">Loading...</span>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-box">
+
+    <div class="progress-info">
+        <span id="questionNumber">प्रश्न 1 / 50</span>
+        <span id="score">स्कोर: 0</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<!-- QUIZ -->
+<div class="quiz-card" id="quizCard">
+
+    <div class="question" id="question">
+        प्रश्न लोड हो रहा है...
+    </div>
+
+    <div id="options"></div>
+
+    <div class="result" id="result"></div>
+
+    <div class="buttons">
+
+        <button
+            class="previous"
+            id="previousButton"
+            onclick="previousQuestion()">
+            ← पिछला
+        </button>
+
+        <button
+            class="check"
+            id="checkButton"
+            onclick="checkAnswer()">
+            उत्तर जाँचें
+        </button>
+
+        <button
+            class="next"
+            id="nextButton"
+            onclick="nextQuestion()">
+            अगला प्रश्न →
+        </button>
+
+    </div>
+
+
+    <div class="palette-title">
+        प्रश्न चुनें:
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="note">
+        पहले विकल्प चुनें और फिर "उत्तर जाँचें" दबाएँ।
+        सही और गलत दोनों स्थितियों में प्रश्न की व्याख्या दिखाई जाएगी।
+    </div>
+
+</div>
+
+
+<!-- FINAL SCORE -->
+<div class="final" id="finalCard">
+
+    <h2>🎉 Quiz पूरा हुआ!</h2>
+
+    <div class="final-score" id="finalScore">
+        0 / 50
+    </div>
+
+    <p id="finalMessage"></p>
+
+    <button
+        class="restart"
+        onclick="restartQuiz()">
+        🔄 फिर से शुरू करें
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   50 QUESTIONS
+===================================================== */
+
+const questions = [
+
+{
+ q:"कंप्यूटर में डेटा को संसाधित करने की प्रक्रिया को क्या कहा जाता है?",
+ options:[
+ "प्रोसेसिंग",
+ "स्टोरेज",
+ "प्रिंटिंग",
+ "स्कैनिंग"
+],
+ answer:0,
+ explanation:"डेटा पर आवश्यक कार्य करके उपयोगी सूचना प्राप्त करने की प्रक्रिया प्रोसेसिंग कहलाती है।"
+},
+
+{
+ q:"कंप्यूटर सिस्टम का प्रमुख घटक कौन-सा है?",
+ options:[
+ "CPU",
+ "कागज",
+ "टेबल",
+ "पेन"
+],
+ answer:0,
+ explanation:"CPU कंप्यूटर का प्रमुख प्रोसेसिंग घटक है।"
+},
+
+{
+ q:"CPU के मुख्य भाग कौन-कौन से हैं?",
+ options:[
+ "ALU, CU और Registers",
+ "Monitor, Mouse और Printer",
+ "RAM, ROM और HDD",
+ "Keyboard, Scanner और Speaker"
+],
+ answer:0,
+ explanation:"CPU में ALU, Control Unit और Registers प्रमुख भाग होते हैं।"
+},
+
+{
+ q:"ALU किस प्रकार के कार्य करता है?",
+ options:[
+ "अंकगणितीय और तार्किक",
+ "केवल स्टोरेज",
+ "केवल प्रिंटिंग",
+ "केवल इनपुट"
+],
+ answer:0,
+ explanation:"ALU Arithmetic तथा Logical operations करता है।"
+},
+
+{
+ q:"Control Unit का कार्य क्या है?",
+ options:[
+ "कंप्यूटर की गतिविधियों को नियंत्रित करना",
+ "डेटा प्रिंट करना",
+ "चित्र स्कैन करना",
+ "फाइल मिटाना"
+],
+ answer:0,
+ explanation:"Control Unit विभिन्न निर्देशों के निष्पादन और कंप्यूटर के भागों के बीच नियंत्रण का कार्य करती है।"
+},
+
+{
+ q:"Register क्या है?",
+ options:[
+ "CPU की बहुत तेज छोटी मेमोरी",
+ "बाहरी स्टोरेज",
+ "इनपुट डिवाइस",
+ "आउटपुट डिवाइस"
+],
+ answer:0,
+ explanation:"Register CPU के अंदर स्थित बहुत तेज और छोटी मेमोरी होती है।"
+},
+
+{
+ q:"कंप्यूटर में सबसे छोटी डेटा इकाई क्या है?",
+ options:[
+ "Bit",
+ "Byte",
+ "Word",
+ "File"
+],
+ answer:0,
+ explanation:"Bit कंप्यूटर में डेटा की सबसे छोटी इकाई है, जिसका मान 0 या 1 हो सकता है।"
+},
+
+{
+ q:"1 Byte में कितने bits होते हैं?",
+ options:[
+ "4",
+ "8",
+ "16",
+ "32"
+],
+ answer:1,
+ explanation:"1 Byte = 8 bits।"
+},
+
+{
+ q:"4 bits के समूह को क्या कहा जाता है?",
+ options:[
+ "Nibble",
+ "Byte",
+ "Word",
+ "Record"
+],
+ answer:0,
+ explanation:"4 bits के समूह को Nibble कहा जाता है।"
+},
+
+{
+ q:"Binary number system का base क्या है?",
+ options:[
+ "2",
+ "8",
+ "10",
+ "16"
+],
+ answer:0,
+ explanation:"Binary number system में 0 और 1 दो digits होते हैं, इसलिए इसका base 2 है।"
+},
+
+{
+ q:"Octal number system का base क्या है?",
+ options:[
+ "2",
+ "8",
+ "10",
+ "16"
+],
+ answer:1,
+ explanation:"Octal number system का base 8 है।"
+},
+
+{
+ q:"Decimal number system का base क्या है?",
+ options:[
+ "2",
+ "8",
+ "10",
+ "16"
+],
+ answer:2,
+ explanation:"Decimal number system में 0 से 9 तक दस digits होते हैं, इसलिए base 10 है।"
+},
+
+{
+ q:"Hexadecimal number system का base क्या है?",
+ options:[
+ "2",
+ "8",
+ "10",
+ "16"
+],
+ answer:3,
+ explanation:"Hexadecimal number system का base 16 है।"
+},
+
+{
+ q:"Hexadecimal में 10 के लिए कौन-सा symbol प्रयोग होता है?",
+ options:[
+ "A",
+ "B",
+ "C",
+ "D"
+],
+ answer:0,
+ explanation:"Hexadecimal में decimal 10 को A से दर्शाया जाता है।"
+},
+
+{
+ q:"Binary number 1010 का decimal मान क्या है?",
+ options:[
+ "8",
+ "10",
+ "12",
+ "14"
+],
+ answer:1,
+ explanation:"1010₂ = 1×8 + 0×4 + 1×2 + 0×1 = 10।"
+},
+
+{
+ q:"Decimal number 15 का binary रूप क्या है?",
+ options:[
+ "1010",
+ "1100",
+ "1111",
+ "1001"
+],
+ answer:2,
+ explanation:"Decimal 15 का binary रूप 1111 है।"
+},
+
+{
+ q:"Boolean Algebra में variables के कितने संभव मान होते हैं?",
+ options:[
+ "2",
+ "3",
+ "10",
+ "16"
+],
+ answer:0,
+ explanation:"Boolean variable के दो मान होते हैं: 0 और 1।"
+},
+
+{
+ q:"AND gate का output 1 कब होता है?",
+ options:[
+ "जब सभी inputs 1 हों",
+ "जब कोई एक input 1 हो",
+ "जब सभी inputs 0 हों",
+ "कभी नहीं"
+],
+ answer:0,
+ explanation:"AND gate में output 1 तभी मिलता है जब सभी inputs 1 हों।"
+},
+
+{
+ q:"OR gate का output 0 कब होता है?",
+ options:[
+ "जब सभी inputs 0 हों",
+ "जब कोई एक input 1 हो",
+ "जब सभी inputs 1 हों",
+ "कभी नहीं"
+],
+ answer:0,
+ explanation:"OR gate में output 0 तभी मिलता है जब सभी inputs 0 हों।"
+},
+
+{
+ q:"NOT gate क्या करता है?",
+ options:[
+ "Input को उलट देता है",
+ "दो inputs जोड़ता है",
+ "डेटा store करता है",
+ "डेटा print करता है"
+],
+ answer:0,
+ explanation:"NOT gate input का complement देता है: 0 को 1 और 1 को 0।"
+},
+
+{
+ q:"Universal gate कौन-से हैं?",
+ options:[
+ "NAND और NOR",
+ "AND और OR",
+ "OR और NOT",
+ "XOR और XNOR"
+],
+ answer:0,
+ explanation:"NAND और NOR को universal gates कहा जाता है क्योंकि इनसे अन्य gates बनाए जा सकते हैं।"
+},
+
+{
+ q:"NAND gate किस gate का complement है?",
+ options:[
+ "AND",
+ "OR",
+ "NOT",
+ "XOR"
+],
+ answer:0,
+ explanation:"NAND = NOT of AND।"
+},
+
+{
+ q:"NOR gate किस gate का complement है?",
+ options:[
+ "AND",
+ "OR",
+ "NOT",
+ "XOR"
+],
+ answer:1,
+ explanation:"NOR = NOT of OR।"
+},
+
+{
+ q:"XOR gate का output 1 कब होता है?",
+ options:[
+ "जब inputs अलग हों",
+ "जब सभी inputs समान हों",
+ "जब सभी inputs 0 हों",
+ "कभी नहीं"
+],
+ answer:0,
+ explanation:"दो-input XOR में inputs अलग होने पर output 1 होता है।"
+},
+
+{
+ q:"XNOR gate का output 1 कब होता है?",
+ options:[
+ "जब inputs समान हों",
+ "जब inputs अलग हों",
+ "जब दोनों 1 न हों",
+ "कभी नहीं"
+],
+ answer:0,
+ explanation:"XNOR gate में inputs समान होने पर output 1 मिलता है।"
+},
+
+{
+ q:"Computer Organisation का संबंध किससे है?",
+ options:[
+ "कंप्यूटर के घटकों और उनके कार्यों की व्यवस्था से",
+ "केवल इंटरनेट से",
+ "केवल प्रोग्रामिंग भाषा से",
+ "केवल प्रिंटर से"
+],
+ answer:0,
+ explanation:"Computer Organisation कंप्यूटर के विभिन्न hardware components और उनके कार्यों की व्यवस्था से संबंधित है।"
+},
+
+{
+ q:"Input unit का मुख्य कार्य क्या है?",
+ options:[
+ "डेटा और निर्देशों को कंप्यूटर में देना",
+ "परिणाम दिखाना",
+ "डेटा प्रिंट करना",
+ "बिजली देना"
+],
+ answer:0,
+ explanation:"Input unit उपयोगकर्ता से डेटा और निर्देश लेकर कंप्यूटर को प्रदान करता है।"
+},
+
+{
+ q:"Output unit का मुख्य कार्य क्या है?",
+ options:[
+ "प्रसंस्कृत परिणाम देना",
+ "डेटा दर्ज करना",
+ "निर्देश store करना",
+ "CPU को ठंडा करना"
+],
+ answer:0,
+ explanation:"Output unit processed information को उपयोगकर्ता तक पहुँचाता है।"
+},
+
+{
+ q:"CPU और Main Memory के बीच डेटा transfer किससे संबंधित है?",
+ options:[
+ "Processing system",
+ "Input device",
+ "Output device",
+ "Printer system"
+],
+ answer:0,
+ explanation:"CPU और main memory के बीच data/instructions का आदान-प्रदान processing system का महत्वपूर्ण भाग है।"
+},
+
+{
+ q:"Memory hierarchy में सबसे तेज मेमोरी कौन-सी होती है?",
+ options:[
+ "Register",
+ "Hard Disk",
+ "DVD",
+ "Pen Drive"
+],
+ answer:0,
+ explanation:"Registers CPU के अंदर होते हैं और सामान्यतः सबसे तेज memory locations में आते हैं।"
+},
+
+{
+ q:"Cache memory का उद्देश्य क्या है?",
+ options:[
+ "CPU को frequently used data/instructions तेजी से उपलब्ध कराना",
+ "फोटो प्रिंट करना",
+ "इंटरनेट चलाना",
+ "कीबोर्ड नियंत्रित करना"
+],
+ answer:0,
+ explanation:"Cache CPU के पास तेज memory होती है जो frequently used data/instructions तक पहुँच का समय घटाती है।"
+},
+
+{
+ q:"RAM किस प्रकार की memory है?",
+ options:[
+ "Volatile",
+ "Non-volatile",
+ "केवल बाहरी",
+ "Optical"
+],
+ answer:0,
+ explanation:"RAM volatile memory है; power off होने पर इसका सामान्य data खो जाता है।"
+},
+
+{
+ q:"ROM की प्रमुख विशेषता क्या है?",
+ options:[
+ "यह non-volatile memory है",
+ "यह केवल input device है",
+ "यह volatile है",
+ "यह output device है"
+],
+ answer:0,
+ explanation:"ROM non-volatile memory है और power off होने पर भी इसमें stored information बनी रहती है।"
+},
+
+{
+ q:"Primary memory का उदाहरण कौन-सा है?",
+ options:[
+ "RAM",
+ "Hard Disk",
+ "Pen Drive",
+ "CD"
+],
+ answer:0,
+ explanation:"RAM primary memory का उदाहरण है।"
+},
+
+{
+ q:"Secondary storage का उदाहरण कौन-सा है?",
+ options:[
+ "Hard Disk",
+ "Register",
+ "Cache",
+ "RAM"
+],
+ answer:0,
+ explanation:"Hard Disk secondary storage का उदाहरण है।"
+},
+
+{
+ q:"कंप्यूटर में instructions किस रूप में अंततः execute होते हैं?",
+ options:[
+ "Machine language",
+ "Hindi language",
+ "Natural language",
+ "केवल English text"
+],
+ answer:0,
+ explanation:"CPU machine-level binary instructions को execute करता है।"
+},
+
+{
+ q:"Machine language किन digits पर आधारित है?",
+ options:[
+ "0 और 1",
+ "1 और 2",
+ "0 से 9",
+ "A से Z"
+],
+ answer:0,
+ explanation:"Machine language binary digits 0 और 1 पर आधारित होती है।"
+},
+
+{
+ q:"ASCII का पूरा नाम क्या है?",
+ options:[
+ "American Standard Code for Information Interchange",
+ "Automatic Standard Code for Internet Information",
+ "American System Code for Internal Interface",
+ "Advanced Standard Character Information"
+],
+ answer:0,
+ explanation:"ASCII का पूरा नाम American Standard Code for Information Interchange है।"
+},
+
+{
+ q:"Standard ASCII में कितने characters represent किए जाते हैं?",
+ options:[
+ "128",
+ "256",
+ "512",
+ "1024"
+],
+ answer:0,
+ explanation:"Standard 7-bit ASCII में 128 अलग-अलग codes होते हैं।"
+},
+
+{
+ q:"Unicode का मुख्य उद्देश्य क्या है?",
+ options:[
+ "विभिन्न भाषाओं के characters को represent करना",
+ "केवल binary numbers रखना",
+ "केवल images store करना",
+ "केवल printer चलाना"
+],
+ answer:0,
+ explanation:"Unicode विश्व की विभिन्न भाषाओं के characters को एक standard में represent करने के लिए बनाया गया है।"
+},
+
+{
+ q:"Data representation में character 'A' को किस प्रकार represent किया जा सकता है?",
+ options:[
+ "एक numeric code द्वारा",
+ "केवल image द्वारा",
+ "केवल sound द्वारा",
+ "केवल printer command द्वारा"
+],
+ answer:0,
+ explanation:"Computer characters को internally numeric codes के माध्यम से represent करता है।"
+},
+
+{
+ q:"Signed numbers को represent करने की एक सामान्य विधि कौन-सी है?",
+ options:[
+ "Two's complement",
+ "ASCII",
+ "Unicode",
+ "BCD only"
+],
+ answer:0,
+ explanation:"Binary signed integers को represent करने के लिए Two's complement एक प्रचलित विधि है।"
+},
+
+{
+ q:"Two's complement किसके लिए उपयोग होता है?",
+ options:[
+ "Signed binary numbers को represent करने के लिए",
+ "Images print करने के लिए",
+ "Sound record करने के लिए",
+ "Internet connect करने के लिए"
+],
+ answer:0,
+ explanation:"Two's complement signed binary integers को represent करने की प्रमुख विधि है।"
+},
+
+{
+ q:"BCD का पूरा नाम क्या है?",
+ options:[
+ "Binary Coded Decimal",
+ "Binary Computer Data",
+ "Basic Coded Digit",
+ "Bit Coded Data"
+],
+ answer:0,
+ explanation:"BCD का पूरा नाम Binary Coded Decimal है।"
+},
+
+{
+ q:"Logic gate किस प्रकार का digital circuit है?",
+ options:[
+ "जो logical operation करता है",
+ "जो केवल data store करता है",
+ "जो केवल print करता है",
+ "जो केवल power देता है"
+],
+ answer:0,
+ explanation:"Logic gate binary inputs पर logical operations करके binary output देता है।"
+},
+
+{
+ q:"Truth table क्या दर्शाती है?",
+ options:[
+ "Inputs और उनके corresponding outputs",
+ "केवल memory size",
+ "केवल CPU speed",
+ "केवल storage capacity"
+],
+ answer:0,
+ explanation:"Truth table किसी logic circuit के सभी possible input combinations और उनके outputs को दर्शाती है।"
+},
+
+{
+ q:"Boolean expression में '+' सामान्यतः क्या दर्शाता है?",
+ options:[
+ "OR operation",
+ "AND operation",
+ "NOT operation",
+ "XOR हमेशा"
+],
+ answer:0,
+ explanation:"Boolean Algebra में '+' का प्रयोग सामान्यतः OR operation के लिए किया जाता है।"
+},
+
+{
+ q:"Boolean expression में '.' सामान्यतः क्या दर्शाता है?",
+ options:[
+ "AND operation",
+ "OR operation",
+ "NOT operation",
+ "NOR operation"
+],
+ answer:0,
+ explanation:"Boolean Algebra में dot (.) सामान्यतः AND operation को दर्शाता है।"
+},
+
+{
+ q:"Boolean variable का complement कैसे दर्शाया जा सकता है?",
+ options:[
+ "A'",
+ "A+",
+ "A.",
+ "A/"
+],
+ answer:0,
+ explanation:"A' को Boolean variable A के complement के रूप में लिखा जाता है।"
+},
+
+{
+ q:"Computer system में data representation का उद्देश्य क्या है?",
+ options:[
+ "डेटा को computer-processable form में represent करना",
+ "केवल डेटा print करना",
+ "केवल इंटरनेट चलाना",
+ "केवल keyboard चलाना"
+],
+ answer:0,
+ explanation:"Computer data को binary/digital form में represent करता है ताकि processing संभव हो सके।"
+},
+
+{
+ q:"कंप्यूटर में 0 और 1 को सामान्यतः क्या कहा जाता है?",
+ options:[
+ "Binary digits",
+ "Decimal digits",
+ "Octal digits",
+ "Hexadecimal digits"
+],
+ answer:0,
+ explanation:"0 और 1 को binary digits या bits कहा जाता है।"
+},
+
+];
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+let currentQuestion = 0;
+
+let selectedAnswers =
+    new Array(questions.length).fill(null);
+
+let checkedQuestions =
+    new Array(questions.length).fill(false);
+
+let score = 0;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const questionElement =
+    document.getElementById("question");
+
+const optionsElement =
+    document.getElementById("options");
+
+const resultElement =
+    document.getElementById("result");
+
+const checkButton =
+    document.getElementById("checkButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const previousButton =
+    document.getElementById("previousButton");
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const scoreElement =
+    document.getElementById("score");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const palette =
+    document.getElementById("palette");
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionElement.textContent =
+        (currentQuestion + 1) + ". " + q.q;
+
+    optionsElement.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        label.innerHTML = `
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${selectedAnswers[currentQuestion] === index ? "checked" : ""}
+                ${checkedQuestions[currentQuestion] ? "disabled" : ""}
+            >
+
+            <span>
+                <b>${String.fromCharCode(65 + index)})</b>
+                ${option}
+            </span>
+        `;
+
+        label.addEventListener("click",function(){
+
+            if(!checkedQuestions[currentQuestion]){
+
+                selectedAnswers[currentQuestion] =
+                    index;
+
+                highlightOptions();
+
+            }
+
+        });
+
+        optionsElement.appendChild(label);
+
+    });
+
+/* =====================================================
+   VISITOR COUNTER
+===================================================== */
+
+const visitorCountElement =
+    document.getElementById("visitorCount");
+
+const siteName = window.location.hostname;
+const pagePath = window.location.pathname || "/";
+
+/* Count this page view */
+fetch(
+    "https://page-views-api.ratneshc.com/api/v1/track?site=" +
+    encodeURIComponent(siteName) +
+    "&path=" +
+    encodeURIComponent(pagePath)
+)
+.catch(error => {
+    console.log("Visitor tracking error:", error);
+});
+
+/* Get current visitor count */
+function updateVisitorCount(){
+
+    fetch(
+        "https://page-views-api.ratneshc.com/api/v1/views?site=" +
+        encodeURIComponent(siteName) +
+        "&path=" +
+        encodeURIComponent(pagePath)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if(typeof data.views !== "undefined"){
+
+            visitorCountElement.textContent =
+                Number(data.views).toLocaleString("en-IN");
+
+        }
+        else{
+
+            visitorCountElement.textContent = "0";
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log("Visitor count error:", error);
+
+        visitorCountElement.textContent =
+            "Unavailable";
+
+    });
+
+}
+
+/* Give tracking request a moment before reading count */
+setTimeout(updateVisitorCount, 500);
+    /* RESULT */
+
+    resultElement.className = "result";
+    resultElement.innerHTML = "";
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        showResult(false);
+
+    }
+
+
+    /* BUTTON */
+
+    if(checkedQuestions[currentQuestion]){
+
+        checkButton.style.display = "none";
+        nextButton.style.display = "inline-block";
+
+    }
+    else{
+
+        checkButton.style.display = "inline-block";
+        nextButton.style.display = "none";
+
+    }
+
+
+    /* PROGRESS */
+
+    questionNumber.textContent =
+        "प्रश्न " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+    progressBar.style.width =
+        ((currentQuestion + 1) /
+        questions.length * 100) + "%";
+
+
+    previousButton.disabled =
+        currentQuestion === 0;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   CHECK ANSWER
+===================================================== */
+
+function checkAnswer(){
+
+    if(selectedAnswers[currentQuestion] === null){
+
+        alert("कृपया पहले एक विकल्प चुनें।");
+
+        return;
+    }
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        return;
+
+    }
+
+
+    checkedQuestions[currentQuestion] = true;
+
+
+    if(
+        selectedAnswers[currentQuestion] ===
+        questions[currentQuestion].answer
+    ){
+
+        score++;
+
+    }
+
+
+    showResult(true);
+
+    highlightOptions();
+
+
+    checkButton.style.display = "none";
+
+    nextButton.style.display = "inline-block";
+
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(scrollResult){
+
+    const q = questions[currentQuestion];
+
+    const isCorrect =
+        selectedAnswers[currentQuestion] === q.answer;
+
+
+    resultElement.className =
+        "result show " +
+        (isCorrect ? "correct" : "wrong");
+
+
+    resultElement.innerHTML = `
+
+        <div class="result-title">
+            ${isCorrect ? "✅ सही उत्तर!" : "❌ गलत उत्तर!"}
+        </div>
+
+        <div>
+            <b>सही उत्तर:</b>
+            ${String.fromCharCode(65 + q.answer)})
+            ${q.options[q.answer]}
+        </div>
+
+        <div>
+            <b>व्याख्या:</b>
+            ${q.explanation}
+        </div>
+
+    `;
+
+
+    if(scrollResult){
+
+        resultElement.scrollIntoView({
+            behavior:"smooth",
+            block:"nearest"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT OPTIONS
+===================================================== */
+
+function highlightOptions(){
+
+    const optionElements =
+        document.querySelectorAll(".option");
+
+
+    optionElements.forEach((element,index)=>{
+
+        element.classList.remove(
+            "correct",
+            "wrong"
+        );
+
+
+        if(checkedQuestions[currentQuestion]){
+
+            if(
+                index ===
+                questions[currentQuestion].answer
+            ){
+
+                element.classList.add("correct");
+
+            }
+
+
+            if(
+                index === selectedAnswers[currentQuestion] &&
+                index !== questions[currentQuestion].answer
+            ){
+
+                element.classList.add("wrong");
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+    else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   QUESTION PALETTE
+===================================================== */
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+
+    questions.forEach((question,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "q-btn";
+
+        button.textContent = index + 1;
+
+
+        if(index === currentQuestion){
+
+            button.classList.add("active");
+
+        }
+
+
+        if(checkedQuestions[index]){
+
+            button.classList.add("done");
+
+        }
+
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   FINISH QUIZ
+===================================================== */
+
+function finishQuiz(){
+
+    document.getElementById("quizCard")
+        .style.display = "none";
+
+
+    document.getElementById("finalCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        score + " / " + questions.length;
+
+
+    const percentage =
+        score / questions.length * 100;
+
+
+    let message;
+
+
+    if(percentage >= 80){
+
+        message =
+            "🌟 बहुत बढ़िया! आपकी तैयारी बहुत अच्छी है।";
+
+    }
+    else if(percentage >= 60){
+
+        message =
+            "👍 अच्छा प्रयास! कुछ topics का revision करें।";
+
+    }
+    else{
+
+        message =
+            "📚 अच्छा प्रयास। गलत प्रश्नों की व्याख्या पढ़कर फिर से प्रयास करें।";
+
+    }
+
+
+    document.getElementById("finalMessage")
+        .textContent = message;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    selectedAnswers =
+        new Array(questions.length).fill(null);
+
+    checkedQuestions =
+        new Array(questions.length).fill(false);
+
+    score = 0;
+
+
+    document.getElementById("quizCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalCard")
+        .style.display = "none";
+
+
+    loadQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
