@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Computer Fundamentals - BSEB Class 11 Quiz</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#172033;
+}
+
+.container{
+    width:100%;
+    max-width:950px;
+    margin:auto;
+    padding:15px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:clamp(25px,5vw,38px);
+}
+
+.header p{
+    margin:6px 0;
+    font-size:17px;
+}
+
+/* PROGRESS */
+.progress-box{
+    background:white;
+    margin-top:18px;
+    padding:16px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    font-size:15px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:2%;
+    background:#4f46e5;
+    transition:.3s;
+}
+
+/* QUIZ CARD */
+.quiz-card{
+    background:white;
+    margin-top:18px;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.question{
+    font-size:clamp(20px,3vw,27px);
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+/* OPTIONS */
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:15px;
+    margin:11px 0;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    cursor:pointer;
+    background:#fff;
+    transition:.2s;
+    font-size:17px;
+    line-height:1.5;
+}
+
+.option:hover{
+    border-color:#818cf8;
+    background:#f5f3ff;
+}
+
+.option input{
+    margin-top:5px;
+    transform:scale(1.2);
+    accent-color:#4f46e5;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+}
+
+/* RESULT */
+.result{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.result.show{
+    display:block;
+}
+
+.result.correct{
+    background:#f0fdf4;
+    border:1px solid #86efac;
+}
+
+.result.wrong{
+    background:#fef2f2;
+    border:1px solid #fca5a5;
+}
+
+.result-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+button{
+    border:none;
+    border-radius:12px;
+    padding:13px 20px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+}
+
+.previous{
+    background:#e5e7eb;
+    color:#111827;
+}
+
+.check{
+    background:#4f46e5;
+    color:white;
+}
+
+.next{
+    background:#111827;
+    color:white;
+    display:none;
+}
+
+.restart{
+    background:#7c3aed;
+    color:white;
+}
+
+/* QUESTION PALETTE */
+.palette-title{
+    margin-top:25px;
+    font-weight:bold;
+}
+
+.palette{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.q-btn{
+    width:40px;
+    height:40px;
+    padding:0;
+    background:#eef2ff;
+    color:#3730a3;
+    font-size:14px;
+}
+
+.q-btn.active{
+    background:#4f46e5;
+    color:white;
+}
+
+.q-btn.done{
+    background:#bbf7d0;
+    color:#166534;
+}
+
+/* FINAL SCORE */
+.final{
+    display:none;
+    background:white;
+    margin-top:18px;
+    padding:35px 20px;
+    text-align:center;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.final h2{
+    font-size:30px;
+}
+
+.final-score{
+    font-size:50px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+.note{
+    color:#64748b;
+    font-size:14px;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .container{
+        padding:10px;
+    }
+
+    .header{
+        padding:22px 12px;
+        border-radius:17px;
+    }
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .header p{
+        font-size:15px;
+    }
+
+    .quiz-card{
+        padding:17px;
+        border-radius:17px;
+    }
+
+    .question{
+        font-size:20px;
+    }
+
+    .option{
+        padding:12px;
+        font-size:16px;
+    }
+
+    .buttons button{
+        flex:1;
+        min-width:120px;
+    }
+
+    .q-btn{
+        width:35px;
+        height:35px;
+    }
+    
+}
+.visitor-counter{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    color:blue;
+    font-size:15px;
+    font-weight:bold;
+}    
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Computer Fundamentals</h1>
+    <p>BSEB Class 11 — MCQ Interactive Quiz</p>
+    <p>कुल प्रश्न: 50</p>
+     <h2>Questions created by Ravi Kant Sir</h2>
+</div>
+<div class="visitor-counter">
+    👁️ Total Visitors: <span id="visitorCount">Loading...</span>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-box">
+
+    <div class="progress-info">
+        <span id="questionNumber">प्रश्न 1 / 50</span>
+        <span id="score">स्कोर: 0</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<!-- QUIZ -->
+<div class="quiz-card" id="quizCard">
+
+    <div class="question" id="question">
+        प्रश्न लोड हो रहा है...
+    </div>
+
+    <div id="options"></div>
+
+    <div class="result" id="result"></div>
+
+    <div class="buttons">
+
+        <button
+            class="previous"
+            id="previousButton"
+            onclick="previousQuestion()">
+            ← पिछला
+        </button>
+
+        <button
+            class="check"
+            id="checkButton"
+            onclick="checkAnswer()">
+            उत्तर जाँचें
+        </button>
+
+        <button
+            class="next"
+            id="nextButton"
+            onclick="nextQuestion()">
+            अगला प्रश्न →
+        </button>
+
+    </div>
+
+
+    <div class="palette-title">
+        प्रश्न चुनें:
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="note">
+        पहले विकल्प चुनें और फिर "उत्तर जाँचें" दबाएँ।
+        सही और गलत दोनों स्थितियों में प्रश्न की व्याख्या दिखाई जाएगी।
+    </div>
+
+</div>
+
+
+<!-- FINAL SCORE -->
+<div class="final" id="finalCard">
+
+    <h2>🎉 Quiz पूरा हुआ!</h2>
+
+    <div class="final-score" id="finalScore">
+        0 / 50
+    </div>
+
+    <p id="finalMessage"></p>
+
+    <button
+        class="restart"
+        onclick="restartQuiz()">
+        🔄 फिर से शुरू करें
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   50 QUESTIONS
+===================================================== */
+
+const questions = [
+
+{
+q:"कंप्यूटर क्या है?",
+options:[
+"इलेक्ट्रॉनिक मशीन",
+"यांत्रिक मशीन",
+"केवल गणना मशीन",
+"इनमें से कोई नहीं"
+],
+answer:0,
+explanation:"कंप्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा को इनपुट लेकर उसे प्रोसेस करके उपयोगी सूचना देती है।"
+},
+
+{
+q:"कंप्यूटर का मुख्य कार्य क्या है?",
+options:[
+"केवल डेटा संग्रह",
+"डेटा को प्रोसेस करके सूचना देना",
+"केवल प्रिंट करना",
+"केवल इंटरनेट चलाना"
+],
+answer:1,
+explanation:"कंप्यूटर का मुख्य कार्य डेटा को प्रोसेस करके उपयोगी सूचना देना है।"
+},
+
+{
+q:"कच्चे तथ्यों को क्या कहा जाता है?",
+options:[
+"सूचना",
+"डेटा",
+"आउटपुट",
+"प्रोग्राम"
+],
+answer:1,
+explanation:"कच्चे और असंसाधित तथ्यों को डेटा कहा जाता है।"
+},
+
+{
+q:"प्रोसेस किए गए डेटा को क्या कहते हैं?",
+options:[
+"सूचना",
+"इनपुट",
+"कमांड",
+"फाइल"
+],
+answer:0,
+explanation:"प्रोसेस किए गए और अर्थपूर्ण डेटा को सूचना कहा जाता है।"
+},
+
+{
+q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
+options:[
+"RAM",
+"Hard Disk",
+"CPU",
+"Monitor"
+],
+answer:2,
+explanation:"CPU कंप्यूटर के निर्देशों को प्रोसेस करता है, इसलिए इसे कंप्यूटर का मस्तिष्क कहा जाता है।"
+},
+
+{
+q:"CPU का पूरा नाम क्या है?",
+options:[
+"Central Processing Unit",
+"Central Program Unit",
+"Computer Processing Unit",
+"Control Processing Unit"
+],
+answer:0,
+explanation:"CPU का पूरा नाम Central Processing Unit है।"
+},
+
+{
+q:"ALU का पूरा नाम क्या है?",
+options:[
+"Arithmetic Logic Unit",
+"Arithmetic Language Unit",
+"Advanced Logic Unit",
+"Automatic Logic Unit"
+],
+answer:0,
+explanation:"ALU का पूरा नाम Arithmetic Logic Unit है।"
+},
+
+{
+q:"ALU का मुख्य कार्य क्या है?",
+options:[
+"प्रिंट करना",
+"अंकगणितीय एवं तार्किक कार्य करना",
+"डेटा स्टोर करना",
+"स्क्रीन प्रदर्शित करना"
+],
+answer:1,
+explanation:"ALU अंकगणितीय और तार्किक कार्य करता है।"
+},
+
+{
+q:"CU का पूरा नाम क्या है?",
+options:[
+"Control Unit",
+"Computer Unit",
+"Central Unit",
+"Control Utility"
+],
+answer:0,
+explanation:"CU का पूरा नाम Control Unit है।"
+},
+
+{
+q:"Control Unit का मुख्य कार्य क्या है?",
+options:[
+"निर्देशों को नियंत्रित करना",
+"डेटा प्रिंट करना",
+"फाइल सेव करना",
+"चित्र बनाना"
+],
+answer:0,
+explanation:"Control Unit कंप्यूटर के विभिन्न भागों के कार्य और निर्देशों के निष्पादन को नियंत्रित करती है।"
+},
+
+{
+q:"निम्न में से कौन-सा Input Device है?",
+options:[
+"Monitor",
+"Printer",
+"Keyboard",
+"Speaker"
+],
+answer:2,
+explanation:"Keyboard एक Input Device है।"
+},
+
+{
+q:"निम्न में से कौन-सा Output Device है?",
+options:[
+"Keyboard",
+"Mouse",
+"Scanner",
+"Monitor"
+],
+answer:3,
+explanation:"Monitor एक Output Device है जो परिणाम स्क्रीन पर दिखाता है।"
+},
+
+{
+q:"Keyboard का उपयोग किसके लिए किया जाता है?",
+options:[
+"डेटा इनपुट करने के लिए",
+"डेटा प्रिंट करने के लिए",
+"डेटा स्टोर करने के लिए",
+"बिजली देने के लिए"
+],
+answer:0,
+explanation:"Keyboard का उपयोग कंप्यूटर में डेटा और निर्देश इनपुट करने के लिए किया जाता है।"
+},
+
+{
+q:"Mouse किस प्रकार का उपकरण है?",
+options:[
+"Input Device",
+"Output Device",
+"Storage Device",
+"Processing Device"
+],
+answer:0,
+explanation:"Mouse एक Input Device है।"
+},
+
+{
+q:"Scanner का उपयोग किसके लिए किया जाता है?",
+options:[
+"दस्तावेज को डिजिटल रूप में लेने के लिए",
+"आवाज सुनने के लिए",
+"प्रिंट करने के लिए",
+"वीडियो दिखाने के लिए"
+],
+answer:0,
+explanation:"Scanner दस्तावेज या चित्र को डिजिटल रूप में कंप्यूटर में लेने के लिए प्रयोग होता है।"
+},
+
+{
+q:"Printer किस प्रकार का उपकरण है?",
+options:[
+"Input",
+"Output",
+"Processing",
+"Storage"
+],
+answer:1,
+explanation:"Printer एक Output Device है।"
+},
+
+{
+q:"Monitor का दूसरा नाम क्या है?",
+options:[
+"VDU",
+"CPU",
+"ALU",
+"UPS"
+],
+answer:0,
+explanation:"Monitor को VDU (Visual Display Unit) भी कहा जाता है।"
+},
+
+{
+q:"RAM किस प्रकार की मेमोरी है?",
+options:[
+"स्थायी",
+"अस्थायी",
+"केवल पढ़ने योग्य",
+"बाहरी"
+],
+answer:1,
+explanation:"RAM सामान्यतः Volatile अर्थात अस्थायी मेमोरी है।"
+},
+
+{
+q:"RAM का पूरा नाम क्या है?",
+options:[
+"Random Access Memory",
+"Read Access Memory",
+"Rapid Access Memory",
+"Random Active Memory"
+],
+answer:0,
+explanation:"RAM का पूरा नाम Random Access Memory है।"
+},
+
+{
+q:"ROM का पूरा नाम क्या है?",
+options:[
+"Read Only Memory",
+"Random Only Memory",
+"Read Output Memory",
+"Run Only Memory"
+],
+answer:0,
+explanation:"ROM का पूरा नाम Read Only Memory है।"
+},
+
+{
+q:"RAM की मुख्य विशेषता क्या है?",
+options:[
+"Volatile Memory",
+"स्थायी डेटा रखती है",
+"केवल पढ़ने के लिए है",
+"Input Device है"
+],
+answer:0,
+explanation:"RAM Volatile Memory है; बिजली बंद होने पर इसका डेटा सामान्यतः सुरक्षित नहीं रहता।"
+},
+
+{
+q:"ROM में सामान्यतः क्या रहता है?",
+options:[
+"स्थायी निर्देश",
+"अस्थायी डेटा",
+"टाइप किया हुआ डेटा",
+"प्रिंट डेटा"
+],
+answer:0,
+explanation:"ROM में सामान्यतः स्थायी निर्देश या फर्मवेयर रखा जाता है।"
+},
+
+{
+q:"निम्न में से कौन-सी Secondary Storage है?",
+options:[
+"RAM",
+"Cache",
+"Hard Disk",
+"Register"
+],
+answer:2,
+explanation:"Hard Disk एक Secondary Storage है।"
+},
+
+{
+q:"1 Byte में कितने Bits होते हैं?",
+options:[
+"2",
+"4",
+"8",
+"16"
+],
+answer:2,
+explanation:"1 Byte में 8 Bits होते हैं।"
+},
+
+{
+q:"Binary Number System में कितने अंक होते हैं?",
+options:[
+"2",
+"8",
+"10",
+"16"
+],
+answer:0,
+explanation:"Binary Number System में दो digits होते हैं: 0 और 1।"
+},
+
+{
+q:"Binary Number System में कौन-से अंक प्रयोग होते हैं?",
+options:[
+"0 और 1",
+"1 और 2",
+"0 से 9",
+"A और B"
+],
+answer:0,
+explanation:"Binary system में केवल 0 और 1 का प्रयोग होता है।"
+},
+
+{
+q:"Decimal Number System का Base क्या है?",
+options:[
+"2",
+"8",
+"10",
+"16"
+],
+answer:2,
+explanation:"Decimal Number System का base 10 है।"
+},
+
+{
+q:"Binary Number System का Base क्या है?",
+options:[
+"2",
+"4",
+"8",
+"10"
+],
+answer:0,
+explanation:"Binary Number System का base 2 है।"
+},
+
+{
+q:"Octal Number System का Base क्या है?",
+options:[
+"2",
+"8",
+"10",
+"16"
+],
+answer:1,
+explanation:"Octal Number System का base 8 है।"
+},
+
+{
+q:"Hexadecimal Number System का Base क्या है?",
+options:[
+"2",
+"8",
+"10",
+"16"
+],
+answer:3,
+explanation:"Hexadecimal Number System का base 16 है।"
+},
+
+{
+q:"कंप्यूटर किस भाषा को सीधे समझता है?",
+options:[
+"हिंदी",
+"अंग्रेजी",
+"Machine Language",
+"BASIC"
+],
+answer:2,
+explanation:"कंप्यूटर Machine Language के निर्देशों को सीधे समझता/निष्पादित करता है।"
+},
+
+{
+q:"Machine Language में कौन-से संकेत प्रयोग होते हैं?",
+options:[
+"0 और 1",
+"A और B",
+"केवल अक्षर",
+"केवल संख्याएँ 1 से 9"
+],
+answer:0,
+explanation:"Machine Language में Binary digits 0 और 1 का प्रयोग होता है।"
+},
+
+{
+q:"पहली पीढ़ी के कंप्यूटर में मुख्यतः किसका प्रयोग हुआ था?",
+options:[
+"Transistor",
+"Vacuum Tube",
+"IC",
+"Microprocessor"
+],
+answer:1,
+explanation:"पहली पीढ़ी के कंप्यूटरों में Vacuum Tube का प्रयोग प्रमुख रूप से हुआ था।"
+},
+
+{
+q:"दूसरी पीढ़ी के कंप्यूटर में किसका प्रयोग हुआ?",
+options:[
+"Vacuum Tube",
+"Transistor",
+"IC",
+"AI"
+],
+answer:1,
+explanation:"दूसरी पीढ़ी में Transistor का प्रयोग हुआ।"
+},
+
+{
+q:"तीसरी पीढ़ी के कंप्यूटर में मुख्यतः किसका प्रयोग हुआ?",
+options:[
+"IC",
+"Transistor",
+"Vacuum Tube",
+"Mechanical Gear"
+],
+answer:0,
+explanation:"तीसरी पीढ़ी में Integrated Circuit (IC) का प्रयोग हुआ।"
+},
+
+{
+q:"चौथी पीढ़ी के कंप्यूटर में किसका प्रयोग हुआ?",
+options:[
+"Microprocessor",
+"Vacuum Tube",
+"केवल Transistor",
+"Punch Card"
+],
+answer:0,
+explanation:"चौथी पीढ़ी की प्रमुख पहचान Microprocessor है।"
+},
+
+{
+q:"पाँचवीं पीढ़ी के कंप्यूटर मुख्यतः किस तकनीक से संबंधित हैं?",
+options:[
+"Artificial Intelligence",
+"Vacuum Tube",
+"Mechanical Technology",
+"Punch Card"
+],
+answer:0,
+explanation:"पाँचवीं पीढ़ी को Artificial Intelligence जैसी उन्नत तकनीकों से जोड़ा जाता है।"
+},
+
+{
+q:"कंप्यूटर की वह विशेषता जिसमें वह लगातार कार्य कर सकता है, कहलाती है—",
+options:[
+"Speed",
+"Diligence",
+"Accuracy",
+"Storage"
+],
+answer:1,
+explanation:"Diligence का अर्थ है कि कंप्यूटर बिना थके लंबे समय तक कार्य कर सकता है।"
+},
+
+{
+q:"कंप्यूटर की गणना करने की क्षमता को क्या कहा जाता है?",
+options:[
+"Accuracy",
+"Speed",
+"Storage",
+"Reliability"
+],
+answer:1,
+explanation:"Speed कंप्यूटर की तेजी से गणना और निर्देश निष्पादन की क्षमता को दर्शाती है।"
+},
+
+{
+q:"कंप्यूटर में गलत परिणाम मुख्यतः किस कारण हो सकता है?",
+options:[
+"गलत Input",
+"अधिक Speed",
+"अधिक Memory",
+"सही Program"
+],
+answer:0,
+explanation:"गलत Input से गलत Output मिल सकता है; इसे GIGO से समझाया जाता है।"
+},
+
+{
+q:"Software क्या है?",
+options:[
+"कंप्यूटर के भौतिक भाग",
+"निर्देशों/प्रोग्रामों का समूह",
+"केवल CPU",
+"केवल Keyboard"
+],
+answer:1,
+explanation:"Software प्रोग्रामों और निर्देशों का समूह है।"
+},
+
+{
+q:"Hardware से क्या तात्पर्य है?",
+options:[
+"प्रोग्राम",
+"कंप्यूटर के भौतिक भाग",
+"डेटा",
+"सूचना"
+],
+answer:1,
+explanation:"Hardware कंप्यूटर के भौतिक भाग हैं जिन्हें देखा और छुआ जा सकता है।"
+},
+
+{
+q:"निम्न में से कौन-सा System Software है?",
+options:[
+"Operating System",
+"MS Word",
+"Calculator",
+"Paint"
+],
+answer:0,
+explanation:"Operating System System Software है और कंप्यूटर संसाधनों का प्रबंधन करता है।"
+},
+
+{
+q:"Operating System का उदाहरण कौन-सा है?",
+options:[
+"Windows",
+"Keyboard",
+"Mouse",
+"Printer"
+],
+answer:0,
+explanation:"Windows एक Operating System है।"
+},
+
+{
+q:"Operating System का मुख्य कार्य क्या है?",
+options:[
+"Hardware और Software संसाधनों का प्रबंधन",
+"केवल गेम चलाना",
+"केवल प्रिंट करना",
+"केवल टाइप करना"
+],
+answer:0,
+explanation:"Operating System Hardware और Software संसाधनों का प्रबंधन करता है।"
+},
+
+{
+q:"निम्न में से कौन-सा Application Software है?",
+options:[
+"MS Word",
+"Operating System",
+"BIOS",
+"Device Driver"
+],
+answer:0,
+explanation:"MS Word एक Application Software है।"
+},
+
+{
+q:"कंप्यूटर को बंद करने से पहले डेटा को कहाँ Save करना चाहिए?",
+options:[
+"Memory/Storage में",
+"Keyboard में",
+"Monitor में",
+"Mouse में"
+],
+answer:0,
+explanation:"महत्वपूर्ण डेटा को Storage में Save करना चाहिए।"
+},
+
+{
+q:"UPS का पूरा नाम क्या है?",
+options:[
+"Uninterruptible Power Supply",
+"Universal Power System",
+"United Power Supply",
+"Uninterrupted Program System"
+],
+answer:0,
+explanation:"UPS का पूरा नाम Uninterruptible Power Supply है।"
+},
+
+{
+q:"UPS का मुख्य उपयोग क्या है?",
+options:[
+"बिजली की बैकअप आपूर्ति देना",
+"डेटा प्रिंट करना",
+"इंटरनेट चलाना",
+"डेटा स्कैन करना"
+],
+answer:0,
+explanation:"UPS बिजली जाने पर सीमित समय के लिए बैकअप पावर देता है।"
+},
+
+{
+q:"कंप्यूटर की कौन-सी विशेषता इसे मनुष्य से अलग बनाती है?",
+options:[
+"तेज गति और स्वचालित कार्य करने की क्षमता",
+"केवल मनोरंजन",
+"केवल डेटा टाइप करना",
+"केवल चित्र बनाना"
+],
+answer:0,
+explanation:"कंप्यूटर तेज गति से कार्य कर सकता है और दिए गए निर्देशों के अनुसार कार्य दोहरा सकता है।"
+}
+
+];
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+let currentQuestion = 0;
+
+let selectedAnswers =
+    new Array(questions.length).fill(null);
+
+let checkedQuestions =
+    new Array(questions.length).fill(false);
+
+let score = 0;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const questionElement =
+    document.getElementById("question");
+
+const optionsElement =
+    document.getElementById("options");
+
+const resultElement =
+    document.getElementById("result");
+
+const checkButton =
+    document.getElementById("checkButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const previousButton =
+    document.getElementById("previousButton");
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const scoreElement =
+    document.getElementById("score");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const palette =
+    document.getElementById("palette");
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionElement.textContent =
+        (currentQuestion + 1) + ". " + q.q;
+
+    optionsElement.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        label.innerHTML = `
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${selectedAnswers[currentQuestion] === index ? "checked" : ""}
+                ${checkedQuestions[currentQuestion] ? "disabled" : ""}
+            >
+
+            <span>
+                <b>${String.fromCharCode(65 + index)})</b>
+                ${option}
+            </span>
+        `;
+
+        label.addEventListener("click",function(){
+
+            if(!checkedQuestions[currentQuestion]){
+
+                selectedAnswers[currentQuestion] =
+                    index;
+
+                highlightOptions();
+
+            }
+
+        });
+
+        optionsElement.appendChild(label);
+
+    });
+/* =====================================================
+   VISITOR COUNTER
+===================================================== */
+
+const visitorCountElement =
+    document.getElementById("visitorCount");
+
+const siteName = window.location.hostname;
+const pagePath = window.location.pathname || "/";
+
+/* Count this page view */
+fetch(
+    "https://page-views-api.ratneshc.com/api/v1/track?site=" +
+    encodeURIComponent(siteName) +
+    "&path=" +
+    encodeURIComponent(pagePath)
+)
+.catch(error => {
+    console.log("Visitor tracking error:", error);
+});
+
+/* Get current visitor count */
+function updateVisitorCount(){
+
+    fetch(
+        "https://page-views-api.ratneshc.com/api/v1/views?site=" +
+        encodeURIComponent(siteName) +
+        "&path=" +
+        encodeURIComponent(pagePath)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if(typeof data.views !== "undefined"){
+
+            visitorCountElement.textContent =
+                Number(data.views).toLocaleString("en-IN");
+
+        }
+        else{
+
+            visitorCountElement.textContent = "0";
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log("Visitor count error:", error);
+
+        visitorCountElement.textContent =
+            "Unavailable";
+
+    });
+
+}
+
+/* Give tracking request a moment before reading count */
+setTimeout(updateVisitorCount, 500);
+    /* RESULT */
+
+    resultElement.className = "result";
+    resultElement.innerHTML = "";
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        showResult(false);
+
+    }
+
+    /* BUTTON */
+
+    if(checkedQuestions[currentQuestion]){
+
+        checkButton.style.display = "none";
+        nextButton.style.display = "inline-block";
+
+    }
+    else{
+
+        checkButton.style.display = "inline-block";
+        nextButton.style.display = "none";
+
+    }
+
+
+    /* PROGRESS */
+
+    questionNumber.textContent =
+        "प्रश्न " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+    progressBar.style.width =
+        ((currentQuestion + 1) /
+        questions.length * 100) + "%";
+
+
+    previousButton.disabled =
+        currentQuestion === 0;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   CHECK ANSWER
+===================================================== */
+
+function checkAnswer(){
+
+    if(selectedAnswers[currentQuestion] === null){
+
+        alert("कृपया पहले एक विकल्प चुनें।");
+
+        return;
+    }
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        return;
+
+    }
+
+
+    checkedQuestions[currentQuestion] = true;
+
+
+    if(
+        selectedAnswers[currentQuestion] ===
+        questions[currentQuestion].answer
+    ){
+
+        score++;
+
+    }
+
+
+    showResult(true);
+
+    highlightOptions();
+
+
+    checkButton.style.display = "none";
+
+    nextButton.style.display = "inline-block";
+
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(scrollResult){
+
+    const q = questions[currentQuestion];
+
+    const isCorrect =
+        selectedAnswers[currentQuestion] === q.answer;
+
+
+    resultElement.className =
+        "result show " +
+        (isCorrect ? "correct" : "wrong");
+
+
+    resultElement.innerHTML = `
+
+        <div class="result-title">
+            ${isCorrect ? "✅ सही उत्तर!" : "❌ गलत उत्तर!"}
+        </div>
+
+        <div>
+            <b>सही उत्तर:</b>
+            ${String.fromCharCode(65 + q.answer)})
+            ${q.options[q.answer]}
+        </div>
+
+        <div>
+            <b>व्याख्या:</b>
+            ${q.explanation}
+        </div>
+
+    `;
+
+
+    if(scrollResult){
+
+        resultElement.scrollIntoView({
+            behavior:"smooth",
+            block:"nearest"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT OPTIONS
+===================================================== */
+
+function highlightOptions(){
+
+    const optionElements =
+        document.querySelectorAll(".option");
+
+
+    optionElements.forEach((element,index)=>{
+
+        element.classList.remove(
+            "correct",
+            "wrong"
+        );
+
+
+        if(checkedQuestions[currentQuestion]){
+
+            if(
+                index ===
+                questions[currentQuestion].answer
+            ){
+
+                element.classList.add("correct");
+
+            }
+
+
+            if(
+                index === selectedAnswers[currentQuestion] &&
+                index !== questions[currentQuestion].answer
+            ){
+
+                element.classList.add("wrong");
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+    else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   QUESTION PALETTE
+===================================================== */
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+
+    questions.forEach((question,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "q-btn";
+
+        button.textContent = index + 1;
+
+
+        if(index === currentQuestion){
+
+            button.classList.add("active");
+
+        }
+
+
+        if(checkedQuestions[index]){
+
+            button.classList.add("done");
+
+        }
+
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   FINISH QUIZ
+===================================================== */
+
+function finishQuiz(){
+
+    document.getElementById("quizCard")
+        .style.display = "none";
+
+
+    document.getElementById("finalCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        score + " / " + questions.length;
+
+
+    const percentage =
+        score / questions.length * 100;
+
+
+    let message;
+
+
+    if(percentage >= 80){
+
+        message =
+            "🌟 बहुत बढ़िया! आपकी तैयारी बहुत अच्छी है।";
+
+    }
+    else if(percentage >= 60){
+
+        message =
+            "👍 अच्छा प्रयास! कुछ topics का revision करें।";
+
+    }
+    else{
+
+        message =
+            "📚 अच्छा प्रयास। गलत प्रश्नों की व्याख्या पढ़कर फिर से प्रयास करें।";
+
+    }
+
+
+    document.getElementById("finalMessage")
+        .textContent = message;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    selectedAnswers =
+        new Array(questions.length).fill(null);
+
+    checkedQuestions =
+        new Array(questions.length).fill(false);
+
+    score = 0;
+
+
+    document.getElementById("quizCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalCard")
+        .style.display = "none";
+
+
+    loadQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
