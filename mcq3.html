@@ -424,609 +424,249 @@ button:hover{
 <script>
 
 /* =====================================================
-   50 QUESTIONS
+   20 SHORTCUT KEY QUESTIONS
 ===================================================== */
 
 const questions = [
 
 {
-q:"कंप्यूटर क्या है?",
+q:"Ctrl + C का उपयोग किसके लिए किया जाता है?",
 options:[
-"इलेक्ट्रॉनिक मशीन",
-"यांत्रिक मशीन",
-"केवल गणना मशीन",
-"इनमें से कोई नहीं"
-],
-answer:0,
-explanation:"कंप्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा को इनपुट लेकर उसे प्रोसेस करके उपयोगी सूचना देती है।"
-},
-
-{
-q:"कंप्यूटर का मुख्य कार्य क्या है?",
-options:[
-"केवल डेटा संग्रह",
-"डेटा को प्रोसेस करके सूचना देना",
-"केवल प्रिंट करना",
-"केवल इंटरनेट चलाना"
+"Cut करने के लिए",
+"Copy करने के लिए",
+"Paste करने के लिए",
+"Save करने के लिए"
 ],
 answer:1,
-explanation:"कंप्यूटर का मुख्य कार्य डेटा को प्रोसेस करके उपयोगी सूचना देना है।"
+explanation:"Ctrl + C का उपयोग चयनित टेक्स्ट, फाइल या वस्तु को Copy करने के लिए किया जाता है।"
 },
 
 {
-q:"कच्चे तथ्यों को क्या कहा जाता है?",
+q:"Ctrl + V का उपयोग किसके लिए किया जाता है?",
 options:[
-"सूचना",
-"डेटा",
-"आउटपुट",
-"प्रोग्राम"
-],
-answer:1,
-explanation:"कच्चे और असंसाधित तथ्यों को डेटा कहा जाता है।"
-},
-
-{
-q:"प्रोसेस किए गए डेटा को क्या कहते हैं?",
-options:[
-"सूचना",
-"इनपुट",
-"कमांड",
-"फाइल"
-],
-answer:0,
-explanation:"प्रोसेस किए गए और अर्थपूर्ण डेटा को सूचना कहा जाता है।"
-},
-
-{
-q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
-options:[
-"RAM",
-"Hard Disk",
-"CPU",
-"Monitor"
+"Save करने के लिए",
+"Copy करने के लिए",
+"Paste करने के लिए",
+"Print करने के लिए"
 ],
 answer:2,
-explanation:"CPU कंप्यूटर के निर्देशों को प्रोसेस करता है, इसलिए इसे कंप्यूटर का मस्तिष्क कहा जाता है।"
+explanation:"Ctrl + V का उपयोग Copy या Cut की गई सामग्री को Paste करने के लिए किया जाता है।"
 },
 
 {
-q:"CPU का पूरा नाम क्या है?",
+q:"Ctrl + X का उपयोग किसके लिए किया जाता है?",
 options:[
-"Central Processing Unit",
-"Central Program Unit",
-"Computer Processing Unit",
-"Control Processing Unit"
+"Cut करने के लिए",
+"Copy करने के लिए",
+"Undo करने के लिए",
+"Close करने के लिए"
 ],
 answer:0,
-explanation:"CPU का पूरा नाम Central Processing Unit है।"
+explanation:"Ctrl + X का उपयोग चयनित सामग्री को Cut करने के लिए किया जाता है।"
 },
 
 {
-q:"ALU का पूरा नाम क्या है?",
+q:"Ctrl + Z का उपयोग किसके लिए किया जाता है?",
 options:[
-"Arithmetic Logic Unit",
-"Arithmetic Language Unit",
-"Advanced Logic Unit",
-"Automatic Logic Unit"
-],
-answer:0,
-explanation:"ALU का पूरा नाम Arithmetic Logic Unit है।"
-},
-
-{
-q:"ALU का मुख्य कार्य क्या है?",
-options:[
-"प्रिंट करना",
-"अंकगणितीय एवं तार्किक कार्य करना",
-"डेटा स्टोर करना",
-"स्क्रीन प्रदर्शित करना"
+"Redo",
+"Undo",
+"Zoom",
+"Save"
 ],
 answer:1,
-explanation:"ALU अंकगणितीय और तार्किक कार्य करता है।"
+explanation:"Ctrl + Z का उपयोग पिछले किए गए कार्य को Undo करने के लिए किया जाता है।"
 },
 
 {
-q:"CU का पूरा नाम क्या है?",
+q:"Ctrl + Y का उपयोग किसके लिए किया जाता है?",
 options:[
-"Control Unit",
-"Computer Unit",
-"Central Unit",
-"Control Utility"
-],
-answer:0,
-explanation:"CU का पूरा नाम Control Unit है।"
-},
-
-{
-q:"Control Unit का मुख्य कार्य क्या है?",
-options:[
-"निर्देशों को नियंत्रित करना",
-"डेटा प्रिंट करना",
-"फाइल सेव करना",
-"चित्र बनाना"
-],
-answer:0,
-explanation:"Control Unit कंप्यूटर के विभिन्न भागों के कार्य और निर्देशों के निष्पादन को नियंत्रित करती है।"
-},
-
-{
-q:"निम्न में से कौन-सा Input Device है?",
-options:[
-"Monitor",
-"Printer",
-"Keyboard",
-"Speaker"
+"Copy",
+"Paste",
+"Redo",
+"Refresh"
 ],
 answer:2,
-explanation:"Keyboard एक Input Device है।"
+explanation:"Ctrl + Y का उपयोग सामान्यतः Undo किए गए कार्य को फिर से करने अर्थात Redo करने के लिए किया जाता है।"
 },
 
 {
-q:"निम्न में से कौन-सा Output Device है?",
+q:"Ctrl + S का उपयोग किसके लिए किया जाता है?",
 options:[
-"Keyboard",
-"Mouse",
-"Scanner",
-"Monitor"
+"Search",
+"Select",
+"Save",
+"Send"
+],
+answer:2,
+explanation:"Ctrl + S का उपयोग वर्तमान फाइल या दस्तावेज़ को Save करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + A का उपयोग किसके लिए किया जाता है?",
+options:[
+"Select All",
+"Save All",
+"Add",
+"Align"
+],
+answer:0,
+explanation:"Ctrl + A का उपयोग किसी दस्तावेज़ या क्षेत्र की सभी सामग्री को Select करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + P का उपयोग किसके लिए किया जाता है?",
+options:[
+"Paste",
+"Print",
+"Preview",
+"Page Setup"
+],
+answer:1,
+explanation:"Ctrl + P का उपयोग Print dialog box खोलने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + F का उपयोग सामान्यतः किसके लिए किया जाता है?",
+options:[
+"File खोलने के लिए",
+"Format करने के लिए",
+"Find/Search करने के लिए",
+"Forward करने के लिए"
+],
+answer:2,
+explanation:"Ctrl + F का उपयोग दस्तावेज़ या वेब पेज में किसी शब्द या टेक्स्ट को Find करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + N का उपयोग सामान्यतः किसके लिए किया जाता है?",
+options:[
+"New document बनाने के लिए",
+"Next page खोलने के लिए",
+"Network खोलने के लिए",
+"Numbering करने के लिए"
+],
+answer:0,
+explanation:"Ctrl + N का उपयोग सामान्यतः नया document या window बनाने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + O का उपयोग किसके लिए किया जाता है?",
+options:[
+"Options खोलने के लिए",
+"Output देखने के लिए",
+"Open करने के लिए",
+"Order देने के लिए"
+],
+answer:2,
+explanation:"Ctrl + O का उपयोग किसी मौजूदा file या document को Open करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + W का उपयोग सामान्यतः किसके लिए किया जाता है?",
+options:[
+"Write करने के लिए",
+"Window या document बंद करने के लिए",
+"Word Count देखने के लिए",
+"Web Search करने के लिए"
+],
+answer:1,
+explanation:"Ctrl + W का उपयोग सामान्यतः वर्तमान document, tab या window को बंद करने के लिए किया जाता है।"
+},
+
+{
+q:"Alt + F4 का उपयोग किसके लिए किया जाता है?",
+options:[
+"Application या window बंद करने के लिए",
+"File Save करने के लिए",
+"Refresh करने के लिए",
+"Copy करने के लिए"
+],
+answer:0,
+explanation:"Alt + F4 का उपयोग वर्तमान application या window को बंद करने के लिए किया जाता है।"
+},
+
+{
+q:"F5 कुंजी का उपयोग वेब ब्राउज़र में सामान्यतः किसके लिए किया जाता है?",
+options:[
+"Print करने के लिए",
+"Save करने के लिए",
+"Refresh करने के लिए",
+"Copy करने के लिए"
+],
+answer:2,
+explanation:"वेब ब्राउज़र में F5 का उपयोग वर्तमान वेब पेज को Refresh या Reload करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + B का उपयोग किसके लिए किया जाता है?",
+options:[
+"Bookmark बनाने के लिए",
+"Background बदलने के लिए",
+"Bold करने के लिए",
+"Break लगाने के लिए"
+],
+answer:2,
+explanation:"Ctrl + B का उपयोग चयनित टेक्स्ट को Bold करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + I का उपयोग किसके लिए किया जाता है?",
+options:[
+"Insert करने के लिए",
+"Italic करने के लिए",
+"Image जोड़ने के लिए",
+"Information देखने के लिए"
+],
+answer:1,
+explanation:"Ctrl + I का उपयोग चयनित टेक्स्ट को Italic करने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + U का उपयोग किसके लिए किया जाता है?",
+options:[
+"Upload करने के लिए",
+"Undo करने के लिए",
+"Update करने के लिए",
+"Underline करने के लिए"
 ],
 answer:3,
-explanation:"Monitor एक Output Device है जो परिणाम स्क्रीन पर दिखाता है।"
+explanation:"Ctrl + U का उपयोग चयनित टेक्स्ट को Underline करने के लिए किया जाता है।"
 },
 
 {
-q:"Keyboard का उपयोग किसके लिए किया जाता है?",
+q:"Ctrl + H का उपयोग सामान्यतः किसके लिए किया जाता है?",
 options:[
-"डेटा इनपुट करने के लिए",
-"डेटा प्रिंट करने के लिए",
-"डेटा स्टोर करने के लिए",
-"बिजली देने के लिए"
-],
-answer:0,
-explanation:"Keyboard का उपयोग कंप्यूटर में डेटा और निर्देश इनपुट करने के लिए किया जाता है।"
-},
-
-{
-q:"Mouse किस प्रकार का उपकरण है?",
-options:[
-"Input Device",
-"Output Device",
-"Storage Device",
-"Processing Device"
-],
-answer:0,
-explanation:"Mouse एक Input Device है।"
-},
-
-{
-q:"Scanner का उपयोग किसके लिए किया जाता है?",
-options:[
-"दस्तावेज को डिजिटल रूप में लेने के लिए",
-"आवाज सुनने के लिए",
-"प्रिंट करने के लिए",
-"वीडियो दिखाने के लिए"
-],
-answer:0,
-explanation:"Scanner दस्तावेज या चित्र को डिजिटल रूप में कंप्यूटर में लेने के लिए प्रयोग होता है।"
-},
-
-{
-q:"Printer किस प्रकार का उपकरण है?",
-options:[
-"Input",
-"Output",
-"Processing",
-"Storage"
-],
-answer:1,
-explanation:"Printer एक Output Device है।"
-},
-
-{
-q:"Monitor का दूसरा नाम क्या है?",
-options:[
-"VDU",
-"CPU",
-"ALU",
-"UPS"
-],
-answer:0,
-explanation:"Monitor को VDU (Visual Display Unit) भी कहा जाता है।"
-},
-
-{
-q:"RAM किस प्रकार की मेमोरी है?",
-options:[
-"स्थायी",
-"अस्थायी",
-"केवल पढ़ने योग्य",
-"बाहरी"
-],
-answer:1,
-explanation:"RAM सामान्यतः Volatile अर्थात अस्थायी मेमोरी है।"
-},
-
-{
-q:"RAM का पूरा नाम क्या है?",
-options:[
-"Random Access Memory",
-"Read Access Memory",
-"Rapid Access Memory",
-"Random Active Memory"
-],
-answer:0,
-explanation:"RAM का पूरा नाम Random Access Memory है।"
-},
-
-{
-q:"ROM का पूरा नाम क्या है?",
-options:[
-"Read Only Memory",
-"Random Only Memory",
-"Read Output Memory",
-"Run Only Memory"
-],
-answer:0,
-explanation:"ROM का पूरा नाम Read Only Memory है।"
-},
-
-{
-q:"RAM की मुख्य विशेषता क्या है?",
-options:[
-"Volatile Memory",
-"स्थायी डेटा रखती है",
-"केवल पढ़ने के लिए है",
-"Input Device है"
-],
-answer:0,
-explanation:"RAM Volatile Memory है; बिजली बंद होने पर इसका डेटा सामान्यतः सुरक्षित नहीं रहता।"
-},
-
-{
-q:"ROM में सामान्यतः क्या रहता है?",
-options:[
-"स्थायी निर्देश",
-"अस्थायी डेटा",
-"टाइप किया हुआ डेटा",
-"प्रिंट डेटा"
-],
-answer:0,
-explanation:"ROM में सामान्यतः स्थायी निर्देश या फर्मवेयर रखा जाता है।"
-},
-
-{
-q:"निम्न में से कौन-सी Secondary Storage है?",
-options:[
-"RAM",
-"Cache",
-"Hard Disk",
-"Register"
-],
-answer:2,
-explanation:"Hard Disk एक Secondary Storage है।"
-},
-
-{
-q:"1 Byte में कितने Bits होते हैं?",
-options:[
-"2",
-"4",
-"8",
-"16"
-],
-answer:2,
-explanation:"1 Byte में 8 Bits होते हैं।"
-},
-
-{
-q:"Binary Number System में कितने अंक होते हैं?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:0,
-explanation:"Binary Number System में दो digits होते हैं: 0 और 1।"
-},
-
-{
-q:"Binary Number System में कौन-से अंक प्रयोग होते हैं?",
-options:[
-"0 और 1",
-"1 और 2",
-"0 से 9",
-"A और B"
-],
-answer:0,
-explanation:"Binary system में केवल 0 और 1 का प्रयोग होता है।"
-},
-
-{
-q:"Decimal Number System का Base क्या है?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:2,
-explanation:"Decimal Number System का base 10 है।"
-},
-
-{
-q:"Binary Number System का Base क्या है?",
-options:[
-"2",
-"4",
-"8",
-"10"
-],
-answer:0,
-explanation:"Binary Number System का base 2 है।"
-},
-
-{
-q:"Octal Number System का Base क्या है?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:1,
-explanation:"Octal Number System का base 8 है।"
-},
-
-{
-q:"Hexadecimal Number System का Base क्या है?",
-options:[
-"2",
-"8",
-"10",
-"16"
+"Help खोलने के लिए",
+"History देखने के लिए",
+"Home जाने के लिए",
+"Find and Replace करने के लिए"
 ],
 answer:3,
-explanation:"Hexadecimal Number System का base 16 है।"
+explanation:"कई text editors और word processors में Ctrl + H का उपयोग Find and Replace सुविधा के लिए किया जाता है।"
 },
 
 {
-q:"कंप्यूटर किस भाषा को सीधे समझता है?",
+q:"Ctrl + T का उपयोग वेब ब्राउज़र में किसके लिए किया जाता है?",
 options:[
-"हिंदी",
-"अंग्रेजी",
-"Machine Language",
-"BASIC"
+"नया Tab खोलने के लिए",
+"Text बदलने के लिए",
+"Task Manager खोलने के लिए",
+"File खोलने के लिए"
+],
+answer:0,
+explanation:"वेब ब्राउज़र में Ctrl + T का उपयोग नया browser tab खोलने के लिए किया जाता है।"
+},
+
+{
+q:"Ctrl + Shift + Esc का उपयोग Windows में किसके लिए किया जाता है?",
+options:[
+"File Explorer खोलने के लिए",
+"Settings खोलने के लिए",
+"Task Manager खोलने के लिए",
+"Search करने के लिए"
 ],
 answer:2,
-explanation:"कंप्यूटर Machine Language के निर्देशों को सीधे समझता/निष्पादित करता है।"
-},
-
-{
-q:"Machine Language में कौन-से संकेत प्रयोग होते हैं?",
-options:[
-"0 और 1",
-"A और B",
-"केवल अक्षर",
-"केवल संख्याएँ 1 से 9"
-],
-answer:0,
-explanation:"Machine Language में Binary digits 0 और 1 का प्रयोग होता है।"
-},
-
-{
-q:"पहली पीढ़ी के कंप्यूटर में मुख्यतः किसका प्रयोग हुआ था?",
-options:[
-"Transistor",
-"Vacuum Tube",
-"IC",
-"Microprocessor"
-],
-answer:1,
-explanation:"पहली पीढ़ी के कंप्यूटरों में Vacuum Tube का प्रयोग प्रमुख रूप से हुआ था।"
-},
-
-{
-q:"दूसरी पीढ़ी के कंप्यूटर में किसका प्रयोग हुआ?",
-options:[
-"Vacuum Tube",
-"Transistor",
-"IC",
-"AI"
-],
-answer:1,
-explanation:"दूसरी पीढ़ी में Transistor का प्रयोग हुआ।"
-},
-
-{
-q:"तीसरी पीढ़ी के कंप्यूटर में मुख्यतः किसका प्रयोग हुआ?",
-options:[
-"IC",
-"Transistor",
-"Vacuum Tube",
-"Mechanical Gear"
-],
-answer:0,
-explanation:"तीसरी पीढ़ी में Integrated Circuit (IC) का प्रयोग हुआ।"
-},
-
-{
-q:"चौथी पीढ़ी के कंप्यूटर में किसका प्रयोग हुआ?",
-options:[
-"Microprocessor",
-"Vacuum Tube",
-"केवल Transistor",
-"Punch Card"
-],
-answer:0,
-explanation:"चौथी पीढ़ी की प्रमुख पहचान Microprocessor है।"
-},
-
-{
-q:"पाँचवीं पीढ़ी के कंप्यूटर मुख्यतः किस तकनीक से संबंधित हैं?",
-options:[
-"Artificial Intelligence",
-"Vacuum Tube",
-"Mechanical Technology",
-"Punch Card"
-],
-answer:0,
-explanation:"पाँचवीं पीढ़ी को Artificial Intelligence जैसी उन्नत तकनीकों से जोड़ा जाता है।"
-},
-
-{
-q:"कंप्यूटर की वह विशेषता जिसमें वह लगातार कार्य कर सकता है, कहलाती है—",
-options:[
-"Speed",
-"Diligence",
-"Accuracy",
-"Storage"
-],
-answer:1,
-explanation:"Diligence का अर्थ है कि कंप्यूटर बिना थके लंबे समय तक कार्य कर सकता है।"
-},
-
-{
-q:"कंप्यूटर की गणना करने की क्षमता को क्या कहा जाता है?",
-options:[
-"Accuracy",
-"Speed",
-"Storage",
-"Reliability"
-],
-answer:1,
-explanation:"Speed कंप्यूटर की तेजी से गणना और निर्देश निष्पादन की क्षमता को दर्शाती है।"
-},
-
-{
-q:"कंप्यूटर में गलत परिणाम मुख्यतः किस कारण हो सकता है?",
-options:[
-"गलत Input",
-"अधिक Speed",
-"अधिक Memory",
-"सही Program"
-],
-answer:0,
-explanation:"गलत Input से गलत Output मिल सकता है; इसे GIGO से समझाया जाता है।"
-},
-
-{
-q:"Software क्या है?",
-options:[
-"कंप्यूटर के भौतिक भाग",
-"निर्देशों/प्रोग्रामों का समूह",
-"केवल CPU",
-"केवल Keyboard"
-],
-answer:1,
-explanation:"Software प्रोग्रामों और निर्देशों का समूह है।"
-},
-
-{
-q:"Hardware से क्या तात्पर्य है?",
-options:[
-"प्रोग्राम",
-"कंप्यूटर के भौतिक भाग",
-"डेटा",
-"सूचना"
-],
-answer:1,
-explanation:"Hardware कंप्यूटर के भौतिक भाग हैं जिन्हें देखा और छुआ जा सकता है।"
-},
-
-{
-q:"निम्न में से कौन-सा System Software है?",
-options:[
-"Operating System",
-"MS Word",
-"Calculator",
-"Paint"
-],
-answer:0,
-explanation:"Operating System System Software है और कंप्यूटर संसाधनों का प्रबंधन करता है।"
-},
-
-{
-q:"Operating System का उदाहरण कौन-सा है?",
-options:[
-"Windows",
-"Keyboard",
-"Mouse",
-"Printer"
-],
-answer:0,
-explanation:"Windows एक Operating System है।"
-},
-
-{
-q:"Operating System का मुख्य कार्य क्या है?",
-options:[
-"Hardware और Software संसाधनों का प्रबंधन",
-"केवल गेम चलाना",
-"केवल प्रिंट करना",
-"केवल टाइप करना"
-],
-answer:0,
-explanation:"Operating System Hardware और Software संसाधनों का प्रबंधन करता है।"
-},
-
-{
-q:"निम्न में से कौन-सा Application Software है?",
-options:[
-"MS Word",
-"Operating System",
-"BIOS",
-"Device Driver"
-],
-answer:0,
-explanation:"MS Word एक Application Software है।"
-},
-
-{
-q:"कंप्यूटर को बंद करने से पहले डेटा को कहाँ Save करना चाहिए?",
-options:[
-"Memory/Storage में",
-"Keyboard में",
-"Monitor में",
-"Mouse में"
-],
-answer:0,
-explanation:"महत्वपूर्ण डेटा को Storage में Save करना चाहिए।"
-},
-
-{
-q:"UPS का पूरा नाम क्या है?",
-options:[
-"Uninterruptible Power Supply",
-"Universal Power System",
-"United Power Supply",
-"Uninterrupted Program System"
-],
-answer:0,
-explanation:"UPS का पूरा नाम Uninterruptible Power Supply है।"
-},
-
-{
-q:"UPS का मुख्य उपयोग क्या है?",
-options:[
-"बिजली की बैकअप आपूर्ति देना",
-"डेटा प्रिंट करना",
-"इंटरनेट चलाना",
-"डेटा स्कैन करना"
-],
-answer:0,
-explanation:"UPS बिजली जाने पर सीमित समय के लिए बैकअप पावर देता है।"
-},
-
-{
-q:"कंप्यूटर की कौन-सी विशेषता इसे मनुष्य से अलग बनाती है?",
-options:[
-"तेज गति और स्वचालित कार्य करने की क्षमता",
-"केवल मनोरंजन",
-"केवल डेटा टाइप करना",
-"केवल चित्र बनाना"
-],
-answer:0,
-explanation:"कंप्यूटर तेज गति से कार्य कर सकता है और दिए गए निर्देशों के अनुसार कार्य दोहरा सकता है।"
+explanation:"Ctrl + Shift + Esc का उपयोग Windows में सीधे Task Manager खोलने के लिए किया जाता है।"
 }
 
 ];
