@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>शिक्षक एवं स्टाफ | B.A UHS Basha Litiyahi</title>
+
+<style>
+
+/* =====================================================
+   BASIC RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Noto Sans Devanagari","Mangal","Segoe UI",Arial,sans-serif;
+    background:#f4f7fb;
+    color:#1e293b;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    background:linear-gradient(135deg,#172554,#4338ca);
+    color:white;
+    padding:35px 5%;
+    text-align:center;
+}
+
+.header h1{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:16px;
+    opacity:0.9;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-area{
+    max-width:1200px;
+    margin:25px auto 0;
+    padding:0 20px;
+}
+
+.back-btn{
+    display:inline-block;
+    background:white;
+    color:#3730a3;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    font-weight:600;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#3730a3;
+    color:white;
+    transform:translateX(-3px);
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container{
+    max-width:1200px;
+    margin:30px auto 60px;
+    padding:0 20px;
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    color:#172554;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#64748b;
+}
+
+
+/* =====================================================
+   TEACHER GRID
+===================================================== */
+
+.teacher-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+
+/* =====================================================
+   TEACHER CARD
+===================================================== */
+
+.teacher-card{
+    background:white;
+    border-radius:16px;
+    padding:25px 20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.07);
+    border-top:5px solid #4f46e5;
+    transition:0.3s;
+}
+
+.teacher-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.13);
+}
+
+
+/* =====================================================
+   TEACHER ICON
+===================================================== */
+
+.teacher-icon{
+    width:75px;
+    height:75px;
+    margin:0 auto 15px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed
+    );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+}
+
+
+/* =====================================================
+   TEACHER NAME
+===================================================== */
+
+.teacher-card h3{
+    color:#172554;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+
+/* =====================================================
+   SUBJECT
+===================================================== */
+
+.subject{
+    display:inline-block;
+    background:#eef2ff;
+    color:#3730a3;
+    padding:6px 13px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+
+/* =====================================================
+   POST
+===================================================== */
+
+.post{
+    color:#475569;
+    font-size:14px;
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   HEADMASTER SPECIAL CARD
+===================================================== */
+
+.headmaster{
+    grid-column:1 / -1;
+    border-top-color:#f59e0b;
+    background:linear-gradient(
+        135deg,
+        #fff7ed,
+        #ffffff
+    );
+}
+
+.headmaster .teacher-icon{
+    background:linear-gradient(
+        135deg,
+        #f59e0b,
+        #ea580c
+    );
+}
+
+.headmaster h3{
+    color:#9a3412;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.footer h3{
+    margin-bottom:8px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.copyright{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #334155;
+    color:#94a3b8;
+    font-size:13px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+    .teacher-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:26px;
+    }
+
+    .header p{
+        font-size:14px;
+    }
+
+    .teacher-grid{
+        grid-template-columns:1fr;
+    }
+
+    .headmaster{
+        grid-column:auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <h1>
+        👨‍🏫 शिक्षकगण
+    </h1>
+
+    <p>
+        बमभोला आवासीय उत्क्रमित उच्च माध्यमिक विद्यालय,
+        बसहा लिटियाही
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     BACK BUTTON
+===================================================== -->
+
+<div class="back-area">
+
+    <a href="index.html" class="back-btn">
+        ← मुख्य पृष्ठ पर वापस जाएँ
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     TEACHERS
+===================================================== -->
+
+<main class="container">
+
+
+    <div class="section-title">
+
+        <h2>
+            हमारे शिक्षकगण
+        </h2>
+
+        <p>
+            विद्यालय के शिक्षक एवं उनके विषय
+        </p>
+
+    </div>
+
+
+    <div class="teacher-grid">
+
+
+        <!-- =================================================
+             HEADMASTER
+        ================================================== -->
+
+        <div class="teacher-card headmaster">
+
+            <div class="teacher-icon">
+                👨‍💼
+            </div>
+
+            <h3>
+                कुनाल किशोर मंडल
+            </h3>
+
+            <div class="subject">
+                विद्यालय प्रशासन
+            </div>
+
+            <p class="post">
+                प्रधानाध्यापक
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 2
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                रवि कान्त
+            </h3>
+
+            <div class="subject">
+                कंप्यूटर विज्ञान
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (11-12)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 3
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                रणजीत पोद्दार
+            </h3>
+
+            <div class="subject">
+                जीव विज्ञान
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (11-12)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 4
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👩‍🏫
+            </div>
+
+            <h3>
+                खुशबू कुमारी
+            </h3>
+
+            <div class="subject">
+                इतिहास
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (11-12)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 5
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                अमित कुमार
+            </h3>
+
+            <div class="subject">
+                राजनीति विज्ञान
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (11-12)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 6
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                प्रशांत केतु
+            </h3>
+
+            <div class="subject">
+                हिंदी
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 7
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                रोशन कुमार
+            </h3>
+
+            <div class="subject">
+                सामाजिक विज्ञान
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 8
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                प्रीतम आनंद भारती
+            </h3>
+
+            <div class="subject">
+                विज्ञान
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 9
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                एम.डी. अजमल हुसैन
+            </h3>
+
+            <div class="subject">
+                उर्दू
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 10
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👩‍🏫
+            </div>
+
+            <h3>
+                प्रिया भारती
+            </h3>
+
+            <div class="subject">
+                अंग्रेजी
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 11
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👩‍🏫
+            </div>
+
+            <h3>
+                सरिता कुमारी
+            </h3>
+
+            <div class="subject">
+                विज्ञान
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 12
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👩‍🏫
+            </div>
+
+            <h3>
+                रागिनी सिंह
+            </h3>
+
+            <div class="subject">
+                संस्कृत
+            </div>
+
+            <p class="post">
+                विद्यालय अध्यापक (9-10)
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TEACHER 13
+        ================================================== -->
+
+        <div class="teacher-card">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                अरुण कुमार मेहता
+            </h3>
+
+            <div class="subject">
+                गणित
+            </div>
+
+            <p class="post">
+                विशिष्ट शिक्षक (9-10)
+            </p>
+
+        </div>
+        <!-- =================================================
+     NEEMA KUMARI
+================================================== -->
+
+<div class="teacher-card">
+
+    <div class="teacher-icon">
+        👩‍💼
+    </div>
+
+    <h3>
+        नीमा कुमारी
+    </h3>
+
+    <div class="subject">
+        —
+    </div>
+
+    <p class="post">
+        लिपिक
+    </p>
+
+</div>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <h3>
+        बमभोला आवासीय उत्क्रमित उच्च माध्यमिक विद्यालय
+    </h3>
+
+    <p>
+        बसहा लिटियाही, सुपौल, बिहार
+    </p>
+
+    <div class="copyright">
+
+        © 2026 School Website | All Rights Reserved
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

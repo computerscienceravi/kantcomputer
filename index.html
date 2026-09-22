@@ -1,416 +1,1175 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Computer Science Question Bank</title>
+<title>School Index | School Website</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7fb;
-            color: #222;
-        }
+/* =====================================================
+   RESET
+===================================================== */
 
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 35px 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        header p {
-            font-size: 17px;
-        }
+body{
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f5f7fb;
+    color:#222;
+}
 
-        /* MAIN CONTAINER */
-        .container {
-            width: 94%;
-            max-width: 1200px;
-            margin: 30px auto;
-        }
+/* =====================================================
+   TOP BAR
+===================================================== */
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+.top-bar{
+    background:#172554;
+    color:white;
+    padding:8px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+}
 
-        .section-title h2 {
-            font-size: 27px;
-            color: #1e3a8a;
-        }
+.top-bar a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+}
 
-        .section-title p {
-            color: #555;
-            margin-top: 7px;
-        }
+/* =====================================================
+   HEADER
+===================================================== */
 
-        /* CLASS GRID */
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.header{
+    background:white;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
 
-        .class-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px 15px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-            transition: 0.3s;
-            border-top: 5px solid #2563eb;
-        }
+.school-brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
 
-        .class-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
+.school-logo{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
 
-        .class-number {
-            font-size: 30px;
-            font-weight: bold;
-            color: #1d4ed8;
-            margin-bottom: 10px;
-        }
+.school-name h1{
+    font-size:23px;
+    color:#172554;
+}
 
-        .class-card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
+.school-name p{
+    font-size:13px;
+    color:#64748b;
+    margin-top:3px;
+}
 
-        .class-card p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 18px;
-        }
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-        .btn {
-            display: inline-block;
-            padding: 10px 18px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+.navbar{
+    background:linear-gradient(90deg,#1e3a8a,#4f46e5);
+    padding:0 5%;
+}
 
-        .btn:hover {
-            background: #1e40af;
-        }
+.nav-menu{
+    list-style:none;
+    display:flex;
+    align-items:center;
+}
 
-        .coming {
-            background: #9ca3af;
-            cursor: default;
-        }
+.nav-menu > li{
+    position:relative;
+}
 
-        .coming:hover {
-            background: #9ca3af;
-        }
+.nav-menu > li > a{
+    display:block;
+    padding:16px 20px;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
 
-        /* CLASS XI SECTION */
-        .topics-section {
-            margin-top: 50px;
-        }
+.nav-menu > li > a:hover{
+    background:rgba(255,255,255,0.15);
+}
 
-        .topics-box {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-        }
+/* =====================================================
+   DROPDOWN
+===================================================== */
 
-        .topics-box h2 {
-            color: #1d4ed8;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+.dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    min-width:210px;
+    background:white;
+    list-style:none;
+    box-shadow:0 8px 25px rgba(0,0,0,0.18);
+    border-radius:0 0 8px 8px;
+    overflow:hidden;
 
-        .topic-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.25s;
+    z-index:1000;
+}
 
-        .topic-card {
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            background: #f9fafb;
-        }
+.dropdown-menu li a{
+    display:block;
+    padding:12px 16px;
+    text-decoration:none;
+    color:#1e293b;
+    border-bottom:1px solid #eee;
+    transition:0.2s;
+}
 
-        .topic-card h3 {
-            color: #111827;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
+.dropdown-menu li a:hover{
+    background:#eef2ff;
+    color:#4f46e5;
+    padding-left:22px;
+}
 
-        .topic-card p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
+/* Show dropdown on mouse hover */
 
-        /* FOOTER */
-        footer {
-            margin-top: 50px;
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 30px 15px;
-        }
+.dropdown:hover > .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
 
-        footer h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
+/* =====================================================
+   HERO
+===================================================== */
 
-        footer p {
-            line-height: 1.7;
-            color: #d1d5db;
-            font-size: 15px;
-        }
+.hero{
+    min-height:430px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 20px;
 
-        .creator {
-            color: #60a5fa;
-            font-weight: bold;
-            font-size: 18px;
-        }
+    background:
+    linear-gradient(rgba(15,23,42,0.72),rgba(30,41,59,0.72)),
+    url("school.jpg");
 
-        .copyright {
-            margin-top: 15px;
-            font-size: 13px;
-            color: #9ca3af;
-        }
+    background-size:cover;
+    background-position:center;
+}
 
-        /* MOBILE */
-        @media (max-width: 900px) {
-            .class-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+.hero-content{
+    color:white;
+    max-width:800px;
+}
 
-            .topic-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.hero-content h2{
+    font-size:46px;
+    margin-bottom:15px;
+}
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 25px;
-            }
+.hero-content p{
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:25px;
+}
 
-            .class-grid,
-            .topic-grid {
-                grid-template-columns: 1fr;
-            }
+.hero-btn{
+    display:inline-block;
+    padding:13px 28px;
+    background:#f59e0b;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
 
-            .container {
-                width: 92%;
-            }
-        }
-    </style>
+.hero-btn:hover{
+    background:#d97706;
+    transform:translateY(-3px);
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+    padding:60px 5%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:30px;
+    color:#172554;
+}
+
+.section-title p{
+    color:#64748b;
+    margin-top:8px;
+}
+
+/* =====================================================
+   QUICK CARDS
+===================================================== */
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:30px 20px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.07);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+
+.card-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#1e3a8a;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about{
+    background:white;
+}
+
+.about-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.about-text h2{
+    color:#172554;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.about-text p{
+    line-height:1.8;
+    color:#475569;
+}
+
+.about-box{
+    background:linear-gradient(135deg,#eef2ff,#f5f3ff);
+    padding:35px;
+    border-radius:20px;
+}
+
+.about-box h3{
+    color:#3730a3;
+    margin-bottom:15px;
+}
+
+.about-box ul{
+    list-style:none;
+}
+
+.about-box li{
+    padding:9px 0;
+    border-bottom:1px solid #ddd;
+}
+
+/* =====================================================
+   NOTICE
+===================================================== */
+
+.notice-section{
+    background:#f8fafc;
+}
+
+.notice-container{
+    max-width:850px;
+    margin:auto;
+}
+
+.notice{
+    background:white;
+    padding:18px 22px;
+    margin-bottom:12px;
+    border-left:5px solid #4f46e5;
+    border-radius:8px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+.notice span{
+    display:inline-block;
+    background:#4f46e5;
+    color:white;
+    padding:4px 9px;
+    border-radius:4px;
+    font-size:12px;
+    margin-right:10px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    background:#0f172a;
+    color:white;
+    padding:45px 5% 20px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer h3{
+    margin-bottom:15px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+.footer ul{
+    list-style:none;
+}
+
+.footer li{
+    margin:9px 0;
+}
+
+.footer a{
+    color:#cbd5e1;
+    text-decoration:none;
+}
+
+.footer a:hover{
+    color:white;
+}
+
+.copyright{
+    border-top:1px solid #334155;
+    margin-top:35px;
+    padding-top:18px;
+    text-align:center;
+    color:#94a3b8;
+    font-size:14px;
+}
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.menu-btn{
+    display:none;
+    font-size:25px;
+    color:white;
+    cursor:pointer;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+    .card-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .top-bar{
+        display:none;
+    }
+
+    .header{
+        padding:12px 4%;
+    }
+
+    .school-name h1{
+        font-size:17px;
+    }
+
+    .school-name p{
+        font-size:11px;
+    }
+
+    .school-logo{
+        width:50px;
+        height:50px;
+        font-size:22px;
+    }
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .menu-btn{
+        display:block;
+        padding:12px 0;
+    }
+
+    .nav-menu{
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .nav-menu.active{
+        display:flex;
+    }
+
+    .nav-menu > li > a{
+        padding:13px;
+    }
+
+    .dropdown-menu{
+        position:static;
+        display:none;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        box-shadow:none;
+        border-radius:0;
+    }
+
+    .dropdown.active > .dropdown-menu{
+        display:block;
+    }
+
+    .hero{
+        min-height:350px;
+    }
+
+    .hero-content h2{
+        font-size:32px;
+    }
+
+    .hero-content p{
+        font-size:15px;
+    }
+
+    .card-container{
+        grid-template-columns:1fr;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>Computer Science Question Bank</h1>
-        <p>Class-wise Objective Questions & Study Materials</p>
-        <p>Bihar Board | BSEB Pattern</p>
-    </header>
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<div class="top-bar">
+
+    <div>
+        📢 Welcome to Our School Website
+    </div>
+
+    <div>
+        <a href="#">📧 Email</a>
+        <a href="#">📞 Contact</a>
+    </div>
+
+</div>
 
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
+<!-- =====================================================
+     SCHOOL HEADER
+===================================================== -->
 
-        <div class="section-title">
-            <h2>📚 Select Your Class</h2>
-            <p>Choose your class to access Computer Science questions and study materials.</p>
+<header class="header">
+
+    <div class="school-brand">
+
+        <div class="school-logo">
+            S
         </div>
 
+        <div class="school-name">
 
-        <!-- CLASS CARDS -->
-        <div class="class-grid">
+            <h1>
+                B.A UHS Basha Litiyahi
+            </h1>
 
-            <!-- CLASS VI -->
-            <div class="class-card">
-                <div class="class-number">VI</div>
-                <h3>Class 6</h3>
-                <p>Computer Science Questions</p>
-                <a href="#" class="btn coming">Coming Soon</a>
-            </div>
-
-            <!-- CLASS VII -->
-            <div class="class-card">
-                <div class="class-number">VII</div>
-                <h3>Class 7</h3>
-                <p>Computer Science Questions</p>
-                <a href="#" class="btn coming">Coming Soon</a>
-            </div>
-
-            <!-- CLASS VIII -->
-            <div class="class-card">
-                <div class="class-number">VIII</div>
-                <h3>Class 8</h3>
-                <p>Computer Science Questions</p>
-                <a href="#" class="btn coming">Coming Soon</a>
-            </div>
-
-            <!-- CLASS IX -->
-            <div class="class-card">
-                <div class="class-number">IX</div>
-                <h3>Class 9</h3>
-                <p>Computer Science Questions</p>
-                <a href="#" class="btn coming">Coming Soon</a>
-            </div>
-
-            <!-- CLASS X -->
-            <div class="class-card">
-                <div class="class-number">X</div>
-                <h3>Class 10</h3>
-                <p>Computer Science Questions</p>
-                <a href="#" class="btn coming">Coming Soon</a>
-            </div>
-
-            <!-- CLASS XI -->
-            <div class="class-card">
-                <div class="class-number">XI</div>
-                <h3>Class 11</h3>
-                <p>Computer Science Questions</p>
-                <a href="#class11" class="btn">View Questions</a>
-            </div>
-
-            <!-- CLASS XII -->
-            <div class="class-card">
-                <div class="class-number">XII</div>
-                <h3>Class 12</h3>
-                <p>Computer Science Questions</p>
-                <a href="#" class="btn coming">Coming Soon</a>
-            </div>
-
-        </div>
-
-
-        <!-- CLASS XI TOPICS -->
-        <div class="topics-section" id="class11">
-
-            <div class="topics-box">
-
-                <h2>💻 Class XI – Computer Science</h2>
-
-                <div class="topic-grid">
-
-                    <!-- TOPIC 1 -->
-                    <div class="topic-card">
-                        <h3>Computer Fundamentals</h3>
-                        <p>
-                            50 Objective Questions<br>
-                            BSEB Pattern
-                        </p>
-
-                        <a href="mcq1.html"
-                           class="btn">
-                            MCQ-1
-                        </a>
-                        <a href="mcq2.html"
-                           class="btn">
-                            MCQ-2
-                        </a>
-                        <a href="mcq3.html"
-                           class="btn">
-                            MCQ-3
-                        </a>
-                           <a href="Class_11_BSEB_Half_Yearly_Quiz.html"
-                           class="btn">
-                            H-Y MODEL Qs.
-                        </a>
-                        </a>
-                           <a href="Class_11_BSEB_Half_Yearly_Quiz1.html"
-                           class="btn">
-                            H-Y MODEL-2 Qs.
-                        </a>
-                    </div>
-
-
-                    <!-- TOPIC 2 -->
-                    <div class="topic-card">
-                        <h3>Number System</h3>
-                        <p>
-                            Objective Questions<br>
-                            Class XI
-                        </p>
-
-                        <a href="#" class="btn coming">
-                            Coming Soon
-                        </a>
-                    </div>
-
-
-                    <!-- TOPIC 3 -->
-                    <div class="topic-card">
-                        <h3>Programming</h3>
-                        <p>
-                            Computer Programming<br>
-                            Class XI
-                        </p>
-
-                        <a href="#" class="btn coming">
-                            Coming Soon
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
+            <p>
+                Pipra, Supaul, Bihar
+            </p>
 
         </div>
 
     </div>
 
+</header>
 
-    <!-- FOOTER -->
-    <footer>
 
-        <h3>Website Created By</h3>
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-        <p class="creator">
-            Ravi Kant
-        </p>
+<nav class="navbar">
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        ☰ Menu
+    </div>
+
+    <ul class="nav-menu" id="navMenu">
+
+        <li>
+            <a href="index.html">🏠 Home</a>
+        </li>
+
+
+        <!-- PEOPLE -->
+
+        <li class="dropdown">
+
+            <a href="#">
+                👨‍🏫 People ▾
+            </a>
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a href="teachers.html">
+                        👨‍🏫 Teachers
+                    </a>
+                </li>
+
+                <li>
+                    <a href="staff.html">
+                        👥 School Staff
+                    </a>
+                </li>
+
+                <li>
+                    <a href="principal.html">
+                        👤 Principal / Head Teacher
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+        <!-- CLASSES -->
+
+        <li class="dropdown">
+
+            <a href="#">
+                📚 Classes ▾
+            </a>
+
+            <ul class="dropdown-menu">
+
+                <li><a href="class6.html">Class VI</a></li>
+                <li><a href="class7.html">Class VII</a></li>
+                <li><a href="class8.html">Class VIII</a></li>
+                <li><a href="class9.html">Class IX</a></li>
+                <li><a href="class10.html">Class X</a></li>
+                <li><a href="class11.html">Class XI</a></li>
+                <li><a href="class12.html">Class XII</a></li>
+
+            </ul>
+
+        </li>
+
+
+        <!-- CLUBS -->
+
+        <li class="dropdown">
+
+            <a href="#">
+                🌱 Clubs ▾
+            </a>
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a href="youth-club.html">
+                        🧑‍🤝‍🧑 Youth Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="eco-club.html">
+                        🌱 Eco Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="science-club.html">
+                        🔬 Science Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="literary-club.html">
+                        📖 Literary Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sports-club.html">
+                        ⚽ Sports Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cultural-club.html">
+                        🎭 Cultural Club
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+        <!-- ACTIVITIES -->
+
+        <li class="dropdown">
+
+            <a href="#">
+                🎯 Activities ▾
+            </a>
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a href="school-activities.html">
+                        School Activities
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cyber-awareness.html">
+                        💻 Cyber Awareness
+                    </a>
+                </li>
+
+                <li>
+                    <a href="surakshit-shanivar.html">
+                        🛡️ Surakshit Shanivar
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+        <li>
+            <a href="gallery.html">
+                🖼️ Gallery
+            </a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">
+                📞 Contact
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h2>
+            Welcome to Our School
+        </h2>
 
         <p>
-            School Teacher (Class XI–XII), Bihar Government
+            शिक्षा, संस्कार और ज्ञान के माध्यम से
+            विद्यार्थियों के उज्ज्वल भविष्य की ओर एक कदम।
         </p>
+
+        <a href="#about" class="hero-btn">
+            Explore School
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUICK LINKS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            Explore Our School
+        </h2>
 
         <p>
-            Qualification: B.E. – Computer Science
-            <br>
-            M.Tech. – Computer Science
+            Important sections of our school website
         </p>
 
-        <p class="copyright">
-            © 2026 Ravi Kant | Computer Science Question Bank
+    </div>
+
+
+    <div class="card-container">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                People
+            </h3>
+
+            <p>
+                Meet our teachers and school staff.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h3>
+                Classes
+            </h3>
+
+            <p>
+                Explore class-wise academic resources.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌱
+            </div>
+
+            <h3>
+                Clubs
+            </h3>
+
+            <p>
+                Explore Eco, Youth, Science and other clubs.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🖼️
+            </div>
+
+            <h3>
+                Gallery
+            </h3>
+
+            <p>
+                View school activities and events.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT SCHOOL
+===================================================== -->
+
+<section class="section about" id="about">
+
+    <div class="about-container">
+
+
+        <div class="about-text">
+
+            <h2>
+                About Our School
+            </h2>
+
+            <p>
+                Our school is committed to providing quality education
+                and creating a positive learning environment for students.
+                Along with academics, students are encouraged to participate
+                in various clubs, activities, awareness programmes and
+                co-curricular activities.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <h3>
+                School Highlights
+            </h3>
+
+            <ul>
+
+                <li>📚 Quality Education</li>
+
+                <li>🌱 Eco-Friendly Activities</li>
+
+                <li>💻 Digital Learning</li>
+
+                <li>🔬 Science & Innovation</li>
+
+                <li>⚽ Sports & Cultural Activities</li>
+
+                <li>🛡️ Student Safety & Awareness</li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NOTICE
+===================================================== -->
+
+<section class="section notice-section">
+
+    <div class="section-title">
+
+        <h2>
+            Latest Notices
+        </h2>
+
+        <p>
+            School announcements and important information
         </p>
 
-    </footer>
+    </div>
+
+
+    <div class="notice-container">
+
+
+        <div class="notice">
+
+            <span>NEW</span>
+
+            School activities and important announcements
+            will be updated here.
+
+        </div>
+
+
+        <div class="notice">
+
+            <span>INFO</span>
+
+            Students are requested to check the website regularly.
+
+        </div>
+
+
+        <div class="notice">
+
+            <span>EVENT</span>
+
+            Details of upcoming school programmes will be published here.
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+    <div class="footer-container">
+
+
+        <div>
+
+            <h3>
+                B.A UHS Basha Litiyahi
+            </h3>
+
+            <p>
+                Pipra, Supaul, Bihar
+            </p>
+
+            <p>
+                Education • Innovation • Discipline • Excellence
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="teachers.html">Teachers</a>
+                </li>
+
+                <li>
+                    <a href="classes.html">Classes</a>
+                </li>
+
+                <li>
+                    <a href="gallery.html">Gallery</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Clubs
+            </h3>
+
+            <ul>
+
+                <li>
+                    <a href="youth-club.html">
+                        Youth Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="eco-club.html">
+                        Eco Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="science-club.html">
+                        Science Club
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sports-club.html">
+                        Sports Club
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 B.A UHS Basha Litiyahi |
+        School Website
+
+    </div>
+
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMenu(){
+
+    const menu = document.getElementById("navMenu");
+
+    menu.classList.toggle("active");
+
+}
+
+
+/* =====================================================
+   MOBILE DROPDOWN
+===================================================== */
+
+document.querySelectorAll(".dropdown > a").forEach(function(link){
+
+    link.addEventListener("click", function(event){
+
+        if(window.innerWidth <= 700){
+
+            event.preventDefault();
+
+            const parent = this.parentElement;
+
+            parent.classList.toggle("active");
+
+        }
+
+    });
+
+});
+
+
+/* =====================================================
+   CLOSE MENU AFTER CLICK
+===================================================== */
+
+document.querySelectorAll(".nav-menu a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        if(window.innerWidth <= 700){
+
+            if(!this.parentElement.classList.contains("dropdown")){
+
+                document.getElementById("navMenu")
+                .classList.remove("active");
+
+            }
+
+        }
+
+    });
+
+});
+
+
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
+
+console.log(
+    "School Website loaded successfully - " +
+    new Date().getFullYear()
+);
+
+</script>
+
 
 </body>
 </html>
-```
