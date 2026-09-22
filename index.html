@@ -873,6 +873,9 @@ footer p{
         © 2026 KantComputer | Created by Ravi Kant
 
     </div>
+    <div class="visitor-counter">
+    👁️ Total Visitors: <span id="visitorCount">Loading...</span>
+    </div>
 
 </footer>
 
@@ -898,6 +901,76 @@ document.querySelectorAll(".nav-links a").forEach(function(link){
     });
 
 });
+    /* =====================================================
+   VISITOR COUNTER
+===================================================== */
+
+const visitorCountElement =
+    document.getElementById("visitorCount");
+
+const siteName = window.location.hostname;
+const pagePath = window.location.pathname || "/";
+
+/* Count this page view */
+fetch(
+    "https://page-views-api.ratneshc.com/api/v1/track?site=" +
+    encodeURIComponent(siteName) +
+    "&path=" +
+    encodeURIComponent(pagePath)
+)
+.catch(error => {
+    console.log("Visitor tracking error:", error);
+});
+
+/* Get current visitor count */
+function updateVisitorCount(){
+
+    fetch(
+        "https://page-views-api.ratneshc.com/api/v1/views?site=" +
+        encodeURIComponent(siteName) +
+        "&path=" +
+        encodeURIComponent(pagePath)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if(typeof data.views !== "undefined"){
+
+            visitorCountElement.textContent =
+                Number(data.views).toLocaleString("en-IN");
+
+        }
+        else{
+
+            visitorCountElement.textContent = "0";
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log("Visitor count error:", error);
+
+        visitorCountElement.textContent =
+            "Unavailable";
+
+    });
+
+}
+
+/* Give tracking request a moment before reading count */
+setTimeout(updateVisitorCount, 500);
+    /* RESULT */
+
+    resultElement.className = "result";
+    resultElement.innerHTML = "";
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        showResult(false);
+
+    }
 
 </script>
 
