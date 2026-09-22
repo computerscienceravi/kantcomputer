@@ -1,0 +1,192 @@
+<section class="container">
+
+    <div class="section-title">
+        <h2>शिक्षक एवं कर्मचारी सूची</h2>
+        <p>विद्यालय के शिक्षक एवं शिक्षकेतर कर्मियों का विवरण</p>
+    </div>
+
+    <div class="teacher-list">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>क्र. सं.</th>
+                    <th>नाम</th>
+                    <th>विषय</th>
+                    <th>पद</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>कुनाल किशोर मंडल</td>
+                    <td>—</td>
+                    <td>प्रधानाध्यापक</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>रवि कान्त</td>
+                    <td>कंप्यूटर विज्ञान</td>
+                    <td>विद्यालय अध्यापक (11-12)</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>रणजीत पोद्दार</td>
+                    <td>जीव विज्ञान</td>
+                    <td>विद्यालय अध्यापक (11-12)</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>खुशबू कुमारी</td>
+                    <td>इतिहास</td>
+                    <td>विद्यालय अध्यापक (11-12)</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>अमित कुमार</td>
+                    <td>राजनीति विज्ञान</td>
+                    <td>विद्यालय अध्यापक (11-12)</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>प्रशांत केतु</td>
+                    <td>हिंदी</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>रोशन कुमार</td>
+                    <td>सामाजिक विज्ञान</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>प्रीतम आनंद भारती</td>
+                    <td>विज्ञान</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>एम.डी. अजमल हुसैन</td>
+                    <td>उर्दू</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>प्रिया भारती</td>
+                    <td>अंग्रेजी</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>11</td>
+                    <td>सरिता कुमारी</td>
+                    <td>विज्ञान</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>12</td>
+                    <td>रागिनी सिंह</td>
+                    <td>संस्कृत</td>
+                    <td>विद्यालय अध्यापक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>13</td>
+                    <td>अरुण कुमार मेहता</td>
+                    <td>गणित</td>
+                    <td>विशिष्ट शिक्षक (9-10)</td>
+                </tr>
+
+                <tr>
+                    <td>14</td>
+                    <td>नीमा कुमारी</td>
+                    <td>—</td>
+                    <td>लिपिक</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<style>
+
+.teacher-list{
+    width:100%;
+    overflow-x:auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.teacher-list table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+.teacher-list th{
+    background:linear-gradient(90deg,#1e3a8a,#4f46e5);
+    color:white;
+    padding:15px 12px;
+    text-align:center;
+    font-size:16px;
+}
+
+.teacher-list td{
+    padding:14px 12px;
+    text-align:center;
+    border-bottom:1px solid #e2e8f0;
+    color:#334155;
+}
+
+.teacher-list tbody tr{
+    transition:0.2s;
+}
+
+.teacher-list tbody tr:hover{
+    background:#eef2ff;
+}
+
+.teacher-list td:nth-child(2){
+    font-weight:600;
+    color:#172554;
+}
+
+.teacher-list tr:last-child td{
+    border-bottom:none;
+}
+
+@media(max-width:600px){
+
+    .teacher-list{
+        border-radius:10px;
+    }
+
+    .teacher-list th,
+    .teacher-list td{
+        padding:11px 8px;
+        font-size:14px;
+    }
+
+}
+
+</style>
