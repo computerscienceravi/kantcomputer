@@ -4,14 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>School Index | School Website</title>
+<title>Kant Computer | Computer Science Learning</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     margin:0;
     padding:0;
@@ -24,959 +19,834 @@ html{
 
 body{
     font-family:"Segoe UI", Arial, sans-serif;
-    background:#f5f7fb;
-    color:#222;
+    background:#f5f7ff;
+    color:#172033;
+    overflow-x:hidden;
 }
 
-/* =====================================================
-   TOP BAR
-===================================================== */
-
-.top-bar{
-    background:#172554;
-    color:white;
-    padding:8px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:14px;
-}
-
-.top-bar a{
-    color:white;
-    text-decoration:none;
-    margin-left:15px;
-}
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header{
-    background:white;
-    padding:15px 5%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-.school-brand{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.school-logo{
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:28px;
-    font-weight:bold;
-}
-
-.school-name h1{
-    font-size:23px;
-    color:#172554;
-}
-
-.school-name p{
-    font-size:13px;
-    color:#64748b;
-    margin-top:3px;
-}
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
-    background:linear-gradient(90deg,#1e3a8a,#4f46e5);
-    padding:0 5%;
-}
-
-.nav-menu{
-    list-style:none;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(10,18,45,0.96);
+    backdrop-filter:blur(12px);
+    padding:14px 6%;
     display:flex;
     align-items:center;
+    justify-content:space-between;
+    box-shadow:0 5px 25px rgba(0,0,0,0.15);
 }
 
-.nav-menu > li{
-    position:relative;
-}
-
-.nav-menu > li > a{
-    display:block;
-    padding:16px 20px;
+.logo{
     color:white;
     text-decoration:none;
-    font-weight:600;
-    transition:0.3s;
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:.5px;
 }
 
-.nav-menu > li > a:hover{
-    background:rgba(255,255,255,0.15);
+.logo span{
+    color:#7dd3fc;
 }
 
-/* =====================================================
-   DROPDOWN
-===================================================== */
-
-.dropdown-menu{
-    position:absolute;
-    top:100%;
-    left:0;
-    min-width:210px;
-    background:white;
+.nav-links{
+    display:flex;
+    gap:8px;
     list-style:none;
-    box-shadow:0 8px 25px rgba(0,0,0,0.18);
-    border-radius:0 0 8px 8px;
-    overflow:hidden;
-
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(10px);
-    transition:0.25s;
-    z-index:1000;
 }
 
-.dropdown-menu li a{
-    display:block;
-    padding:12px 16px;
+.nav-links a{
+    color:#e5e7eb;
     text-decoration:none;
-    color:#1e293b;
-    border-bottom:1px solid #eee;
-    transition:0.2s;
+    padding:9px 15px;
+    border-radius:20px;
+    font-weight:600;
+    transition:.25s;
 }
 
-.dropdown-menu li a:hover{
-    background:#eef2ff;
-    color:#4f46e5;
-    padding-left:22px;
+.nav-links a:hover{
+    background:#2563eb;
+    color:white;
 }
 
-/* Show dropdown on mouse hover */
-
-.dropdown:hover > .dropdown-menu{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
+.menu-btn{
+    display:none;
+    color:white;
+    font-size:27px;
+    cursor:pointer;
 }
 
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
-    min-height:430px;
+    min-height:650px;
+    position:relative;
     display:flex;
     align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:60px 20px;
-
+    padding:70px 6%;
+    overflow:hidden;
     background:
-    linear-gradient(rgba(15,23,42,0.72),rgba(30,41,59,0.72)),
-    url("school.jpg");
+        radial-gradient(circle at 85% 20%,rgba(56,189,248,.28),transparent 25%),
+        radial-gradient(circle at 10% 80%,rgba(99,102,241,.30),transparent 28%),
+        linear-gradient(135deg,#071329,#172554 55%,#312e81);
+}
 
-    background-size:cover;
-    background-position:center;
+.hero::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    right:-120px;
+    top:-120px;
 }
 
 .hero-content{
+    max-width:680px;
     color:white;
-    max-width:800px;
+    position:relative;
+    z-index:2;
 }
 
-.hero-content h2{
-    font-size:46px;
-    margin-bottom:15px;
-}
-
-.hero-content p{
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:25px;
-}
-
-.hero-btn{
+.badge{
     display:inline-block;
-    padding:13px 28px;
-    background:#f59e0b;
-    color:white;
-    text-decoration:none;
+    background:rgba(125,211,252,.12);
+    border:1px solid rgba(125,211,252,.35);
+    color:#bae6fd;
+    padding:8px 15px;
     border-radius:30px;
-    font-weight:bold;
-    transition:0.3s;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:18px;
 }
 
-.hero-btn:hover{
-    background:#d97706;
+.hero h1{
+    font-size:clamp(46px,7vw,82px);
+    line-height:1;
+    margin-bottom:20px;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    color:#7dd3fc;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    color:#dbeafe;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 23px;
+    border-radius:30px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#38bdf8;
+    color:#082f49;
+}
+
+.btn-primary:hover{
     transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(56,189,248,.3);
 }
 
-/* =====================================================
+.btn-outline{
+    color:white;
+    border:1px solid rgba(255,255,255,.35);
+}
+
+.btn-outline:hover{
+    background:white;
+    color:#172554;
+}
+
+/* PHOTO */
+
+.hero-photo{
+    position:absolute;
+    right:6%;
+    bottom:0;
+    width:min(40vw,510px);
+    z-index:2;
+}
+
+.photo-frame{
+    position:relative;
+    border-radius:28px 28px 0 0;
+    overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+    border:5px solid rgba(255,255,255,.14);
+}
+
+.photo-frame img{
+    width:100%;
+    display:block;
+}
+
+/* =========================
    SECTION
-===================================================== */
+========================= */
 
 .section{
-    padding:60px 5%;
+    padding:75px 6%;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:42px;
 }
 
 .section-title h2{
-    font-size:30px;
+    font-size:35px;
     color:#172554;
+    margin-bottom:10px;
 }
 
 .section-title p{
     color:#64748b;
-    margin-top:8px;
 }
 
-/* =====================================================
-   QUICK CARDS
-===================================================== */
+/* =========================
+   MCQ CARDS
+========================= */
 
-.card-container{
+.mcq-grid{
+    max-width:1100px;
+    margin:auto;
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
 }
 
-.card{
+.mcq-card{
     background:white;
-    padding:30px 20px;
+    border-radius:20px;
+    padding:27px 18px;
     text-align:center;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.07);
-    transition:0.3s;
+    text-decoration:none;
+    color:#172033;
+    box-shadow:0 8px 28px rgba(30,41,59,.08);
+    border:1px solid #e2e8f0;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+.mcq-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#2563eb,#7c3aed,#06b6d4);
 }
 
-.card-icon{
-    font-size:40px;
-    margin-bottom:15px;
+.mcq-card:hover{
+    transform:translateY(-9px);
+    box-shadow:0 18px 35px rgba(37,99,235,.16);
 }
 
-.card h3{
+.mcq-icon{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.mcq-card h3{
+    color:#1d4ed8;
+    margin-bottom:7px;
+}
+
+.mcq-card p{
+    font-size:13px;
+    color:#64748b;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    background:white;
+}
+
+.intro-container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.intro-text h2{
+    font-size:34px;
+    color:#172554;
+    margin-bottom:18px;
+}
+
+.intro-text p{
+    color:#475569;
+    line-height:1.9;
+    font-size:16px;
+}
+
+.qualification-box{
+    background:linear-gradient(135deg,#eef2ff,#f0f9ff);
+    border-radius:22px;
+    padding:28px;
+    border:1px solid #dbeafe;
+}
+
+.qualification-box h3{
     color:#1e3a8a;
-    margin-bottom:10px;
+    margin-bottom:18px;
 }
 
-.card p{
+.qualification{
+    padding:14px 0;
+    border-bottom:1px solid #dbeafe;
+}
+
+.qualification:last-child{
+    border-bottom:none;
+}
+
+.qualification strong{
+    display:block;
+    color:#172554;
+    margin-bottom:4px;
+}
+
+.qualification span{
     color:#64748b;
     font-size:14px;
 }
 
-/* =====================================================
-   ABOUT
-===================================================== */
+/* =========================
+   FEATURES
+========================= */
 
-.about{
-    background:white;
-}
-
-.about-container{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
-}
-
-.about-text h2{
-    color:#172554;
-    font-size:30px;
-    margin-bottom:15px;
-}
-
-.about-text p{
-    line-height:1.8;
-    color:#475569;
-}
-
-.about-box{
-    background:linear-gradient(135deg,#eef2ff,#f5f3ff);
-    padding:35px;
-    border-radius:20px;
-}
-
-.about-box h3{
-    color:#3730a3;
-    margin-bottom:15px;
-}
-
-.about-box ul{
-    list-style:none;
-}
-
-.about-box li{
-    padding:9px 0;
-    border-bottom:1px solid #ddd;
-}
-
-/* =====================================================
-   NOTICE
-===================================================== */
-
-.notice-section{
-    background:#f8fafc;
-}
-
-.notice-container{
-    max-width:850px;
+.feature-grid{
+    max-width:1100px;
     margin:auto;
-}
-
-.notice{
-    background:white;
-    padding:18px 22px;
-    margin-bottom:12px;
-    border-left:5px solid #4f46e5;
-    border-radius:8px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.05);
-}
-
-.notice span{
-    display:inline-block;
-    background:#4f46e5;
-    color:white;
-    padding:4px 9px;
-    border-radius:4px;
-    font-size:12px;
-    margin-right:10px;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer{
-    background:#0f172a;
-    color:white;
-    padding:45px 5% 20px;
-}
-
-.footer-container{
     display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:40px;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.footer h3{
-    margin-bottom:15px;
+.feature{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 6px 22px rgba(15,23,42,.06);
 }
 
-.footer p{
-    color:#cbd5e1;
-    line-height:1.7;
+.feature-icon{
+    font-size:34px;
+    margin-bottom:14px;
 }
 
-.footer ul{
-    list-style:none;
+.feature h3{
+    color:#1e3a8a;
+    margin-bottom:8px;
 }
 
-.footer li{
-    margin:9px 0;
-}
-
-.footer a{
-    color:#cbd5e1;
-    text-decoration:none;
-}
-
-.footer a:hover{
-    color:white;
-}
-
-.copyright{
-    border-top:1px solid #334155;
-    margin-top:35px;
-    padding-top:18px;
-    text-align:center;
-    color:#94a3b8;
+.feature p{
+    color:#64748b;
+    line-height:1.6;
     font-size:14px;
 }
 
-/* =====================================================
-   MOBILE MENU BUTTON
-===================================================== */
+/* =========================
+   FOOTER
+========================= */
 
-.menu-btn{
-    display:none;
-    font-size:25px;
+footer{
+    background:#081126;
     color:white;
-    cursor:pointer;
+    padding:40px 6% 22px;
+    text-align:center;
 }
 
-/* =====================================================
+footer h2{
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#94a3b8;
+}
+
+.copyright{
+    border-top:1px solid #26334f;
+    margin-top:25px;
+    padding-top:18px;
+    color:#64748b;
+    font-size:13px;
+}
+
+/* =========================
    RESPONSIVE
-===================================================== */
+========================= */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
-    .card-container{
-        grid-template-columns:repeat(2,1fr);
+    .hero{
+        min-height:auto;
+        padding-top:60px;
+        padding-bottom:40px;
     }
 
-    .about-container{
+    .hero-photo{
+        position:relative;
+        right:auto;
+        bottom:auto;
+        width:min(80vw,450px);
+        margin:45px auto 0;
+    }
+
+    .hero{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .mcq-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .intro-container{
         grid-template-columns:1fr;
     }
-
-    .footer-container{
-        grid-template-columns:1fr 1fr;
-    }
-
 }
 
 @media(max-width:700px){
 
-    .top-bar{
-        display:none;
-    }
-
-    .header{
-        padding:12px 4%;
-    }
-
-    .school-name h1{
-        font-size:17px;
-    }
-
-    .school-name p{
-        font-size:11px;
-    }
-
-    .school-logo{
-        width:50px;
-        height:50px;
-        font-size:22px;
-    }
-
     .navbar{
-        padding:0 4%;
+        padding:13px 5%;
     }
 
     .menu-btn{
         display:block;
-        padding:12px 0;
     }
 
-    .nav-menu{
+    .nav-links{
         display:none;
+        position:absolute;
+        top:62px;
+        left:0;
+        right:0;
+        background:#0a122d;
         flex-direction:column;
-        align-items:stretch;
+        padding:15px 5%;
     }
 
-    .nav-menu.active{
+    .nav-links.active{
         display:flex;
     }
 
-    .nav-menu > li > a{
-        padding:13px;
-    }
-
-    .dropdown-menu{
-        position:static;
-        display:none;
-        opacity:1;
-        visibility:visible;
-        transform:none;
-        box-shadow:none;
-        border-radius:0;
-    }
-
-    .dropdown.active > .dropdown-menu{
+    .nav-links a{
         display:block;
     }
 
     .hero{
-        min-height:350px;
+        padding:55px 5% 35px;
     }
 
-    .hero-content h2{
-        font-size:32px;
+    .hero h1{
+        font-size:55px;
     }
 
-    .hero-content p{
-        font-size:15px;
+    .hero p{
+        font-size:16px;
     }
 
-    .card-container{
+    .mcq-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .feature-grid{
         grid-template-columns:1fr;
     }
 
-    .footer-container{
-        grid-template-columns:1fr;
+    .section{
+        padding:55px 5%;
     }
-
 }
 
+@media(max-width:430px){
+
+    .mcq-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:47px;
+    }
+}
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     TOP BAR
-===================================================== -->
-
-<div class="top-bar">
-
-    <div>
-        📢 Welcome to Our School Website
-    </div>
-
-    <div>
-        <a href="#">📧 Email</a>
-        <a href="#">📞 Contact</a>
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     SCHOOL HEADER
-===================================================== -->
-
-<header class="header">
-
-    <div class="school-brand">
-
-        <div class="school-logo">
-            S
-        </div>
-
-        <div class="school-name">
-
-            <h1>
-                B.A UHS Basha Litiyahi
-            </h1>
-
-            <p>
-                Pipra, Supaul, Bihar
-            </p>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
+<!-- =========================
      NAVIGATION
-===================================================== -->
+========================= -->
 
 <nav class="navbar">
 
-    <div class="menu-btn" onclick="toggleMenu()">
-        ☰ Menu
-    </div>
+    <a href="index.html" class="logo">
+        Kant<span>Computer</span>
+    </a>
 
-    <ul class="nav-menu" id="navMenu">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-        <li>
-            <a href="index.html">🏠 Home</a>
-        </li>
-
-
-        <!-- PEOPLE -->
-
-        <li class="dropdown">
-
-            <a href="#">
-                👨‍🏫 People ▾
-            </a>
-
-            <ul class="dropdown-menu">
-
-                <li>
-                    <a href="teachers1">
-                        👨‍🏫 Teachers
-                    </a>
-                </li>
-
-                <li>
-                    <a href="staff.html">
-                        👥 School Staff
-                    </a>
-                </li>
-
-                <li>
-                    <a href="principal.html">
-                        👤 Principal / Head Teacher
-                    </a>
-                </li>
-
-            </ul>
-
-        </li>
-
-
-        <!-- CLASSES -->
-
-        <li class="dropdown">
-
-            <a href="#">
-                📚 Classes ▾
-            </a>
-
-            <ul class="dropdown-menu">
-
-                <li><a href="class6.html">Class VI</a></li>
-                <li><a href="class7.html">Class VII</a></li>
-                <li><a href="class8.html">Class VIII</a></li>
-                <li><a href="class9.html">Class IX</a></li>
-                <li><a href="class10.html">Class X</a></li>
-                <li><a href="class11.html">Class XI</a></li>
-                <li><a href="class12.html">Class XII</a></li>
-
-            </ul>
-
-        </li>
-
-
-        <!-- CLUBS -->
-
-        <li class="dropdown">
-
-            <a href="#">
-                🌱 Clubs ▾
-            </a>
-
-            <ul class="dropdown-menu">
-
-                <li>
-                    <a href="youth-club.html">
-                        🧑‍🤝‍🧑 Youth Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="eco-club.html">
-                        🌱 Eco Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="science-club.html">
-                        🔬 Science Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="literary-club.html">
-                        📖 Literary Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="sports-club.html">
-                        ⚽ Sports Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="cultural-club.html">
-                        🎭 Cultural Club
-                    </a>
-                </li>
-
-            </ul>
-
-        </li>
-
-
-        <!-- ACTIVITIES -->
-
-        <li class="dropdown">
-
-            <a href="#">
-                🎯 Activities ▾
-            </a>
-
-            <ul class="dropdown-menu">
-
-                <li>
-                    <a href="school-activities.html">
-                        School Activities
-                    </a>
-                </li>
-
-                <li>
-                    <a href="cyber-awareness.html">
-                        💻 Cyber Awareness
-                    </a>
-                </li>
-
-                <li>
-                    <a href="surakshit-shanivar.html">
-                        🛡️ Surakshit Shanivar
-                    </a>
-                </li>
-
-            </ul>
-
-        </li>
-
-
-        <li>
-            <a href="gallery.html">
-                🖼️ Gallery
-            </a>
-        </li>
-
-
-        <li>
-            <a href="contact.html">
-                📞 Contact
-            </a>
-        </li>
-
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#mcq">MCQ Practice</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#resources">Resources</a></li>
     </ul>
 
 </nav>
 
 
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
-<section class="hero">
+<section class="hero" id="home">
 
     <div class="hero-content">
 
-        <h2>
-            Welcome to Our School
-        </h2>
+        <div class="badge">
+            💻 Computer Science Learning Platform
+        </div>
+
+        <h1>
+            Kant<span>Computer</span>
+        </h1>
 
         <p>
-            शिक्षा, संस्कार और ज्ञान के माध्यम से
-            विद्यार्थियों के उज्ज्वल भविष्य की ओर एक कदम।
+            Learn Computer Science, practice MCQs and
+            strengthen your concepts through simple,
+            interactive and student-friendly resources.
         </p>
 
-        <a href="#about" class="hero-btn">
-            Explore School
-        </a>
+        <div class="hero-buttons">
+
+            <a href="#mcq" class="btn btn-primary">
+                Start MCQ Practice →
+            </a>
+
+            <a href="#about" class="btn btn-outline">
+                About Me
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-photo">
+
+        <div class="photo-frame">
+
+            <!-- Keep this image in the same folder as index.html -->
+            <img
+                src="ravi-kant.jpg"
+                alt="Ravi Kant - Computer Science Teacher"
+            >
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     QUICK LINKS
-===================================================== -->
+<!-- =========================
+     MCQ SECTION
+========================= -->
 
-<section class="section">
+<section class="section" id="mcq">
 
     <div class="section-title">
 
-        <h2>
-            Explore Our School
-        </h2>
+        <h2>📝 MCQ Practice</h2>
 
         <p>
-            Important sections of our school website
+            Select a question set and start your practice
         </p>
 
     </div>
 
 
-    <div class="card-container">
+    <div class="mcq-grid">
 
 
-        <div class="card">
+        <!-- MCQ 1 -->
 
-            <div class="card-icon">
-                👨‍🏫
-            </div>
+        <a href="mcq1.html" class="mcq-card">
 
-            <h3>
-                People
-            </h3>
+            <div class="mcq-icon">💻</div>
 
-            <p>
-                Meet our teachers and school staff.
-            </p>
+            <h3>MCQ - 1</h3>
 
-        </div>
+            <p>Computer Fundamentals</p>
+
+        </a>
 
 
-        <div class="card">
+        <!-- MCQ 2 -->
 
-            <div class="card-icon">
-                📚
-            </div>
+        <a href="mcq2.html" class="mcq-card">
 
-            <h3>
-                Classes
-            </h3>
+            <div class="mcq-icon">🧠</div>
 
-            <p>
-                Explore class-wise academic resources.
-            </p>
+            <h3>MCQ - 2</h3>
 
-        </div>
+            <p>Computer Science Practice</p>
+
+        </a>
 
 
-        <div class="card">
+        <!-- MCQ 3 -->
 
-            <div class="card-icon">
-                🌱
-            </div>
+        <a href="mcq3.html" class="mcq-card">
 
-            <h3>
-                Clubs
-            </h3>
+            <div class="mcq-icon">🔢</div>
 
-            <p>
-                Explore Eco, Youth, Science and other clubs.
-            </p>
+            <h3>MCQ - 3</h3>
 
-        </div>
+            <p>Number System & Logic</p>
+
+        </a>
 
 
-        <div class="card">
+        <!-- MCQ 4 -->
 
-            <div class="card-icon">
-                🖼️
-            </div>
+        <a href="mcq4.html" class="mcq-card">
 
-            <h3>
-                Gallery
-            </h3>
+            <div class="mcq-icon">🌐</div>
 
-            <p>
-                View school activities and events.
-            </p>
+            <h3>MCQ - 4</h3>
 
-        </div>
+            <p>Networking & Internet</p>
 
+        </a>
+
+
+        <!-- MCQ 5 -->
+
+        <a href="mcq5.html" class="mcq-card">
+
+            <div class="mcq-icon">🔐</div>
+
+            <h3>MCQ - 5</h3>
+
+            <p>Cyber Security</p>
+
+        </a>
+
+
+        <!--
+        =================================================
+        FUTURE MCQ BUTTONS
+
+        Copy the block below whenever you want to
+        add MCQ-6, MCQ-7, MCQ-8, etc.
+
+        <a href="mcq6.html" class="mcq-card">
+
+            <div class="mcq-icon">📘</div>
+
+            <h3>MCQ - 6</h3>
+
+            <p>New Question Set</p>
+
+        </a>
+
+        =================================================
+        -->
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     ABOUT SCHOOL
-===================================================== -->
+<!-- =========================
+     ABOUT ME
+========================= -->
 
-<section class="section about" id="about">
+<section class="section intro" id="about">
 
-    <div class="about-container">
+    <div class="intro-container">
 
 
-        <div class="about-text">
+        <div class="intro-text">
 
             <h2>
-                About Our School
+                👨‍🏫 About Me
             </h2>
 
             <p>
-                Our school is committed to providing quality education
-                and creating a positive learning environment for students.
-                Along with academics, students are encouraged to participate
-                in various clubs, activities, awareness programmes and
-                co-curricular activities.
+                I am Ravi Kant, a Computer Science teacher
+                working under the Government of Bihar.
+                Through KantComputer, I aim to provide
+                useful Computer Science learning resources,
+                interactive MCQs and easy-to-understand
+                educational content for students.
             </p>
 
         </div>
 
 
-        <div class="about-box">
+        <div class="qualification-box">
 
             <h3>
-                School Highlights
+                Professional Profile
             </h3>
 
-            <ul>
 
-                <li>📚 Quality Education</li>
+            <div class="qualification">
 
-                <li>🌱 Eco-Friendly Activities</li>
+                <strong>नाम</strong>
 
-                <li>💻 Digital Learning</li>
+                <span>
+                    RAVI KANT
+                </span>
 
-                <li>🔬 Science & Innovation</li>
+            </div>
 
-                <li>⚽ Sports & Cultural Activities</li>
 
-                <li>🛡️ Student Safety & Awareness</li>
+            <div class="qualification">
 
-            </ul>
+                <strong>पद</strong>
+
+                <span>
+                    PGT - Computer Science
+                </span>
+
+            </div>
+
+
+            <div class="qualification">
+
+                <strong>सेवा</strong>
+
+                <span>
+                    Bihar Government
+                </span>
+
+            </div>
+
+
+            <div class="qualification">
+
+                <strong>योग्यता</strong>
+
+                <span>
+                    M.Tech - Computer Science & Engineering
+                </span>
+
+            </div>
+
+
+            <div class="qualification">
+
+                <strong>स्नातक</strong>
+
+                <span>
+                    B.E - Computer Science & Engineering
+                </span>
+
+            </div>
 
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     NOTICE
-===================================================== -->
+<!-- =========================
+     RESOURCES
+========================= -->
 
-<section class="section notice-section">
+<section class="section" id="resources">
 
     <div class="section-title">
 
-        <h2>
-            Latest Notices
-        </h2>
+        <h2>🚀 Learning Resources</h2>
 
         <p>
-            School announcements and important information
+            Learn • Practice • Improve
         </p>
 
     </div>
 
 
-    <div class="notice-container">
+    <div class="feature-grid">
 
 
-        <div class="notice">
+        <div class="feature">
 
-            <span>NEW</span>
+            <div class="feature-icon">📝</div>
 
-            School activities and important announcements
-            will be updated here.
+            <h3>Interactive MCQs</h3>
 
-        </div>
-
-
-        <div class="notice">
-
-            <span>INFO</span>
-
-            Students are requested to check the website regularly.
+            <p>
+                Practice computer science questions
+                through interactive MCQ webpages.
+            </p>
 
         </div>
 
 
-        <div class="notice">
+        <div class="feature">
 
-            <span>EVENT</span>
+            <div class="feature-icon">💡</div>
 
-            Details of upcoming school programmes will be published here.
+            <h3>Easy Learning</h3>
+
+            <p>
+                Concepts are presented in a simple
+                and student-friendly way.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🎯</div>
+
+            <h3>Exam Practice</h3>
+
+            <p>
+                Useful practice material for school
+                examinations and Computer Science learning.
+            </p>
 
         </div>
 
@@ -986,190 +856,50 @@ body{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================= -->
 
-<footer class="footer">
+<footer>
 
+    <h2>KantComputer</h2>
 
-    <div class="footer-container">
-
-
-        <div>
-
-            <h3>
-                B.A UHS Basha Litiyahi
-            </h3>
-
-            <p>
-                Pipra, Supaul, Bihar
-            </p>
-
-            <p>
-                Education • Innovation • Discipline • Excellence
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Quick Links
-            </h3>
-
-            <ul>
-
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-
-                <li>
-                    <a href="teachers.html">Teachers</a>
-                </li>
-
-                <li>
-                    <a href="classes.html">Classes</a>
-                </li>
-
-                <li>
-                    <a href="gallery.html">Gallery</a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Clubs
-            </h3>
-
-            <ul>
-
-                <li>
-                    <a href="youth-club.html">
-                        Youth Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="eco-club.html">
-                        Eco Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="science-club.html">
-                        Science Club
-                    </a>
-                </li>
-
-                <li>
-                    <a href="sports-club.html">
-                        Sports Club
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-    </div>
-
+    <p>
+        Computer Science Learning & MCQ Practice
+    </p>
 
     <div class="copyright">
 
-        © 2026 B.A UHS Basha Litiyahi |
-        School Website
+        © 2026 KantComputer | Created by Ravi Kant
 
     </div>
-
 
 </footer>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
 
 function toggleMenu(){
 
-    const menu = document.getElementById("navMenu");
-
-    menu.classList.toggle("active");
+    document
+        .getElementById("navLinks")
+        .classList.toggle("active");
 
 }
 
+document.querySelectorAll(".nav-links a").forEach(function(link){
 
-/* =====================================================
-   MOBILE DROPDOWN
-===================================================== */
+    link.addEventListener("click",function(){
 
-document.querySelectorAll(".dropdown > a").forEach(function(link){
-
-    link.addEventListener("click", function(event){
-
-        if(window.innerWidth <= 700){
-
-            event.preventDefault();
-
-            const parent = this.parentElement;
-
-            parent.classList.toggle("active");
-
-        }
+        document
+            .getElementById("navLinks")
+            .classList.remove("active");
 
     });
 
 });
-
-
-/* =====================================================
-   CLOSE MENU AFTER CLICK
-===================================================== */
-
-document.querySelectorAll(".nav-menu a").forEach(function(link){
-
-    link.addEventListener("click", function(){
-
-        if(window.innerWidth <= 700){
-
-            if(!this.parentElement.classList.contains("dropdown")){
-
-                document.getElementById("navMenu")
-                .classList.remove("active");
-
-            }
-
-        }
-
-    });
-
-});
-
-
-/* =====================================================
-   CURRENT YEAR
-===================================================== */
-
-console.log(
-    "School Website loaded successfully - " +
-    new Date().getFullYear()
-);
 
 </script>
-
 
 </body>
 </html>
