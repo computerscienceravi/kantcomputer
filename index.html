@@ -503,6 +503,45 @@ footer p{
         font-size:47px;
     }
 }
+    /* =========================
+   STUDENT OTR MOVING LINK
+========================= */
+
+.otr-marquee{
+    width:100%;
+    overflow:hidden;
+    background:#fff7ed;
+    border-bottom:1px solid #fed7aa;
+    padding:9px 0;
+    white-space:nowrap;
+}
+
+.otr-link{
+    display:inline-block;
+    color:#c2410c;
+    font-size:17px;
+    font-weight:700;
+    text-decoration:none;
+    animation:otrMoveLeft 12s linear infinite;
+}
+
+.otr-link:hover{
+    color:#1d4ed8;
+    text-decoration:underline;
+    animation-play-state:paused;
+}
+
+@keyframes otrMoveLeft{
+
+    from{
+        transform:translateX(100vw);
+    }
+
+    to{
+        transform:translateX(-100%);
+    }
+
+}
 </style>
 </head>
 
@@ -533,6 +572,22 @@ footer p{
 <!-- =========================
      HERO
 ========================= -->
+ <!-- =========================
+     STUDENT OTR
+========================= -->
+
+<div class="otr-marquee">
+
+    <a
+        href="https://forms.gle/n7PiuhzNwntqievY8"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="otr-link"
+    >
+        🎓 Student OTR Registration
+    </a>
+
+</div>   
 
 <section class="hero" id="home">
 
