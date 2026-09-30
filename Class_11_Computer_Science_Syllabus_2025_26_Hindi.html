@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BSEB Class 11 Computer Science Syllabus 2025-26 in Hindi">
+<title>कक्षा 11 कंप्यूटर विज्ञान | BSEB Syllabus 2025-26</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#f5f7ff;
+  --surface:rgba(255,255,255,.86);
+  --surface-solid:#ffffff;
+  --text:#182033;
+  --muted:#65708a;
+  --primary:#635bff;
+  --primary2:#8b5cf6;
+  --cyan:#06b6d4;
+  --green:#10b981;
+  --orange:#f59e0b;
+  --red:#ef4444;
+  --border:rgba(99,91,255,.14);
+  --shadow:0 18px 55px rgba(35,39,90,.12);
+  --radius:24px;
+}
+
+*{box-sizing:border-box;scroll-behavior:smooth}
+html{scroll-padding-top:90px}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(99,91,255,.12),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(6,182,212,.10),transparent 25%),
+    linear-gradient(135deg,#f8f9ff 0%,#eef3ff 48%,#f8fbff 100%);
+  font-family:"Noto Sans Devanagari","Poppins",Arial,sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+body.dark{
+  --bg:#0b1020;
+  --surface:rgba(18,25,48,.86);
+  --surface-solid:#121932;
+  --text:#edf2ff;
+  --muted:#aeb8d2;
+  --border:rgba(139,92,246,.25);
+  --shadow:0 18px 55px rgba(0,0,0,.32);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(99,91,255,.20),transparent 30%),
+    radial-gradient(circle at 90% 15%,rgba(6,182,212,.13),transparent 28%),
+    linear-gradient(135deg,#080c18,#0d1428 50%,#09101e);
+}
+
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+
+#progress{
+  position:fixed;top:0;left:0;width:0;height:4px;
+  background:linear-gradient(90deg,var(--cyan),var(--primary),var(--primary2));
+  z-index:9999;
+  box-shadow:0 0 14px rgba(99,91,255,.65);
+}
+
+.nav{
+  position:sticky;top:0;z-index:1000;
+  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,.72);
+  border-bottom:1px solid var(--border);
+}
+.dark .nav{background:rgba(8,12,25,.76)}
+.nav-inner{
+  max-width:1180px;margin:auto;padding:13px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.brand{
+  display:flex;align-items:center;gap:11px;font-weight:800;
+}
+.logo{
+  width:42px;height:42px;border-radius:14px;
+  display:grid;place-items:center;color:white;
+  background:linear-gradient(135deg,var(--primary),var(--cyan));
+  box-shadow:0 8px 22px rgba(99,91,255,.28);
+  font-size:20px;
+}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:11px}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-btn{
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  padding:9px 12px;border-radius:12px;cursor:pointer;
+  transition:.25s;
+}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.menu{
+  display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;
+}
+.menu a{
+  padding:8px 10px;border-radius:10px;font-size:13px;color:var(--muted);
+}
+.menu a:hover{background:rgba(99,91,255,.10);color:var(--primary)}
+
+.hero{
+  max-width:1180px;margin:0 auto;padding:76px 20px 50px;
+  position:relative;text-align:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 13px;border:1px solid var(--border);
+  background:var(--surface);border-radius:999px;
+  color:var(--primary);font-weight:700;font-size:13px;
+  box-shadow:0 10px 30px rgba(99,91,255,.09);
+  animation:fadeDown .8s ease both;
+}
+.hero h1{
+  margin:18px auto 8px;max-width:900px;
+  font-size:clamp(34px,6vw,68px);line-height:1.1;
+  letter-spacing:-1.5px;
+  background:linear-gradient(90deg,var(--primary),var(--primary2),var(--cyan),var(--primary));
+  background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradientMove 5s ease-in-out infinite,fadeUp .8s .1s both;
+}
+.hero h2{
+  margin:0;color:var(--muted);font-size:clamp(17px,2.5vw,24px);
+  font-weight:600;animation:fadeUp .8s .2s both;
+}
+.hero p{
+  max-width:760px;margin:18px auto 0;color:var(--muted);
+  animation:fadeUp .8s .3s both;
+}
+.hero-buttons{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px;
+  animation:fadeUp .8s .4s both;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 18px;border-radius:14px;border:1px solid var(--border);
+  cursor:pointer;font-weight:700;transition:.25s;
+}
+.btn-primary{color:white;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 12px 28px rgba(99,91,255,.28)}
+.btn-secondary{background:var(--surface);color:var(--text)}
+.btn:hover{transform:translateY(-3px)}
+
+.floating{
+  position:absolute;border-radius:50%;filter:blur(.2px);opacity:.55;
+  animation:float 5s ease-in-out infinite;
+}
+.f1{width:16px;height:16px;background:var(--cyan);left:7%;top:28%}
+.f2{width:12px;height:12px;background:var(--primary2);right:10%;top:24%;animation-delay:1s}
+.f3{width:9px;height:9px;background:var(--orange);left:17%;bottom:15%;animation-delay:2s}
+.f4{width:14px;height:14px;background:var(--green);right:18%;bottom:19%;animation-delay:1.4s}
+
+.container{max-width:1180px;margin:auto;padding:0 20px 70px}
+.section{margin-top:32px}
+.section-title{
+  display:flex;align-items:end;justify-content:space-between;gap:15px;
+  margin:55px 0 18px;
+}
+.section-title h2{margin:0;font-size:clamp(24px,4vw,36px)}
+.section-title p{margin:0;color:var(--muted);font-size:14px}
+
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.stat{
+  position:relative;overflow:hidden;
+  padding:22px;border:1px solid var(--border);border-radius:20px;
+  background:var(--surface);box-shadow:var(--shadow);
+  transition:.3s;
+}
+.stat:hover{transform:translateY(-6px)}
+.stat::after{
+  content:"";position:absolute;width:90px;height:90px;border-radius:50%;
+  right:-30px;top:-30px;background:linear-gradient(135deg,var(--primary),transparent);opacity:.14;
+}
+.stat-icon{font-size:25px}
+.stat strong{display:block;font-size:28px;margin-top:5px}
+.stat span{color:var(--muted);font-size:13px}
+
+.marks{
+  display:grid;grid-template-columns:1.25fr .75fr;gap:20px;
+}
+.panel{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:24px;overflow:hidden;
+}
+.panel h3{margin:0 0 15px;font-size:21px}
+.total-pill{
+  display:inline-flex;padding:7px 12px;border-radius:999px;
+  background:rgba(99,91,255,.10);color:var(--primary);font-weight:800;font-size:13px;
+}
+.unit-list{display:grid;gap:13px}
+.unit-row{
+  display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;
+  padding:13px;border-radius:16px;background:rgba(99,91,255,.045);
+  border:1px solid transparent;transition:.25s;
+}
+.unit-row:hover{border-color:var(--border);transform:translateX(4px)}
+.unit-no{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  color:white;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--cyan));
+}
+.unit-name{font-weight:700}.unit-sub{font-size:12px;color:var(--muted)}
+.mark-badge{
+  min-width:52px;text-align:center;padding:7px 9px;border-radius:12px;
+  background:rgba(16,185,129,.12);color:var(--green);font-weight:800;
+}
+.bar{height:7px;background:rgba(99,91,255,.10);border-radius:999px;margin-top:7px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--primary),var(--cyan));transition:width 1.5s ease}
+
+.ring{
+  width:160px;height:160px;border-radius:50%;margin:10px auto 18px;
+  display:grid;place-items:center;
+  background:conic-gradient(var(--primary) 0 70%,rgba(99,91,255,.10) 70% 100%);
+  position:relative;
+}
+.ring::before{
+  content:"";position:absolute;inset:13px;border-radius:50%;
+  background:var(--surface-solid);
+}
+.ring div{position:relative;text-align:center;font-weight:800}
+.ring b{display:block;font-size:34px;line-height:1}
+.ring small{color:var(--muted)}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini{
+  padding:13px;border-radius:14px;background:rgba(6,182,212,.07);
+  border:1px solid var(--border);text-align:center;
+}
+.mini b{display:block;font-size:20px}.mini span{font-size:12px;color:var(--muted)}
+
+.objectives{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+}
+.objective{
+  display:flex;gap:13px;padding:18px;border-radius:18px;
+  background:var(--surface);border:1px solid var(--border);box-shadow:0 10px 30px rgba(35,39,90,.07);
+  transition:.3s;
+}
+.objective:hover{transform:translateY(-5px)}
+.check{
+  flex:0 0 34px;width:34px;height:34px;border-radius:11px;
+  display:grid;place-items:center;color:white;font-weight:800;
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+}
+.objective b{display:block;margin-bottom:3px}.objective span{color:var(--muted);font-size:13px}
+
+.topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.topic-card{
+  position:relative;padding:24px;border-radius:var(--radius);
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);
+  overflow:hidden;transition:.35s;
+}
+.topic-card:hover{transform:translateY(-7px)}
+.topic-card::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--cyan));
+}
+.topic-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.topic-number{
+  width:48px;height:48px;border-radius:15px;color:white;
+  display:grid;place-items:center;font-size:20px;font-weight:800;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  box-shadow:0 10px 20px rgba(99,91,255,.25);
+}
+.topic-card h3{margin:0;font-size:20px}
+.topic-card .english{color:var(--muted);font:600 12px "Poppins",sans-serif}
+.topic-card h4{margin:22px 0 8px;color:var(--primary);font-size:15px}
+.topic-card ul{margin:0;padding-left:20px}
+.topic-card li{margin:5px 0;color:var(--muted);font-size:14px}
+.topic-card li::marker{color:var(--cyan)}
+
+details{
+  margin-top:12px;border:1px solid var(--border);border-radius:14px;
+  background:rgba(99,91,255,.035);overflow:hidden;
+}
+summary{cursor:pointer;padding:12px 14px;font-weight:700;color:var(--text)}
+details ul{padding:0 14px 14px 34px}
+
+.game-list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.game{
+  padding:16px;border-radius:16px;background:var(--surface);
+  border:1px solid var(--border);transition:.3s;
+}
+.game:hover{transform:scale(1.03)}
+.game .emoji{font-size:28px}.game b{display:block;margin-top:6px}.game span{font-size:12px;color:var(--muted)}
+
+.practical{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:20px;
+}
+.practice-item{
+  display:grid;grid-template-columns:48px 1fr auto;gap:13px;align-items:center;
+  padding:15px;border-bottom:1px dashed var(--border);
+}
+.practice-item:last-child{border-bottom:0}
+.practice-icon{
+  width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(99,91,255,.10);font-size:21px;
+}
+.practice-item b{display:block}.practice-item span{font-size:12px;color:var(--muted)}
+.practice-mark{font-weight:800;color:var(--primary)}
+
+.note{
+  padding:18px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(245,158,11,.10),rgba(99,91,255,.08));
+  border:1px solid rgba(245,158,11,.22);
+}
+.note b{color:var(--orange)}
+
+.tip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tip{
+  padding:20px;border-radius:20px;background:var(--surface);
+  border:1px solid var(--border);box-shadow:0 10px 28px rgba(35,39,90,.07);
+}
+.tip-icon{font-size:28px}.tip h3{margin:8px 0 4px}.tip p{margin:0;color:var(--muted);font-size:13px}
+
+.footer{
+  margin-top:50px;padding:28px 20px;text-align:center;
+  border-top:1px solid var(--border);color:var(--muted);
+}
+.footer strong{color:var(--text)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+
+#topBtn{
+  position:fixed;right:20px;bottom:20px;width:46px;height:46px;
+  border:0;border-radius:15px;color:white;background:linear-gradient(135deg,var(--primary),var(--cyan));
+  box-shadow:0 12px 25px rgba(99,91,255,.30);cursor:pointer;
+  opacity:0;pointer-events:none;transform:translateY(15px);transition:.3s;z-index:900;
+}
+#topBtn.show{opacity:1;pointer-events:auto;transform:none}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:none}}
+@keyframes gradientMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-18px) translateX(7px)}}
+
+@media(max-width:900px){
+  .menu{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .marks,.practical{grid-template-columns:1fr}
+  .topic-grid,.objectives{grid-template-columns:1fr}
+  .game-list{grid-template-columns:repeat(2,1fr)}
+  .tip-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .hero{padding-top:52px}
+  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat{padding:15px}.stat strong{font-size:22px}
+  .panel,.topic-card{padding:18px}
+  .unit-row{grid-template-columns:42px 1fr auto}
+  .unit-no{width:36px;height:36px}
+  .game-list{grid-template-columns:1fr 1fr}
+  .nav-inner{padding:10px 13px}
+  .brand small{display:none}
+}
+@media print{
+  .nav,#progress,#topBtn,.hero-buttons,.floating{display:none!important}
+  body{background:white!important;color:#111}
+  .panel,.topic-card,.objective,.stat,.tip,.game{box-shadow:none!important;break-inside:avoid}
+  .hero{padding-top:20px}
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="logo">💻</span>
+      <span>Computer Science<small>कक्षा 11 • BSEB 2025–26</small></span>
+    </a>
+    <div class="menu">
+      <a href="#overview">Overview</a>
+      <a href="#units">Units</a>
+      <a href="#cpp">C++</a>
+      <a href="#system">System</a>
+      <a href="#practical">Practical</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="toggleTheme()" title="Dark / Light Mode">🌙</button>
+      <button class="nav-btn" onclick="window.print()" title="Print">🖨️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <span class="floating f1"></span><span class="floating f2"></span>
+  <span class="floating f3"></span><span class="floating f4"></span>
+
+  <div class="hero-badge">📘 बिहार बोर्ड • शैक्षणिक सत्र 2025–26</div>
+  <h1>कंप्यूटर विज्ञान</h1>
+  <h2>कक्षा 11वीं — Complete Syllabus</h2>
+  <p>
+    सैद्धांतिक एवं प्रायोगिक परीक्षा के लिए व्यवस्थित पाठ्यक्रम।
+    Topics को आसान Hindi में प्रस्तुत किया गया है, जबकि आवश्यक Computer Science terms English में रखे गए हैं।
+  </p>
+  <div class="hero-buttons">
+    <a class="btn btn-primary" href="#units">🚀 Syllabus देखें</a>
+    <a class="btn btn-secondary" href="#practical">💻 Practical देखें</a>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="overview" class="section reveal">
+  <div class="section-title">
+    <div><h2>📊 एक नज़र में</h2><p>Class XI Computer Science</p></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-icon">📚</div><strong>4</strong><span>मुख्य Units</span></div>
+    <div class="stat"><div class="stat-icon">📝</div><strong>70</strong><span>Theory Marks</span></div>
+    <div class="stat"><div class="stat-icon">💻</div><strong>30</strong><span>Practical Marks</span></div>
+    <div class="stat"><div class="stat-icon">⏱️</div><strong>3 घंटे</strong><span>Theory / Practical</span></div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-title"><div><h2>🎯 Learning Objectives</h2><p>अधिगम के उद्देश्य</p></div></div>
+  <div class="objectives">
+    <div class="objective"><div class="check">1</div><div><b>Problem Statement</b><span>समस्या कथन को समझना।</span></div></div>
+    <div class="objective"><div class="check">2</div><div><b>Problem Solving Logic</b><span>समस्या समाधान के लिए Logic विकसित करना।</span></div></div>
+    <div class="objective"><div class="check">3</div><div><b>Object Oriented Methodology</b><span>Object Oriented Methodology की अवधारणा समझना।</span></div></div>
+    <div class="objective"><div class="check">4</div><div><b>C++ Programming</b><span>C++ का उपयोग करके Object Oriented Programming करना।</span></div></div>
+    <div class="objective"><div class="check">5</div><div><b>Relational Database</b><span>Relational Database के साथ कार्य करने की मूल अवधारणा समझना।</span></div></div>
+    <div class="objective"><div class="check">6</div><div><b>Logic & Networks</b><span>Logic Algebra तथा Communication और Networks को समझना।</span></div></div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-title"><div><h2>🧠 Competencies</h2><p>अपेक्षित दक्षताएँ</p></div></div>
+  <div class="panel">
+    <div class="objectives">
+      <div class="objective"><div class="check">✓</div><div><b>Computer System की पहचान</b><span>Computer System के विभिन्न भागों को पहचानना।</span></div></div>
+      <div class="objective"><div class="check">✓</div><div><b>Parts का वर्गीकरण</b><span>किसी objective system के विभिन्न parts का categorisation करना।</span></div></div>
+      <div class="objective"><div class="check">✓</div><div><b>Problem Solving</b><span>समस्या को समझकर समाधान विकसित करना।</span></div></div>
+      <div class="objective"><div class="check">✓</div><div><b>Efficient Logic</b><span>Object-oriented approach से प्रभावी Logic design करना।</span></div></div>
+      <div class="objective"><div class="check">✓</div><div><b>Database Handling</b><span>Database के साथ कार्य करना।</span></div></div>
+      <div class="objective"><div class="check">✓</div><div><b>Logic Circuit Design</b><span>Logic Circuit का design करना।</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="units" class="section reveal">
+  <div class="section-title"><div><h2>📘 Theory Units</h2><p>कुल 70 अंक • अवधि 3 घंटे</p></div><span class="total-pill">70 Marks</span></div>
+
+  <div class="marks">
+    <div class="panel">
+      <h3>Unit-wise Marks</h3>
+      <div class="unit-list">
+        <a class="unit-row" href="#fundamentals">
+          <div class="unit-no">01</div>
+          <div><div class="unit-name">Computer Fundamentals</div><div class="unit-sub">कंप्यूटर की मूल बातें</div><div class="bar"><span data-width="8.6%"></span></div></div>
+          <div class="mark-badge">06</div>
+        </a>
+        <a class="unit-row" href="#methodology">
+          <div class="unit-no">02</div>
+          <div><div class="unit-name">Programming Methodology</div><div class="unit-sub">प्रोग्रामिंग कार्यप्रणाली</div><div class="bar"><span data-width="14.3%"></span></div></div>
+          <div class="mark-badge">10</div>
+        </a>
+        <a class="unit-row" href="#cpp">
+          <div class="unit-no">03</div>
+          <div><div class="unit-name">Introduction to Programming in C++</div><div class="unit-sub">C++ में प्रोग्रामिंग का परिचय</div><div class="bar"><span data-width="62.9%"></span></div></div>
+          <div class="mark-badge">44</div>
+        </a>
+        <a class="unit-row" href="#system">
+          <div class="unit-no">04</div>
+          <div><div class="unit-name">Computer System Organisation</div><div class="unit-sub">कंप्यूटर सिस्टम संगठन</div><div class="bar"><span data-width="14.3%"></span></div></div>
+          <div class="mark-badge">10</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Theory Distribution</h3>
+      <div class="ring"><div><b>70</b><small>Total Marks</small></div></div>
+      <div class="mini-grid">
+        <div class="mini"><b>06</b><span>Unit 1</span></div>
+        <div class="mini"><b>10</b><span>Unit 2</span></div>
+        <div class="mini"><b>44</b><span>Unit 3</span></div>
+        <div class="mini"><b>10</b><span>Unit 4</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fundamentals" class="section reveal">
+  <div class="section-title"><div><h2>01. Computer Fundamentals</h2><p>कंप्यूटर की मूल बातें • 06 अंक</p></div></div>
+  <div class="topic-grid">
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>कंप्यूटर का विकास</h3><div class="english">Evolution of Computers</div></div><div class="topic-number">01</div></div>
+      <h4>मुख्य Topics</h4>
+      <ul>
+        <li>Computer का विकास एवं Basics of Computer</li>
+        <li>Computer का Operation</li>
+        <li>Functional Components एवं उनका Interconnection</li>
+        <li>Directory Listing एवं Hierarchical Directory Structure</li>
+        <li>Booting की अवधारणा</li>
+        <li>Operating System का उपयोग</li>
+        <li>Files/Folders का Rename, Delete, Format और Copy करना</li>
+        <li>Pathname एवं Tasks के बीच Switching</li>
+        <li>Applications की Installation / Removal</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Software Concepts</h3><div class="english">Software के प्रकार</div></div><div class="topic-number">02</div></div>
+      <h4>Types of Software</h4>
+      <ul>
+        <li>System Software</li>
+        <li>Utility Software</li>
+        <li>Application Software</li>
+      </ul>
+      <h4>System Software</h4>
+      <ul>
+        <li>Operating System</li><li>Compiler</li><li>Interpreter</li><li>Assembler</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Operating System</h3><div class="english">OS Concepts & Functions</div></div><div class="topic-number">03</div></div>
+      <h4>प्रमुख Functions</h4>
+      <ul>
+        <li>Processor Management</li><li>Memory Management</li><li>File Management</li><li>Device Management</li>
+      </ul>
+      <h4>Operating System के प्रकार</h4>
+      <ul>
+        <li>Interactive Operating System (GUI Based)</li>
+        <li>Time Sharing Operating System</li>
+        <li>Real Time Operating System</li>
+        <li>Distributed Operating System</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>OS Examples</h3><div class="english">Commonly used Operating Systems</div></div><div class="topic-number">04</div></div>
+      <h4>Examples</h4>
+      <ul>
+        <li>Solaris</li><li>UNIX</li><li>Linux</li><li>Mac OS</li><li>Windows</li>
+      </ul>
+      <div class="note"><b>अभ्यास:</b> उपर्युक्त Operating Systems में से किसी एक का उपयोग करके Operating System की सामान्य functionalities को illustrate और implement करना।</div>
+    </article>
+  </div>
+</section>
+
+<section id="methodology" class="section reveal">
+  <div class="section-title"><div><h2>02. Programming Methodology</h2><p>प्रोग्रामिंग कार्यप्रणाली • 10 अंक</p></div></div>
+  <div class="topic-grid">
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>General Concepts</h3><div class="english">सामान्य अवधारणाएँ</div></div><div class="topic-number">01</div></div>
+      <ul>
+        <li>Modular Approach</li>
+        <li>Expressions में Clarity और Simplicity</li>
+        <li>Identifiers के लिए Proper Names</li>
+        <li>Comments एवं Indentation</li>
+        <li>Documentation एवं Program Maintenance</li>
+        <li>Program Running एवं Debugging</li>
+        <li>Syntax Errors</li>
+        <li>Run-Time Errors</li>
+        <li>Logical Errors</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Problem Solving</h3><div class="english">Methodology & Techniques</div></div><div class="topic-number">02</div></div>
+      <ul>
+        <li>Problem को समझना</li>
+        <li>Output के लिए minimum required inputs की पहचान</li>
+        <li>Problem को छोटे एवं सरल Steps में तोड़ना</li>
+        <li>Required Arithmetic और Logical Operations की पहचान</li>
+        <li>Control Structure का उपयोग</li>
+        <li>Conditional Control</li>
+        <li>Looping — Finite एवं Infinite</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="cpp" class="section reveal">
+  <div class="section-title"><div><h2>03. Introduction to Programming in C++</h2><p>C++ में प्रोग्रामिंग का परिचय • 44 अंक</p></div><span class="total-pill">सबसे अधिक अंक</span></div>
+
+  <div class="topic-grid">
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>C++ Programming</h3><div class="english">Character Set, Tokens & Program Structure</div></div><div class="topic-number">01</div></div>
+      <ul>
+        <li>C++ Character Set</li>
+        <li>C++ Tokens — Identifiers, Keywords, Constants, Operators</li>
+        <li>C++ Program की Structure</li>
+        <li>Header Files — <code>iostream.h</code>, <code>iomanip.h</code></li>
+        <li><code>main()</code> Function</li>
+        <li><code>cout</code>, <code>cin</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code></li>
+        <li><code>endl</code> और <code>setw()</code></li>
+        <li>Cascading of I/O Operators</li>
+        <li>Editor, Compilation, Linking और Execution</li>
+        <li>Standard Input / Output Operations</li>
+        <li>C Language के <code>gets()</code> और <code>puts()</code></li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Data Types, Variables & Constants</h3><div class="english">डेटा प्रकार एवं Variables</div></div><div class="topic-number">02</div></div>
+      <h4>Data Types</h4>
+      <ul><li><code>char</code>, <code>int</code>, <code>float</code>, <code>double</code></li></ul>
+      <h4>Constants</h4>
+      <ul>
+        <li>Integer Constants</li><li>Character Constants</li><li>Backslash Character Constants जैसे <code>\n</code></li>
+        <li>Floating Point Constants</li><li>String Constants</li>
+      </ul>
+      <h4>Variables</h4>
+      <ul>
+        <li>Access Modifier</li><li>Declaration / Initialization</li><li>Assignment Statement</li>
+        <li>Type Modifiers — signed, unsigned, long</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Operators & Expressions</h3><div class="english">Operators और Expressions</div></div><div class="topic-number">03</div></div>
+      <ul>
+        <li>Arithmetic Operators — <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+        <li>Unary Operator और Increment / Decrement</li>
+        <li>Relational Operators</li>
+        <li>Logical Operators — <code>&&</code>, <code>||</code>, <code>!</code></li>
+        <li>Conditional Operator — <code>condition ? true : false</code></li>
+        <li>Precedence of Operators</li>
+        <li>Expressions</li>
+        <li>Automatic Type Conversion एवं Type Casting</li>
+        <li>Compound Assignment Operators</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Flow of Control</h3><div class="english">Conditional Statements & Loops</div></div><div class="topic-number">04</div></div>
+      <h4>Conditional Statements</h4>
+      <ul>
+        <li><code>if</code></li><li><code>if-else</code></li><li>Nested <code>if</code></li>
+        <li><code>switch-case</code>, <code>default</code></li><li>Nested <code>switch-case</code></li><li><code>break</code></li>
+      </ul>
+      <h4>Loops</h4>
+      <ul><li><code>while</code></li><li><code>do-while</code></li><li><code>for</code></li><li>Nested Loops</li></ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>One-Dimensional Array</h3><div class="english">Structured Data Type</div></div><div class="topic-number">05</div></div>
+      <ul>
+        <li>Declaration / Initialization</li>
+        <li>Array Elements को Input करना</li>
+        <li>Array Elements को Access करना</li>
+        <li>Array Elements का Manipulation</li>
+        <li>Sum of Elements</li>
+        <li>Product of Elements</li>
+        <li>Average of Elements</li>
+        <li>Linear Search</li>
+        <li>Maximum / Minimum Value</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>String</h3><div class="english">String Manipulation</div></div><div class="topic-number">06</div></div>
+      <ul>
+        <li>String Declaration / Initialization</li>
+        <li>Vowels / Consonants / Digits / Special Characters की Counting</li>
+        <li>Case Conversion</li>
+        <li>Reversing a String</li>
+        <li>String के प्रत्येक Word को Reverse करना</li>
+      </ul>
+      <h4>String Functions — <code>string.h</code></h4>
+      <ul>
+        <li><code>isalnum()</code>, <code>isalpha()</code>, <code>isdigit()</code></li>
+        <li><code>islower()</code>, <code>isupper()</code>, <code>tolower()</code>, <code>toupper()</code></li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Character Functions</h3><div class="english">Header File: ctype.h</div></div><div class="topic-number">07</div></div>
+      <ul>
+        <li><code>isalnum()</code>, <code>isalpha()</code>, <code>isdigit()</code></li>
+        <li><code>islower()</code>, <code>isupper()</code></li>
+        <li><code>tolower()</code>, <code>toupper()</code></li>
+        <li><code>strcpy()</code>, <code>strcat()</code>, <code>strlen()</code></li>
+        <li><code>strcmp()</code>, <code>stricmp()</code>, <code>strrev()</code></li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Mathematical Functions</h3><div class="english">math.h / stdlib.h</div></div><div class="topic-number">08</div></div>
+      <ul>
+        <li><code>fabs()</code>, <code>log()</code>, <code>log10()</code></li>
+        <li><code>pow()</code>, <code>sqrt()</code></li>
+        <li><code>sin()</code>, <code>cos()</code></li>
+        <li><code>abs()</code></li>
+      </ul>
+      <h4>Other Functions — stdlib.h</h4>
+      <ul><li><code>randomize()</code></li><li><code>random()</code></li></ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Two-Dimensional Array</h3><div class="english">2D Array</div></div><div class="topic-number">09</div></div>
+      <ul>
+        <li>Declaration / Initialization</li>
+        <li>Array Elements को Input एवं Access करना</li>
+        <li>Array Elements का Manipulation</li>
+        <li>Row Elements का Sum</li>
+        <li>Column Elements का Sum</li>
+        <li>Diagonal Elements का Sum</li>
+        <li>Maximum / Minimum Values</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>User Defined Functions</h3><div class="english">Functions & Variables</div></div><div class="topic-number">10</div></div>
+      <ul>
+        <li>Function Definition और Function Prototype</li>
+        <li>Invoking / Calling a Function</li>
+        <li>Arguments Pass करना</li>
+        <li>Argument Data Types</li>
+        <li>Default एवं Constant Argument</li>
+        <li>Call by Value एवं Call by Reference</li>
+        <li>Function से Values Return करना</li>
+        <li>Arrays के साथ Functions</li>
+        <li>Scope Rules</li>
+        <li>Local एवं Global Variables</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-title"><div><h2>🎮 Event Programming / Games</h2><p>Games as Examples</p></div></div>
+  <div class="panel">
+    <div class="note" style="margin-bottom:18px"><b>General Guidelines:</b> Initial Requirement समझना, User के लिए Interface develop करना, text-based interface screen का उपयोग, game playing logic तथा scoring logic develop करना।</div>
+    <div class="game-list">
+      <div class="game"><div class="emoji">🧠</div><b>Memory Game</b><span>Randomly generated numbers वाले 2D arrays आधारित number guessing game.</span></div>
+      <div class="game"><div class="emoji">⭕</div><b>Cross 'N Knots</b><span>Regular Tic-Tac-Toe game.</span></div>
+      <div class="game"><div class="emoji">🔤</div><b>Hollywood / Hangman</b><span>Word guessing game.</span></div>
+      <div class="game"><div class="emoji">🐮</div><b>Cows 'N Bulls</b><span>Word / Number guessing game.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="system" class="section reveal">
+  <div class="section-title"><div><h2>04. Computer System Organisation</h2><p>कंप्यूटर सिस्टम संगठन • 10 अंक</p></div></div>
+  <div class="topic-grid">
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Number System</h3><div class="english">संख्या पद्धति</div></div><div class="topic-number">01</div></div>
+      <ul>
+        <li>Binary</li><li>Octal</li><li>Decimal</li><li>Hexadecimal</li>
+        <li>Different Number Systems के बीच Conversion</li>
+        <li>Integer एवं Floating Point</li>
+        <li>Base-2 से Number का 2's Complement</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Character Encoding</h3><div class="english">Internal Storage Encoding</div></div><div class="topic-number">02</div></div>
+      <ul>
+        <li>ASCII</li>
+        <li>ISCI — Indian Scripts Standard Code for Information Interchange</li>
+        <li>UNICODE</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Microprocessor</h3><div class="english">Basic Concepts</div></div><div class="topic-number">03</div></div>
+      <ul>
+        <li>Microprocessor की Basic Concepts</li>
+        <li>Clock Speed — MHz, GHz</li>
+        <li>16-bit, 32-bit एवं 64-bit Processors</li>
+        <li>CISC एवं RISC</li>
+        <li>System Buses</li>
+        <li>Address Bus एवं Data Bus</li>
+        <li>Accumulator</li>
+        <li>Instruction Register</li>
+        <li>Program Counter</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>CPUs & Terminologies</h3><div class="english">Commonly Used CPUs</div></div><div class="topic-number">04</div></div>
+      <ul>
+        <li>Intel Pentium Series</li><li>Intel Celeron</li><li>Cyrix</li><li>AMD Series</li>
+        <li>Xeon</li><li>Intel Mobile</li><li>Mac Series</li>
+        <li>CPU Cache</li><li>CPU Fan</li><li>Motherboard</li>
+        <li>Single, Dual एवं Multiple Processors</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Types of Memory</h3><div class="english">Memory Organisation</div></div><div class="topic-number">05</div></div>
+      <ul>
+        <li>Cache — L1, L2</li><li>Buffer</li>
+        <li>RAM — DRAM, SDRAM, RDRAM, VRAM</li>
+        <li>ROM — PROM, EPROM</li>
+        <li>Hard Disk Drive</li><li>Floppy Disk Drive</li><li>CD/DVD Drive</li>
+        <li>Access Time</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Input / Output Ports</h3><div class="english">Ports & Connections</div></div><div class="topic-number">06</div></div>
+      <ul>
+        <li>Power Connector</li><li>Monitor Socket</li><li>Serial (COM) Port</li><li>Parallel (LPT) Port</li>
+        <li>USB Port</li><li>PS-2 Port</li><li>SCSI Port</li><li>PCI/MC/PCI Socket</li>
+        <li>Keyboard Socket</li><li>Infrared (IR) Port</li><li>Audio/Speaker Socket</li><li>Mic Socket</li>
+        <li>External Storage Devices को I/O Ports से Connect करना</li>
+      </ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Keyboards & Printers</h3><div class="english">Input / Output Devices</div></div><div class="topic-number">07</div></div>
+      <h4>Keyboards</h4>
+      <ul><li>QWERTY</li><li>Inscript</li><li>Multilingual</li><li>Dvorak</li></ul>
+      <h4>Printers</h4>
+      <ul><li>Dot Matrix Printer</li><li>Line Printer</li><li>DeskJet / Inkjet / BubbleJet Printer</li><li>Laser Printer</li></ul>
+    </article>
+
+    <article class="topic-card">
+      <div class="topic-top"><div><h3>Power Supply</h3><div class="english">SMPS & Power Conditioning</div></div><div class="topic-number">08</div></div>
+      <h4>Switched Mode Power Supply (SMPS)</h4>
+      <ul>
+        <li>Voltage</li><li>Current</li><li>Power — Volt, Ampere, Watt</li>
+        <li>SMPS Supplies — Mother Board</li>
+      </ul>
+      <h4>Power Conditioning Devices</h4>
+      <ul>
+        <li>Voltage Stabilizer</li>
+        <li>Constant Voltage Transformer (CVT)</li>
+        <li>Uninterrupted Power Supply (UPS) — Online और Offline</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="panel" style="margin-top:20px">
+    <div class="note"><b>Project Note:</b> विद्यार्थियों को किसी Organization का e-Governance Report तैयार करने के लिए कहा जाएगा, जिसमें Computer System Configuration, Input Output Mechanism, Encoding Scheme और Software Installation का विवरण हो।</div>
+  </div>
+</section>
+
+<section id="practical" class="section reveal">
+  <div class="section-title"><div><h2>💻 Class XI Practical</h2><p>प्रायोगिक परीक्षा • 3 घंटे • 30 अंक</p></div><span class="total-pill">30 Marks</span></div>
+
+  <div class="practical">
+    <div class="panel">
+      <h3>Practical Marks Distribution</h3>
+
+      <div class="practice-item">
+        <div class="practice-icon">💻</div>
+        <div><b>C++ Programming</b><span>Examination के दौरान Computer पर एक C++ Programming Problem develop और test करना।</span></div>
+        <div class="practice-mark">10</div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🧩</div>
+        <div><b>Project Work</b><span>Curriculum के General Guidelines के अनुसार Project Work.</span></div>
+        <div class="practice-mark">10</div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">📒</div>
+        <div><b>Practical File</b><span>Class XI course के topics से minimum 15 programs.</span></div>
+        <div class="practice-mark">05</div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🎤</div>
+        <div><b>Viva Voce</b><span>Class XI syllabus एवं student द्वारा developed project से प्रश्न.</span></div>
+        <div class="practice-mark">05</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Programming में अंक</h3>
+      <div class="unit-list">
+        <div class="unit-row"><div class="unit-no">L</div><div><div class="unit-name">Logic</div><div class="unit-sub">Problem solving logic</div><div class="bar"><span data-width="50%"></span></div></div><div class="mark-badge">05</div></div>
+        <div class="unit-row"><div class="unit-no">D</div><div><div class="unit-name">Documentation / Indentation</div><div class="unit-sub">Program presentation</div><div class="bar"><span data-width="20%"></span></div></div><div class="mark-badge">02</div></div>
+        <div class="unit-row"><div class="unit-no">O</div><div><div class="unit-name">Output Presentation</div><div class="unit-sub">Final output</div><div class="bar"><span data-width="30%"></span></div></div><div class="mark-badge">03</div></div>
+      </div>
+      <div class="note" style="margin-top:18px"><b>महत्वपूर्ण:</b> Practical File में न्यूनतम 15 Programs होना चाहिए।</div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-title"><div><h2>📌 Quick Revision</h2><p>Exam preparation के लिए मुख्य बिंदु</p></div></div>
+  <div class="tip-grid">
+    <div class="tip"><div class="tip-icon">🧮</div><h3>Number System</h3><p>Binary, Octal, Decimal, Hexadecimal और Conversion का अभ्यास करें।</p></div>
+    <div class="tip"><div class="tip-icon">⚙️</div><h3>C++ Logic</h3><p>Operators, Conditions, Loops, Arrays और Functions पर नियमित Programming Practice करें।</p></div>
+    <div class="tip"><div class="tip-icon">🖥️</div><h3>System Organisation</h3><p>CPU, Memory, Ports, Processor, Keyboard, Printer और Power Supply के concepts दोहराएँ।</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <strong>Class XI Computer Science — BSEB 2025–26</strong><br>
+  यह पेज विद्यार्थियों के अध्ययन एवं syllabus reference के लिए तैयार किया गया है।
+</footer>
+
+</main>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* Scroll progress */
+window.addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  const progress=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+  document.getElementById("progress").style.width=progress+"%";
+  document.getElementById("topBtn").classList.toggle("show",h.scrollTop>450);
+});
+
+/* Reveal animations */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      entry.target.querySelectorAll(".bar span").forEach(bar=>{
+        bar.style.width=bar.dataset.width || "0";
+      });
+    }
+  });
+},{threshold:.10});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* Theme */
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  const dark=document.body.classList.contains("dark");
+  localStorage.setItem("cs-theme",dark?"dark":"light");
+  document.querySelector(".nav-btn").textContent=dark?"☀️":"🌙";
+}
+if(localStorage.getItem("cs-theme")==="dark"){
+  document.body.classList.add("dark");
+  document.querySelector(".nav-btn").textContent="☀️";
+}
+
+/* Small interactive glow following pointer */
+document.querySelectorAll(".topic-card,.stat,.tip,.objective,.game").forEach(card=>{
+  card.addEventListener("pointermove",(e)=>{
+    const r=card.getBoundingClientRect();
+    card.style.background=
+      `radial-gradient(circle at ${e.clientX-r.left}px ${e.clientY-r.top}px, rgba(99,91,255,.08), transparent 35%), var(--surface)`;
+  });
+  card.addEventListener("pointerleave",()=>{
+    card.style.background="var(--surface)";
+  });
+});
+</script>
+</body>
+</html>
