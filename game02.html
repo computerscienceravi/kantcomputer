@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kant Computer | Computer Figure Challenge</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    color:#fff;
+    background:
+        radial-gradient(circle at 10% 10%,#30206b 0,transparent 30%),
+        radial-gradient(circle at 90% 20%,#063f5c 0,transparent 30%),
+        linear-gradient(135deg,#080b18,#10152d 55%,#080b18);
+}
+
+.header{
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,8,20,.8);
+    border-bottom:1px solid #ffffff18;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logoIcon{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    font-size:25px;
+    background:linear-gradient(135deg,#713cff,#00cfff);
+}
+
+.logo h1{
+    font-size:21px;
+}
+
+.logo p{
+    font-size:11px;
+    color:#9ba5c8;
+    margin-top:3px;
+}
+
+.home{
+    color:white;
+    text-decoration:none;
+    padding:10px 17px;
+    border:1px solid #ffffff25;
+    border-radius:25px;
+    background:#ffffff0c;
+}
+
+.container{
+    width:min(1000px,94%);
+    margin:30px auto;
+}
+
+.intro{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 15px;
+    border-radius:30px;
+    background:#713cff20;
+    border:1px solid #713cff70;
+    color:#cfc5ff;
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.intro h2{
+    font-size:clamp(28px,5vw,45px);
+    background:linear-gradient(90deg,#fff,#a995ff,#00d5ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.intro p{
+    color:#aeb6d0;
+    margin-top:8px;
+}
+
+.start,.game,.result{
+    max-width:760px;
+    margin:auto;
+}
+
+.start{
+    padding:35px;
+    text-align:center;
+    border-radius:25px;
+    background:#ffffff0d;
+    border:1px solid #ffffff18;
+}
+
+.start h3{
+    font-size:27px;
+    margin-bottom:10px;
+}
+
+.start p{
+    color:#aeb6d0;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+.name{
+    width:100%;
+    padding:15px;
+    border:1px solid #ffffff20;
+    border-radius:13px;
+    background:#ffffff0b;
+    color:#fff;
+    outline:none;
+    font-size:16px;
+    margin-bottom:14px;
+}
+
+.name:focus{
+    border-color:#8d6cff;
+}
+
+.btn{
+    border:0;
+    border-radius:14px;
+    padding:14px 25px;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    background:linear-gradient(90deg,#713cff,#009dff);
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.game{
+    display:none;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.stat{
+    background:#ffffff0d;
+    border:1px solid #ffffff18;
+    border-radius:15px;
+    text-align:center;
+    padding:12px;
+}
+
+.stat small{
+    display:block;
+    color:#8992b2;
+    margin-bottom:5px;
+}
+
+.stat strong{
+    font-size:21px;
+}
+
+#timer{
+    color:#00d5ff;
+}
+
+#score{
+    color:#ffd43b;
+}
+
+#lives{
+    color:#ff7180;
+}
+
+.progressInfo{
+    display:flex;
+    justify-content:space-between;
+    color:#929bb9;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.progress{
+    height:7px;
+    background:#ffffff12;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:18px;
+}
+
+.progressBar{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#713cff,#00d5ff);
+    transition:.3s;
+}
+
+.card{
+    background:#ffffff0d;
+    border:1px solid #ffffff18;
+    border-radius:25px;
+    padding:25px;
+}
+
+.questionNo{
+    color:#a995ff;
+    font-weight:bold;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.question{
+    font-size:23px;
+    margin-bottom:18px;
+}
+
+.figureBox{
+    height:270px;
+    border-radius:20px;
+    background:
+        radial-gradient(circle,#ffffff08 1px,transparent 1px);
+    background-size:20px 20px;
+    border:1px solid #ffffff16;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:22px;
+    overflow:hidden;
+}
+
+.figure{
+    width:90%;
+    height:90%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* COMPUTER FIGURES */
+
+.monitor{
+    width:260px;
+    height:170px;
+    border:10px solid #b9c4d8;
+    border-radius:12px;
+    background:linear-gradient(135deg,#142b4c,#0a8bb2);
+    position:relative;
+    box-shadow:0 0 30px #00cfff30;
+}
+
+.monitor:after{
+    content:"";
+    position:absolute;
+    width:75px;
+    height:15px;
+    background:#aab5c9;
+    bottom:-35px;
+    left:82px;
+}
+
+.monitor:before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:9px;
+    background:#aab5c9;
+    bottom:-44px;
+    left:57px;
+}
+
+.keyboard{
+    width:310px;
+    height:90px;
+    border-radius:12px;
+    background:#c5ccda;
+    padding:12px;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:5px;
+}
+
+.keyboard span{
+    background:#68748b;
+    border-radius:3px;
+}
+
+.mouse{
+    width:85px;
+    height:125px;
+    border-radius:45px;
+    background:#cbd3df;
+    position:relative;
+}
+
+.mouse:before{
+    content:"";
+    position:absolute;
+    width:5px;
+    height:30px;
+    background:#657086;
+    top:20px;
+    left:40px;
+}
+
+.cpu{
+    width:150px;
+    height:190px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#333c50,#101622);
+    border:5px solid #8894aa;
+    position:relative;
+}
+
+.cpu:before{
+    content:"CPU";
+    position:absolute;
+    top:55px;
+    left:38px;
+    font-size:25px;
+    color:#00d5ff;
+    font-weight:bold;
+}
+
+.cpu:after{
+    content:"●  ●  ●";
+    position:absolute;
+    bottom:25px;
+    left:30px;
+    color:#38d9a9;
+}
+
+.printer{
+    width:250px;
+    height:130px;
+    background:#c8cfdb;
+    border-radius:15px;
+    position:relative;
+}
+
+.printer:before{
+    content:"";
+    position:absolute;
+    width:175px;
+    height:65px;
+    background:#f7f8fb;
+    top:-35px;
+    left:37px;
+    border:5px solid #9aa5b8;
+}
+
+.printer:after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:50px;
+    background:white;
+    left:65px;
+    bottom:-32px;
+}
+
+.scanner{
+    width:270px;
+    height:110px;
+    border-radius:15px;
+    background:#9da8ba;
+    transform:skewY(-8deg);
+    position:relative;
+}
+
+.scanner:before{
+    content:"";
+    position:absolute;
+    width:210px;
+    height:12px;
+    background:#00bfe8;
+    top:48px;
+    left:30px;
+}
+
+.ram{
+    width:280px;
+    height:70px;
+    background:#263f32;
+    border:4px solid #55c27a;
+    display:flex;
+    gap:13px;
+    padding:12px;
+}
+
+.ram span{
+    width:20px;
+    height:42px;
+    background:#d8d8b0;
+}
+
+.usb{
+    width:250px;
+    height:80px;
+    position:relative;
+    background:#aeb8c7;
+    border-radius:8px;
+}
+
+.usb:after{
+    content:"";
+    position:absolute;
+    width:55px;
+    height:45px;
+    right:-50px;
+    top:17px;
+    background:#c6ccd5;
+    border-radius:3px;
+}
+
+.router{
+    width:270px;
+    height:90px;
+    border-radius:15px;
+    background:#313c53;
+    border:3px solid #71809c;
+    position:relative;
+}
+
+.router:before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:90px;
+    background:#8996ae;
+    left:55px;
+    top:-82px;
+    transform:rotate(-15deg);
+    box-shadow:80px 10px #8996ae;
+}
+
+.router:after{
+    content:"● ● ● ●";
+    position:absolute;
+    color:#34e6a1;
+    left:90px;
+    bottom:15px;
+}
+
+.hdd{
+    width:155px;
+    height:190px;
+    border-radius:12px;
+    background:#202b3d;
+    border:5px solid #75839a;
+    position:relative;
+}
+
+.hdd:before{
+    content:"";
+    position:absolute;
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    border:7px solid #9ba7b8;
+    left:30px;
+    top:35px;
+}
+
+.hdd:after{
+    content:"HDD";
+    position:absolute;
+    bottom:15px;
+    left:50px;
+    color:#00d5ff;
+    font-weight:bold;
+}
+
+.ssd{
+    width:115px;
+    height:190px;
+    border-radius:10px;
+    background:#222c38;
+    border:4px solid #9ba7b8;
+    position:relative;
+}
+
+.ssd:after{
+    content:"SSD";
+    position:absolute;
+    top:75px;
+    left:31px;
+    color:#4de2a4;
+    font-weight:bold;
+}
+
+.switch{
+    width:280px;
+    height:80px;
+    border-radius:10px;
+    background:#202a3a;
+    border:4px solid #71809c;
+    position:relative;
+}
+
+.switch:after{
+    content:"● ● ● ● ● ● ● ●";
+    color:#34e6a1;
+    position:absolute;
+    left:35px;
+    bottom:20px;
+    letter-spacing:5px;
+}
+
+/* topology */
+.topology{
+    position:relative;
+    width:310px;
+    height:220px;
+}
+
+.node{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#713cff;
+    border:4px solid #bba9ff;
+    position:absolute;
+    display:grid;
+    place-items:center;
+    font-size:20px;
+}
+
+.node:nth-child(1){left:130px;top:80px;}
+.node:nth-child(2){left:20px;top:10px;}
+.node:nth-child(3){right:20px;top:10px;}
+.node:nth-child(4){left:20px;bottom:5px;}
+.node:nth-child(5){right:20px;bottom:5px;}
+
+.line{
+    position:absolute;
+    height:3px;
+    background:#00d5ff;
+    transform-origin:left center;
+}
+
+.l1{width:120px;left:62px;top:52px;transform:rotate(25deg);}
+.l2{width:120px;left:154px;top:52px;transform:rotate(155deg);}
+.l3{width:120px;left:62px;top:170px;transform:rotate(-25deg);}
+.l4{width:120px;left:154px;top:170px;transform:rotate(205deg);}
+
+/* options */
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.option{
+    padding:15px;
+    border-radius:14px;
+    background:#ffffff09;
+    border:1px solid #ffffff20;
+    color:#fff;
+    cursor:pointer;
+    text-align:left;
+    font-size:15px;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#713cff20;
+    border-color:#8d6cff;
+    transform:translateY(-2px);
+}
+
+.option.correct{
+    background:#19d66b20;
+    border-color:#19d66b;
+}
+
+.option.wrong{
+    background:#ff475720;
+    border-color:#ff4757;
+}
+
+.option.disabled{
+    pointer-events:none;
+}
+
+.feedback{
+    display:none;
+    padding:14px;
+    border-radius:13px;
+    margin-top:15px;
+    line-height:1.5;
+}
+
+.feedback.correct{
+    display:block;
+    background:#19d66b18;
+    border:1px solid #19d66b55;
+}
+
+.feedback.wrong{
+    display:block;
+    background:#ff475718;
+    border:1px solid #ff475755;
+}
+
+.nextArea{
+    text-align:right;
+    margin-top:15px;
+}
+
+.next{
+    display:none;
+}
+
+.result{
+    display:none;
+    text-align:center;
+    padding:40px 25px;
+    border-radius:25px;
+    background:#ffffff0d;
+    border:1px solid #ffffff18;
+}
+
+.trophy{
+    font-size:70px;
+}
+
+.result h2{
+    font-size:35px;
+    margin:10px 0;
+}
+
+.finalScore{
+    font-size:55px;
+    font-weight:bold;
+    color:#ffd43b;
+    margin:15px;
+}
+
+.result p{
+    color:#aeb6d0;
+    line-height:1.6;
+}
+
+.resultStats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:25px 0;
+}
+
+.resultStat{
+    padding:15px;
+    border-radius:14px;
+    background:#ffffff09;
+}
+
+.resultStat b{
+    display:block;
+    font-size:22px;
+}
+
+.resultStat span{
+    color:#858eac;
+    font-size:12px;
+}
+
+footer{
+    text-align:center;
+    color:#737c9b;
+    font-size:12px;
+    padding:35px 10px;
+}
+
+footer strong{
+    color:#a995ff;
+}
+
+@media(max-width:650px){
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+    .figureBox{
+        height:230px;
+    }
+
+    .monitor{
+        transform:scale(.75);
+    }
+
+    .keyboard{
+        transform:scale(.75);
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:20px;
+    }
+
+    .resultStats{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        <div class="logoIcon">💻</div>
+        <div>
+            <h1>Kant Computer</h1>
+            <p>Learn • Play • Improve</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="home">⌂ Home</a>
+
+</header>
+
+
+<div class="container">
+
+    <div class="intro">
+        <div class="badge">🎮 FIGURE IDENTIFICATION GAME</div>
+        <h2>Computer Figure Challenge</h2>
+        <p>Look at the figure carefully and identify it!</p>
+    </div>
+
+
+    <!-- START -->
+    <section class="start" id="startScreen">
+
+        <h3>🧠 Can You Identify All 20?</h3>
+
+        <p>
+            You will see different computer-related figures.
+            Choose the correct answer before the timer ends.
+        </p>
+
+        <input
+            type="text"
+            id="playerName"
+            class="name"
+            placeholder="Enter Student Name"
+            maxlength="40"
+        >
+
+        <button class="btn" onclick="startGame()">
+            🚀 START GAME
+        </button>
+
+    </section>
+
+
+    <!-- GAME -->
+    <section class="game" id="gameScreen">
+
+        <div class="stats">
+
+            <div class="stat">
+                <small>⭐ SCORE</small>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="stat">
+                <small>⏱ TIME</small>
+                <strong id="timer">15</strong>
+            </div>
+
+            <div class="stat">
+                <small>❤️ LIVES</small>
+                <strong id="lives">❤️❤️❤️</strong>
+            </div>
+
+            <div class="stat">
+                <small>🔥 COMBO</small>
+                <strong id="combo">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="progressInfo">
+            <span id="progressText">Question 1 / 20</span>
+            <span id="levelText">Level 1</span>
+        </div>
+
+        <div class="progress">
+            <div class="progressBar" id="progressBar"></div>
+        </div>
+
+
+        <div class="card">
+
+            <div class="questionNo" id="questionNo">
+                FIGURE 1
+            </div>
+
+            <div class="question">
+                What is shown in the figure?
+            </div>
+
+
+            <div class="figureBox">
+                <div class="figure" id="figure"></div>
+            </div>
+
+
+            <div class="options" id="options"></div>
+
+
+            <div class="feedback" id="feedback"></div>
+
+
+            <div class="nextArea">
+                <button
+                    class="btn next"
+                    id="nextBtn"
+                    onclick="nextQuestion()">
+                    NEXT FIGURE →
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+    <section class="result" id="resultScreen">
+
+        <div class="trophy" id="trophy">🏆</div>
+
+        <h2>Game Completed!</h2>
+
+        <p>
+            Excellent attempt,
+            <strong id="finalName"></strong>!
+        </p>
+
+        <div class="finalScore" id="finalScore">0</div>
+
+        <p id="resultMessage"></p>
+
+        <div class="resultStats">
+
+            <div class="resultStat">
+                <b id="correctCount">0</b>
+                <span>Correct</span>
+            </div>
+
+            <div class="resultStat">
+                <b id="wrongCount">0</b>
+                <span>Wrong</span>
+            </div>
+
+            <div class="resultStat">
+                <b id="bestCombo">0</b>
+                <span>Best Combo</span>
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="restartGame()">
+            🔄 PLAY AGAIN
+        </button>
+
+    </section>
+
+</div>
+
+
+<footer>
+    © 2026 <strong>Kant Computer</strong> |
+    Created by Ravi Kant, M.Tech (CSE) | School Teacher
+</footer>
+
+
+<script>
+
+/* =========================================================
+   20 COMPUTER FIGURE QUESTIONS
+   ========================================================= */
+
+const questions = [
+
+{
+    figure:"monitor",
+    options:["Monitor","Printer","Scanner","Router"],
+    answer:0,
+    explanation:"This figure represents a computer Monitor. It is an output device used to display information."
+},
+
+{
+    figure:"keyboard",
+    options:["Mouse","Keyboard","Scanner","CPU"],
+    answer:1,
+    explanation:"This is a Keyboard, an input device used to enter text, numbers and commands."
+},
+
+{
+    figure:"mouse",
+    options:["Mouse","Printer","Speaker","Monitor"],
+    answer:0,
+    explanation:"This is a Computer Mouse, a pointing input device."
+},
+
+{
+    figure:"cpu",
+    options:["RAM","CPU","Hard Disk","Monitor"],
+    answer:1,
+    explanation:"This figure represents the CPU cabinet/system unit. CPU stands for Central Processing Unit."
+},
+
+{
+    figure:"printer",
+    options:["Scanner","Printer","Keyboard","Router"],
+    answer:1,
+    explanation:"This is a Printer, an output device that produces a hard copy."
+},
+
+{
+    figure:"scanner",
+    options:["Scanner","Monitor","Mouse","Switch"],
+    answer:0,
+    explanation:"This is a Scanner, an input device used to convert physical documents into digital form."
+},
+
+{
+    figure:"ram",
+    options:["RAM","ROM","SSD","CPU"],
+    answer:0,
+    explanation:"This figure represents a RAM module. RAM is Random Access Memory."
+},
+
+{
+    figure:"usb",
+    options:["USB Flash Drive","Router","RAM","Printer"],
+    answer:0,
+    explanation:"This figure represents a USB Flash Drive, commonly used for portable data storage."
+},
+
+{
+    figure:"router",
+    options:["Switch","Router","CPU","Scanner"],
+    answer:1,
+    explanation:"This is a Router, a networking device that forwards data between networks."
+},
+
+{
+    figure:"hdd",
+    options:["SSD","RAM","Hard Disk Drive","ROM"],
+    answer:2,
+    explanation:"This figure represents a Hard Disk Drive (HDD), a magnetic storage device."
+},
+
+{
+    figure:"ssd",
+    options:["SSD","HDD","RAM","CD-ROM"],
+    answer:0,
+    explanation:"This is an SSD (Solid State Drive), a storage device based on flash memory."
+},
+
+{
+    figure:"switch",
+    options:["Router","Network Switch","Monitor","CPU"],
+    answer:1,
+    explanation:"This figure represents a Network Switch, which connects devices within a network."
+},
+
+{
+    figure:"topology",
+    options:["Bus Topology","Star Topology","Ring Topology","Mesh Topology"],
+    answer:1,
+    explanation:"The central device with several connected nodes represents Star Topology."
+},
+
+{
+    figure:"and",
+    options:["OR Gate","AND Gate","NOT Gate","XOR Gate"],
+    answer:1,
+    explanation:"The AND gate produces output 1 only when all its inputs are 1."
+},
+
+{
+    figure:"or",
+    options:["AND Gate","NOT Gate","OR Gate","NAND Gate"],
+    answer:2,
+    explanation:"This is an OR gate. Its output is 1 when at least one input is 1."
+},
+
+{
+    figure:"not",
+    options:["OR Gate","AND Gate","NOT Gate","NOR Gate"],
+    answer:2,
+    explanation:"This is a NOT gate, also called an inverter."
+},
+
+{
+    figure:"monitor",
+    options:["Output Device","Input Device","Storage Device","Networking Device"],
+    answer:0,
+    explanation:"A monitor is an output device because it presents information to the user."
+},
+
+{
+    figure:"keyboard",
+    options:["Output Device","Input Device","Storage Device","Processing Device"],
+    answer:1,
+    explanation:"A keyboard is an input device because it sends data and commands to the computer."
+},
+
+{
+    figure:"hdd",
+    options:["Input Device","Output Device","Storage Device","Communication Device"],
+    answer:2,
+    explanation:"A hard disk drive is a storage device used to store data."
+},
+
+{
+    figure:"router",
+    options:["Storage Device","Networking Device","Input Device","Output Device"],
+    answer:1,
+    explanation:"A router is a networking device used to connect and route data between networks."
+}
+
+];
+
+
+/* =========================================================
+   GAME VARIABLES
+   ========================================================= */
+
+let current=0;
+let score=0;
+let lives=3;
+let combo=0;
+let bestCombo=0;
+let correct=0;
+let wrong=0;
+let time=15;
+let timer;
+let player="";
+
+
+/* =========================================================
+   FIGURE GENERATOR
+   ========================================================= */
+
+function createFigure(type){
+
+    if(type==="monitor"){
+        return `<div class="monitor"></div>`;
+    }
+
+    if(type==="keyboard"){
+
+        let keys="";
+
+        for(let i=0;i<48;i++){
+            keys+="<span></span>";
+        }
+
+        return `<div class="keyboard">${keys}</div>`;
+    }
+
+    if(type==="mouse"){
+        return `<div class="mouse"></div>`;
+    }
+
+    if(type==="cpu"){
+        return `<div class="cpu"></div>`;
+    }
+
+    if(type==="printer"){
+        return `<div class="printer"></div>`;
+    }
+
+    if(type==="scanner"){
+        return `<div class="scanner"></div>`;
+    }
+
+    if(type==="ram"){
+
+        let chips="";
+
+        for(let i=0;i<8;i++){
+            chips+="<span></span>";
+        }
+
+        return `<div class="ram">${chips}</div>`;
+    }
+
+    if(type==="usb"){
+        return `<div class="usb"></div>`;
+    }
+
+    if(type==="router"){
+        return `<div class="router"></div>`;
+    }
+
+    if(type==="hdd"){
+        return `<div class="hdd"></div>`;
+    }
+
+    if(type==="ssd"){
+        return `<div class="ssd"></div>`;
+    }
+
+    if(type==="switch"){
+        return `<div class="switch"></div>`;
+    }
+
+    if(type==="topology"){
+
+        return `
+        <div class="topology">
+            <div class="line l1"></div>
+            <div class="line l2"></div>
+            <div class="line l3"></div>
+            <div class="line l4"></div>
+
+            <div class="node">1</div>
+            <div class="node">2</div>
+            <div class="node">3</div>
+            <div class="node">4</div>
+            <div class="node">5</div>
+        </div>`;
+    }
+
+    if(type==="and"){
+        return `
+        <svg width="300" height="180" viewBox="0 0 300 180">
+            <line x1="20" y1="55" x2="100" y2="55"
+                  stroke="#00d5ff" stroke-width="5"/>
+            <line x1="20" y1="125" x2="100" y2="125"
+                  stroke="#00d5ff" stroke-width="5"/>
+
+            <path d="M100 35 L150 35
+                     A55 55 0 0 1 150 145
+                     L100 145 Z"
+                  fill="#713cff"
+                  stroke="#b9a8ff"
+                  stroke-width="4"/>
+
+            <line x1="205" y1="90" x2="280" y2="90"
+                  stroke="#00d5ff" stroke-width="5"/>
+
+            <text x="122" y="100"
+                  fill="white"
+                  font-size="22">AND</text>
+        </svg>`;
+    }
+
+    if(type==="or"){
+        return `
+        <svg width="300" height="180" viewBox="0 0 300 180">
+            <line x1="20" y1="55" x2="100" y2="55"
+                  stroke="#00d5ff" stroke-width="5"/>
+            <line x1="20" y1="125" x2="100" y2="125"
+                  stroke="#00d5ff" stroke-width="5"/>
+
+            <path d="M90 35
+                     Q135 90 90 145
+                     Q155 140 205 90
+                     Q155 40 90 35 Z"
+                  fill="#713cff"
+                  stroke="#b9a8ff"
+                  stroke-width="4"/>
+
+            <line x1="205" y1="90" x2="280" y2="90"
+                  stroke="#00d5ff" stroke-width="5"/>
+
+            <text x="125" y="100"
+                  fill="white"
+                  font-size="20">OR</text>
+        </svg>`;
+    }
+
+    if(type==="not"){
+        return `
+        <svg width="300" height="180" viewBox="0 0 300 180">
+            <line x1="20" y1="90" x2="90" y2="90"
+                  stroke="#00d5ff" stroke-width="5"/>
+
+            <polygon points="90,40 90,140 210,90"
+                     fill="#713cff"
+                     stroke="#b9a8ff"
+                     stroke-width="4"/>
+
+            <circle cx="220" cy="90" r="10"
+                    fill="#00d5ff"/>
+
+            <line x1="230" y1="90" x2="280" y2="90"
+                  stroke="#00d5ff" stroke-width="5"/>
+
+            <text x="125" y="100"
+                  fill="white"
+                  font-size="20">NOT</text>
+        </svg>`;
+    }
+
+    return `<div style="font-size:60px">💻</div>`;
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+function startGame(){
+
+    player=document.getElementById("playerName").value.trim();
+
+    if(!player){
+        alert("Please enter student name.");
+        return;
+    }
+
+    current=0;
+    score=0;
+    lives=3;
+    combo=0;
+    bestCombo=0;
+    correct=0;
+    wrong=0;
+
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("resultScreen").style.display="none";
+    document.getElementById("gameScreen").style.display="block";
+
+    showQuestion();
+}
+
+
+/* =========================================================
+   SHOW QUESTION
+   ========================================================= */
+
+function showQuestion(){
+
+    clearInterval(timer);
+
+    if(current>=questions.length || lives<=0){
+        finishGame();
+        return;
+    }
+
+    let q=questions[current];
+
+    document.getElementById("questionNo").textContent=
+        "FIGURE "+(current+1);
+
+    document.getElementById("progressText").textContent=
+        "Figure "+(current+1)+" / 20";
+
+    document.getElementById("levelText").textContent=
+        "Level "+(Math.floor(current/5)+1);
+
+    document.getElementById("progressBar").style.width=
+        ((current/20)*100)+"%";
+
+    document.getElementById("figure").innerHTML=
+        createFigure(q.figure);
+
+    let options=document.getElementById("options");
+
+    options.innerHTML="";
+
+    q.options.forEach((option,index)=>{
+
+        let button=document.createElement("button");
+
+        button.className="option";
+
+        button.innerHTML=
+            `<b>${String.fromCharCode(65+index)}.</b> ${option}`;
+
+        button.onclick=()=>{
+            answerQuestion(index,button);
+        };
+
+        options.appendChild(button);
+
+    });
+
+    document.getElementById("feedback").className="feedback";
+    document.getElementById("feedback").innerHTML="";
+
+    document.getElementById("nextBtn").style.display="none";
+
+    time=15;
+    updateStats();
+
+    timer=setInterval(()=>{
+
+        time--;
+
+        document.getElementById("timer").textContent=time;
+
+        if(time<=0){
+            clearInterval(timer);
+            timeUp();
+        }
+
+    },1000);
+}
+
+
+/* =========================================================
+   ANSWER
+   ========================================================= */
+
+function answerQuestion(index,button){
+
+    clearInterval(timer);
+
+    let q=questions[current];
+
+    let all=document.querySelectorAll(".option");
+
+    all.forEach(x=>{
+        x.classList.add("disabled");
+    });
+
+    if(index===q.answer){
+
+        button.classList.add("correct");
+
+        correct++;
+        combo++;
+
+        bestCombo=Math.max(bestCombo,combo);
+
+        let points=100+(time*5)+(combo*10);
+
+        score+=points;
+
+        showFeedback(
+            true,
+            "🎉 Correct! +"+points+
+            " points<br><small>"+q.explanation+"</small>"
+        );
+
+    }else{
+
+        button.classList.add("wrong");
+
+        all[q.answer].classList.add("correct");
+
+        wrong++;
+        lives--;
+        combo=0;
+
+        showFeedback(
+            false,
+            "❌ Incorrect!<br><small>"+
+            q.explanation+
+            "</small>"
+        );
+    }
+
+    updateStats();
+
+    document.getElementById("nextBtn").style.display="inline-block";
+}
+
+
+/* =========================================================
+   TIME UP
+   ========================================================= */
+
+function timeUp(){
+
+    let q=questions[current];
+
+    let all=document.querySelectorAll(".option");
+
+    all.forEach(x=>{
+        x.classList.add("disabled");
+    });
+
+    all[q.answer].classList.add("correct");
+
+    lives--;
+    wrong++;
+    combo=0;
+
+    showFeedback(
+        false,
+        "⏰ Time Up!<br><small>"+
+        q.explanation+
+        "</small>"
+    );
+
+    updateStats();
+
+    document.getElementById("nextBtn").style.display="inline-block";
+}
+
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+function showFeedback(correctAnswer,text){
+
+    let box=document.getElementById("feedback");
+
+    box.innerHTML=text;
+
+    box.className=
+        correctAnswer
+        ? "feedback correct"
+        : "feedback wrong";
+}
+
+
+/* =========================================================
+   NEXT
+   ========================================================= */
+
+function nextQuestion(){
+
+    current++;
+    showQuestion();
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+function updateStats(){
+
+    document.getElementById("score").textContent=score;
+    document.getElementById("timer").textContent=time;
+    document.getElementById("combo").textContent=combo;
+
+    let hearts="";
+
+    for(let i=0;i<lives;i++){
+        hearts+="❤️";
+    }
+
+    if(lives<=0) hearts="💔";
+
+    document.getElementById("lives").textContent=hearts;
+}
+
+
+/* =========================================================
+   FINISH
+   ========================================================= */
+
+function finishGame(){
+
+    clearInterval(timer);
+
+    document.getElementById("gameScreen").style.display="none";
+    document.getElementById("resultScreen").style.display="block";
+
+    document.getElementById("finalName").textContent=player;
+    document.getElementById("finalScore").textContent=score;
+    document.getElementById("correctCount").textContent=correct;
+    document.getElementById("wrongCount").textContent=wrong;
+    document.getElementById("bestCombo").textContent=bestCombo;
+
+    let percentage=Math.round((correct/20)*100);
+
+    let message;
+    let trophy;
+
+    if(percentage>=90){
+        trophy="👑";
+        message=
+            "Outstanding! You are a Computer Figure Champion!";
+    }
+    else if(percentage>=70){
+        trophy="🏆";
+        message=
+            "Excellent work! Your computer knowledge is very good.";
+    }
+    else if(percentage>=50){
+        trophy="🥈";
+        message=
+            "Good attempt! Keep practising computer figures.";
+    }
+    else{
+        trophy="💻";
+        message=
+            "Keep learning! Practice will make you better.";
+    }
+
+    document.getElementById("trophy").textContent=trophy;
+    document.getElementById("resultMessage").textContent=message;
+}
+
+
+/* =========================================================
+   RESTART
+   ========================================================= */
+
+function restartGame(){
+
+    document.getElementById("resultScreen").style.display="none";
+    document.getElementById("startScreen").style.display="block";
+
+    document.getElementById("playerName").value=player;
+}
+
+</script>
+
+</body>
+</html>
