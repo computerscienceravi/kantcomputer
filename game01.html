@@ -1,0 +1,1512 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kant Computer | Computer Challenge</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#6c2cff;
+    --secondary:#00d4ff;
+    --pink:#ff3cac;
+    --green:#19d66b;
+    --red:#ff4757;
+    --dark:#101225;
+    --card:rgba(255,255,255,.12);
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(108,44,255,.35), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(0,212,255,.25), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(255,60,172,.20), transparent 35%),
+        #080b18;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Floating background circles */
+.bg-circle{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.18;
+    z-index:-1;
+    animation:float 8s infinite ease-in-out;
+}
+
+.circle1{
+    width:180px;
+    height:180px;
+    background:#6c2cff;
+    top:8%;
+    left:-60px;
+}
+
+.circle2{
+    width:250px;
+    height:250px;
+    background:#00d4ff;
+    right:-100px;
+    top:40%;
+    animation-delay:2s;
+}
+
+.circle3{
+    width:130px;
+    height:130px;
+    background:#ff3cac;
+    left:25%;
+    bottom:-50px;
+    animation-delay:4s;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-30px) rotate(15deg);}
+}
+
+/* Header */
+.header{
+    width:100%;
+    padding:18px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    background:rgba(10,12,30,.65);
+    backdrop-filter:blur(15px);
+    position:sticky;
+    top:0;
+    z-index:50;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    background:linear-gradient(135deg,#6c2cff,#00d4ff);
+    box-shadow:0 8px 25px rgba(108,44,255,.4);
+}
+
+.logo-text h1{
+    font-size:22px;
+}
+
+.logo-text p{
+    font-size:11px;
+    color:#aeb6d8;
+    margin-top:3px;
+}
+
+.home-btn{
+    text-decoration:none;
+    color:white;
+    border:1px solid rgba(255,255,255,.2);
+    padding:10px 18px;
+    border-radius:25px;
+    background:rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.home-btn:hover{
+    background:var(--primary);
+    transform:translateY(-2px);
+}
+
+/* Main */
+.container{
+    width:min(1050px,94%);
+    margin:35px auto;
+}
+
+/* Welcome */
+.welcome{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 16px;
+    border-radius:30px;
+    background:rgba(108,44,255,.18);
+    border:1px solid rgba(108,44,255,.5);
+    color:#cfc2ff;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.welcome h2{
+    font-size:clamp(28px,5vw,48px);
+    background:linear-gradient(90deg,#fff,#a991ff,#00d4ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:10px;
+}
+
+.welcome p{
+    color:#aeb6d8;
+    max-width:650px;
+    margin:auto;
+    line-height:1.6;
+}
+
+/* Start Card */
+.start-card{
+    max-width:600px;
+    margin:30px auto;
+    padding:35px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:28px;
+    backdrop-filter:blur(18px);
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+    text-align:center;
+}
+
+.start-card h3{
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+.start-card p{
+    color:#aeb6d8;
+    margin-bottom:25px;
+}
+
+.name-input{
+    width:100%;
+    padding:15px 18px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:rgba(255,255,255,.1);
+    color:white;
+    font-size:16px;
+    border:1px solid rgba(255,255,255,.15);
+    margin-bottom:15px;
+}
+
+.name-input::placeholder{
+    color:#9299b8;
+}
+
+.start-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(90deg,#6c2cff,#00a8ff);
+    box-shadow:0 10px 25px rgba(108,44,255,.35);
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(108,44,255,.5);
+}
+
+/* Game */
+.game{
+    display:none;
+}
+
+.game-top{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat{
+    padding:16px;
+    border-radius:18px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    text-align:center;
+}
+
+.stat small{
+    color:#9299b8;
+    display:block;
+    margin-bottom:6px;
+}
+
+.stat strong{
+    font-size:23px;
+}
+
+.timer strong{
+    color:#00d4ff;
+}
+
+.lives strong{
+    color:#ff6b81;
+}
+
+.combo strong{
+    color:#ffd32a;
+}
+
+/* Progress */
+.progress-box{
+    margin-bottom:20px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:#aeb6d8;
+    margin-bottom:7px;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:rgba(255,255,255,.1);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#6c2cff,#00d4ff);
+    border-radius:20px;
+    transition:.4s;
+}
+
+/* Question */
+.question-card{
+    padding:30px;
+    border-radius:28px;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.question-number{
+    color:#a991ff;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:clamp(20px,3vw,29px);
+    line-height:1.45;
+    margin-bottom:25px;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.option{
+    position:relative;
+    padding:17px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.06);
+    color:white;
+    text-align:left;
+    cursor:pointer;
+    font-size:16px;
+    transition:.25s;
+    overflow:hidden;
+}
+
+.option:hover{
+    transform:translateY(-3px);
+    border-color:#8e70ff;
+    background:rgba(108,44,255,.18);
+}
+
+.option .letter{
+    display:inline-flex;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+    margin-right:10px;
+    background:rgba(255,255,255,.1);
+    font-weight:bold;
+}
+
+.option.correct{
+    background:rgba(25,214,107,.18);
+    border-color:#19d66b;
+}
+
+.option.wrong{
+    background:rgba(255,71,87,.18);
+    border-color:#ff4757;
+}
+
+.option.disabled{
+    pointer-events:none;
+}
+
+/* Feedback */
+.feedback{
+    display:none;
+    margin-top:20px;
+    padding:15px 18px;
+    border-radius:15px;
+    line-height:1.5;
+}
+
+.feedback.correct-feedback{
+    display:block;
+    background:rgba(25,214,107,.12);
+    border:1px solid rgba(25,214,107,.4);
+}
+
+.feedback.wrong-feedback{
+    display:block;
+    background:rgba(255,71,87,.12);
+    border:1px solid rgba(255,71,87,.4);
+}
+
+/* Next */
+.next-area{
+    text-align:right;
+    margin-top:20px;
+}
+
+.next-btn{
+    padding:13px 25px;
+    border:none;
+    border-radius:14px;
+    color:white;
+    background:linear-gradient(90deg,#6c2cff,#00a8ff);
+    font-weight:bold;
+    cursor:pointer;
+    display:none;
+}
+
+/* Result */
+.result{
+    display:none;
+    max-width:700px;
+    margin:30px auto;
+    text-align:center;
+    padding:40px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+}
+
+.trophy{
+    font-size:75px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+.result h2{
+    font-size:36px;
+    margin:15px 0;
+}
+
+.result-name{
+    color:#00d4ff;
+    font-size:20px;
+}
+
+.final-score{
+    font-size:60px;
+    font-weight:bold;
+    margin:15px 0;
+    background:linear-gradient(90deg,#ffd32a,#ff9f43);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.result-message{
+    color:#b8c0dc;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.result-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:25px 0;
+}
+
+.result-stat{
+    padding:15px;
+    background:rgba(255,255,255,.07);
+    border-radius:15px;
+}
+
+.result-stat b{
+    display:block;
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.result-stat span{
+    color:#8e96b7;
+    font-size:12px;
+}
+
+.play-again{
+    padding:14px 30px;
+    border:none;
+    border-radius:15px;
+    background:linear-gradient(90deg,#ff3cac,#784ba0);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:35px 10px;
+    color:#727a9e;
+    font-size:13px;
+}
+
+footer strong{
+    color:#a991ff;
+}
+
+/* Correct animation */
+.pop{
+    animation:pop .4s ease;
+}
+
+@keyframes pop{
+    0%{transform:scale(.9);}
+    70%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+}
+
+/* Shake */
+.shake{
+    animation:shake .4s ease;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-8px);}
+    75%{transform:translateX(8px);}
+}
+
+/* Mobile */
+@media(max-width:700px){
+
+    .header{
+        padding:14px 4%;
+    }
+
+    .logo-icon{
+        width:40px;
+        height:40px;
+        font-size:21px;
+    }
+
+    .logo-text h1{
+        font-size:18px;
+    }
+
+    .home-btn{
+        padding:8px 12px;
+        font-size:13px;
+    }
+
+    .game-top{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+    .question-card{
+        padding:22px;
+    }
+
+    .result-stats{
+        grid-template-columns:1fr;
+    }
+
+    .start-card{
+        padding:25px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-circle circle1"></div>
+<div class="bg-circle circle2"></div>
+<div class="bg-circle circle3"></div>
+
+<header class="header">
+
+    <div class="logo">
+        <div class="logo-icon">💻</div>
+
+        <div class="logo-text">
+            <h1>Kant Computer</h1>
+            <p>Learn • Play • Improve</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="home-btn">⌂ Home</a>
+
+</header>
+
+
+<main class="container">
+
+    <!-- Welcome -->
+    <section class="welcome">
+
+        <div class="badge">🎮 COMPUTER LEARNING GAME</div>
+
+        <h2>Computer Challenge</h2>
+
+        <p>
+            Test your Computer Science knowledge, earn points,
+            build your combo and become a Computer Champion!
+        </p>
+
+    </section>
+
+
+    <!-- Start Screen -->
+    <section class="start-card" id="startScreen">
+
+        <h3>🚀 Ready to Play?</h3>
+
+        <p>
+            Answer quickly and correctly to get more points.
+            Be careful — you have only 3 lives!
+        </p>
+
+        <input
+            type="text"
+            id="playerName"
+            class="name-input"
+            placeholder="Enter your name"
+            maxlength="40"
+        >
+
+        <button class="start-btn" onclick="startGame()">
+            ▶ START GAME
+        </button>
+
+    </section>
+
+
+    <!-- Game -->
+    <section class="game" id="gameScreen">
+
+        <div class="game-top">
+
+            <div class="stat">
+                <small>⭐ SCORE</small>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="stat timer">
+                <small>⏱ TIME</small>
+                <strong id="timer">15</strong>
+            </div>
+
+            <div class="stat lives">
+                <small>❤️ LIVES</small>
+                <strong id="lives">❤️❤️❤️</strong>
+            </div>
+
+            <div class="stat combo">
+                <small>🔥 COMBO</small>
+                <strong id="combo">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="progress-box">
+
+            <div class="progress-info">
+                <span id="progressText">Question 1 / 15</span>
+                <span id="levelText">Level 1</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+        </div>
+
+
+        <div class="question-card" id="questionCard">
+
+            <div class="question-number" id="questionNumber">
+                QUESTION 1
+            </div>
+
+            <div class="question" id="question">
+                Question will appear here
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="next-area">
+                <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+                    NEXT QUESTION →
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Result -->
+    <section class="result" id="resultScreen">
+
+        <div class="trophy" id="trophy">🏆</div>
+
+        <h2>Game Completed!</h2>
+
+        <div class="result-name">
+            Well played, <strong id="finalName"></strong>!
+        </div>
+
+        <div class="final-score" id="finalScore">
+            0
+        </div>
+
+        <div class="result-message" id="resultMessage">
+            Great job!
+        </div>
+
+        <div class="result-stats">
+
+            <div class="result-stat">
+                <b id="correctCount">0</b>
+                <span>Correct Answers</span>
+            </div>
+
+            <div class="result-stat">
+                <b id="wrongCount">0</b>
+                <span>Wrong Answers</span>
+            </div>
+
+            <div class="result-stat">
+                <b id="bestCombo">0</b>
+                <span>Best Combo</span>
+            </div>
+
+        </div>
+
+        <button class="play-again" onclick="restartGame()">
+            🔄 PLAY AGAIN
+        </button>
+
+    </section>
+
+</main>
+
+
+<footer>
+    © 2026 <strong>Kant Computer</strong> |
+    Created by Ravi Kant, M.Tech (CSE) | School Teacher
+</footer>
+
+
+<script>
+
+/* =========================================================
+   COMPUTER CHALLENGE GAME
+   ========================================================= */
+
+
+/* =========================
+   QUESTION BANK
+   ========================= */
+
+const questions = [
+
+    {
+        q:"What is the brain of a computer?",
+        options:[
+            "Keyboard",
+            "CPU",
+            "Monitor",
+            "Mouse"
+        ],
+        answer:1,
+        explanation:"CPU (Central Processing Unit) is commonly called the brain of the computer."
+    },
+
+    {
+        q:"Which of the following is an input device?",
+        options:[
+            "Monitor",
+            "Printer",
+            "Keyboard",
+            "Speaker"
+        ],
+        answer:2,
+        explanation:"Keyboard is used to enter data into a computer."
+    },
+
+    {
+        q:"What does RAM stand for?",
+        options:[
+            "Read Access Memory",
+            "Random Access Memory",
+            "Run Access Memory",
+            "Rapid Access Machine"
+        ],
+        answer:1,
+        explanation:"RAM stands for Random Access Memory."
+    },
+
+    {
+        q:"Which number system uses only 0 and 1?",
+        options:[
+            "Decimal",
+            "Octal",
+            "Binary",
+            "Hexadecimal"
+        ],
+        answer:2,
+        explanation:"Binary number system uses only two digits: 0 and 1."
+    },
+
+    {
+        q:"Which device is mainly used to display output?",
+        options:[
+            "Monitor",
+            "Keyboard",
+            "Scanner",
+            "Mouse"
+        ],
+        answer:0,
+        explanation:"A monitor displays visual output from the computer."
+    },
+
+    {
+        q:"Which of these is an operating system?",
+        options:[
+            "Python",
+            "Windows",
+            "HTML",
+            "CPU"
+        ],
+        answer:1,
+        explanation:"Windows is an operating system developed by Microsoft."
+    },
+
+    {
+        q:"What is the full form of CPU?",
+        options:[
+            "Central Processing Unit",
+            "Computer Processing Utility",
+            "Central Program Unit",
+            "Computer Primary Unit"
+        ],
+        answer:0,
+        explanation:"CPU stands for Central Processing Unit."
+    },
+
+    {
+        q:"Which memory is volatile?",
+        options:[
+            "ROM",
+            "Hard Disk",
+            "RAM",
+            "CD-ROM"
+        ],
+        answer:2,
+        explanation:"RAM is volatile memory because its contents are lost when power is switched off."
+    },
+
+    {
+        q:"Which shortcut is commonly used to copy selected text?",
+        options:[
+            "Ctrl + X",
+            "Ctrl + C",
+            "Ctrl + V",
+            "Ctrl + Z"
+        ],
+        answer:1,
+        explanation:"Ctrl + C is the common keyboard shortcut for Copy."
+    },
+
+    {
+        q:"Which language is used to create the structure of a webpage?",
+        options:[
+            "HTML",
+            "SQL",
+            "C++",
+            "Python"
+        ],
+        answer:0,
+        explanation:"HTML (HyperText Markup Language) defines the structure of webpages."
+    },
+
+    {
+        q:"Which one is a programming language?",
+        options:[
+            "Windows",
+            "Python",
+            "Google",
+            "Keyboard"
+        ],
+        answer:1,
+        explanation:"Python is a popular high-level programming language."
+    },
+
+    {
+        q:"Which unit is commonly used to represent computer storage?",
+        options:[
+            "Kilobyte",
+            "Kilometer",
+            "Kilowatt",
+            "Kilogram"
+        ],
+        answer:0,
+        explanation:"Kilobyte (KB), Megabyte (MB), Gigabyte (GB), etc. are units of digital storage."
+    },
+
+    {
+        q:"What is the full form of USB?",
+        options:[
+            "Universal Serial Bus",
+            "United System Bus",
+            "Universal System Board",
+            "User Serial Board"
+        ],
+        answer:0,
+        explanation:"USB stands for Universal Serial Bus."
+    },
+
+    {
+        q:"Which device is used to move the pointer on a computer screen?",
+        options:[
+            "Printer",
+            "Mouse",
+            "Speaker",
+            "Scanner"
+        ],
+        answer:1,
+        explanation:"A mouse is a pointing device used to control the pointer."
+    },
+
+    {
+        q:"Which of the following is NOT a computer language?",
+        options:[
+            "Java",
+            "Python",
+            "C++",
+            "Windows"
+        ],
+        answer:3,
+        explanation:"Windows is an operating system, not a programming language."
+    },
+
+    {
+        q:"What does WWW stand for?",
+        options:[
+            "World Wide Web",
+            "World Web Window",
+            "Wide World Web",
+            "Web World Wide"
+        ],
+        answer:0,
+        explanation:"WWW stands for World Wide Web."
+    },
+
+    {
+        q:"Which storage device generally has no moving mechanical parts?",
+        options:[
+            "SSD",
+            "Floppy Disk",
+            "Hard Disk Drive",
+            "Magnetic Tape"
+        ],
+        answer:0,
+        explanation:"SSD stores data using flash memory and has no moving mechanical parts."
+    },
+
+    {
+        q:"Which key is normally used to refresh a webpage?",
+        options:[
+            "F1",
+            "F3",
+            "F5",
+            "F12"
+        ],
+        answer:2,
+        explanation:"F5 is commonly used to refresh or reload a webpage."
+    },
+
+    {
+        q:"Which symbol is commonly used for comments in JavaScript for a single line?",
+        options:[
+            "//",
+            "##",
+            "<!--",
+            "**"
+        ],
+        answer:0,
+        explanation:"In JavaScript, // starts a single-line comment."
+    },
+
+    {
+        q:"Which technology is mainly used to style webpages?",
+        options:[
+            "HTML",
+            "CSS",
+            "SQL",
+            "RAM"
+        ],
+        answer:1,
+        explanation:"CSS (Cascading Style Sheets) is used to style and design webpages."
+    }
+
+];
+
+
+/* =========================
+   GAME VARIABLES
+   ========================= */
+
+let currentQuestion = 0;
+let score = 0;
+let lives = 3;
+let combo = 0;
+let bestCombo = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+let timeLeft = 15;
+let timerInterval;
+let playerName = "";
+
+
+/* =========================
+   START GAME
+   ========================= */
+
+function startGame(){
+
+    const nameInput = document.getElementById("playerName");
+
+    playerName = nameInput.value.trim();
+
+    if(playerName === ""){
+        nameInput.focus();
+        nameInput.style.borderColor = "#ff4757";
+
+        setTimeout(()=>{
+            nameInput.style.borderColor = "";
+        },1200);
+
+        return;
+    }
+
+    currentQuestion = 0;
+    score = 0;
+    lives = 3;
+    combo = 0;
+    bestCombo = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("gameScreen").style.display = "block";
+    document.getElementById("resultScreen").style.display = "none";
+
+    updateStats();
+    showQuestion();
+}
+
+
+/* =========================
+   SHOW QUESTION
+   ========================= */
+
+function showQuestion(){
+
+    clearInterval(timerInterval);
+
+    if(currentQuestion >= questions.length || lives <= 0){
+        finishGame();
+        return;
+    }
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTION " + (currentQuestion + 1);
+
+    document.getElementById("progressText").textContent =
+        "Question " + (currentQuestion + 1) +
+        " / " + questions.length;
+
+    const level =
+        Math.floor(currentQuestion / 5) + 1;
+
+    document.getElementById("levelText").textContent =
+        "Level " + level;
+
+    document.getElementById("progressBar").style.width =
+        ((currentQuestion) / questions.length * 100) + "%";
+
+    document.getElementById("question").textContent = q.q;
+
+    const optionsBox = document.getElementById("options");
+
+    optionsBox.innerHTML = "";
+
+    const letters = ["A","B","C","D"];
+
+    q.options.forEach((option,index)=>{
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+
+        button.innerHTML =
+            `<span class="letter">${letters[index]}</span>${option}`;
+
+        button.onclick = () => selectAnswer(index,button);
+
+        optionsBox.appendChild(button);
+
+    });
+
+    document.getElementById("feedback").className = "feedback";
+    document.getElementById("feedback").innerHTML = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    timeLeft = 15;
+    updateTimer();
+
+    timerInterval = setInterval(()=>{
+        timeLeft--;
+        updateTimer();
+
+        if(timeLeft <= 0){
+            clearInterval(timerInterval);
+            timeUp();
+        }
+
+    },1000);
+}
+
+
+/* =========================
+   TIMER
+   ========================= */
+
+function updateTimer(){
+
+    const timer = document.getElementById("timer");
+
+    timer.textContent = timeLeft;
+
+    if(timeLeft <= 5){
+        timer.style.color = "#ff4757";
+    }else{
+        timer.style.color = "#00d4ff";
+    }
+}
+
+
+/* =========================
+   SELECT ANSWER
+   ========================= */
+
+function selectAnswer(index,button){
+
+    clearInterval(timerInterval);
+
+    const q = questions[currentQuestion];
+
+    const allOptions =
+        document.querySelectorAll(".option");
+
+    allOptions.forEach(btn=>{
+        btn.classList.add("disabled");
+    });
+
+    if(index === q.answer){
+
+        button.classList.add("correct");
+
+        correctAnswers++;
+
+        combo++;
+
+        if(combo > bestCombo){
+            bestCombo = combo;
+        }
+
+        /*
+          Base points = 100
+          Time bonus = remaining seconds × 5
+          Combo bonus = combo × 10
+        */
+
+        const points =
+            100 +
+            (timeLeft * 5) +
+            (combo * 10);
+
+        score += points;
+
+        showFeedback(
+            true,
+            "🎉 Correct! +" + points +
+            " points<br><small>" +
+            q.explanation +
+            "</small>"
+        );
+
+        button.classList.add("pop");
+
+    }else{
+
+        button.classList.add("wrong");
+
+        allOptions[q.answer].classList.add("correct");
+
+        lives--;
+
+        combo = 0;
+
+        wrongAnswers++;
+
+        showFeedback(
+            false,
+            "❌ Incorrect!<br>" +
+            "<small>" +
+            q.explanation +
+            "</small>"
+        );
+
+        document
+            .getElementById("questionCard")
+            .classList.add("shake");
+
+        setTimeout(()=>{
+            document
+                .getElementById("questionCard")
+                .classList.remove("shake");
+        },500);
+    }
+
+    updateStats();
+
+    document.getElementById("nextBtn").style.display =
+        "inline-block";
+}
+
+
+/* =========================
+   TIME UP
+   ========================= */
+
+function timeUp(){
+
+    const q = questions[currentQuestion];
+
+    const allOptions =
+        document.querySelectorAll(".option");
+
+    allOptions.forEach(btn=>{
+        btn.classList.add("disabled");
+    });
+
+    allOptions[q.answer].classList.add("correct");
+
+    lives--;
+
+    combo = 0;
+
+    wrongAnswers++;
+
+    showFeedback(
+        false,
+        "⏰ Time's up!<br>" +
+        "<small>" +
+        q.explanation +
+        "</small>"
+    );
+
+    updateStats();
+
+    document.getElementById("nextBtn").style.display =
+        "inline-block";
+}
+
+
+/* =========================
+   FEEDBACK
+   ========================= */
+
+function showFeedback(correct,message){
+
+    const feedback =
+        document.getElementById("feedback");
+
+    feedback.innerHTML = message;
+
+    if(correct){
+        feedback.className =
+            "feedback correct-feedback";
+    }else{
+        feedback.className =
+            "feedback wrong-feedback";
+    }
+}
+
+
+/* =========================
+   NEXT QUESTION
+   ========================= */
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    showQuestion();
+}
+
+
+/* =========================
+   UPDATE STATS
+   ========================= */
+
+function updateStats(){
+
+    document.getElementById("score").textContent =
+        score;
+
+    document.getElementById("combo").textContent =
+        combo;
+
+    let heartString = "";
+
+    for(let i=0;i<lives;i++){
+        heartString += "❤️";
+    }
+
+    if(lives <= 0){
+        heartString = "💔";
+    }
+
+    document.getElementById("lives").textContent =
+        heartString;
+}
+
+
+/* =========================
+   FINISH GAME
+   ========================= */
+
+function finishGame(){
+
+    clearInterval(timerInterval);
+
+    document.getElementById("gameScreen").style.display =
+        "none";
+
+    document.getElementById("resultScreen").style.display =
+        "block";
+
+    document.getElementById("finalName").textContent =
+        playerName;
+
+    document.getElementById("finalScore").textContent =
+        score;
+
+    document.getElementById("correctCount").textContent =
+        correctAnswers;
+
+    document.getElementById("wrongCount").textContent =
+        wrongAnswers;
+
+    document.getElementById("bestCombo").textContent =
+        bestCombo;
+
+    const percentage =
+        Math.round(
+            (correctAnswers / questions.length) * 100
+        );
+
+    let message = "";
+    let trophy = "🏆";
+
+    if(percentage >= 90){
+
+        trophy = "👑";
+
+        message =
+            "Outstanding! You are a Computer Champion! " +
+            "Your Computer Science knowledge is excellent.";
+
+    }else if(percentage >= 70){
+
+        trophy = "🏆";
+
+        message =
+            "Excellent performance! Keep learning and " +
+            "you can become a Computer Expert.";
+
+    }else if(percentage >= 50){
+
+        trophy = "🥈";
+
+        message =
+            "Good effort! Practice more Computer Science " +
+            "questions and improve your score.";
+
+    }else{
+
+        trophy = "💻";
+
+        message =
+            "Keep learning! Every question is a chance " +
+            "to improve your Computer Science knowledge.";
+    }
+
+    document.getElementById("trophy").textContent =
+        trophy;
+
+    document.getElementById("resultMessage").textContent =
+        message;
+}
+
+
+/* =========================
+   RESTART
+   ========================= */
+
+function restartGame(){
+
+    document.getElementById("resultScreen").style.display =
+        "none";
+
+    document.getElementById("startScreen").style.display =
+        "block";
+
+    document.getElementById("playerName").value =
+        playerName;
+
+}
+
+
+/* =========================
+   KEYBOARD SUPPORT
+   ========================= */
+
+document.addEventListener("keydown",function(event){
+
+    if(
+        document.getElementById("gameScreen").style.display
+        !== "block"
+    ){
+        return;
+    }
+
+    const options =
+        document.querySelectorAll(".option");
+
+    if(event.key === "1" && options[0]){
+        options[0].click();
+    }
+
+    if(event.key === "2" && options[1]){
+        options[1].click();
+    }
+
+    if(event.key === "3" && options[2]){
+        options[2].click();
+    }
+
+    if(event.key === "4" && options[3]){
+        options[3].click();
+    }
+
+    if(
+        event.key === "Enter" &&
+        document.getElementById("nextBtn").style.display
+        !== "none"
+    ){
+        nextQuestion();
+    }
+
+});
+
+
+/* =========================
+   ENTER TO START
+   ========================= */
+
+document
+    .getElementById("playerName")
+    .addEventListener("keydown",function(event){
+
+        if(event.key === "Enter"){
+            startGame();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
+```
