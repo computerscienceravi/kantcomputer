@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSEB Class 11 English MCQ Test 2026</title>
+<style>
+:root{--navy:#003366;--gold:#FFD700;--bg:#f1f5f9;--green:#d9fbe5;--red:#ffe2e2}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#202938;line-height:1.6}
+header{background:linear-gradient(120deg,#003366,#0875a8);color:white;text-align:center;padding:25px 12px;border-bottom:5px solid var(--gold)}
+header h1{margin:0;font-size:clamp(22px,4vw,30px)}
+.container{max-width:900px;margin:20px auto;padding:0 12px}
+.panel,.question,#result{background:white;padding:17px;border-radius:12px;margin-bottom:15px;box-shadow:0 2px 9px #0000000b}
+.question{border-left:4px solid var(--navy)}
+.question h3{font-size:17px;margin:0 0 12px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.option{padding:10px;border:1px solid #d4dce7;border-radius:8px;cursor:pointer}
+.option:hover{background:#edf5ff}
+.option input{margin-right:7px}
+.correct{background:var(--green)!important;border-color:#16834a!important}
+.wrong{background:var(--red)!important;border-color:#c62828!important}
+.explanation{margin-top:9px;font-size:14px}
+.progress{height:9px;background:#dce3eb;border-radius:9px;overflow:hidden;margin-top:8px}
+#bar{height:100%;width:0;background:var(--gold)}
+button{padding:11px 17px;border:0;border-radius:8px;font:inherit;font-weight:bold;cursor:pointer;margin:4px}
+.primary{background:var(--navy);color:white}
+.gold{background:var(--gold);color:#222}
+#result{display:none;border-top:5px solid var(--gold)}
+footer{text-align:center;padding:20px;color:#536176}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+@media print{header{background:white;color:black}.actions,footer{display:none}.question{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<h1>BSEB Class 11 — English</h1>
+<p>Half-Yearly Examination Practice Test 2026</p>
+<p>50 MCQs | 50 Marks | Suggested Time: 45 Minutes</p>
+</header>
+<main class="container">
+<section class="panel">
+<strong>Instructions:</strong> Select one correct option for each question. Click Submit Answers to see your score and the correct answers.
+<p id="progressText">Attempted: 0 / 50</p>
+<div class="progress"><div id="bar"></div></div>
+</section>
+<div id="quiz"></div>
+<section class="panel actions">
+<button class="primary" onclick="checkAnswers()">Submit Answers</button>
+<button class="gold" onclick="resetQuiz()">Restart Test</button>
+</section>
+<section id="result">
+<h2>Your Result</h2>
+<h3 id="score"></h3>
+<p id="details"></p>
+<button class="primary" onclick="window.print()">Print / Save PDF</button>
+</section>
+</main>
+<footer>BSEB Class 11 English | Practice Test 2026</footer>
+<script>
+const questions = [
+{q:"Who is the author of 'The Portrait of a Lady'?",o:["Khushwant Singh","A.R. Williams","Zitkala-Sa","R.K. Narayan"],a:0,e:"Khushwant Singh wrote 'The Portrait of a Lady'."},
+{q:"Who is the poet of 'A Photograph'?",o:["Ted Hughes","Shirley Toulson","Walt Whitman","Markus Natten"],a:1,e:"Shirley Toulson wrote 'A Photograph'."},
+{q:"In 'We're Not Afraid to Die...', what was the name of the family's boat?",o:["Sea Queen","Wave Rider","Wavewalker","Ocean Star"],a:2,e:"The family's boat was named Wavewalker."},
+{q:"Who wrote 'Discovering Tut: The Saga Continues'?",o:["William Dalrymple","A.R. Williams","Khushwant Singh","Nick Middleton"],a:1,e:"A.R. Williams wrote this account of Tutankhamun."},
+{q:"Who is the author of 'The Adventure'?",o:["Jayant Narlikar","R.K. Narayan","Pearl S. Buck","H.G. Wells"],a:0,e:"Jayant Narlikar wrote 'The Adventure'."},
+{q:"Who wrote 'Silk Road'?",o:["Nick Middleton","William Saroyan","Aldous Huxley","Stephen Spender"],a:0,e:"Nick Middleton wrote the travel account 'Silk Road'."},
+{q:"Who is the poet of 'The Laburnum Top'?",o:["Shirley Toulson","Ted Hughes","Walt Whitman","Elizabeth Jennings"],a:1,e:"Ted Hughes wrote 'The Laburnum Top'."},
+{q:"What does the goldfinch do in 'The Laburnum Top'?",o:["Builds a nest in a city","Brings activity and movement to the tree","Cuts down the tree","Sings beside a river"],a:1,e:"The bird's arrival fills the otherwise quiet tree with activity."},
+{q:"Who wrote 'The Voice of the Rain'?",o:["Walt Whitman","John Keats","William Wordsworth","Robert Frost"],a:0,e:"Walt Whitman wrote 'The Voice of the Rain'."},
+{q:"Who is the poet of 'Childhood'?",o:["Ted Hughes","Markus Natten","Shirley Toulson","Walt Whitman"],a:1,e:"Markus Natten wrote 'Childhood'."},
+{q:"Who wrote 'Father to Son'?",o:["Elizabeth Jennings","Kamala Das","Sarojini Naidu","Sylvia Plath"],a:0,e:"Elizabeth Jennings wrote 'Father to Son'."},
+{q:"Who is the author of 'The Summer of the Beautiful White Horse'?",o:["R.K. Narayan","William Saroyan","O. Henry","Mulk Raj Anand"],a:1,e:"William Saroyan wrote the story."},
+{q:"Who wrote 'The Address'?",o:["Marga Minco","Pearl S. Buck","Jane Austen","Agatha Christie"],a:0,e:"Marga Minco wrote 'The Address'."},
+{q:"Who is the author of 'Ranga's Marriage'?",o:["R.K. Narayan","Vijay Tendulkar","Manohar Malgonkar","Ruskin Bond"],a:0,e:"R.K. Narayan wrote 'Ranga's Marriage'."},
+{q:"Who wrote 'Albert Einstein at School'?",o:["Patrick Pringle","Aldous Huxley","James Herriot","Bertrand Russell"],a:0,e:"Patrick Pringle wrote this account of Einstein's school days."},
+{q:"What is the main theme of 'The Portrait of a Lady'?",o:["War and politics","Grandmother-grandson relationship","Space exploration","Business competition"],a:1,e:"The story reflects the author's affectionate relationship with his grandmother."},
+{q:"What does the photograph in 'A Photograph' mainly evoke?",o:["Political conflict","Memories and the passage of time","A scientific discovery","A sports event"],a:1,e:"The photograph recalls the poet's mother and the passage of time."},
+{q:"In 'The Summer of the Beautiful White Horse', who is Aram's cousin?",o:["Mourad","John Byro","Uncle Khosrove","Zorab"],a:0,e:"Mourad is Aram's cousin."},
+{q:"What is the central concern of 'The Address'?",o:["Space travel","War, loss and painful memories","School discipline","A cricket match"],a:1,e:"The story explores loss and the emotional burden of possessions associated with the past."},
+{q:"What does Ranga return to his village after?",o:["Studying in Bangalore","Working in London","Serving in the army","Travelling to China"],a:0,e:"Ranga returns to his village after studying in Bangalore."},
+{q:"Choose the correct synonym of 'Brave'.",o:["Cowardly","Courageous","Weak","Timid"],a:1,e:"Courageous means brave."},
+{q:"Choose the antonym of 'Ancient'.",o:["Old","Historic","Modern","Past"],a:2,e:"Modern is the opposite of ancient."},
+{q:"Choose the synonym of 'Rapid'.",o:["Slow","Swift","Late","Weak"],a:1,e:"Swift means rapid or fast."},
+{q:"Choose the antonym of 'Expand'.",o:["Increase","Extend","Enlarge","Contract"],a:3,e:"Contract means to become smaller."},
+{q:"Choose the correct spelling.",o:["Enviroment","Environment","Envirnoment","Environmant"],a:1,e:"The correct spelling is Environment."},
+{q:"Choose the correct spelling.",o:["Seperate","Separate","Seperete","Separete"],a:1,e:"The correct spelling is Separate."},
+{q:"Fill in the blank: She _____ to school every day.",o:["go","going","goes","gone"],a:2,e:"With 'she' in the simple present, use 'goes'."},
+{q:"Fill in the blank: They _____ playing cricket now.",o:["is","are","was","be"],a:1,e:"The plural subject 'they' takes 'are'."},
+{q:"Choose the correct article: He is _____ honest man.",o:["a","an","the","no article"],a:1,e:"'Honest' begins with a vowel sound, so 'an' is used."},
+{q:"Choose the correct preposition: She is good _____ English.",o:["in","on","at","for"],a:2,e:"The standard expression is 'good at English'."},
+{q:"Choose the correct form: If I _____ rich, I would help the poor.",o:["am","was","were","be"],a:2,e:"In this hypothetical conditional, 'were' is the standard form."},
+{q:"Change into passive voice: 'Ram wrote a letter.'",o:["A letter is written by Ram.","A letter was written by Ram.","A letter has written Ram.","Ram was written a letter."],a:1,e:"Simple past active becomes 'was/were + past participle' in passive voice."},
+{q:"Change into indirect speech: He said, 'I am tired.'",o:["He said that I am tired.","He said that he was tired.","He says he tired.","He said that he is tiring."],a:1,e:"The pronoun and tense change in reported speech."},
+{q:"Choose the correct question tag: You are a student, _____?",o:["are you","aren't you","isn't it","don't you"],a:1,e:"A positive statement takes a negative question tag."},
+{q:"Choose the plural of 'Child'.",o:["Childs","Childes","Children","Childrens"],a:2,e:"The irregular plural of child is children."},
+{q:"Choose the correct comparative form of 'Good'.",o:["Gooder","More good","Best","Better"],a:3,e:"Good, better, best are the positive, comparative and superlative forms."},
+{q:"Choose the correct passive form: 'People speak English worldwide.'",o:["English spoke worldwide.","English is spoken worldwide.","English was speak worldwide.","English has spoke worldwide."],a:1,e:"The simple present passive is 'is/am/are + past participle'."},
+{q:"Which word is a noun?",o:["Beautiful","Beauty","Beautifully","Beautify"],a:1,e:"Beauty is a noun."},
+{q:"Which word is an adjective?",o:["Quickly","Quickness","Quick","Quicken"],a:2,e:"Quick describes a noun, so it is an adjective."},
+{q:"Which word is an adverb?",o:["Careful","Carefully","Carefulness","Care"],a:1,e:"Carefully describes how an action is performed."},
+{q:"Choose the correct conjunction: I was tired, _____ I continued working.",o:["because","but","or","unless"],a:1,e:"'But' expresses contrast."},
+{q:"Choose the correct modal: You _____ obey traffic rules.",o:["might","must","would","could"],a:1,e:"'Must' expresses strong obligation."},
+{q:"What is the past tense of 'Teach'?",o:["Teached","Taught","Teaching","Teaches"],a:1,e:"The past tense of teach is taught."},
+{q:"Choose the correct sentence.",o:["She don't like tea.","She doesn't likes tea.","She doesn't like tea.","She not like tea."],a:2,e:"After 'doesn't', use the base form 'like'."},
+{q:"Choose the correct homophone: I can _____ the birds singing.",o:["here","hear","hare","hair"],a:1,e:"Hear means to perceive sound."},
+{q:"What is the meaning of 'Generous'?",o:["Willing to give and share","Very selfish","Always angry","Unable to speak"],a:0,e:"A generous person is willing to give or share."},
+{q:"Choose the antonym of 'Victory'.",o:["Success","Triumph","Defeat","Achievement"],a:2,e:"Defeat is the opposite of victory."},
+{q:"Choose the correct word: The sun _____ in the east.",o:["rise","rises","rising","rose"],a:1,e:"A general truth takes the simple present: 'rises'."},
+{q:"Fill in the blank: I have lived here _____ 2020.",o:["for","since","from","during"],a:1,e:"'Since' is used with a starting point in time."},
+{q:"Choose the correct plural of 'Mouse'.",o:["Mouses","Mices","Mouse","Mice"],a:3,e:"The irregular plural of mouse is mice."},
+{q:"Which punctuation mark ends a direct question?",o:["Full stop","Comma","Question mark","Colon"],a:2,e:"A direct question ends with a question mark."}
+];
+
+const letters=["A","B","C","D"];
+const quiz=document.getElementById("quiz");
+
+questions.forEach((item,i)=>{
+ const card=document.createElement("section");
+ card.className="question";
+ card.innerHTML=`<h3>Q${i+1}. ${item.q}</h3>
+ <div class="options">${item.o.map((op,j)=>`
+ <label class="option" id="opt-${i}-${j}">
+ <input type="radio" name="q${i}" value="${j}">
+ <b>${letters[j]}.</b> ${op}</label>`).join("")}</div>
+ <div class="explanation" id="exp-${i}"></div>`;
+ quiz.appendChild(card);
+});
+
+quiz.addEventListener("change",()=>{
+ let n=0;
+ questions.forEach((q,i)=>{
+ if(document.querySelector(`input[name="q${i}"]:checked`))n++;
+ });
+ document.getElementById("progressText").textContent=`Attempted: ${n} / 50`;
+ document.getElementById("bar").style.width=(n/50*100)+"%";
+});
+
+function checkAnswers(){
+ let score=0,attempted=0;
+ questions.forEach((q,i)=>{
+ const selected=document.querySelector(`input[name="q${i}"]:checked`);
+ if(selected){attempted++;if(Number(selected.value)===q.a)score++;}
+ q.o.forEach((_,j)=>{
+ const el=document.getElementById(`opt-${i}-${j}`);
+ el.classList.remove("correct","wrong");
+ if(j===q.a)el.classList.add("correct");
+ if(selected&&Number(selected.value)===j&&j!==q.a)el.classList.add("wrong");
+ });
+ document.getElementById(`exp-${i}`).innerHTML=
+ `<b>Correct Answer: ${letters[q.a]}. ${q.o[q.a]}</b><br>${q.e}`;
+ });
+ document.getElementById("score").textContent=`Score: ${score} / 50`;
+ document.getElementById("details").textContent=
+ `Correct: ${score} | Incorrect: ${attempted-score} | Unanswered: ${50-attempted} | Percentage: ${score*2}%`;
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth"});
+}
+
+function resetQuiz(){
+ document.querySelectorAll('input[type="radio"]').forEach(x=>x.checked=false);
+ document.querySelectorAll(".option").forEach(x=>x.classList.remove("correct","wrong"));
+ document.querySelectorAll(".explanation").forEach(x=>x.innerHTML="");
+ document.getElementById("result").style.display="none";
+ document.getElementById("progressText").textContent="Attempted: 0 / 50";
+ document.getElementById("bar").style.width="0";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
