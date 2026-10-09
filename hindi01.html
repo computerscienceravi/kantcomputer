@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>कक्षा 11 हिंदी MCQ टेस्ट | BSEB</title>
+<style>
+:root {
+  --navy: #003366;
+  --gold: #FFD700;
+  --bg: #f2f5f9;
+  --green: #16834a;
+  --red: #c62828;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Noto Sans Devanagari", Mangal, sans-serif;
+  background: var(--bg);
+  color: #202938;
+  line-height: 1.7;
+}
+header {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 24px 12px;
+  border-bottom: 5px solid var(--gold);
+}
+header h1 { margin: 0; font-size: 26px; }
+header p { margin: 5px 0; }
+.container { max-width: 900px; margin: 20px auto; padding: 12px; }
+.panel, .question, #result {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px #0000000c;
+}
+.question { border-left: 4px solid var(--navy); }
+.question h3 { margin-top: 0; font-size: 17px; }
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.option {
+  padding: 10px;
+  border: 1px solid #d5dce6;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.option:hover { background: #edf5ff; }
+.option input { margin-right: 7px; }
+.correct { background: #e5f6eb !important; border-color: var(--green) !important; }
+.incorrect { background: #ffebee !important; border-color: var(--red) !important; }
+.explanation { margin-top: 10px; color: #374151; }
+button {
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+.primary { background: var(--navy); color: white; }
+.secondary { background: var(--gold); color: #222; }
+#result { display: none; border-top: 5px solid var(--gold); }
+.progress { height: 9px; background: #dce3eb; border-radius: 8px; overflow: hidden; }
+#progressBar { height: 100%; width: 0; background: var(--gold); }
+footer { text-align: center; padding: 20px; color: #596579; }
+@media(max-width:600px) {
+  header h1 { font-size: 21px; }
+  .options { grid-template-columns: 1fr; }
+  .question, .panel { padding: 13px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>बिहार बोर्ड — कक्षा 11वीं हिंदी</h1>
+  <p>अर्द्धवार्षिक परीक्षा 2026 | ऑनलाइन MCQ अभ्यास</p>
+  <p>कुल प्रश्न: 50 | पूर्णांक: 50</p>
+</header>
+
+<main class="container">
+  <section class="panel">
+    <strong>निर्देश:</strong> प्रत्येक प्रश्न के चार विकल्पों में से एक सही उत्तर चुनें।
+    सभी प्रश्न हल करने के बाद “उत्तर जाँचें” पर क्लिक करें।
+    <p id="progressText">प्रयास किए गए: 0 / 50</p>
+    <div class="progress"><div id="progressBar"></div></div>
+  </section>
+
+  <div id="quiz"></div>
+
+  <section class="panel">
+    <button class="primary" onclick="checkAnswers()">उत्तर जाँचें</button>
+    <button class="secondary" onclick="resetQuiz()">फिर से शुरू करें</button>
+  </section>
+
+  <section id="result">
+    <h2>आपका परिणाम</h2>
+    <h3 id="score"></h3>
+    <p id="details"></p>
+    <button class="primary" onclick="window.print()">प्रिंट / PDF</button>
+  </section>
+</main>
+
+<footer>
+  कक्षा 11 हिंदी MCQ अभ्यास | BSEB परीक्षा तैयारी
+</footer>
+
+<script>
+const questions = [
+ {q:"‘पूस की रात’ कहानी के लेखक कौन हैं?",o:["प्रेमचंद","जयशंकर प्रसाद","रेणु","यशपाल"],a:0},
+ {q:"‘पूस की रात’ का मुख्य पात्र कौन है?",o:["होरी","हल्कू","गोबर","घीसू"],a:1},
+ {q:"‘कविता की परख’ के लेखक कौन हैं?",o:["रामचंद्र शुक्ल","महादेवी वर्मा","दिनकर","निराला"],a:0},
+ {q:"रामचंद्र शुक्ल मुख्यतः किस रूप में प्रसिद्ध हैं?",o:["नाटककार","गायक","आलोचक","चित्रकार"],a:2},
+ {q:"‘आँखों देखा गदर’ का संबंध किस घटना से है?",o:["1857 का विद्रोह","असहयोग आंदोलन","चंपारण आंदोलन","भारत छोड़ो आंदोलन"],a:0},
+ {q:"‘बेजोड़ गायिका : लता मंगेशकर’ में किस कला की चर्चा है?",o:["चित्रकला","गायन","नृत्य","नाटक"],a:1},
+ {q:"कुमार गंधर्व किस क्षेत्र से जुड़े थे?",o:["खेल","साहित्येतिहास","शास्त्रीय संगीत","वास्तुकला"],a:2},
+ {q:"यात्रा-वृत्तांत में मुख्यतः क्या होता है?",o:["यात्रा के अनुभवों का वर्णन","केवल कल्पित संवाद","केवल नियम","केवल छंद"],a:0},
+ {q:"वियतनाम किस महाद्वीप में है?",o:["यूरोप","अफ्रीका","एशिया","ऑस्ट्रेलिया"],a:2},
+ {q:"‘सिक्का बदल गया’ की लेखिका कौन हैं?",o:["शिवानी","कृष्णा सोबती","मन्नू भंडारी","महादेवी वर्मा"],a:1},
+ {q:"‘आंचलिकता’ का अर्थ क्या है?",o:["विदेशी जीवन","क्षेत्र विशेष के जीवन-संस्कृति का चित्रण","वैज्ञानिक लेख","केवल अनुवाद"],a:1},
+ {q:"‘हरित क्रांति’ का संबंध किससे है?",o:["कृषि उत्पादन","अंतरिक्ष यात्रा","समुद्री व्यापार","चित्रकला"],a:0},
+ {q:"‘नभ’ किस शब्द का पर्यायवाची है?",o:["जल","पृथ्वी","आकाश","अग्नि"],a:2},
+ {q:"‘उन्नति’ का विलोम क्या है?",o:["विकास","प्रगति","समृद्धि","अवनति"],a:3},
+ {q:"‘नाक कटना’ मुहावरे का अर्थ है—",o:["अपमान होना","बीमार होना","दौड़ना","डरना"],a:0},
+ {q:"‘दाँत खट्टे करना’ का अर्थ है—",o:["भोजन करना","परास्त करना","हँसना","रोना"],a:1},
+ {q:"शुद्ध वर्तनी चुनिए।",o:["उज्जवल","उज्वल","उज्ज्वल","उज्वल्ल"],a:2},
+ {q:"‘विद्यालय’ में कौन-सी संधि है?",o:["दीर्घ संधि","गुण संधि","वृद्धि संधि","व्यंजन संधि"],a:0},
+ {q:"‘राजपुत्र’ में कौन-सा समास है?",o:["द्वंद्व","षष्ठी तत्पुरुष","बहुव्रीहि","अव्ययीभाव"],a:1},
+ {q:"‘धीरे-धीरे’ किस प्रकार का शब्द है?",o:["संज्ञा","सर्वनाम","क्रिया-विशेषण","विशेषण"],a:2},
+ {q:"‘राम ने पत्र लिखा।’ में ‘पत्र’ कौन-सा कारक है?",o:["कर्ता","करण","कर्म","अपादान"],a:2},
+ {q:"‘अंधकार’ का विलोम है—",o:["छाया","प्रकाश","रात्रि","धुंध"],a:1},
+ {q:"‘कमल-सा मुख’ में कौन-सा अलंकार है?",o:["रूपक","उपमा","यमक","श्लेष"],a:1},
+ {q:"‘चरण-कमल’ में सामान्यतः कौन-सा अलंकार है?",o:["रूपक","उपमा","अनुप्रास","यमक"],a:0},
+ {q:"‘जो मेहनत करता है, वही सफल होता है।’ यह कौन-सा वाक्य है?",o:["सरल","संयुक्त","मिश्र","प्रश्नवाचक"],a:2},
+ {q:"‘वह विद्यालय जाता है।’ में क्रिया कौन-सी है?",o:["वह","विद्यालय","जाता है","कोई नहीं"],a:2},
+ {q:"‘सुंदर फूल’ में ‘सुंदर’ क्या है?",o:["संज्ञा","विशेषण","क्रिया","सर्वनाम"],a:1},
+ {q:"‘मैं’ कौन-सा शब्द-भेद है?",o:["संज्ञा","क्रिया","सर्वनाम","विशेषण"],a:2},
+ {q:"‘बालक’ का स्त्रीलिंग क्या है?",o:["बालिका","बालपन","बालकपन","बाला"],a:0},
+ {q:"‘नदी’ का बहुवचन क्या है?",o:["नदियाँ","नदीयों","नदीएँ","नदियॉं"],a:0},
+ {q:"‘अग्नि’ का तद्भव रूप कौन-सा है?",o:["अगिन","आग","अग्न","अनल"],a:1},
+ {q:"‘दूध’ का तत्सम शब्द क्या है?",o:["दुग्ध","दधि","घृत","क्षीरज"],a:0},
+ {q:"‘सत्य’ का विलोम क्या है?",o:["न्याय","असत्य","धर्म","विश्वास"],a:1},
+ {q:"‘जल’ का पर्यायवाची कौन-सा है?",o:["अनल","पवन","नीर","गगन"],a:2},
+ {q:"‘पवन’ का अर्थ है—",o:["जल","वायु","अग्नि","आकाश"],a:1},
+ {q:"‘हाथ-पाँव फूलना’ का अर्थ है—",o:["घबरा जाना","खुश होना","तेज चलना","बीमार होना"],a:0},
+ {q:"‘आँखों का तारा’ किसके लिए कहा जाता है?",o:["शत्रु","बहुत प्रिय व्यक्ति","अजनबी","आलसी व्यक्ति"],a:1},
+ {q:"‘दिन-रात’ में कौन-सा समास है?",o:["द्वंद्व","द्विगु","बहुव्रीहि","कर्मधारय"],a:0},
+ {q:"‘नीलकंठ’ में सामान्यतः कौन-सा समास माना जाता है?",o:["अव्ययीभाव","बहुव्रीहि","द्वंद्व","द्विगु"],a:1},
+ {q:"‘प्रतिदिन’ में उपसर्ग कौन-सा है?",o:["प्रति","दिन","ति","इनमें कोई नहीं"],a:0},
+ {q:"‘मानवता’ शब्द में प्रत्यय है—",o:["मानव","व","ता","नव"],a:2},
+ {q:"‘लड़का पढ़ता है।’ कौन-सा काल है?",o:["भूतकाल","वर्तमान काल","भविष्यत् काल","संदेह"],a:1},
+ {q:"‘वह कल आएगा।’ कौन-सा काल है?",o:["वर्तमान","भूत","भविष्यत्","पूर्ण भूत"],a:2},
+ {q:"‘राम और श्याम आए।’ में ‘और’ क्या है?",o:["समुच्चयबोधक","संबंधबोधक","विस्मयादिबोधक","क्रिया-विशेषण"],a:0},
+ {q:"‘अरे! तुम यहाँ?’ में ‘अरे’ क्या है?",o:["संज्ञा","विस्मयादिबोधक","सर्वनाम","विशेषण"],a:1},
+ {q:"‘जिसकी लाठी उसकी भैंस’ लोकोक्ति का भाव है—",o:["परिश्रम का फल","बलवान का अधिकार चलना","मित्रता","समय की पाबंदी"],a:1},
+ {q:"‘एक और एक ग्यारह’ का भावार्थ है—",o:["गणित की भूल","एकता में शक्ति","समय की कमी","हार मानना"],a:1},
+ {q:"कविता में ‘रस’ का संबंध किससे है?",o:["केवल व्याकरण","काव्य से मिलने वाले भावात्मक आनंद","पृष्ठ संख्या","लेखक की उम्र"],a:1},
+ {q:"कविता में लय का संबंध मुख्यतः किससे है?",o:["ध्वनि के प्रवाह और गति","कागज के आकार","लेखक के नाम","विराम चिह्नों की संख्या"],a:0},
+ {q:"कहानी में कथानक क्या है?",o:["घटनाओं का संगठित क्रम","केवल पात्रों की सूची","कठिन शब्दों का अर्थ","लेखक का पता"],a:0},
+ {q:"साहित्यिक आलोचना का उद्देश्य क्या है?",o:["केवल निंदा करना","रचना का विवेचन और मूल्यांकन","कहानी मिटा देना","केवल शब्द गिनना"],a:1}
+];
+
+const letters = ["A","B","C","D"];
+const quiz = document.getElementById("quiz");
+
+questions.forEach((item, i) => {
+  const section = document.createElement("section");
+  section.className = "question";
+  section.id = "q" + i;
+  section.innerHTML = `<h3>प्रश्न ${i+1}. ${item.q}</h3>
+    <div class="options">${item.o.map((option,j) =>
+      `<label class="option" id="opt-${i}-${j}">
+      <input type="radio" name="q${i}" value="${j}">
+      <b>${letters[j]}.</b> ${option}</label>`
+    ).join("")}</div>
+    <div class="explanation" id="exp-${i}"></div>`;
+  quiz.appendChild(section);
+});
+
+quiz.addEventListener("change", () => {
+  let count = 0;
+  questions.forEach((q,i) => {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) count++;
+  });
+  document.getElementById("progressText").textContent =
+    `प्रयास किए गए: ${count} / ${questions.length}`;
+  document.getElementById("progressBar").style.width =
+    (count / questions.length * 100) + "%";
+});
+
+function checkAnswers() {
+  let score = 0, attempted = 0;
+  questions.forEach((q,i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (selected) {
+      attempted++;
+      if (Number(selected.value) === q.a) score++;
+    }
+    q.o.forEach((_,j) => {
+      const el = document.getElementById(`opt-${i}-${j}`);
+      el.classList.remove("correct","incorrect");
+      if (j === q.a) el.classList.add("correct");
+      if (selected && Number(selected.value) === j && j !== q.a)
+        el.classList.add("incorrect");
+    });
+    document.getElementById(`exp-${i}`).innerHTML =
+      `<b>सही उत्तर: ${letters[q.a]}. ${q.o[q.a]}</b>`;
+  });
+  document.getElementById("score").textContent =
+    `आपका स्कोर: ${score} / ${questions.length}`;
+  document.getElementById("details").textContent =
+    `सही उत्तर: ${score} | गलत उत्तर: ${attempted-score} | अनुत्तरित: ${questions.length-attempted}`;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView({behavior:"smooth"});
+}
+
+function resetQuiz() {
+  document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+  document.querySelectorAll(".option").forEach(el => el.classList.remove("correct","incorrect"));
+  document.querySelectorAll(".explanation").forEach(el => el.innerHTML = "");
+  document.getElementById("result").style.display = "none";
+  document.getElementById("progressText").textContent = "प्रयास किए गए: 0 / 50";
+  document.getElementById("progressBar").style.width = "0";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
