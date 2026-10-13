@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>कक्षा 11 के लिए C++ का संपूर्ण पाठ्यक्रम | Kant Computer</title>
+<style>
+:root{--primary:#4f46e5;--dark:#172554;--light:#eef2ff;--ink:#1f2937;--muted:#64748b;--border:#dbe3ef}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;line-height:1.75;color:var(--ink);background:#f5f7fb}
+header{background:linear-gradient(130deg,#312e81,#4f46e5,#7c3aed);color:white;padding:34px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(1.55rem,4vw,2.5rem)}
+header p{margin:4px auto;max-width:900px}
+.byline{font-size:.95rem;opacity:.95}
+.container{max-width:1100px;margin:22px auto;padding:0 14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+input[type=search]{flex:1;min-width:220px;padding:12px;border:1px solid var(--border);border-radius:10px;font:inherit;background:white}
+button{cursor:pointer;border:0;border-radius:9px;padding:10px 14px;font:inherit;font-weight:700}
+.btn{background:var(--primary);color:white}.btn2{background:#e0e7ff;color:#312e81}
+.intro,.unit,.plan,.note{background:white;border:1px solid var(--border);border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 3px 12px #0f172a08}
+.intro h2,.unit h2{margin-top:0;color:var(--dark)}
+.unit{padding:0;overflow:hidden}
+.unit summary{list-style:none;cursor:pointer;padding:16px 18px;background:#eef2ff;color:#24236b;font-size:1.08rem;font-weight:800}
+.unit summary::-webkit-details-marker{display:none}
+.unit summary:after{content:"＋";float:right}
+.unit[open] summary:after{content:"−"}
+.unit-body{padding:16px 22px}
+.unit-body ol{padding-left:26px;margin:8px 0}
+.unit-body li{padding:2px 0}
+.unit-body li::marker{color:var(--primary);font-weight:bold}
+.level{border-left:5px solid var(--primary);padding:12px 16px;background:white;margin:14px 0;border-radius:8px}
+table{border-collapse:collapse;width:100%;background:white}
+th,td{border:1px solid var(--border);padding:10px;text-align:left;vertical-align:top}
+th{background:#eef2ff}
+.table-wrap{overflow-x:auto;border-radius:10px}
+footer{text-align:center;padding:25px;color:var(--muted)}
+.hidden{display:none!important}
+.small{font-size:.92rem;color:var(--muted)}
+@media print{body{background:white;font-size:12pt}header{background:white!important;color:#111;padding:10px} .toolbar,.no-print{display:none!important}.container{max-width:none;margin:0;padding:0}.intro,.unit,.plan,.note{box-shadow:none;break-inside:avoid;border:1px solid #aaa}.unit:not([open]) .unit-body{display:block}.unit summary{background:#eee!important;color:#111}footer{padding:8px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>कक्षा 11 के लिए C++ का संपूर्ण पाठ्यक्रम</h1>
+  <p>प्रोग्रामिंग की बुनियादी जानकारी से लेकर उन्नत अवधारणाओं तक</p>
+  <p class="byline">कंप्यूटर विज्ञान | अध्ययन सामग्री एवं शिक्षण रूपरेखा</p>
+  <p class="byline">तैयारकर्ता: रवि कांत, कंप्यूटर विज्ञान शिक्षक</p>
+</header>
+
+<main class="container">
+  <section class="intro">
+    <h2>इस पाठ्यक्रम का उद्देश्य</h2>
+    <p>इस पाठ्यक्रम में विद्यार्थियों को पहले प्रोग्रामिंग की बुनियादी समझ दी जाएगी। इसके बाद एल्गोरिदम, फ्लोचार्ट, C++ प्रोग्राम की संरचना, डेटा टाइप, ऑपरेटर, निर्णय कथन, लूप, फंक्शन, ऐरे, स्ट्रिंग और ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग पढ़ाई जाएगी। अंत में विद्यार्थी अभ्यास कार्यक्रम और छोटे प्रोजेक्ट बना सकेंगे।</p>
+    <p class="small"><strong>ध्यान दें:</strong> यह व्यापक शिक्षण-रूपरेखा है। बिहार विद्यालय परीक्षा समिति (BSEB) की परीक्षा की तैयारी के लिए निर्धारित पाठ्यक्रम और पाठ्यपुस्तक को प्राथमिकता दें। कुछ उन्नत विषय अतिरिक्त अध्ययन के लिए हैं।</p>
+  </section>
+
+  <div class="toolbar no-print">
+    <input id="search" type="search" placeholder="विषय खोजें, जैसे लूप, ऐरे, फंक्शन..." aria-label="विषय खोजें">
+    <button class="btn2" onclick="setAll(true)">सभी अध्याय खोलें</button>
+    <button class="btn2" onclick="setAll(false)">सभी अध्याय बंद करें</button>
+    <button class="btn" onclick="window.print()">प्रिंट / PDF सेव करें</button>
+  </div>
+
+  <div id="units">
+  <details class="unit" open>
+    <summary>अध्याय 1: प्रोग्रामिंग का परिचय</summary>
+    <div class="unit-body"><ol>
+      <li>कंप्यूटर प्रोग्राम क्या है?</li><li>प्रोग्रामिंग का अर्थ</li><li>प्रोग्रामिंग की आवश्यकता और महत्त्व</li>
+      <li>मशीन भाषा, असेम्बली भाषा और उच्च-स्तरीय भाषा</li><li>C भाषा और C++ का परिचय</li>
+      <li>C++ की विशेषताएँ और उपयोग</li><li>कम्पाइलर और इंटरप्रेटर में अंतर</li><li>सोर्स कोड, ऑब्जेक्ट कोड और एक्जीक्यूटेबल कोड</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 2: समस्या-समाधान की तकनीकें</summary>
+    <div class="unit-body"><ol>
+      <li>समस्या की पहचान और विश्लेषण</li><li>इनपुट, प्रोसेसिंग और आउटपुट (IPO)</li><li>एल्गोरिदम का अर्थ और विशेषताएँ</li>
+      <li>चरणबद्ध एल्गोरिदम लिखना</li><li>फ्लोचार्ट और उसके मानक संकेत</li><li>स्यूडोकोड</li>
+      <li>ड्राई रन और प्रोग्राम की चरणबद्ध जाँच</li><li>परीक्षण और डिबगिंग</li>
+      <li>सिंटैक्स, लॉजिकल और रनटाइम त्रुटियाँ</li><li>बड़ी समस्या को छोटी समस्याओं में बाँटना</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 3: C++ का वातावरण और प्रोग्राम चलाना</summary>
+    <div class="unit-body"><ol>
+      <li>C++ कम्पाइलर और IDE का परिचय</li><li>कोड एडिटर का परिचय</li><li>प्रोग्राम लिखना, कम्पाइल करना और चलाना</li>
+      <li>C++ प्रोग्राम की संरचना</li><li>हेडर फाइल और <code>#include</code></li><li><code>main()</code> फंक्शन</li>
+      <li>स्टेटमेंट और ब्लॉक</li><li>सिंगल-लाइन और मल्टी-लाइन टिप्पणियाँ</li><li>बड़े और छोटे अक्षरों का महत्त्व</li>
+      <li>कम्पाइलर के त्रुटि संदेश समझना</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 4: पहला C++ प्रोग्राम</summary>
+    <div class="unit-body">
+      <p>उदाहरण:</p>
+      <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Namaste, Vidyarthiyon!";
+    return 0;
+}</code></pre>
+      <ol><li>प्रोग्राम की प्रत्येक पंक्ति का अर्थ</li><li><code>#include &lt;iostream&gt;</code></li><li><code>using namespace std</code></li>
+      <li><code>int main()</code></li><li>आउटपुट के लिए <code>cout</code></li><li>इनपुट के लिए <code>cin</code></li>
+      <li>सेमीकोलन और घुँघराले कोष्ठक</li><li><code>return 0</code></li><li>कम्पाइल करने और चलाने की प्रक्रिया</li><li>सरल आउटपुट प्रोग्राम</li></ol>
+    </div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 5: टोकन, कीवर्ड और आइडेंटिफायर</summary>
+    <div class="unit-body"><ol>
+      <li>कैरेक्टर सेट</li><li>टोकन और उनके प्रकार</li><li>कीवर्ड तथा आरक्षित शब्द</li><li>आइडेंटिफायर (पहचानकर्ता)</li>
+      <li>वेरिएबल के नाम रखने के नियम</li><li>लिटरल और कॉन्स्टेंट</li><li>ऑपरेटर और विराम चिह्न</li><li>व्हाइटस्पेस और कोड का स्वरूप</li><li>सही और गलत आइडेंटिफायर</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 6: वेरिएबल, कॉन्स्टेंट और डेटा टाइप</summary>
+    <div class="unit-body"><ol>
+      <li>वेरिएबल का अर्थ</li><li>वेरिएबल की घोषणा और प्रारंभिक मान देना</li><li>वेरिएबल को मान देना</li>
+      <li>लोकल और ग्लोबल वेरिएबल का परिचय</li><li><code>const</code> से कॉन्स्टेंट बनाना</li><li>पूर्णांक: <code>int</code></li>
+      <li>कैरेक्टर: <code>char</code></li><li>दशमलव संख्याएँ: <code>float</code> और <code>double</code></li><li>बूलियन: <code>bool</code></li>
+      <li><code>void</code> टाइप</li><li><code>short</code>, <code>long</code>, <code>signed</code>, <code>unsigned</code></li>
+      <li>टाइप कन्वर्जन और टाइप कास्टिंग</li><li><code>sizeof</code> ऑपरेटर</li><li>संख्या की सीमा और परिशुद्धता का परिचय</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 7: इनपुट और आउटपुट</summary>
+    <div class="unit-body"><ol>
+      <li><code>cout</code> से आउटपुट</li><li><code>cin</code> से इनपुट</li><li>एक साथ कई मान लेना और दिखाना</li>
+      <li>स्ट्रीम इन्सर्शन ऑपरेटर <code>&lt;&lt;</code></li><li>स्ट्रीम एक्सट्रैक्शन ऑपरेटर <code>&gt;&gt;</code></li>
+      <li>एस्केप सीक्वेंस: <code>\n</code>, <code>\t</code>, <code>\\</code>, <code>\"</code></li>
+      <li>आउटपुट को व्यवस्थित करना</li><li><code>endl</code></li><li>कैरेक्टर और स्ट्रिंग इनपुट</li><li><code>getline()</code> का परिचय</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 8: ऑपरेटर और एक्सप्रेशन</summary>
+    <div class="unit-body"><ol>
+      <li>अंकगणितीय ऑपरेटर: <code>+ - * / %</code></li><li>तुलनात्मक ऑपरेटर: <code>== != &lt; &gt; &lt;= &gt;=</code></li>
+      <li>लॉजिकल ऑपरेटर: <code>&amp;&amp; || !</code></li><li>असाइनमेंट ऑपरेटर</li><li>संयुक्त असाइनमेंट: <code>+= -= *= /=</code></li>
+      <li>इन्क्रीमेंट और डिक्रिमेंट: <code>++ --</code></li><li>यूनरी और बाइनरी ऑपरेटर</li>
+      <li>कंडीशनल ऑपरेटर <code>?:</code></li><li>ऑपरेटर प्रायोरिटी और एसोसिएटिविटी</li><li>एक्सप्रेशन का मूल्यांकन</li>
+      <li>पूर्णांक भाग और शेषफल</li><li>एक्सप्रेशन में टाइप कन्वर्जन</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 9: निर्णय लेने वाले कथन</summary>
+    <div class="unit-body"><ol>
+      <li>निर्णय कथनों का अर्थ</li><li><code>if</code> कथन</li><li><code>if-else</code> कथन</li><li><code>if-else-if</code> सीढ़ी</li>
+      <li>नेस्टेड <code>if</code></li><li><code>switch</code> कथन</li><li>कंडीशनल ऑपरेटर <code>?:</code></li>
+      <li>नेस्टेड निर्णय</li><li>शर्तों में होने वाली सामान्य गलतियाँ</li><li>निर्णय पर आधारित प्रोग्राम</li>
+    </ol><p><strong>अभ्यास:</strong> धनात्मक/ऋणात्मक संख्या, सम/विषम, दो या तीन संख्याओं में सबसे बड़ी संख्या, अंक के आधार पर ग्रेड, लीप वर्ष और <code>switch</code> से कैलकुलेटर।</p></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 10: लूप और पुनरावृत्ति</summary>
+    <div class="unit-body"><ol>
+      <li>लूप का अर्थ और आवश्यकता</li><li><code>while</code> लूप</li><li><code>do-while</code> लूप</li><li><code>for</code> लूप</li>
+      <li>एंट्री-कंट्रोल्ड और एग्जिट-कंट्रोल्ड लूप</li><li>नेस्टेड लूप</li><li>अनंत लूप</li>
+      <li><code>break</code> कथन</li><li><code>continue</code> कथन</li><li>लूप का ड्राई रन</li><li>उचित लूप का चयन</li>
+    </ol><p><strong>अभ्यास:</strong> पहाड़ा, प्राकृतिक संख्याओं का योग, फैक्टोरियल, अंकों की गिनती, संख्या उलटना, पैलिन्ड्रोम, अभाज्य संख्या, फिबोनाची श्रेणी और तारों के पैटर्न।</p></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 11: संख्या पद्धति और डेटा निरूपण</summary>
+    <div class="unit-body"><ol>
+      <li>दशमलव संख्या पद्धति</li><li>बाइनरी संख्या पद्धति</li><li>ऑक्टल संख्या पद्धति</li><li>हेक्साडेसिमल संख्या पद्धति</li>
+      <li>बाइनरी से दशमलव में परिवर्तन</li><li>दशमलव से बाइनरी में परिवर्तन</li><li>ऑक्टल और हेक्साडेसिमल रूपांतरण</li>
+      <li>बाइनरी जोड़ और घटाव</li><li>बिट, बाइट, KB, MB, GB और TB</li><li>ASCII और Unicode</li>
+      <li>बूलियन लॉजिक का परिचय</li><li>AND, OR, NOT, NAND, NOR, XOR और XNOR लॉजिक गेट</li>
+    </ol><p class="small">यह कंप्यूटर मूलभूत ज्ञान का भाग है; यह C++ भाषा के सिंटैक्स से अलग विषय है।</p></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 12: फंक्शन</summary>
+    <div class="unit-body"><ol>
+      <li>फंक्शन का अर्थ और लाभ</li><li>लाइब्रेरी फंक्शन</li><li>यूज़र-डिफाइंड फंक्शन</li><li>फंक्शन घोषणा और प्रोटोटाइप</li>
+      <li>फंक्शन की परिभाषा</li><li>फंक्शन कॉल</li><li>पैरामीटर और आर्ग्युमेंट</li><li>रिटर्न टाइप और <code>return</code></li>
+      <li>आर्ग्युमेंट सहित/बिना फंक्शन</li><li>मान लौटाने वाले और मान न लौटाने वाले फंक्शन</li>
+      <li>कॉल बाय वैल्यू</li><li>रेफरेंस द्वारा मान पास करना</li><li>लोकल और ग्लोबल स्कोप</li>
+      <li>डिफॉल्ट आर्ग्युमेंट</li><li>फंक्शन ओवरलोडिंग</li><li>रिकर्शन का परिचय</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 13: ऐरे</summary>
+    <div class="unit-body"><ol>
+      <li>ऐरे का अर्थ और आवश्यकता</li><li>ऐरे की घोषणा और प्रारंभिक मान</li><li>इंडेक्स और ऐरे के तत्व</li>
+      <li>एक-आयामी ऐरे</li><li>लूप से ऐरे के तत्वों को पढ़ना</li><li>ऐरे में इनपुट और आउटपुट</li>
+      <li>योग और औसत निकालना</li><li>अधिकतम और न्यूनतम मान खोजना</li><li>लीनियर सर्च</li>
+      <li>सॉर्टिंग: बबल सॉर्ट और सिलेक्शन सॉर्ट</li><li>दो-आयामी ऐरे</li><li>मैट्रिक्स इनपुट और आउटपुट</li>
+      <li>मैट्रिक्स जोड़ और ट्रांसपोज़</li><li>फंक्शन में ऐरे पास करना</li><li>ऐरे की सामान्य गलतियाँ और सीमा से बाहर इंडेक्स</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 14: स्ट्रिंग</summary>
+    <div class="unit-body"><ol>
+      <li>स्ट्रिंग का अर्थ</li><li>कैरेक्टर ऐरे</li><li>C-शैली स्ट्रिंग और नल कैरेक्टर <code>'\0'</code></li>
+      <li><code>string</code> का परिचय</li><li>स्ट्रिंग की घोषणा और प्रारंभिक मान</li><li><code>cin</code> से स्ट्रिंग पढ़ना</li>
+      <li><code>getline()</code> से पूरी पंक्ति पढ़ना</li><li>स्ट्रिंग जोड़ना</li><li>स्ट्रिंग की तुलना</li>
+      <li>स्ट्रिंग की लंबाई</li><li>अलग-अलग कैरेक्टर तक पहुँचना</li><li>सामान्य स्ट्रिंग ऑपरेशन</li>
+      <li><code>&lt;cstring&gt;</code> फंक्शन का परिचय</li><li>स्ट्रिंग इनपुट की सामान्य गलतियाँ</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 15: पॉइंटर</summary>
+    <div class="unit-body"><ol>
+      <li>मेमोरी एड्रेस का अर्थ</li><li>पॉइंटर का परिचय</li><li>पॉइंटर की घोषणा और प्रारंभिक मान</li>
+      <li>एड्रेस ऑपरेटर <code>&amp;</code></li><li>डिरेफरेंस ऑपरेटर <code>*</code></li><li>पॉइंटर से मान प्राप्त करना</li>
+      <li>पॉइंटर और ऐरे</li><li>पॉइंटर और फंक्शन</li><li>नल पॉइंटर और <code>nullptr</code></li>
+      <li>पॉइंटर से जुड़ी सामान्य गलतियाँ</li><li>डायनेमिक मेमोरी का परिचय</li><li><code>new</code> और <code>delete</code></li>
+    </ol><p class="small">इसे वेरिएबल, ऐरे और फंक्शन की समझ बनने के बाद पढ़ाएँ।</p></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 16: ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग (OOP)</summary>
+    <div class="unit-body"><ol>
+      <li>प्रक्रियात्मक प्रोग्रामिंग और OOP में अंतर</li><li>OOP की आवश्यकता</li><li>क्लास और ऑब्जेक्ट</li>
+      <li>डेटा मेंबर और मेंबर फंक्शन</li><li><code>private</code>, <code>public</code>, <code>protected</code></li>
+      <li>ऑब्जेक्ट बनाना</li><li>क्लास के सदस्यों तक पहुँचना</li><li>कन्स्ट्रक्टर</li>
+      <li>डिफॉल्ट और पैरामीटरयुक्त कन्स्ट्रक्टर</li><li>कन्स्ट्रक्टर ओवरलोडिंग</li><li>डिस्ट्रक्टर</li>
+      <li><code>this</code> पॉइंटर का परिचय</li><li>एनकैप्सुलेशन और डेटा हाइडिंग</li><li>एब्स्ट्रैक्शन</li>
+      <li>स्टैटिक डेटा मेंबर और मेंबर फंक्शन</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 17: इनहेरिटेंस और पॉलीमॉर्फिज़्म</summary>
+    <div class="unit-body"><ol>
+      <li>इनहेरिटेंस का अर्थ और लाभ</li><li>बेस क्लास और डिराइव्ड क्लास</li><li>सिंगल इनहेरिटेंस</li>
+      <li>मल्टीलेवल इनहेरिटेंस</li><li>मल्टीपल इनहेरिटेंस</li><li>हाइरार्किकल इनहेरिटेंस</li>
+      <li>इनहेरिटेंस में एक्सेस मोड</li><li>फंक्शन ओवरराइडिंग</li><li>कम्पाइल-टाइम पॉलीमॉर्फिज़्म</li>
+      <li>रनटाइम पॉलीमॉर्फिज़्म</li><li>वर्चुअल फंक्शन</li><li>एब्स्ट्रैक्ट क्लास और प्योर वर्चुअल फंक्शन</li>
+      <li>ऑपरेटर ओवरलोडिंग का परिचय</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 18: स्ट्रक्चर, एन्यूमरेशन और यूज़र-डिफाइंड टाइप</summary>
+    <div class="unit-body"><ol>
+      <li>स्ट्रक्चर (<code>struct</code>) का परिचय</li><li>स्ट्रक्चर वेरिएबल की घोषणा</li><li>स्ट्रक्चर के सदस्यों तक पहुँचना</li>
+      <li>स्ट्रक्चर का ऐरे</li><li>नेस्टेड स्ट्रक्चर</li><li>स्ट्रक्चर और फंक्शन</li><li>एन्यूमरेशन (<code>enum</code>)</li>
+      <li><code>typedef</code> और टाइप एलियास</li><li>ऐरे, स्ट्रक्चर और क्लास में अंतर</li><li>यूनियन का परिचय</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 19: फाइल हैंडलिंग</summary>
+    <div class="unit-body"><ol>
+      <li>फाइल हैंडलिंग की आवश्यकता</li><li>टेक्स्ट फाइल और बाइनरी फाइल</li><li><code>&lt;fstream&gt;</code> और फाइल स्ट्रीम</li>
+      <li><code>ifstream</code>, <code>ofstream</code>, <code>fstream</code></li><li>फाइल खोलना और बंद करना</li>
+      <li>फाइल में डेटा लिखना</li><li>फाइल से डेटा पढ़ना</li><li>फाइल खोलने के मोड</li>
+      <li>फाइल खुलने की त्रुटि जाँचना</li><li>फाइल में डेटा जोड़ना</li><li>फाइल के अंत की जाँच</li>
+      <li>रिकॉर्ड और सरल फाइल-आधारित प्रोग्राम</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 20: प्रीप्रोसेसर और हेडर फाइल</summary>
+    <div class="unit-body"><ol>
+      <li>प्रीप्रोसेसर क्या है?</li><li><code>#include</code></li><li>मानक हेडर फाइल</li><li>यूज़र-डिफाइंड हेडर फाइल</li>
+      <li><code>#define</code> से मैक्रो बनाना</li><li>कंडीशनल कम्पाइलेशन</li><li>हेडर गार्ड और <code>#pragma once</code></li>
+      <li>प्रीप्रोसेसिंग और कम्पाइलेशन में अंतर</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 21: एक्सेप्शन हैंडलिंग</summary>
+    <div class="unit-body"><ol>
+      <li>एक्सेप्शन का अर्थ</li><li>त्रुटि और एक्सेप्शन में अंतर</li><li><code>try</code> ब्लॉक</li>
+      <li><code>throw</code> कथन</li><li><code>catch</code> ब्लॉक</li><li>एक से अधिक <code>catch</code> ब्लॉक</li>
+      <li>मानक एक्सेप्शन का परिचय</li><li>एक्सेप्शन हैंडलिंग के सरल उदाहरण</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 22: स्टैंडर्ड टेम्पलेट लाइब्रेरी (STL)</summary>
+    <div class="unit-body"><ol>
+      <li>STL का परिचय</li><li>कंटेनर और इटरेटर</li><li><code>vector</code></li><li><code>pair</code></li>
+      <li><code>stack</code></li><li><code>queue</code></li><li><code>map</code></li><li><code>set</code></li>
+      <li><code>sort()</code>, <code>find()</code>, <code>reverse()</code> जैसे एल्गोरिदम</li>
+      <li>रेंज-बेस्ड <code>for</code> लूप</li><li>टेम्पलेट का परिचय</li>
+    </ol></div>
+  </details>
+
+  <details class="unit">
+    <summary>अध्याय 23: आधुनिक C++ की उपयोगी विशेषताएँ</summary>
+    <div class="unit-body"><ol>
+      <li><code>auto</code> से टाइप का स्वतः निर्धारण</li><li>रेंज-बेस्ड <code>for</code> लूप</li><li><code>nullptr</code></li>
+      <li>रेफरेंस</li><li>लैम्ब्डा एक्सप्रेशन का परिचय</li><li>स्मार्ट पॉइंटर का परिचय</li>
+      <li>नेमस्पेस</li><li>मानक लाइब्रेरी के उपयोग की अच्छी आदतें</li>
+    </ol></div>
+  </details>
+  </div>
+
+  <section class="intro">
+    <h2>भाग 2: कक्षा 11 के लिए व्यावहारिक प्रोग्राम</h2>
+    <div class="level"><h3>स्तर 1 — शुरुआती अभ्यास</h3><ul>
+      <li>अपना नाम, विद्यालय और कक्षा प्रिंट करना</li><li>दो संख्याओं का जोड़, घटाव, गुणा और भाग</li>
+      <li>आयत और वृत्त का क्षेत्रफल</li><li>सेल्सियस को फारेनहाइट में बदलना</li><li>अंकों का प्रतिशत और औसत निकालना</li>
+    </ul></div>
+    <div class="level"><h3>स्तर 2 — बुनियादी समस्या-समाधान</h3><ul>
+      <li>सम या विषम संख्या जाँचना</li><li>तीन संख्याओं में सबसे बड़ी संख्या</li><li>सरल कैलकुलेटर</li>
+      <li>पहाड़ा प्रिंट करना</li><li>फैक्टोरियल और फिबोनाची श्रेणी</li><li>अभाज्य और पैलिन्ड्रोम संख्या जाँचना</li>
+    </ul></div>
+    <div class="level"><h3>स्तर 3 — मध्यम स्तर</h3><ul>
+      <li>ऐरे में सबसे बड़ा तत्व खोजना</li><li>ऐरे में संख्या खोजना</li><li>संख्याओं को आरोही क्रम में लगाना</li>
+      <li>स्ट्रिंग में स्वर गिनना</li><li>गणितीय कार्यों के लिए फंक्शन बनाना</li><li>मैट्रिक्स का जोड़</li>
+    </ul></div>
+    <div class="level"><h3>स्तर 4 — छोटे प्रोजेक्ट</h3><ul>
+      <li>विद्यार्थी अंक और ग्रेड कैलकुलेटर</li><li>विद्यार्थी रिकॉर्ड प्रबंधन</li><li>विद्यालय उपस्थिति रिकॉर्ड</li>
+      <li>स्कोर सहित प्रश्नोत्तरी प्रोग्राम</li><li>मेन्यू-आधारित कैलकुलेटर</li><li>फाइल में विद्यार्थी जानकारी सुरक्षित रखने वाला प्रोग्राम</li>
+    </ul></div>
+  </section>
+
+  <section class="plan">
+    <h2>भाग 3: सुझाया गया शिक्षण क्रम</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>क्रम</th><th>विषय</th><th>अनुमानित समय</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>प्रोग्रामिंग की बुनियादी जानकारी</td><td>1 सप्ताह</td></tr>
+        <tr><td>2</td><td>एल्गोरिदम, फ्लोचार्ट और स्यूडोकोड</td><td>1 सप्ताह</td></tr>
+        <tr><td>3</td><td>C++ का वातावरण और पहला प्रोग्राम</td><td>1 सप्ताह</td></tr>
+        <tr><td>4</td><td>टोकन, वेरिएबल, डेटा टाइप, इनपुट-आउटपुट</td><td>2 सप्ताह</td></tr>
+        <tr><td>5</td><td>ऑपरेटर और एक्सप्रेशन</td><td>1 सप्ताह</td></tr>
+        <tr><td>6</td><td>निर्णय कथन</td><td>2 सप्ताह</td></tr>
+        <tr><td>7</td><td>लूप और पैटर्न प्रोग्राम</td><td>2 सप्ताह</td></tr>
+        <tr><td>8</td><td>फंक्शन</td><td>2 सप्ताह</td></tr>
+        <tr><td>9</td><td>ऐरे और स्ट्रिंग</td><td>2 सप्ताह</td></tr>
+        <tr><td>10</td><td>संख्या पद्धति और बूलियन लॉजिक</td><td>1–2 सप्ताह</td></tr>
+        <tr><td>11</td><td>OOP की बुनियादी अवधारणाएँ</td><td>2 सप्ताह</td></tr>
+        <tr><td>12</td><td>दोहराव, प्रायोगिक कार्य और प्रोजेक्ट</td><td>2 सप्ताह</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">यह एक सुझाव है, आधिकारिक BSEB समय-सारणी नहीं। उपलब्ध कक्षाओं, परीक्षा और निर्धारित पाठ्यक्रम के अनुसार समय में बदलाव करें।</p>
+  </section>
+
+  <section class="note">
+    <h2>शिक्षक के लिए सुझाव</h2>
+    <ol>
+      <li>पहले विद्यार्थियों को समस्या समझना और उसके चरण लिखना सिखाएँ, फिर कोड लिखवाएँ।</li>
+      <li>हर नए विषय के बाद कम-से-कम दो छोटे प्रोग्राम अभ्यास कराएँ।</li>
+      <li>विद्यार्थियों से कोड का ड्राई रन करवाएँ और त्रुटि स्वयं खोजने के अवसर दें।</li>
+      <li>यदि कंप्यूटर लैब उपलब्ध नहीं है, तो मोबाइल पर उपलब्ध C++ कंपाइलर या ऑनलाइन कोडिंग वातावरण से अभ्यास कराया जा सकता है; इंटरनेट न हो तो एल्गोरिदम और ड्राई रन कॉपी में कराएँ।</li>
+      <li>बिहार बोर्ड की तैयारी के लिए निर्धारित पाठ्यक्रम और पाठ्यपुस्तक को प्राथमिकता दें। पॉइंटर, STL, एक्सेप्शन हैंडलिंग और आधुनिक C++ जैसे विषयों को समय मिलने पर अतिरिक्त अध्ययन के रूप में पढ़ाएँ।</li>
+    </ol>
+  </section>
+</main>
+<footer>
+  <strong>Kant Computer</strong><br>
+  कक्षा 11 — कंप्यूटर विज्ञान | तैयारकर्ता: रवि कांत, कंप्यूटर विज्ञान शिक्षक
+</footer>
+<script>
+function setAll(openState){
+  document.querySelectorAll('#units details').forEach(d=>d.open=openState);
+}
+const search=document.getElementById('search');
+search.addEventListener('input',function(){
+  const q=this.value.trim().toLocaleLowerCase('hi');
+  document.querySelectorAll('#units details').forEach(d=>{
+    const match=d.textContent.toLocaleLowerCase('hi').includes(q);
+    d.classList.toggle('hidden',q!==''&&!match);
+    if(q!==''&&match)d.open=true;
+  });
+});
+</script>
+</body>
+</html>
