@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>British Poetry MCQ Practice | STET-2 English</title>
+<style>
+:root{--primary:#4f46e5;--primary2:#3730a3;--bg:#f4f6fb;--card:#fff;--text:#172033;--muted:#64748b;--green:#15803d;--greenbg:#dcfce7;--red:#b91c1c;--redbg:#fee2e2;--border:#dbe2ee}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.6}
+header{background:linear-gradient(120deg,#312e81,#4f46e5,#0e7490);color:#fff;padding:25px 16px;text-align:center}
+header h1{margin:0;font-size:clamp(1.45rem,4vw,2.2rem)}header p{margin:7px 0 0;color:#e0e7ff}
+.container{max-width:900px;margin:22px auto;padding:0 14px 35px}.panel,.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 6px 20px #1720330b}
+.panel{margin-bottom:16px}.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.pill{display:inline-block;background:#eef2ff;color:#3730a3;padding:5px 11px;border-radius:999px;font-size:.86rem;font-weight:bold}
+.progress{height:9px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin:12px 0}.progress div{height:100%;width:0;background:#4f46e5;transition:width .2s}
+#question{font-size:1.18rem;font-weight:700;margin:15px 0}.option{display:flex;gap:11px;align-items:flex-start;padding:12px 13px;border:1px solid var(--border);border-radius:11px;margin:9px 0;cursor:pointer;transition:.15s;background:#fff}.option:hover{border-color:#818cf8;background:#f8faff}.option input{margin-top:5px;accent-color:var(--primary);transform:scale(1.1)}.option.disabled{cursor:default}.option.correct{border-color:#22c55e;background:var(--greenbg)}.option.incorrect{border-color:#f87171;background:var(--redbg)}
+.feedback{display:none;margin-top:17px;padding:16px;border-radius:12px;border:1px solid var(--border)}.feedback.show{display:block}.feedback.good{background:#f0fdf4;border-color:#86efac}.feedback.bad{background:#fff7ed;border-color:#fdba74}.feedback h3{margin:0 0 7px;font-size:1.05rem}.feedback p{margin:7px 0}.answerline{font-weight:bold}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:10px;padding:11px 17px;font-size:1rem;font-weight:bold;cursor:pointer}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary2)}.btn-secondary{background:#e2e8f0;color:#172033}.btn:disabled{opacity:.45;cursor:not-allowed}.hint{font-size:.92rem;color:var(--muted)}.result{display:none;text-align:center}.result.show{display:block}.result h2{font-size:2rem;margin:4px}.review-list{text-align:left;margin-top:18px}.review-item{padding:12px;border:1px solid var(--border);border-radius:10px;margin:9px 0}.small{font-size:.9rem;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:.85rem;padding:18px}
+@media(max-width:560px){.panel,.quiz-card{padding:15px}.actions .btn{flex:1}.topline{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header>
+  <h1>British Poetry — MCQ Practice</h1>
+  <p>STET-2 English Paper | PG English syllabus | 50 questions · Easy to Moderate</p>
+</header>
+<main class="container">
+  <section class="panel">
+    <div class="topline"><span class="pill">Question-by-question mode</span><strong id="counter">Question 1 of 50</strong></div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="topline"><span class="small">Choose one option. Your answer and detailed explanation appear before you move on.</span><strong id="scoreNow">Score: 0</strong></div>
+  </section>
+  <section class="quiz-card" id="quizCard">
+    <div class="small" id="topic"></div>
+    <div id="question"></div>
+    <div id="options"></div>
+    <div class="feedback" id="feedback" aria-live="polite"></div>
+    <div class="actions">
+      <button class="btn btn-secondary" id="prevBtn" type="button">Previous</button>
+      <button class="btn btn-primary" id="submitBtn" type="button" disabled>Check Answer</button>
+      <button class="btn btn-primary" id="nextBtn" type="button" hidden>Next Question →</button>
+    </div>
+    <p class="hint" id="instruction">Select an option, then click “Check Answer”.</p>
+  </section>
+  <section class="panel result" id="result">
+    <span class="pill">Practice complete</span>
+    <h2 id="finalScore"></h2>
+    <p id="resultText"></p>
+    <button class="btn btn-primary" id="restartBtn" type="button">Restart Quiz</button>
+    <div class="review-list" id="reviewList"></div>
+  </section>
+</main>
+<footer>Practice material for revision. Confirm quotations and syllabus details with your prescribed edition.</footer>
+<script>
+const questions = [
+{topic:"History of British Poetry",q:"Which period is most closely associated with the flourishing of the English sonnet under Queen Elizabeth I?",options:["Victorian Age","Elizabethan Age","Modernist Period","Restoration Age"],answer:1,explanation:"The Elizabethan Age (especially the late sixteenth century) saw a major flowering of English sonnet sequences. Writers such as Sir Philip Sidney, Edmund Spenser and William Shakespeare adapted the sonnet form to English literary culture."},
+{topic:"History of British Poetry",q:"Which feature is especially associated with Metaphysical poetry?",options:["Only simple pastoral descriptions","Strict avoidance of intellectual argument","Witty argument and surprising comparisons called conceits","Exclusive use of heroic couplets"],answer:2,explanation:"Metaphysical poets, including John Donne, often combine emotion with intellectual argument. Their conceits are extended or unexpected comparisons that connect seemingly unrelated things, such as lovers and the sun or a compass."},
+{topic:"Edmund Spenser",q:"Spenser's Sonnet 67 beginning “Like as a huntsman…” appears in which sonnet sequence?",options:["Amoretti","Astrophel and Stella","The Sonnets","In Memoriam"],answer:0,explanation:"Spenser's Amoretti is a sequence of 89 sonnets. Sonnet 67 uses the image of a huntsman pursuing a deer to express the lover's pursuit of his beloved and the unexpected moment when pursuit gives way to rest or acceptance."},
+{topic:"Edmund Spenser",q:"In Sonnet 67, the huntsman and the deer primarily function as:",options:["A political allegory about Parliament","A contrast between city and country","A criticism of hunting as a sport","An extended comparison for the lover's pursuit of his beloved"],answer:3,explanation:"The poem develops a hunting image into a comparison for courtship. The speaker pursues the beloved as a huntsman pursues a deer; the conclusion suggests that the beloved's response changes the situation from tiring pursuit to a moment of rest."},
+{topic:"Edmund Spenser",q:"Which rhyme scheme is characteristic of the Spenserian sonnet?",options:["ABBA ABBA CDE CDE only","ABAB BCBC CDCD EE","ABAB CDCD EFEF GG","AABB CCDD EEFF GG"],answer:1,explanation:"The Spenserian sonnet uses interlocking quatrains: ABAB BCBC CDCD, followed by a couplet, EE. The linked rhymes help connect the ideas across the three quatrains."},
+{topic:"William Shakespeare",q:"Shakespeare's Sonnet 127 opens by discussing the changing cultural meaning of:",options:["Gold","Fairness or blackness in beauty","The sea","War"],answer:1,explanation:"Sonnet 127 questions conventional ideas that fair or light colouring automatically represents beauty. The speaker says that black was not traditionally counted as beautiful, but the Dark Lady's beauty challenges that convention."},
+{topic:"William Shakespeare",q:"In Sonnet 127, Shakespeare's treatment of the Dark Lady's beauty chiefly challenges:",options:["The value of poetry itself","The rules of dramatic tragedy","Traditional standards of beauty and artificial cosmetics","The institution of monarchy"],answer:2,explanation:"The sonnet questions inherited standards of beauty and the use of cosmetics to imitate a supposedly ideal appearance. The beloved's dark features are presented as genuine rather than artificially manufactured beauty."},
+{topic:"William Shakespeare",q:"What is the usual rhyme scheme of a Shakespearean sonnet?",options:["ABAB CDCD EFEF GG","ABBA ABBA CDE CDE","ABAB BCBC CDCD EE","AABB CCDD EFFE GG"],answer:0,explanation:"A Shakespearean sonnet normally contains three quatrains and a final couplet, with the rhyme scheme ABAB CDCD EFEF GG. The couplet often sharpens, reverses or summarises the argument."},
+{topic:"John Donne",q:"In “The Sunne Rising,” how does the speaker initially address the sun?",options:["As a divine judge","As a distant enemy army","As a child who needs instruction","As an intrusive and unwelcome visitor"],answer:3,explanation:"The speaker personifies the sun and speaks to it familiarly and provocatively, treating it as an interruption to the lovers' private world. This bold opening is typical of Donne's dramatic, argumentative voice."},
+{topic:"John Donne",q:"Which statement best expresses the central conceit of “The Sunne Rising”?",options:["The sun controls all human emotions","The lovers' world is so complete that it can rival or contain the wider world","The speaker wants to become a sailor","The poem argues that love must end at sunrise"],answer:1,explanation:"The speaker claims that love makes the lovers' room the centre of the universe. He diminishes the importance of rulers, wealth and geography, arguing that their world is concentrated in the lovers themselves."},
+{topic:"John Donne",q:"“The Sunne Rising” is commonly classified as:",options:["An epic","A pastoral elegy","A metaphysical love poem","A ballad about war"],answer:2,explanation:"The poem is a metaphysical love poem because it combines passion with wit, personification, paradox and intellectual argument. The speaker makes an elaborate case that love is more powerful than ordinary time and worldly authority."},
+{topic:"Alexander Pope",q:"“The Rape of the Lock” is best described as a:",options:["Mock-heroic poem","Tragic drama","Religious hymn","Pastoral elegy"],answer:0,explanation:"Pope uses the elevated style and conventions of epic poetry to describe a small social incident: the cutting of a lock of Belinda's hair. The mismatch between grand style and trivial subject creates mock-heroic satire."},
+{topic:"Alexander Pope",q:"Who is Belinda in “The Rape of the Lock”?",options:["The poem's narrator","A sylph","A priestess of Apollo","The fashionable young woman whose lock of hair is cut"],answer:3,explanation:"Belinda is the central young woman in the poem. Her beauty, social life and reaction to the loss of a lock of hair become the focus of Pope's satire on fashionable society and its exaggerated sense of honour."},
+{topic:"Alexander Pope",q:"Who is Ariel in Canto I of “The Rape of the Lock”?",options:["A human rival who cuts the lock","A sylph who serves as Belinda's guardian","The Baron’s servant","The poet's patron"],answer:1,explanation:"Ariel is a sylph, one of the airy spirits who protect fashionable young women in Pope's mock-epic universe. He warns Belinda of possible danger and organises supernatural protection around her."},
+{topic:"Alexander Pope",q:"What happens at the centre of the conflict in Canto III?",options:["Belinda leaves London forever","A war begins between two nations","The Baron cuts off a lock of Belinda's hair","Ariel becomes king of the sylphs"],answer:2,explanation:"During the social gathering at Hampton Court, the Baron cuts a lock of Belinda's hair. Pope treats this minor act as though it were an epic catastrophe, satirising the exaggerated importance placed on appearance and reputation."},
+{topic:"Alexander Pope",q:"Which verse form is mainly used in “The Rape of the Lock”?",options:["Blank verse","Terza rima","Ballad metre","Heroic couplets"],answer:3,explanation:"Pope's poem is written mainly in heroic couplets: rhyming pairs of iambic pentameter lines. The balanced, polished couplets suit his wit, control and satirical treatment of social manners."},
+{topic:"William Blake",q:"“The Lamb” appears in which collection by William Blake?",options:["Songs of Innocence","The Prelude","Don Juan","Lyrical Ballads"],answer:0,explanation:"“The Lamb” appears in Songs of Innocence (1789). Its childlike voice, gentle rhythm and Christian associations connect the lamb with innocence, gentleness and the figure of the Creator."},
+{topic:"William Blake",q:"In “The Lamb,” the lamb is most strongly associated with:",options:["Industrial machinery","War and conquest","Innocence, gentleness and Christ-like imagery","Political ambition"],answer:2,explanation:"The lamb suggests innocence and gentleness and carries Christian associations with Christ as the Lamb of God. The speaker connects the lamb, the child and the Creator through a shared language of meekness and care."},
+{topic:"William Blake",q:"“The Tyger” is included in which collection?",options:["Songs of Innocence","Songs of Experience","The Faerie Queene","The Prelude"],answer:1,explanation:"“The Tyger” appears in Songs of Experience (1794). Its powerful animal and repeated questions explore the mystery of creation, the source of terrifying beauty and the problem of how a creator can make both innocence and destructive power."},
+{topic:"William Blake",q:"The contrast between “The Lamb” and “The Tyger” is often read as a contrast between:",options:["England and France","Summer and winter only","Science and mathematics","Innocence and experience"],answer:3,explanation:"Blake's paired poems invite readers to consider innocence alongside experience. The gentle lamb and fierce tiger raise questions about the complexity of creation rather than offering a simple answer about good and evil."},
+{topic:"William Wordsworth",q:"“Tintern Abbey” was published in 1798 as part of:",options:["Lyrical Ballads","Songs of Experience","The Waste Land","The Faerie Queene"],answer:0,explanation:"“Lines Composed a Few Miles above Tintern Abbey” appeared in the 1798 edition of Lyrical Ballads, the landmark collection associated with Wordsworth and Coleridge and the emergence of English Romanticism."},
+{topic:"William Wordsworth",q:"What does Wordsworth suggest nature can provide in “Tintern Abbey”?",options:["Only material wealth","A means of military training","Emotional renewal, memory and moral insight","A guarantee of political power"],answer:2,explanation:"Nature provides consolation and renewal, and remembered landscapes continue to shape the speaker's inner life. The poem also reflects on how his response to nature has matured from youthful sensation toward thoughtful sympathy."},
+{topic:"William Wordsworth",q:"Who is the person addressed near the end of “Tintern Abbey”?",options:["Samuel Johnson","The speaker's sister Dorothy","Alexander Pope","The speaker's son"],answer:1,explanation:"Wordsworth addresses his sister Dorothy. He hopes that her memories of the landscape will comfort her in future years, just as recollections of nature have comforted and sustained him."},
+{topic:"William Wordsworth",q:"Which literary movement is most closely associated with Wordsworth?",options:["Neoclassicism","Modernism","Anglo-Saxon poetry","Romanticism"],answer:3,explanation:"Wordsworth is a central Romantic poet. Romanticism often emphasises nature, memory, imagination, emotion and the individual mind; Wordsworth's poetry explores how these shape human experience."},
+{topic:"P. B. Shelley",q:"Who wrote “Ozymandias”?",options:["P. B. Shelley","John Keats","Lord Byron","William Blake"],answer:0,explanation:"Percy Bysshe Shelley published “Ozymandias” in 1818. The poem describes the remains of a ruined statue in a desert and reflects on the impermanence of political power and human pride."},
+{topic:"P. B. Shelley",q:"Who narrates the story of the ruined statue in “Ozymandias”?",options:["Ozymandias himself","A king's soldier","A traveller from an ancient land","The poet's sister"],answer:2,explanation:"The speaker says he met a traveller from an antique land, who describes the broken statue. This framed narration creates distance between the boastful ruler and the desolate remains of his empire."},
+{topic:"P. B. Shelley",q:"The ruined statue in “Ozymandias” chiefly illustrates that:",options:["All rulers are immortal","Art is always easy to understand","Deserts are suitable for kingdoms","Power and pride are eventually defeated by time"],answer:3,explanation:"The inscription boasts of the ruler's greatness, but nothing remains around the shattered statue except the empty desert. The contrast makes the poem a meditation on the transience of power and the limits of human ambition."},
+{topic:"John Keats",q:"An “ode” is generally a:",options:["Short comic play","Formal lyric poem of reflection or address","Prose biography","Narrative written only for children"],answer:1,explanation:"An ode is a lyric poem that often addresses a person, object or idea in a reflective or elevated manner. Keats's odes meditate on beauty, art, mortality, imagination and the limits of human experience."},
+{topic:"John Keats",q:"In “Ode on a Grecian Urn,” the urn mainly represents:",options:["A modern factory","The collapse of a government","Art's capacity to preserve images beyond ordinary time","A map of England"],answer:2,explanation:"The urn preserves scenes of human activity and beauty beyond the passage of ordinary time. Keats also explores the tension in this permanence: the figures remain beautiful, but their actions never reach completion."},
+{topic:"John Keats",q:"Which theme is central to “Ode on a Grecian Urn”?",options:["The relationship between art, beauty and time","The advantages of industrialisation","The history of Parliament","The rules of epic warfare"],answer:0,explanation:"Keats considers how art can preserve beauty while human life is temporary. The urn's figures remain fixed in their scenes, creating both an ideal permanence and a sense of incompleteness."},
+{topic:"Alfred, Lord Tennyson",q:"Who wrote “Break, Break, Break”?",options:["Matthew Arnold","Robert Browning","Alfred, Lord Tennyson","Gerard Manley Hopkins"],answer:2,explanation:"“Break, Break, Break” is a lyric by Alfred, Lord Tennyson, written in a mood of grief. The repeated sound of waves contrasts with the speaker's inability to express his full sense of loss."},
+{topic:"Alfred, Lord Tennyson",q:"What is the dominant mood of “Break, Break, Break”?",options:["Joyful celebration","Grief and longing","Satirical anger","Triumphant confidence"],answer:1,explanation:"The speaker watches the sea and contrasts the ordinary activity of other people with his private grief. The poem's repetition and restrained language convey sorrow and the painful awareness that life continues despite personal loss."},
+{topic:"Alfred, Lord Tennyson",q:"The repeated word “Break” in the title and opening chiefly echoes:",options:["A blacksmith's hammer","A church bell","A military command","The breaking action and sound of waves"],answer:3,explanation:"The repeated word evokes waves striking the shore. Its rhythm gives the poem a persistent sound while reinforcing the speaker's emotional disturbance and the contrast between natural repetition and personal grief."},
+{topic:"Matthew Arnold",q:"“The Scholar-Gipsy” is associated with which university city?",options:["Oxford","Edinburgh","Dublin","London"],answer:0,explanation:"Arnold's poem draws on a story about an Oxford student who leaves university life and joins a group of gipsies. The Oxford landscape and countryside are important to the poem's atmosphere and reflections."},
+{topic:"Matthew Arnold",q:"The Scholar-Gipsy is often contrasted with modern people because he seems to possess:",options:["Political authority","A large fortune","Single-minded purpose and freedom from modern doubt","A desire for military conquest"],answer:2,explanation:"Arnold presents the Scholar-Gipsy as a figure of sustained purpose, in contrast with the divided attention and spiritual uncertainty he associates with modern life. The poem expresses anxiety about restlessness and loss of conviction."},
+{topic:"Matthew Arnold",q:"Matthew Arnold is frequently associated with Victorian concerns about:",options:["Only comic entertainment","Faith, doubt and cultural uncertainty","The invention of the sonnet","The courtly love tradition alone"],answer:1,explanation:"Arnold's poetry often reflects Victorian intellectual and spiritual uncertainty, including tensions between traditional religious belief and modern thought. “The Scholar-Gipsy” uses an idealised figure to explore modern restlessness."},
+{topic:"W. B. Yeats",q:"“The Second Coming” was written by:",options:["T. S. Eliot","Philip Larkin","Seamus Heaney","W. B. Yeats"],answer:3,explanation:"W. B. Yeats wrote “The Second Coming” in the aftermath of the First World War, amid political upheaval. The poem uses apocalyptic imagery to portray the breakdown of an established order and the frightening arrival of a new era."},
+{topic:"W. B. Yeats",q:"In “The Second Coming,” the falcon's inability to hear the falconer suggests:",options:["A breakdown of control and connection","The success of a hunting lesson","The return of pastoral peace","The triumph of scientific discovery"],answer:0,explanation:"The falcon flying beyond the falconer's control symbolises a wider loss of order. The image introduces the poem's vision of a world where established authority and shared systems of meaning have broken down."},
+{topic:"W. B. Yeats",q:"In “Sailing to Byzantium,” Byzantium is most closely linked with:",options:["A battlefield and military glory","A childhood village","Artistic and spiritual permanence","The Industrial Revolution"],answer:2,explanation:"Byzantium represents a world of artistic and spiritual achievement that seems to transcend bodily decay. The speaker, dissatisfied with the ageing body, imagines a transformation into a lasting work of art."},
+{topic:"W. B. Yeats",q:"What concern links “The Second Coming” and “Sailing to Byzantium”?",options:["The daily life of farmers only","Time, change and the search for order or permanence","The rules of comedy","The history of the English sonnet"],answer:1,explanation:"The poems approach change differently. “The Second Coming” imagines violent historical disintegration, while “Sailing to Byzantium” seeks permanence through art and spiritual transformation."},
+{topic:"T. S. Eliot",q:"Who wrote “The Hollow Men”?",options:["W. B. Yeats","Matthew Arnold","John Donne","T. S. Eliot"],answer:3,explanation:"T. S. Eliot's “The Hollow Men” appeared in 1925. Its fragmented voices, bleak atmosphere and images of spiritual emptiness are characteristic of literary Modernism."},
+{topic:"T. S. Eliot",q:"The “hollow men” are chiefly portrayed as:",options:["Spiritually empty, indecisive and unable to act meaningfully","Successful explorers","Victorious soldiers","Confident religious leaders"],answer:0,explanation:"The figures in the poem lack spiritual substance and effective will. Their condition reflects paralysis, disillusionment and a damaged world, themes that recur in Eliot's modernist poetry."},
+{topic:"T. S. Eliot",q:"Which feature is especially associated with Eliot's Modernist poetry?",options:["A single uncomplicated narrative in every poem","A strict rule that all poems must rhyme","Fragmentation, allusion and multiple voices","A complete rejection of cultural references"],answer:2,explanation:"Eliot often uses fragments, literary and cultural allusions, shifts in voice and disrupted structure. These techniques represent the complexity and disorientation of modern experience."},
+{topic:"Philip Larkin",q:"What situation begins “Church Going”?",options:["A wedding ceremony","The speaker enters a church after finding it open","A priest gives a sermon","A group prepares for a pilgrimage"],answer:1,explanation:"The poem begins with a speaker who enters a church when it is open and looks around. His visit prompts questions about religious belief, ritual, the future of churches and why people may continue to value such places."},
+{topic:"Philip Larkin",q:"A central concern of “Church Going” is:",options:["The life of a medieval king","The superiority of one church over another","The growth of urban factories","What churches will mean as religious belief changes"],answer:3,explanation:"Larkin's speaker wonders what will happen to churches as religious practice declines. Yet he also recognises that people may continue to visit them because they remain places associated with seriousness, reflection, history and human need."},
+{topic:"Philip Larkin",q:"Which description best fits the speaker's tone in “Church Going”?",options:["Conversational, questioning and reflective","Purely heroic and triumphant","Entirely romantic and idealistic","Strictly scientific and emotionless"],answer:0,explanation:"Larkin uses a conversational voice that mixes scepticism, humour and genuine reflection. The speaker is unsure about religion but gradually considers why churches may retain significance even for people who do not share traditional beliefs."},
+{topic:"Seamus Heaney",q:"Who wrote “Punishment”?",options:["Philip Larkin","T. S. Eliot","Seamus Heaney","W. B. Yeats"],answer:2,explanation:"“Punishment” is by the Irish poet Seamus Heaney and appears in North (1975). It reflects on the preserved body of an ancient woman and connects historical violence with political conflict in modern Northern Ireland."},
+{topic:"Seamus Heaney",q:"The ancient body that inspires “Punishment” is associated with:",options:["A Roman empress","A bog body preserved in peat","A character from Greek comedy","A modern political leader"],answer:1,explanation:"The poem draws on the discovery of bog bodies, including a young woman whose death is understood as a form of ancient punishment. Heaney uses the historical image to examine violence, communal judgement and the speaker's own uneasy response to contemporary conflict."},
+{topic:"Seamus Heaney",q:"One of the poem's difficult ethical questions in “Punishment” concerns:",options:["Whether nature is more beautiful than art","How to write a heroic epic","Whether poetry should avoid history","The speaker's sympathy for a victim alongside his admission of passive complicity"],answer:3,explanation:"The speaker feels sympathy for the ancient victim but also recognises a disturbing parallel with contemporary public violence. His admission that he might have remained silent raises questions about complicity, judgement and the moral limits of witnessing."},
+{topic:"British Poetry — Revision",q:"Which of the following poets is most closely associated with the dramatic monologue as a major Victorian poetic form?",options:["Edmund Spenser","John Keats","Robert Browning","Philip Larkin"],answer:2,explanation:"Robert Browning is strongly associated with the dramatic monologue, a poem in which a speaker addresses a silent listener and reveals aspects of their own character, often unintentionally. Although Browning is not one of the set poets listed for this particular syllabus section, this is a useful British poetry history question for wider revision."}
+];
+
+let current = 0;
+const responses = Array(questions.length).fill(null);
+const reviewed = Array(questions.length).fill(false);
+const $ = id => document.getElementById(id);
+
+function renderQuestion(){
+  const item = questions[current];
+  $("counter").textContent = `Question ${current+1} of ${questions.length}`;
+  $("progressBar").style.width = `${((current+1)/questions.length)*100}%`;
+  $("topic").textContent = item.topic;
+  $("question").textContent = `${current+1}. ${item.q}`;
+  $("options").innerHTML = "";
+  item.options.forEach((option,index)=>{
+    const label = document.createElement("label");
+    label.className = "option";
+    const input = document.createElement("input");
+    input.type = "radio"; input.name = "answer"; input.value = index;
+    input.checked = responses[current] === index;
+    input.disabled = reviewed[current];
+    input.addEventListener("change",()=>{
+      responses[current] = index;
+      $("submitBtn").disabled = false;
+    });
+    const span = document.createElement("span");
+    span.textContent = `${String.fromCharCode(65+index)}. ${option}`;
+    label.append(input,span);
+    if(reviewed[current]){
+      label.classList.add("disabled");
+      if(index === item.answer) label.classList.add("correct");
+      else if(index === responses[current]) label.classList.add("incorrect");
+    }
+    $("options").appendChild(label);
+  });
+  const feedback = $("feedback");
+  feedback.className = "feedback";
+  feedback.innerHTML = "";
+  if(reviewed[current]){
+    const correct = responses[current] === item.answer;
+    feedback.classList.add("show",correct?"good":"bad");
+    feedback.innerHTML = `<h3>${correct?"Correct! Well done.":"Not quite — review the correct answer."}</h3>
+      <p class="answerline">Correct answer: ${String.fromCharCode(65+item.answer)}. ${item.options[item.answer]}</p>
+      <p><strong>Explanation:</strong> ${item.explanation}</p>`;
+  }
+  $("submitBtn").hidden = reviewed[current];
+  $("submitBtn").disabled = responses[current] === null;
+  $("nextBtn").hidden = !reviewed[current] || current === questions.length-1;
+  $("prevBtn").disabled = current === 0;
+  $("instruction").textContent = reviewed[current] ? "Read the explanation, then move to the next question." : "Select one option, then click “Check Answer” to reveal the answer and explanation.";
+  updateScore();
+}
+function updateScore(){
+  const answered = reviewed.filter(Boolean).length;
+  const score = questions.reduce((sum,q,i)=>sum+(reviewed[i] && responses[i]===q.answer?1:0),0);
+  $("scoreNow").textContent = `Score: ${score} / ${answered}`;
+}
+$("submitBtn").addEventListener("click",()=>{
+  if(responses[current] === null) return;
+  reviewed[current] = true;
+  renderQuestion();
+});
+$("prevBtn").addEventListener("click",()=>{if(current>0){current--;renderQuestion();}});
+$("nextBtn").addEventListener("click",()=>{
+  if(current<questions.length-1){current++;renderQuestion();}
+  if(current===questions.length-1 && reviewed.every(Boolean)) showResults();
+});
+function showResults(){
+  $("quizCard").style.display="none";
+  $("result").classList.add("show");
+  const score=questions.reduce((sum,q,i)=>sum+(responses[i]===q.answer?1:0),0);
+  $("finalScore").textContent=`${score} / ${questions.length}`;
+  $("resultText").textContent=`You answered ${reviewed.filter(Boolean).length} of ${questions.length} questions. Correct answers: ${score}. Review the explanations below to revise the syllabus.`;
+  $("reviewList").innerHTML="<h3>Answer Review</h3>";
+  questions.forEach((q,i)=>{
+    const div=document.createElement("div");div.className="review-item";
+    const right=responses[i]===q.answer;
+    div.innerHTML=`<strong>${i+1}. ${q.q}</strong><p>${right?"✅ Correct":"❌ Incorrect or unanswered"} — <strong>${String.fromCharCode(65+q.answer)}. ${q.options[q.answer]}</strong></p><p>${q.explanation}</p>`;
+    $("reviewList").appendChild(div);
+  });
+}
+$("restartBtn").addEventListener("click",()=>{
+  current=0;responses.fill(null);reviewed.fill(false);
+  $("quizCard").style.display="block";$("result").classList.remove("show");
+  renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+});
+renderQuestion();
+</script>
+</body>
+</html>
