@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Basic C++ - BSEB Class 11 Quiz</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#172033;
+}
+
+.container{
+    width:100%;
+    max-width:950px;
+    margin:auto;
+    padding:15px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:clamp(25px,5vw,38px);
+}
+
+.header p{
+    margin:6px 0;
+    font-size:17px;
+}
+
+/* PROGRESS */
+.progress-box{
+    background:white;
+    margin-top:18px;
+    padding:16px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    font-size:15px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:2%;
+    background:#4f46e5;
+    transition:.3s;
+}
+
+/* QUIZ CARD */
+.quiz-card{
+    background:white;
+    margin-top:18px;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.question{
+    font-size:clamp(20px,3vw,27px);
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+/* OPTIONS */
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:15px;
+    margin:11px 0;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    cursor:pointer;
+    background:#fff;
+    transition:.2s;
+    font-size:17px;
+    line-height:1.5;
+}
+
+.option:hover{
+    border-color:#818cf8;
+    background:#f5f3ff;
+}
+
+.option input{
+    margin-top:5px;
+    transform:scale(1.2);
+    accent-color:#4f46e5;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+}
+
+/* RESULT */
+.result{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.result.show{
+    display:block;
+}
+
+.result.correct{
+    background:#f0fdf4;
+    border:1px solid #86efac;
+}
+
+.result.wrong{
+    background:#fef2f2;
+    border:1px solid #fca5a5;
+}
+
+.result-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+button{
+    border:none;
+    border-radius:12px;
+    padding:13px 20px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+}
+
+.previous{
+    background:#e5e7eb;
+    color:#111827;
+}
+
+.check{
+    background:#4f46e5;
+    color:white;
+}
+
+.next{
+    background:#111827;
+    color:white;
+    display:none;
+}
+
+.restart{
+    background:#7c3aed;
+    color:white;
+}
+
+/* QUESTION PALETTE */
+.palette-title{
+    margin-top:25px;
+    font-weight:bold;
+}
+
+.palette{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.q-btn{
+    width:40px;
+    height:40px;
+    padding:0;
+    background:#eef2ff;
+    color:#3730a3;
+    font-size:14px;
+}
+
+.q-btn.active{
+    background:#4f46e5;
+    color:white;
+}
+
+.q-btn.done{
+    background:#bbf7d0;
+    color:#166534;
+}
+
+/* FINAL SCORE */
+.final{
+    display:none;
+    background:white;
+    margin-top:18px;
+    padding:35px 20px;
+    text-align:center;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.final h2{
+    font-size:30px;
+}
+
+.final-score{
+    font-size:50px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+.note{
+    color:#64748b;
+    font-size:14px;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .container{
+        padding:10px;
+    }
+
+    .header{
+        padding:22px 12px;
+        border-radius:17px;
+    }
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .header p{
+        font-size:15px;
+    }
+
+    .quiz-card{
+        padding:17px;
+        border-radius:17px;
+    }
+
+    .question{
+        font-size:20px;
+    }
+
+    .option{
+        padding:12px;
+        font-size:16px;
+    }
+
+    .buttons button{
+        flex:1;
+        min-width:120px;
+    }
+
+    .q-btn{
+        width:35px;
+        height:35px;
+    }
+}
+.visitor-counter{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    color:blue;
+    font-size:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Computer Science — Daily Exam(27.10.2026)</h1>
+    <p>BSEB Class 11 — Half Yearly MCQ Interactive Quiz</p>
+    <p>कुल प्रश्न: 25</p>
+</div>
+<div class="visitor-counter">
+    👁️ Total Visitors: <span id="visitorCount">Loading...</span>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-box">
+
+    <div class="progress-info">
+        <span id="questionNumber">प्रश्न 1 / 50</span>
+        <span id="score">स्कोर: 0</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<!-- QUIZ -->
+<div class="quiz-card" id="quizCard">
+
+    <div class="question" id="question">
+        प्रश्न लोड हो रहा है...
+    </div>
+
+    <div id="options"></div>
+
+    <div class="result" id="result"></div>
+
+    <div class="buttons">
+
+        <button
+            class="previous"
+            id="previousButton"
+            onclick="previousQuestion()">
+            ← पिछला
+        </button>
+
+        <button
+            class="check"
+            id="checkButton"
+            onclick="checkAnswer()">
+            उत्तर जाँचें
+        </button>
+
+        <button
+            class="next"
+            id="nextButton"
+            onclick="nextQuestion()">
+            अगला प्रश्न →
+        </button>
+
+    </div>
+
+
+    <div class="palette-title">
+        प्रश्न चुनें:
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="note">
+        पहले विकल्प चुनें और फिर "उत्तर जाँचें" दबाएँ।
+        सही और गलत दोनों स्थितियों में प्रश्न की व्याख्या दिखाई जाएगी।
+    </div>
+
+</div>
+
+
+<!-- FINAL SCORE -->
+<div class="final" id="finalCard">
+
+    <h2>🎉 Quiz पूरा हुआ!</h2>
+
+    <div class="final-score" id="finalScore">
+        0 / 50
+    </div>
+
+    <p id="finalMessage"></p>
+
+    <button
+        class="restart"
+        onclick="restartQuiz()">
+        🔄 फिर से शुरू करें
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   C++ ARITHMETIC OPERATORS - 25 MCQs
+   विषय: जोड़, घटाव, गुणा, भाग और शेषफल
+===================================================== */
+
+const questions = [
+    {
+        q: "1. C++ में जोड़ने के लिए किस ऑपरेटर का उपयोग किया जाता है?",
+        options: ["-", "*", "+", "/"],
+        answer: 2,
+        explanation: "दो संख्याओं को जोड़ने के लिए + ऑपरेटर का उपयोग किया जाता है।"
+    },
+    {
+        q: "2. 10 + 5 का परिणाम क्या होगा?",
+        options: ["15", "5", "50", "2"],
+        answer: 0,
+        explanation: "10 + 5 = 15।"
+    },
+    {
+        q: "3. C++ में घटाव के लिए किस ऑपरेटर का उपयोग किया जाता है?",
+        options: ["+", "/", "-", "%"],
+        answer: 2,
+        explanation: "एक संख्या में से दूसरी संख्या घटाने के लिए - ऑपरेटर का उपयोग होता है।"
+    },
+    {
+        q: "4. 20 - 8 का परिणाम क्या होगा?",
+        options: ["28", "12", "160", "2"],
+        answer: 1,
+        explanation: "20 - 8 = 12।"
+    },
+    {
+        q: "5. C++ में गुणा करने के लिए किस ऑपरेटर का उपयोग किया जाता है?",
+        options: ["x", "*", "%", "+"],
+        answer: 1,
+        explanation: "गुणा करने के लिए * ऑपरेटर का उपयोग किया जाता है।"
+    },
+    {
+        q: "6. 6 * 4 का परिणाम क्या होगा?",
+        options: ["10", "20", "24", "2"],
+        answer: 2,
+        explanation: "6 × 4 = 24।"
+    },
+    {
+        q: "7. C++ में भाग देने के लिए किस ऑपरेटर का उपयोग किया जाता है?",
+        options: ["%", "/", "*", "\\"],
+        answer: 1,
+        explanation: "भाग देने के लिए / ऑपरेटर का उपयोग किया जाता है।"
+    },
+    {
+        q: "8. 20 / 4 का परिणाम क्या होगा?",
+        options: ["4", "5", "16", "80"],
+        answer: 1,
+        explanation: "20 ÷ 4 = 5।"
+    },
+    {
+        q: "9. 17 % 5 का परिणाम क्या होगा?",
+        options: ["3", "2", "5", "12"],
+        answer: 1,
+        explanation: "17 को 5 से भाग देने पर शेषफल 2 बचता है।"
+    },
+    {
+        q: "10. भाग देने के बाद शेषफल ज्ञात करने के लिए किस ऑपरेटर का उपयोग किया जाता है?",
+        options: ["+", "/", "*", "%"],
+        answer: 3,
+        explanation: "पूर्णांक संख्याओं के लिए % ऑपरेटर भाग देने के बाद शेषफल देता है।"
+    },
+    {
+        q: "11. 10 % 3 का परिणाम क्या होगा?",
+        options: ["3", "1", "0", "10"],
+        answer: 1,
+        explanation: "10 को 3 से भाग देने पर शेषफल 1 बचता है।"
+    },
+    {
+        q: "12. 15 % 5 का परिणाम क्या होगा?",
+        options: ["3", "5", "0", "1"],
+        answer: 2,
+        explanation: "15, 5 से पूरी तरह विभाजित होता है, इसलिए शेषफल 0 है।"
+    },
+    {
+        q: "13. C++ में 7 / 2 का परिणाम क्या होगा, यदि दोनों मान int प्रकार के हैं?",
+        options: ["3.5", "3", "4", "2"],
+        answer: 1,
+        explanation: "दोनों मान पूर्णांक हैं, इसलिए पूर्णांक भाग देने पर परिणाम 3 होगा।"
+    },
+    {
+        q: "14. C++ में 7.0 / 2 का परिणाम क्या होगा?",
+        options: ["3", "3.5", "4", "2"],
+        answer: 1,
+        explanation: "7.0 एक दशमलव मान है, इसलिए परिणाम 3.5 होगा।"
+    },
+    {
+        q: "15. a और b नाम के दो वेरिएबल का योग निकालने का सही कथन कौन-सा है?",
+        options: [
+            "sum = a + b;",
+            "sum = a * b;",
+            "sum = a - b;",
+            "sum = a % b;"
+        ],
+        answer: 0,
+        explanation: "a + b से दोनों वेरिएबल का योग प्राप्त होता है।"
+    },
+    {
+        q: "16. निम्नलिखित कोड का आउटपुट क्या होगा?\nint a = 8, b = 3;\ncout << a - b;",
+        options: ["11", "24", "5", "2"],
+        answer: 2,
+        explanation: "8 - 3 = 5।"
+    },
+    {
+        q: "17. निम्नलिखित कोड का आउटपुट क्या होगा?\nint a = 5, b = 4;\ncout << a * b;",
+        options: ["9", "20", "1", "54"],
+        answer: 1,
+        explanation: "5 × 4 = 20।"
+    },
+    {
+        q: "18. निम्नलिखित कोड का आउटपुट क्या होगा?\nint a = 18, b = 6;\ncout << a / b;",
+        options: ["3", "12", "108", "0"],
+        answer: 0,
+        explanation: "18 ÷ 6 = 3।"
+    },
+    {
+        q: "19. निम्नलिखित कोड का आउटपुट क्या होगा?\nint a = 23, b = 4;\ncout << a % b;",
+        options: ["5", "3", "1", "4"],
+        answer: 1,
+        explanation: "23 को 4 से भाग देने पर शेषफल 3 बचता है।"
+    },
+    {
+        q: "20. C++ में cin और cout का उपयोग करने के लिए सामान्यतः किस हेडर फाइल को शामिल किया जाता है?",
+        options: ["<math.h>", "<string>", "<iostream>", "<stdio.h>"],
+        answer: 2,
+        explanation: "<iostream> हेडर फाइल cin और cout जैसे इनपुट-आउटपुट ऑब्जेक्ट उपलब्ध कराती है।"
+    },
+    {
+        q: "21. a और b का योग स्क्रीन पर दिखाने के लिए कौन-सा कथन सही है?",
+        options: [
+            "cin >> a + b;",
+            "cout << a + b;",
+            "cout >> a + b;",
+            "cin << a + b;"
+        ],
+        answer: 1,
+        explanation: "cout << a + b; योग की गणना करके उसे स्क्रीन पर प्रदर्शित करता है।"
+    },
+    {
+        q: "22. 4 + 3 * 2 का परिणाम क्या होगा?",
+        options: ["14", "10", "12", "9"],
+        answer: 1,
+        explanation: "गुणा की प्राथमिकता जोड़ से अधिक होती है। इसलिए 4 + (3 × 2) = 10।"
+    },
+    {
+        q: "23. (4 + 3) * 2 का परिणाम क्या होगा?",
+        options: ["10", "14", "11", "24"],
+        answer: 1,
+        explanation: "पहले कोष्ठक हल होगा: (4 + 3) × 2 = 14।"
+    },
+    {
+        q: "24. यदि दोनों संख्याएँ int प्रकार की हैं, तो 25 / 4 का परिणाम क्या होगा?",
+        options: ["6.25", "7", "6", "1"],
+        answer: 2,
+        explanation: "पूर्णांक भाग देने पर दशमलव वाला भाग नहीं मिलता। इसलिए परिणाम 6 होगा।"
+    },
+    {
+        q: "25. निम्नलिखित कोड का आउटपुट क्या होगा?\nint a = 10, b = 3;\ncout << a + b << \" \" << a - b << \" \" << a * b << \" \" << a / b << \" \" << a % b;",
+        options: [
+            "13 7 30 3 1",
+            "13 7 30 3.33 1",
+            "7 13 30 3 0",
+            "13 7 13 3 1"
+        ],
+        answer: 0,
+        explanation: "योग = 13, घटाव = 7, गुणा = 30, पूर्णांक भाग = 3 और शेषफल = 1।"
+    }
+];
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+let currentQuestion = 0;
+
+let selectedAnswers =
+    new Array(questions.length).fill(null);
+
+let checkedQuestions =
+    new Array(questions.length).fill(false);
+
+let score = 0;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const questionElement =
+    document.getElementById("question");
+
+const optionsElement =
+    document.getElementById("options");
+
+const resultElement =
+    document.getElementById("result");
+
+const checkButton =
+    document.getElementById("checkButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const previousButton =
+    document.getElementById("previousButton");
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const scoreElement =
+    document.getElementById("score");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const palette =
+    document.getElementById("palette");
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionElement.textContent =
+        (currentQuestion + 1) + ". " + q.q;
+
+    optionsElement.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        label.innerHTML = `
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${selectedAnswers[currentQuestion] === index ? "checked" : ""}
+                ${checkedQuestions[currentQuestion] ? "disabled" : ""}
+            >
+
+            <span>
+                <b>${String.fromCharCode(65 + index)})</b>
+                ${option}
+            </span>
+        `;
+
+        label.addEventListener("click",function(){
+
+            if(!checkedQuestions[currentQuestion]){
+
+                selectedAnswers[currentQuestion] =
+                    index;
+
+                highlightOptions();
+
+            }
+
+        });
+
+        optionsElement.appendChild(label);
+
+    });
+
+/* =====================================================
+   VISITOR COUNTER
+===================================================== */
+
+const visitorCountElement =
+    document.getElementById("visitorCount");
+
+const siteName = window.location.hostname;
+const pagePath = window.location.pathname || "/";
+
+/* Count this page view */
+fetch(
+    "https://page-views-api.ratneshc.com/api/v1/track?site=" +
+    encodeURIComponent(siteName) +
+    "&path=" +
+    encodeURIComponent(pagePath)
+)
+.catch(error => {
+    console.log("Visitor tracking error:", error);
+});
+
+/* Get current visitor count */
+function updateVisitorCount(){
+
+    fetch(
+        "https://page-views-api.ratneshc.com/api/v1/views?site=" +
+        encodeURIComponent(siteName) +
+        "&path=" +
+        encodeURIComponent(pagePath)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if(typeof data.views !== "undefined"){
+
+            visitorCountElement.textContent =
+                Number(data.views).toLocaleString("en-IN");
+
+        }
+        else{
+
+            visitorCountElement.textContent = "0";
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log("Visitor count error:", error);
+
+        visitorCountElement.textContent =
+            "Unavailable";
+
+    });
+
+}
+
+/* Give tracking request a moment before reading count */
+setTimeout(updateVisitorCount, 500);
+    /* RESULT */
+
+    resultElement.className = "result";
+    resultElement.innerHTML = "";
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        showResult(false);
+
+    }
+
+
+    /* BUTTON */
+
+    if(checkedQuestions[currentQuestion]){
+
+        checkButton.style.display = "none";
+        nextButton.style.display = "inline-block";
+
+    }
+    else{
+
+        checkButton.style.display = "inline-block";
+        nextButton.style.display = "none";
+
+    }
+
+
+    /* PROGRESS */
+
+    questionNumber.textContent =
+        "प्रश्न " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+    progressBar.style.width =
+        ((currentQuestion + 1) /
+        questions.length * 100) + "%";
+
+
+    previousButton.disabled =
+        currentQuestion === 0;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   CHECK ANSWER
+===================================================== */
+
+function checkAnswer(){
+
+    if(selectedAnswers[currentQuestion] === null){
+
+        alert("कृपया पहले एक विकल्प चुनें।");
+
+        return;
+    }
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        return;
+
+    }
+
+
+    checkedQuestions[currentQuestion] = true;
+
+
+    if(
+        selectedAnswers[currentQuestion] ===
+        questions[currentQuestion].answer
+    ){
+
+        score++;
+
+    }
+
+
+    showResult(true);
+
+    highlightOptions();
+
+
+    checkButton.style.display = "none";
+
+    nextButton.style.display = "inline-block";
+
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(scrollResult){
+
+    const q = questions[currentQuestion];
+
+    const isCorrect =
+        selectedAnswers[currentQuestion] === q.answer;
+
+
+    resultElement.className =
+        "result show " +
+        (isCorrect ? "correct" : "wrong");
+
+
+    resultElement.innerHTML = `
+
+        <div class="result-title">
+            ${isCorrect ? "✅ सही उत्तर!" : "❌ गलत उत्तर!"}
+        </div>
+
+        <div>
+            <b>सही उत्तर:</b>
+            ${String.fromCharCode(65 + q.answer)})
+            ${q.options[q.answer]}
+        </div>
+
+        <div>
+            <b>व्याख्या:</b>
+            ${q.explanation}
+        </div>
+
+    `;
+
+
+    if(scrollResult){
+
+        resultElement.scrollIntoView({
+            behavior:"smooth",
+            block:"nearest"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT OPTIONS
+===================================================== */
+
+function highlightOptions(){
+
+    const optionElements =
+        document.querySelectorAll(".option");
+
+
+    optionElements.forEach((element,index)=>{
+
+        element.classList.remove(
+            "correct",
+            "wrong"
+        );
+
+
+        if(checkedQuestions[currentQuestion]){
+
+            if(
+                index ===
+                questions[currentQuestion].answer
+            ){
+
+                element.classList.add("correct");
+
+            }
+
+
+            if(
+                index === selectedAnswers[currentQuestion] &&
+                index !== questions[currentQuestion].answer
+            ){
+
+                element.classList.add("wrong");
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+    else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   QUESTION PALETTE
+===================================================== */
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+
+    questions.forEach((question,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "q-btn";
+
+        button.textContent = index + 1;
+
+
+        if(index === currentQuestion){
+
+            button.classList.add("active");
+
+        }
+
+
+        if(checkedQuestions[index]){
+
+            button.classList.add("done");
+
+        }
+
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   FINISH QUIZ
+===================================================== */
+
+function finishQuiz(){
+
+    document.getElementById("quizCard")
+        .style.display = "none";
+
+
+    document.getElementById("finalCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        score + " / " + questions.length;
+
+
+    const percentage =
+        score / questions.length * 100;
+
+
+    let message;
+
+
+    if(percentage >= 80){
+
+        message =
+            "🌟 बहुत बढ़िया! आपकी तैयारी बहुत अच्छी है।";
+
+    }
+    else if(percentage >= 60){
+
+        message =
+            "👍 अच्छा प्रयास! कुछ topics का revision करें।";
+
+    }
+    else{
+
+        message =
+            "📚 अच्छा प्रयास। गलत प्रश्नों की व्याख्या पढ़कर फिर से प्रयास करें।";
+
+    }
+
+
+    document.getElementById("finalMessage")
+        .textContent = message;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    selectedAnswers =
+        new Array(questions.length).fill(null);
+
+    checkedQuestions =
+        new Array(questions.length).fill(false);
+
+    score = 0;
+
+
+    document.getElementById("quizCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalCard")
+        .style.display = "none";
+
+
+    loadQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
