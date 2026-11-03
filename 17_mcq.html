@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C++ बेसिक आउटपुट MCQ टेस्ट</title>
+<style>
+  :root { --blue:#2457c5; --green:#16834a; --red:#c0392b; --ink:#202938; --muted:#637083; --line:#dce3ed; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Arial,"Noto Sans Devanagari",sans-serif; background:#f3f6fb; color:var(--ink); line-height:1.6; }
+  .wrap { max-width:900px; margin:30px auto; padding:0 16px 40px; }
+  header { background:#183b78; color:white; border-radius:16px; padding:24px; margin-bottom:20px; }
+  h1 { margin:0 0 8px; font-size:clamp(23px,4vw,32px); }
+  header p { margin:5px 0; color:#e7efff; }
+  .topline { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:14px; font-weight:bold; }
+  .progress { height:9px; background:#dce5f5; border-radius:20px; overflow:hidden; margin-top:9px; }
+  .bar { height:100%; width:0%; background:#69d49a; transition:width .2s; }
+  .question { background:white; border:1px solid var(--line); border-radius:14px; padding:20px; margin:16px 0; box-shadow:0 3px 12px #1b35500a; }
+  .qhead { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .qnum { color:var(--blue); font-weight:bold; }
+  .tag { color:#596579; background:#eef2f8; border-radius:20px; padding:3px 10px; font-size:12px; }
+  pre { background:#172235; color:#e8f0ff; border-radius:10px; padding:15px; overflow-x:auto; font-size:15px; line-height:1.5; white-space:pre; }
+  .prompt { font-weight:600; margin:12px 0; }
+  .options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .option { border:1px solid #cfd8e6; border-radius:9px; padding:10px 12px; cursor:pointer; display:flex; gap:9px; align-items:center; }
+  .option:hover { border-color:var(--blue); background:#f6f8ff; }
+  .option input { accent-color:var(--blue); }
+  .option:has(input:checked) { border-color:var(--blue); background:#eef3ff; }
+  button { border:0; border-radius:9px; padding:10px 18px; font-size:15px; font-weight:bold; cursor:pointer; }
+  .submit { margin-top:14px; color:white; background:var(--blue); }
+  .submit:disabled { opacity:.45; cursor:not-allowed; }
+  .feedback { display:none; margin-top:15px; padding:14px; border-radius:10px; }
+  .feedback.correct { display:block; background:#eaf7ef; border:1px solid #b8e2c7; }
+  .feedback.wrong { display:block; background:#fff0ee; border:1px solid #f0c1ba; }
+  .feedback strong { display:block; margin-bottom:5px; }
+  .answerline { margin:4px 0; font-weight:bold; }
+  .explain { margin:6px 0 0; }
+  .result { display:none; background:white; border:1px solid var(--line); border-radius:14px; padding:22px; text-align:center; margin-top:24px; }
+  .result h2 { margin-top:0; }
+  .restart { background:#183b78; color:white; margin-top:10px; }
+  @media(max-width:600px) { .options { grid-template-columns:1fr; } .question { padding:15px; } pre { font-size:13px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>C++ बेसिक प्रोग्राम आउटपुट टेस्ट</h1>
+  <p>20 बहुविकल्पीय प्रश्न — जोड़, घटाव, गुणा, भागफल, मॉड्यूलस और औसत</p>
+  <p>हर प्रश्न का उत्तर चुनकर <b>Submit Answer</b> दबाएँ। उसके बाद सही/गलत उत्तर और हिंदी में विस्तृत explanation दिखाई देगा।</p>
+  <div class="topline"><span id="progressText">हल किए गए प्रश्न: 0 / 20</span><span id="scoreText">स्कोर: 0</span></div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+</header>
+<main id="quiz"></main>
+<section class="result" id="result">
+  <h2>टेस्ट पूरा हुआ!</h2>
+  <p id="finalScore"></p>
+  <p id="finalMessage"></p>
+  <button class="restart" onclick="restartQuiz()">फिर से टेस्ट दें</button>
+</section>
+</div>
+<script>
+const questions = [
+ {topic:"जोड़", code:"int a = 10, b = 5;\ncout << a + b;", opts:["5","15","50","105"], ans:1, exp:"a की वैल्यू 10 और b की वैल्यू 5 है। + ऑपरेटर दोनों संख्याओं को जोड़ता है। इसलिए 10 + 5 = 15 प्रिंट होगा।"},
+ {topic:"घटाव", code:"int x = 18, y = 7;\ncout << x - y;", opts:["25","11","126","10"], ans:1, exp:"- ऑपरेटर घटाव करता है। यहाँ x में 18 और y में 7 है। 18 - 7 = 11, इसलिए आउटपुट 11 होगा।"},
+ {topic:"गुणा", code:"int a = 6, b = 4;\ncout << a * b;", opts:["10","24","2","64"], ans:1, exp:"* ऑपरेटर गुणा (multiplication) के लिए होता है। 6 × 4 = 24, इसलिए cout में 24 जाएगा।"},
+ {topic:"मॉड्यूलस", code:"int a = 17, b = 5;\ncout << a % b;", opts:["3","2","5","12"], ans:1, exp:"% ऑपरेटर भाग देने के बाद बचा हुआ शेषफल (remainder) देता है। 17 को 5 से भाग देने पर 3 पूरा भाग और 2 शेष बचता है। इसलिए आउटपुट 2 है।"},
+ {topic:"औसत", code:"int a = 10, b = 20, c = 30;\ncout << (a + b + c) / 3;", opts:["20","30","60","15"], ans:0, exp:"औसत = सभी संख्याओं का योग / संख्याओं की कुल संख्या। (10 + 20 + 30) / 3 = 60 / 3 = 20।"},
+ {topic:"जोड़", code:"int p = 25, q = 15;\nint r = p + q;\ncout << r;", opts:["10","35","40","375"], ans:2, exp:"पहली लाइन में p = 25 और q = 15 है। अगली लाइन में r = p + q, यानी 25 + 15 = 40। cout r की वैल्यू 40 दिखाएगा।"},
+ {topic:"घटाव", code:"int a = 50, b = 23;\ncout << a - b;", opts:["73","27","33","1150"], ans:1, exp:"यहाँ a - b का अर्थ 50 में से 23 घटाना है। 50 - 23 = 27। इसलिए आउटपुट 27 होगा।"},
+ {topic:"गुणा", code:"int n = 7;\ncout << n * n;", opts:["14","49","7","77"], ans:1, exp:"n की वैल्यू 7 है। n * n का अर्थ 7 × 7 है। इसका परिणाम 49 होगा।"},
+ {topic:"मॉड्यूलस", code:"int num =  twenty;\ncout << num % 6;", opts:["2","3","4","6"], ans:0, exp:"num की वैल्यू 20 है। 20 को 6 से भाग देने पर 6 × 3 = 18 और शेष 2 बचता है। इसलिए आउटपुट 2 है।", fix:"int num = 20;\ncout << num % 6;"},
+ {topic:"औसत", code:"int a = 8, b = 12;\ncout << (a + b) / 2;", opts:["8","10","12","20"], ans:1, exp:"दो संख्याओं का औसत निकालने के लिए उनका योग 2 से भाग देते हैं। (8 + 12) / 2 = 20 / 2 = 10।"},
+ {topic:"जोड़", code:"int a = 3, b = 4, c = 5;\ncout << a + b + c;", opts:["12","35","60","7"], ans:0, exp:"तीनों वैल्यू को + ऑपरेटर से जोड़ा गया है। 3 + 4 + 5 = 12।"},
+ {topic:"घटाव", code:"int a = 100, b = 40, c = 10;\ncout << a - b - c;", opts:["70","50","90","130"], ans:0, exp:"घटाव बाएँ से दाएँ होगा: पहले 100 - 40 = 60, फिर 60 - 10 = 50। इसलिए सही आउटपुट 50 है।", ans:1},
+ {topic:"गुणा", code:"int a = 2, b = 3, c = 4;\ncout << a * b * c;", opts:["9","24","12","234"], ans:1, exp:"गुणा करने पर 2 × 3 = 6 और 6 × 4 = 24। इसलिए आउटपुट 24 होगा।"},
+ {topic:"मॉड्यूलस", code:"int a = 29, b = 10;\ncout << a % b;", opts:["9","2","10","19"], ans:0, exp:"29 को 10 से भाग देने पर भागफल 2 और शेषफल 9 मिलता है। % ऑपरेटर शेषफल देता है, इसलिए आउटपुट 9 है।"},
+ {topic:"औसत", code:"int a = 5, b = 10, c = 15, d = 20;\ncout << (a + b + c + d) / 4;", opts:["10","12","12.5","50"], ans:0, exp:"योग 5 + 10 + 15 + 20 = 50 है। 50 / 4 = 12.5 गणितीय रूप से होता है, लेकिन सभी variables int हैं, इसलिए C++ में integer division से दशमलव भाग हट जाता है और आउटपुट 12 होगा।", ans:1},
+ {topic:"भाग (integer division)", code:"int a = 17, b = 4;\ncout << a / b;", opts:["4.25","4","5","1"], ans:1, exp:"दोनों variables int हैं, इसलिए integer division होगा। 17 / 4 का वास्तविक मान 4.25 है, लेकिन int division में दशमलव भाग हट जाता है। आउटपुट 4 होगा।"},
+ {topic:"जोड़ और गुणा", code:"int a = 4, b = 3;\ncout << a + b * 2;", opts:["14","11","20","10"], ans:1, exp:"C++ में * की प्राथमिकता + से अधिक होती है। पहले b * 2 = 3 * 2 = 6 होगा, फिर 4 + 6 = 10। इसलिए सही आउटपुट 10 है।", ans:3},
+ {topic:"कोष्ठक", code:"int a = 4, b = 3;\ncout << (a + b) * 2;", opts:["10","14","11","24"], ans:1, exp:"कोष्ठक के अंदर का काम पहले होता है। (4 + 3) = 7, फिर 7 * 2 = 14। इसलिए आउटपुट 14 है।"},
+ {topic:"मॉड्यूलस", code:"int a = 24, b = 8;\ncout << a % b;", opts:["3","0","8","2"], ans:1, exp:"24, 8 से पूरी तरह विभाजित हो जाता है: 8 × 3 = 24। कोई शेष नहीं बचता, इसलिए 24 % 8 = 0।"},
+ {topic:"औसत", code:"int a = 14, b = 16;\ncout << (a + b) / 2;", opts:["14","15","16","30"], ans:1, exp:"दो संख्याओं का औसत (14 + 16) / 2 = 30 / 2 = 15 है। इसलिए आउटपुट 15 होगा।"}
+];
+
+let score = 0, completed = 0;
+const quiz = document.getElementById('quiz');
+function render() {
+  quiz.innerHTML = '';
+  questions.forEach((q,i) => {
+    const card = document.createElement('section');
+    card.className = 'question';
+    const code = q.fix || q.code;
+    card.innerHTML = `
+      <div class="qhead"><span class="qnum">प्रश्न ${i+1} / 20</span><span class="tag">${q.topic}</span></div>
+      <p class="prompt">नीचे दिए गए C++ प्रोग्राम का आउटपुट क्या होगा?</p>
+      <pre></pre>
+      <div class="options" role="group" aria-label="प्रश्न ${i+1} के विकल्प"></div>
+      <button class="submit" disabled>Submit Answer</button>
+      <div class="feedback" aria-live="polite"></div>`;
+    card.querySelector('pre').textContent = '#include <iostream>\nusing namespace std;\n\nint main() {\n    ' + code.replace(/\n/g,'\n    ') + '\n    return 0;\n}';
+    const options = card.querySelector('.options');
+    q.opts.forEach((op,j) => {
+      const label = document.createElement('label');
+      label.className = 'option';
+      label.innerHTML = `<input type="radio" name="q${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${op}</span>`;
+      options.appendChild(label);
+    });
+    const button = card.querySelector('button');
+    const radios = [...card.querySelectorAll('input')];
+    radios.forEach(r => r.addEventListener('change', () => button.disabled = false));
+    button.addEventListener('click', () => {
+      const selected = Number(radios.find(r => r.checked).value);
+      const correct = selected === q.ans;
+      if (correct) score++;
+      completed++;
+      radios.forEach(r => r.disabled = true);
+      button.disabled = true;
+      button.textContent = 'उत्तर जमा हो गया';
+      const fb = card.querySelector('.feedback');
+      fb.className = 'feedback ' + (correct ? 'correct' : 'wrong');
+      fb.innerHTML = `<strong>${correct ? '✓ बिल्कुल सही जवाब!' : '✗ आपका जवाब गलत है।'}</strong>
+        <div>आपका उत्तर: ${String.fromCharCode(65+selected)}. ${q.opts[selected]}</div>
+        <div class="answerline">सही उत्तर: ${String.fromCharCode(65+q.ans)}. ${q.opts[q.ans]}</div>
+        <p class="explain"><b>व्याख्या:</b> ${q.exp}</p>`;
+      card.querySelectorAll('.option').forEach((el,j) => {
+        if (j === q.ans) { el.style.borderColor = 'var(--green)'; el.style.background = '#eaf7ef'; }
+        else if (j === selected && !correct) { el.style.borderColor = 'var(--red)'; el.style.background = '#fff0ee'; }
+      });
+      updateProgress();
+    });
+    quiz.appendChild(card);
+  });
+}
+function updateProgress() {
+  document.getElementById('progressText').textContent = `हल किए गए प्रश्न: ${completed} / 20`;
+  document.getElementById('scoreText').textContent = `स्कोर: ${score}`;
+  document.getElementById('bar').style.width = `${completed/20*100}%`;
+  if (completed === 20) {
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+    document.getElementById('finalScore').textContent = `आपका स्कोर ${score} / 20 है।`;
+    document.getElementById('finalMessage').textContent = score >= 16 ? 'बहुत बढ़िया! आपकी C++ बेसिक समझ अच्छी है।' : score >= 10 ? 'अच्छा प्रयास! जिन प्रश्नों में गलती हुई, उनकी व्याख्या दोबारा पढ़ें।' : 'अभ्यास जारी रखें। हर प्रश्न की व्याख्या पढ़कर फिर से टेस्ट दें।';
+    result.scrollIntoView({behavior:'smooth'});
+  }
+}
+function restartQuiz() {
+  score = 0; completed = 0;
+  document.getElementById('result').style.display = 'none';
+  updateProgress(); render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+render();
+</script>
+</body>
+</html>
