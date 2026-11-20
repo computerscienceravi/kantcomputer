@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Computer Science - BSEB Class 12 Model Sent-Up Exam Quiz</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#172033;
+}
+
+.container{
+    width:100%;
+    max-width:950px;
+    margin:auto;
+    padding:15px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:clamp(25px,5vw,38px);
+}
+
+.header p{
+    margin:6px 0;
+    font-size:17px;
+}
+
+/* PROGRESS */
+.progress-box{
+    background:white;
+    margin-top:18px;
+    padding:16px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    font-size:15px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:2%;
+    background:#4f46e5;
+    transition:.3s;
+}
+
+/* QUIZ CARD */
+.quiz-card{
+    background:white;
+    margin-top:18px;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.question{
+    font-size:clamp(20px,3vw,27px);
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+/* OPTIONS */
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:15px;
+    margin:11px 0;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    cursor:pointer;
+    background:#fff;
+    transition:.2s;
+    font-size:17px;
+    line-height:1.5;
+}
+
+.option:hover{
+    border-color:#818cf8;
+    background:#f5f3ff;
+}
+
+.option input{
+    margin-top:5px;
+    transform:scale(1.2);
+    accent-color:#4f46e5;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+}
+
+/* RESULT */
+.result{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.result.show{
+    display:block;
+}
+
+.result.correct{
+    background:#f0fdf4;
+    border:1px solid #86efac;
+}
+
+.result.wrong{
+    background:#fef2f2;
+    border:1px solid #fca5a5;
+}
+
+.result-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+button{
+    border:none;
+    border-radius:12px;
+    padding:13px 20px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+}
+
+.previous{
+    background:#e5e7eb;
+    color:#111827;
+}
+
+.check{
+    background:#4f46e5;
+    color:white;
+}
+
+.next{
+    background:#111827;
+    color:white;
+    display:none;
+}
+
+.restart{
+    background:#7c3aed;
+    color:white;
+}
+
+/* QUESTION PALETTE */
+.palette-title{
+    margin-top:25px;
+    font-weight:bold;
+}
+
+.palette{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.q-btn{
+    width:40px;
+    height:40px;
+    padding:0;
+    background:#eef2ff;
+    color:#3730a3;
+    font-size:14px;
+}
+
+.q-btn.active{
+    background:#4f46e5;
+    color:white;
+}
+
+.q-btn.done{
+    background:#bbf7d0;
+    color:#166534;
+}
+
+/* FINAL SCORE */
+.final{
+    display:none;
+    background:white;
+    margin-top:18px;
+    padding:35px 20px;
+    text-align:center;
+    border-radius:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.final h2{
+    font-size:30px;
+}
+
+.final-score{
+    font-size:50px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+.note{
+    color:#64748b;
+    font-size:14px;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .container{
+        padding:10px;
+    }
+
+    .header{
+        padding:22px 12px;
+        border-radius:17px;
+    }
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .header p{
+        font-size:15px;
+    }
+
+    .quiz-card{
+        padding:17px;
+        border-radius:17px;
+    }
+
+    .question{
+        font-size:20px;
+    }
+
+    .option{
+        padding:12px;
+        font-size:16px;
+    }
+
+    .buttons button{
+        flex:1;
+        min-width:120px;
+    }
+
+    .q-btn{
+        width:35px;
+        height:35px;
+    }
+}
+.visitor-counter{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    color:blue;
+    font-size:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Computer Science — Sent-Up Practice Quiz Examination</h1>
+    <p>BSEB Class 12 — Sent-Up Practice MCQ Interactive Quiz</p>
+    <p>By Ravi Kant Sir </p> 
+    <p>कुल प्रश्न: 45</p>
+</div>
+<div class="visitor-counter">
+    👁️ Total Visitors: <span id="visitorCount">Loading...</span>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-box">
+
+    <div class="progress-info">
+        <span id="questionNumber">प्रश्न 1 / 45</span>
+        <span id="score">स्कोर: 0</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<!-- QUIZ -->
+<div class="quiz-card" id="quizCard">
+
+    <div class="question" id="question">
+        प्रश्न लोड हो रहा है...
+    </div>
+
+    <div id="options"></div>
+
+    <div class="result" id="result"></div>
+
+    <div class="buttons">
+
+        <button
+            class="previous"
+            id="previousButton"
+            onclick="previousQuestion()">
+            ← पिछला
+        </button>
+
+        <button
+            class="check"
+            id="checkButton"
+            onclick="checkAnswer()">
+            उत्तर जाँचें
+        </button>
+
+        <button
+            class="next"
+            id="nextButton"
+            onclick="nextQuestion()">
+            अगला प्रश्न →
+        </button>
+
+    </div>
+
+
+    <div class="palette-title">
+        प्रश्न चुनें:
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="note">
+        पहले विकल्प चुनें और फिर "उत्तर जाँचें" दबाएँ।
+        सही और गलत दोनों स्थितियों में प्रश्न की व्याख्या दिखाई जाएगी।
+    </div>
+
+</div>
+
+
+<!-- FINAL SCORE -->
+<div class="final" id="finalCard">
+
+    <h2>🎉 Quiz पूरा हुआ!</h2>
+
+    <div class="final-score" id="finalScore">
+        0 / 50
+    </div>
+
+    <p id="finalMessage"></p>
+
+    <button
+        class="restart"
+        onclick="restartQuiz()">
+        🔄 फिर से शुरू करें
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   50 QUESTIONS
+===================================================== */
+
+
+const questions = [
+
+{
+q: "निम्नलिखित में से कौन-सी Non-Linear Data Structure है?",
+options: ["Queue", "Stack", "Tree", "Array"],
+answer: 2,
+explanation: "Tree एक Non-Linear Data Structure है, जिसमें डेटा Hierarchical रूप में व्यवस्थित होता है।"
+},
+
+{
+q: "C++ में char किस प्रकार का है?",
+options: ["Data Type", "Function", "Operator", "Constant"],
+answer: 0,
+explanation: "char एक Built-in Data Type है, जिसका उपयोग एक Character को स्टोर करने के लिए किया जाता है।"
+},
+
+{
+q: "math.h क्या है?",
+options: ["Data File", "Header File", "Compiler", "Program Block"],
+answer: 1,
+explanation: "math.h एक Header File है, जिसमें गणितीय कार्यों से संबंधित Functions होते हैं।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सा DML Command है?",
+options: ["CREATE", "ROLLBACK", "INSERT", "GRANT"],
+answer: 2,
+explanation: "INSERT का उपयोग Database Table में नया Record जोड़ने के लिए किया जाता है।"
+},
+
+{
+q: "Stack में नया Element जोड़ने की प्रक्रिया क्या कहलाती है?",
+options: ["POP", "PUSH", "TRAVERSAL", "SEARCH"],
+answer: 1,
+explanation: "PUSH Operation का उपयोग Stack में नया Element जोड़ने के लिए होता है।"
+},
+
+{
+q: "Aggregation का अर्थ क्या है?",
+options: ["Hiding", "Elimination", "Summarization", "Casting"],
+answer: 2,
+explanation: "Aggregation का अर्थ कई चीजों को मिलाकर एक समग्र रूप प्रस्तुत करना है।"
+},
+
+{
+q: "Function Overloading किसकी विशेषता है?",
+options: ["SQL", "Procedural Programming", "Object Oriented Programming", "Machine Language"],
+answer: 2,
+explanation: "Function Overloading OOP की विशेषता है, जिसमें समान नाम के कई Functions बनाए जा सकते हैं।"
+},
+
+{
+q: "Class क्या है?",
+options: ["Object का Design", "Function", "Operator", "Variable"],
+answer: 0,
+explanation: "Class एक Blueprint या Design है, जिसके आधार पर Objects बनाए जाते हैं।"
+},
+
+{
+q: "Octal Number System का Base कितना होता है?",
+options: ["2", "10", "16", "8"],
+answer: 3,
+explanation: "Octal Number System का Base 8 होता है। इसमें 0 से 7 तक के अंकों का प्रयोग होता है।"
+},
+
+{
+q: "Boolean Variable के ऊपर Bar किस Logic Operation को दर्शाता है?",
+options: ["AND", "OR", "NOT", "NOR"],
+answer: 2,
+explanation: "Boolean Variable के ऊपर Bar Complement या NOT Operation को दर्शाता है।"
+},
+
+{
+q: "SQL में डेटा दर्ज करने के लिए किस Command का उपयोग होता है?",
+options: ["SELECT", "INSERT", "UPDATE", "CREATE"],
+answer: 1,
+explanation: "INSERT Command का उपयोग Table में नया Data जोड़ने के लिए किया जाता है।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सा Computer Network का प्रकार है?",
+options: ["NIC", "WWW", "LAN", "CPU"],
+answer: 2,
+explanation: "LAN का पूरा नाम Local Area Network है।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सा Network Medium है?",
+options: ["PAN", "MAN", "OFC", "LAN"],
+answer: 2,
+explanation: "OFC का पूरा नाम Optical Fiber Cable है। इसका उपयोग Data Transmission में होता है।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सी Network Topology है?",
+options: ["HUB", "STAR", "NIC", "CABLE"],
+answer: 1,
+explanation: "Star Topology में सभी Devices एक Central Hub या Switch से जुड़ी होती हैं।"
+},
+
+{
+q: "Integer किस प्रकार का Data Type है?",
+options: ["Derived Data Type", "Constant", "Built-in Data Type", "Variable"],
+answer: 2,
+explanation: "Integer (int) C++ का Built-in Data Type है। इसका उपयोग पूर्णांक संख्याओं के लिए होता है।"
+},
+
+{
+q: "Object क्या होता है?",
+options: ["Operator", "Instance of Class", "Header File", "Function"],
+answer: 1,
+explanation: "Object, Class का Instance होता है।"
+},
+
+{
+q: "OOP का मुख्य उद्देश्य क्या है?",
+options: ["File और Disk को जोड़ना", "केवल Input लेना", "Data और Function को एकीकृत करना", "केवल Output देना"],
+answer: 2,
+explanation: "OOP में Data और उससे संबंधित Functions को एक साथ व्यवस्थित किया जाता है।"
+},
+
+{
+q: "POS का पूरा नाम क्या है?",
+options: ["Product of Sum", "Program of System", "Power of System", "Product of Sequence"],
+answer: 0,
+explanation: "POS का पूरा नाम Product of Sums है। यह Boolean Algebra का एक Standard Form है।"
+},
+
+{
+q: "HTTP क्या है?",
+options: ["Programming Language", "Protocol", "Hardware Device", "Network Topology"],
+answer: 1,
+explanation: "HTTP का पूरा नाम Hypertext Transfer Protocol है। इसका उपयोग Web Communication में होता है।"
+},
+
+{
+q: "CDMA किससे संबंधित है?",
+options: ["Mobile Communication", "Database", "Operating System", "Printer"],
+answer: 0,
+explanation: "CDMA का पूरा नाम Code Division Multiple Access है। यह Mobile Communication की एक तकनीक है।"
+},
+
+{
+q: "kHz किसकी इकाई है?",
+options: ["Water Flow", "Aircraft Speed", "Bandwidth/Frequency", "Temperature"],
+answer: 2,
+explanation: "kHz का अर्थ Kilohertz है। इसका उपयोग Frequency मापने के लिए किया जाता है।"
+},
+
+{
+q: "Computer Virus क्या है?",
+options: ["Hardware", "Application Software", "Malicious Program", "Operating System"],
+answer: 2,
+explanation: "Computer Virus एक Malicious Program है, जो कंप्यूटर को नुकसान पहुँचा सकता है।"
+},
+
+{
+q: "Cyber Law मुख्य रूप से किससे संबंधित है?",
+options: ["Online Fraud और Cyber Crime पर नियंत्रण", "Hardware Design", "Computer Assembly", "Printer Management"],
+answer: 0,
+explanation: "Cyber Law इंटरनेट और डिजिटल गतिविधियों से जुड़े अपराधों एवं कानूनी नियमों से संबंधित है।"
+},
+
+{
+q: "MAX() Function क्या Return करता है?",
+options: ["सबसे छोटी Value", "सबसे बड़ी Value", "Negative Value", "Zero"],
+answer: 1,
+explanation: "MAX() Function दिए गए मानों में सबसे बड़ी Value Return करता है।"
+},
+
+{
+q: "SQL में ORDER BY Clause का उपयोग किसलिए होता है?",
+options: ["Data Delete करने", "Data Insert करने", "Data Sort करने", "Table Create करने"],
+answer: 2,
+explanation: "ORDER BY Clause का उपयोग Records को Ascending या Descending क्रम में व्यवस्थित करने के लिए होता है।"
+},
+
+{
+q: "DOS किस प्रकार का Software है?",
+options: ["Compiler", "Editor", "Interpreter", "Operating System"],
+answer: 3,
+explanation: "DOS का पूरा नाम Disk Operating System है।"
+},
+
+{
+q: "MIN() Function क्या Return करता है?",
+options: ["सबसे बड़ी Value", "सबसे छोटी Value", "Positive Value", "Negative Value"],
+answer: 1,
+explanation: "MIN() Function दिए गए मानों में सबसे छोटी Value Return करता है।"
+},
+
+{
+q: "C++ में cin के साथ किस Operator का प्रयोग किया जाता है?",
+options: ["<<", ">>", "<", ">"],
+answer: 1,
+explanation: "cin के साथ Extraction Operator (>>) का उपयोग Input लेने के लिए होता है।"
+},
+
+{
+q: "C++ में cout के साथ किस Operator का प्रयोग किया जाता है?",
+options: [">>", "<", "<<", "<="],
+answer: 2,
+explanation: "cout के साथ Insertion Operator (<<) का उपयोग Output दिखाने के लिए होता है।"
+},
+
+{
+q: "Data और उससे संबंधित Functions को एक ही Unit में बाँधना क्या कहलाता है?",
+options: ["Abstraction", "Polymorphism", "Encapsulation", "Inheritance"],
+answer: 2,
+explanation: "Encapsulation में Data और संबंधित Functions को एक ही Unit अर्थात Class में बाँधा जाता है।"
+},
+
+{
+q: "यदि सभी Devices एक Central Hub से जुड़े हों, तो कौन-सी Topology कहलाती है?",
+options: ["Bus", "Ring", "Tree", "Star"],
+answer: 3,
+explanation: "Star Topology में सभी Devices एक Central Hub या Switch से जुड़ी होती हैं।"
+},
+
+{
+q: "C++ क्या है?",
+options: ["केवल Functional Language", "केवल Procedural Language", "Procedural और Object Oriented दोनों प्रकार की Language", "केवल Machine Language"],
+answer: 2,
+explanation: "C++ Procedural Programming और Object Oriented Programming दोनों को Support करती है।"
+},
+
+{
+q: "C++ में Single Line Comment के लिए किसका प्रयोग होता है?",
+options: ["//", "/* */", "#", "<!-- -->"],
+answer: 0,
+explanation: "// का उपयोग Single Line Comment लिखने के लिए किया जाता है।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सा एक Valid Identifier है?",
+options: ["7VARNAME", "$var", "VAR_1234", "var name"],
+answer: 2,
+explanation: "VAR_1234 एक Valid Identifier है। Identifier की शुरुआत अंक या विशेष चिन्ह से नहीं हो सकती।"
+},
+
+{
+q: "C++ किस Programming Approach का उपयोग करती है?",
+options: ["Top-down", "Bottom-up", "Left-right", "Right-left"],
+answer: 1,
+explanation: "Object Oriented Programming में सामान्यतः Bottom-up Approach का उपयोग किया जाता है।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सा Type C++ में उपलब्ध है, लेकिन C में नहीं?",
+options: ["int", "float", "double", "bool"],
+answer: 3,
+explanation: "bool C++ का Built-in Data Type है। यह True और False मान रखता है।"
+},
+
+{
+q: "C++ में Array को सही तरीके से कैसे Declare किया जाता है?",
+options: ["int array;", "int array[10];", "array int(10);", "int[10] array;"],
+answer: 1,
+explanation: "int array[10]; एक सही Array Declaration है। इसमें 10 Integer Elements रखे जा सकते हैं।"
+},
+
+{
+q: "OOP में Code Reusability किस Feature से प्राप्त होती है?",
+options: ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"],
+answer: 2,
+explanation: "Inheritance के माध्यम से एक Class दूसरी Class के गुणों और Methods का उपयोग कर सकती है।"
+},
+
+{
+q: "Stack में खाली Stack से Element हटाने की स्थिति क्या कहलाती है?",
+options: ["Overflow", "Underflow", "Traversal", "Sorting"],
+answer: 1,
+explanation: "खाली Stack से Element हटाने का प्रयास Underflow कहलाता है।"
+},
+
+{
+q: "Algebra of Logic को किस नाम से जाना जाता है?",
+options: ["Arithmetic Logic", "Numerical Logic", "Boolean Algebra", "Binary Number"],
+answer: 2,
+explanation: "Boolean Algebra में केवल दो मान 0 और 1 का प्रयोग किया जाता है।"
+},
+
+{
+q: "निम्नलिखित में से Universal Logic Gates कौन-से हैं?",
+options: ["AND और OR", "OR और NOT", "AND और NOT", "NAND और NOR"],
+answer: 3,
+explanation: "NAND और NOR Universal Gates हैं। इनकी सहायता से अन्य Logic Gates बनाए जा सकते हैं।"
+},
+
+{
+q: "DBMS का पूरा नाम क्या है?",
+options: ["Data Backup Management System", "Database Management System", "Database Management Service", "Data Binary Management System"],
+answer: 1,
+explanation: "DBMS का पूरा नाम Database Management System है।"
+},
+
+{
+q: "Database क्या है?",
+options: ["अव्यवस्थित Data का समूह", "केवल Programs का समूह", "व्यवस्थित Data का संग्रह", "केवल Hardware का समूह"],
+answer: 2,
+explanation: "Database व्यवस्थित Data या Information का संग्रह है, जिसे Access, Update और Manage किया जा सकता है।"
+},
+
+{
+q: "निम्नलिखित में से कौन-सा Database का कार्य नहीं है?",
+options: ["Stored Data को Manage करना", "Data को Manipulate करना", "Data की Security देना", "Code का Analysis करना"],
+answer: 3,
+explanation: "Code Analysis Database का मुख्य कार्य नहीं है। Database का कार्य Data को Store, Manage और Secure करना है।"
+},
+
+{
+q: "निम्नलिखित में से DBMS का कौन-सा Component है?",
+options: ["Data", "Data Languages", "Data Manager", "उपरोक्त सभी"],
+answer: 3,
+explanation: "Data, Data Languages और Data Manager DBMS से संबंधित Components हैं।"
+}
+
+];
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+let currentQuestion = 0;
+
+let selectedAnswers =
+    new Array(questions.length).fill(null);
+
+let checkedQuestions =
+    new Array(questions.length).fill(false);
+
+let score = 0;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const questionElement =
+    document.getElementById("question");
+
+const optionsElement =
+    document.getElementById("options");
+
+const resultElement =
+    document.getElementById("result");
+
+const checkButton =
+    document.getElementById("checkButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const previousButton =
+    document.getElementById("previousButton");
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const scoreElement =
+    document.getElementById("score");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const palette =
+    document.getElementById("palette");
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionElement.textContent =
+        (currentQuestion + 1) + ". " + q.q;
+
+    optionsElement.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        label.innerHTML = `
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${selectedAnswers[currentQuestion] === index ? "checked" : ""}
+                ${checkedQuestions[currentQuestion] ? "disabled" : ""}
+            >
+
+            <span>
+                <b>${String.fromCharCode(65 + index)})</b>
+                ${option}
+            </span>
+        `;
+
+        label.addEventListener("click",function(){
+
+            if(!checkedQuestions[currentQuestion]){
+
+                selectedAnswers[currentQuestion] =
+                    index;
+
+                highlightOptions();
+
+            }
+
+        });
+
+        optionsElement.appendChild(label);
+
+    });
+
+/* =====================================================
+   VISITOR COUNTER
+===================================================== */
+
+const visitorCountElement =
+    document.getElementById("visitorCount");
+
+const siteName = window.location.hostname;
+const pagePath = window.location.pathname || "/";
+
+/* Count this page view */
+fetch(
+    "https://page-views-api.ratneshc.com/api/v1/track?site=" +
+    encodeURIComponent(siteName) +
+    "&path=" +
+    encodeURIComponent(pagePath)
+)
+.catch(error => {
+    console.log("Visitor tracking error:", error);
+});
+
+/* Get current visitor count */
+function updateVisitorCount(){
+
+    fetch(
+        "https://page-views-api.ratneshc.com/api/v1/views?site=" +
+        encodeURIComponent(siteName) +
+        "&path=" +
+        encodeURIComponent(pagePath)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if(typeof data.views !== "undefined"){
+
+            visitorCountElement.textContent =
+                Number(data.views).toLocaleString("en-IN");
+
+        }
+        else{
+
+            visitorCountElement.textContent = "0";
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log("Visitor count error:", error);
+
+        visitorCountElement.textContent =
+            "Unavailable";
+
+    });
+
+}
+
+/* Give tracking request a moment before reading count */
+setTimeout(updateVisitorCount, 500);
+    /* RESULT */
+
+    resultElement.className = "result";
+    resultElement.innerHTML = "";
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        showResult(false);
+
+    }
+
+
+    /* BUTTON */
+
+    if(checkedQuestions[currentQuestion]){
+
+        checkButton.style.display = "none";
+        nextButton.style.display = "inline-block";
+
+    }
+    else{
+
+        checkButton.style.display = "inline-block";
+        nextButton.style.display = "none";
+
+    }
+
+
+    /* PROGRESS */
+
+    questionNumber.textContent =
+        "प्रश्न " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+    progressBar.style.width =
+        ((currentQuestion + 1) /
+        questions.length * 100) + "%";
+
+
+    previousButton.disabled =
+        currentQuestion === 0;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   CHECK ANSWER
+===================================================== */
+
+function checkAnswer(){
+
+    if(selectedAnswers[currentQuestion] === null){
+
+        alert("कृपया पहले एक विकल्प चुनें।");
+
+        return;
+    }
+
+
+    if(checkedQuestions[currentQuestion]){
+
+        return;
+
+    }
+
+
+    checkedQuestions[currentQuestion] = true;
+
+
+    if(
+        selectedAnswers[currentQuestion] ===
+        questions[currentQuestion].answer
+    ){
+
+        score++;
+
+    }
+
+
+    showResult(true);
+
+    highlightOptions();
+
+
+    checkButton.style.display = "none";
+
+    nextButton.style.display = "inline-block";
+
+
+    scoreElement.textContent =
+        "स्कोर: " + score;
+
+
+    createPalette();
+
+}
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(scrollResult){
+
+    const q = questions[currentQuestion];
+
+    const isCorrect =
+        selectedAnswers[currentQuestion] === q.answer;
+
+
+    resultElement.className =
+        "result show " +
+        (isCorrect ? "correct" : "wrong");
+
+
+    resultElement.innerHTML = `
+
+        <div class="result-title">
+            ${isCorrect ? "✅ सही उत्तर!" : "❌ गलत उत्तर!"}
+        </div>
+
+        <div>
+            <b>सही उत्तर:</b>
+            ${String.fromCharCode(65 + q.answer)})
+            ${q.options[q.answer]}
+        </div>
+
+        <div>
+            <b>व्याख्या:</b>
+            ${q.explanation}
+        </div>
+
+    `;
+
+
+    if(scrollResult){
+
+        resultElement.scrollIntoView({
+            behavior:"smooth",
+            block:"nearest"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT OPTIONS
+===================================================== */
+
+function highlightOptions(){
+
+    const optionElements =
+        document.querySelectorAll(".option");
+
+
+    optionElements.forEach((element,index)=>{
+
+        element.classList.remove(
+            "correct",
+            "wrong"
+        );
+
+
+        if(checkedQuestions[currentQuestion]){
+
+            if(
+                index ===
+                questions[currentQuestion].answer
+            ){
+
+                element.classList.add("correct");
+
+            }
+
+
+            if(
+                index === selectedAnswers[currentQuestion] &&
+                index !== questions[currentQuestion].answer
+            ){
+
+                element.classList.add("wrong");
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+    else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   QUESTION PALETTE
+===================================================== */
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+
+    questions.forEach((question,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "q-btn";
+
+        button.textContent = index + 1;
+
+
+        if(index === currentQuestion){
+
+            button.classList.add("active");
+
+        }
+
+
+        if(checkedQuestions[index]){
+
+            button.classList.add("done");
+
+        }
+
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   FINISH QUIZ
+===================================================== */
+
+function finishQuiz(){
+
+    document.getElementById("quizCard")
+        .style.display = "none";
+
+
+    document.getElementById("finalCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        score + " / " + questions.length;
+
+
+    const percentage =
+        score / questions.length * 100;
+
+
+    let message;
+
+
+    if(percentage >= 80){
+
+        message =
+            "🌟 बहुत बढ़िया! आपकी तैयारी बहुत अच्छी है।";
+
+    }
+    else if(percentage >= 60){
+
+        message =
+            "👍 अच्छा प्रयास! कुछ topics का revision करें।";
+
+    }
+    else{
+
+        message =
+            "📚 अच्छा प्रयास। गलत प्रश्नों की व्याख्या पढ़कर फिर से प्रयास करें।";
+
+    }
+
+
+    document.getElementById("finalMessage")
+        .textContent = message;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    selectedAnswers =
+        new Array(questions.length).fill(null);
+
+    checkedQuestions =
+        new Array(questions.length).fill(false);
+
+    score = 0;
+
+
+    document.getElementById("quizCard")
+        .style.display = "block";
+
+
+    document.getElementById("finalCard")
+        .style.display = "none";
+
+
+    loadQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
